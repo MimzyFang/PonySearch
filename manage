@@ -470,8 +470,8 @@ docker.build() {
         build_msg DOCKER "Last commit : $VERSION_GITCOMMIT"
 
         # define the docker image name
-        GITHUB_USER=fauli1221/ponysearch
-        SEARXNG_IMAGE_NAME="${SEARXNG_IMAGE_NAME:-${GITHUB_USER:-searxng}/searxng}"
+        GITHUB_USER=fauli1221
+        SEARXNG_IMAGE_NAME="${SEARXNG_IMAGE_NAME:-${GITHUB_USER:-searxng}/ponysearch}"
 
         BUILD="build"
         if [ "$1" = "buildx" ]; then
