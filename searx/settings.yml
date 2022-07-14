@@ -1462,6 +1462,10 @@ engines:
     engine: unsplash
     shortcut: us
 
+  - name: derpibooru
+    engine: derpibooru
+    shortcut: dp
+
   - name: yahoo
     engine: yahoo
     shortcut: yh
