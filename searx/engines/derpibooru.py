@@ -27,7 +27,8 @@ filter_id = 100073
 
 def request(query, params):
     params['url'] = search_url + urlencode(
-        {'q': query, 'filter_id': filter_id, 'page': params['pageno'], 'per_page': page_size})
+        {'q': query, 'filter_id': filter_id, 'page': params['pageno'], 'per_page': page_size}
+    )
     logger.debug("query_url --> %s", params['url'])
     return params
 
