@@ -4,7 +4,7 @@
  Derpibooru (Images)
 """
 
-from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
+from urllib.parse import urlencode
 from json import loads
 
 # about
@@ -43,8 +43,8 @@ def response(resp):
                 {
                     'template': 'images.html',
                     'url': 'https://derpibooru.org/images/' + result.get('id'),
-                    'thumbnail_src': result.get(['representations']['thumb']),
-                    'img_src': result.get(['representations']['full']),
+                    'thumbnail_src': result.get(result['representations']['thumb']),
+                    'img_src': result.get(result['representations']['full']),
                     'title': result.get('name') or 'unknown',
                     'content': result.get('description') or '',
                 }
