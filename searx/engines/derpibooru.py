@@ -3,7 +3,6 @@
 """
  Derpibooru (Images)
 """
-import json
 import logging
 from urllib.parse import urlencode
 from json import loads
@@ -50,5 +49,5 @@ def response(resp):
                     'content': result.get('description') or '',
                 }
             )
-    logging.debug(results)
+    logger.debug(results)
     return results
