@@ -42,7 +42,7 @@ def response(resp):
             results.append(
                 {
                     'template': 'images.html',
-                    'url': 'https://derpibooru.org/images/' + result.get('id'),
+                    'url': 'https://derpibooru.org/images/' + str(result.get('id')),
                     'thumbnail_src': result.get(result['representations']['thumb']),
                     'img_src': result.get(result['representations']['full']),
                     'title': result.get('name') or 'unknown',
