@@ -3,7 +3,7 @@
 """
  Derpibooru (Images)
 """
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 from json import loads
 
 # about
@@ -38,13 +38,13 @@ def response(resp):
 
     if 'images' in json_data:
         for result in json_data['images']:
-            logger.debug("query --> %s", result.get(result['representations']['thumb']))
+            logger.debug("query --> %s", result['representations']['thumb'])
             results.append(
                 {
                     'template': 'images.html',
                     'url': 'https://derpibooru.org/images/' + str(result.get('id')),
-                    'thumbnail_src': result.get(result['representations']['thumb']),
-                    'img_src': result.get(result['representations']['full']),
+                    'thumbnail_src': result['representations']['thumb'],
+                    'img_src': result['representations']['full'],
                     'title': result.get('name') or 'unknown',
                     'content': result.get('description') or '',
                 }
