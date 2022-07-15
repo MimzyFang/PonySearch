@@ -3,7 +3,8 @@
 """
  Derpibooru (Images)
 """
-
+import json
+import logging
 from urllib.parse import urlencode
 from json import loads
 
@@ -12,7 +13,7 @@ about = {
     "website": 'https://derpibooru.org/',
     "wikidata_id": 'Q28233552',
     "official_api_documentation": 'https://derpibooru.org/pages/api/',
-    "use_official_api": False,
+    "use_official_api": True,
     "require_api_key": False,
     "results": 'JSON',
 }
@@ -49,5 +50,5 @@ def response(resp):
                     'content': result.get('description') or '',
                 }
             )
-
+    logging.debug(results)
     return results
