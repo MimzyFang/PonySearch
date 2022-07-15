@@ -3,7 +3,6 @@
 """
  Derpibooru (Images)
 """
-import logging
 from urllib.parse import urlencode
 from json import loads
 
