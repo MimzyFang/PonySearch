@@ -38,6 +38,7 @@ def response(resp):
 
     if 'results' in json_data:
         for result in json_data['images']:
+            logger.debug("query --> %s", result.get(result['representations']['thumb']))
             results.append(
                 {
                     'template': 'images.html',
@@ -48,5 +49,5 @@ def response(resp):
                     'content': result.get('description') or '',
                 }
             )
-    logger.debug(results)
+
     return results
