@@ -24,6 +24,13 @@ paging = True
 filter_id = 100073
 
 
+def clean_url(url):
+    parsed = urlparse(url)
+    query = [(k, v) for (k, v) in parse_qsl(parsed.query) if k not in ['ixid', 's']]
+
+    return urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, urlencode(query), parsed.fragment))
+
+
 def request(query, params):
     params['url'] = search_url + urlencode(
         {'q': query, 'filter_id': filter_id, 'page': params['pageno'], 'per_page': page_size}
@@ -38,14 +45,12 @@ def response(resp):
 
     if 'images' in json_data:
         for result in json_data['images']:
-            logger.debug("result is", result)
-            logger.debug("query --> %s", result['representations']['thumb'])
             results.append(
                 {
                     'template': 'images.html',
                     'url': 'https://derpibooru.org/images/' + str(result.get('id')),
-                    'thumbnail_src': result['representations']['thumb'],
-                    'img_src': result['representations']['full'],
+                    'thumbnail_src': clean_url(result['representations']['thumb']),
+                    'img_src': clean_url(result['representations']['full']),
                     'title': result.get('name') or 'unknown',
                     'content': result.get('description') or '',
                 }
