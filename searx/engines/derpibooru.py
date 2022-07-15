@@ -36,7 +36,7 @@ def response(resp):
     results = []
     json_data = loads(resp.text)
 
-    if 'results' in json_data:
+    if 'images' in json_data:
         for result in json_data['images']:
             logger.debug("query --> %s", result.get(result['representations']['thumb']))
             results.append(
