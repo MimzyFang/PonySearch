@@ -187,6 +187,7 @@ outgoing:
 #   - 'Hostname replace'  # see hostname_replace configuration below
 #   - 'Open Access DOI rewrite'
 #   - 'Vim-like hotkeys'
+#   - 'Tor check plugin'
 
 # Configuration of the "Hostname replace" plugin:
 #
@@ -747,6 +748,7 @@ engines:
 
   - name: google play movies
     engine: xpath
+    send_accept_language_header: true
     search_url: https://play.google.com/store/search?q={query}&c=movies
     results_xpath: '//div[@class="ImZGtf mpg5gc"]'
     title_xpath: './/div[@class="RZEgze"]//div[@class="kCSSQe"]//a'
@@ -1735,7 +1737,7 @@ engines:
       results: HTML
       language: de
 
-  - name: słownik języka polskiego
+  - name: sjp.pwn
     engine: sjp
     shortcut: sjp
     base_url: https://sjp.pwn.pl/

@@ -8,12 +8,15 @@
 # efef6ec5b435a041fce803c7f8af77d2_2341d43, 2017-2018
 # Markus Heiser <markus.heiser@darmarit.de>, 2022.
 # Albin Håkanson <albin@sweplox.se>, 2022.
+# Waldemar Björnström <waldemar.bjornstrom@unfnorrbotten.se>, 2022.
+# Solaris <zcauchemar@gmail.com>, 2022.
+# sebstrgg <sebastian@wollter.nu>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-07-08 18:28+0000\n"
-"PO-Revision-Date: 2022-07-13 15:40+0000\n"
+"POT-Creation-Date: 2022-07-23 14:08+0000\n"
+"PO-Revision-Date: 2022-07-29 07:17+0000\n"
 "Last-Translator: Markus Heiser <markus.heiser@darmarit.de>\n"
 "Language-Team: Swedish <https://weblate.bubu1.eu/projects/searxng/searxng/sv/"
 ">\n"
@@ -266,6 +269,29 @@ msgstr "Inget abstract är tillgänglig för denna publikation."
 msgid "Channel"
 msgstr "Kanal"
 
+#: searx/engines/tineye.py:40
+msgid ""
+"Could not read that image url. This may be due to an unsupported file "
+"format. TinEye only supports images that are JPEG, PNG, GIF, BMP, TIFF or"
+" WebP."
+msgstr ""
+"Kunde inte läsa bildens webbadress. Detta kan bero på ett filformat som inte "
+"stöds. TinEye stöder endast bilder som är JPEG, PNG, GIF, BMP, TIFF eller "
+"WebP."
+
+#: searx/engines/tineye.py:46
+msgid ""
+"The image is too simple to find matches. TinEye requires a basic level of"
+" visual detail to successfully identify matches."
+msgstr ""
+"Bilden är för enkel för att hitta matchningar. TinEye kräver en "
+"grundläggande nivå av visuell detalj för att framgångsrikt kunna identifiera "
+"matchningar."
+
+#: searx/engines/tineye.py:52
+msgid "The image could not be downloaded."
+msgstr "Det gick inte att ladda ner bilden."
+
 #: searx/plugins/hash_plugin.py:24
 msgid "Converts strings to different hash digests."
 msgstr "Konverterar strängar till olika hashvärden."
@@ -317,6 +343,35 @@ msgid ""
 msgstr ""
 "Visar din IP om förfrågan är \"ip\" och din användaragent om förfrågan "
 "innehåller \"user agent\"."
+
+#: searx/plugins/tor_check.py:25
+msgid "Tor check plugin"
+msgstr "Tor kontroll plugin"
+
+#: searx/plugins/tor_check.py:28
+msgid ""
+"This plugin checks if the address of the request is a TOR exit node, and "
+"informs the user if it is, like check.torproject.org but from searxng."
+msgstr ""
+"Denna plugin kollar om IP-adressen av TOR-requesten är en TOR exit node, "
+"och informerar användaren om den är det, som till exempel "
+"check.torproject.org men från searxng."
+
+#: searx/plugins/tor_check.py:62
+msgid ""
+"The TOR exit node list (https://check.torproject.org/exit-addresses) is "
+"unreachable."
+msgstr ""
+"TOR exit node listan (https://check.torproject.org/exit-addresses) går "
+"inte at nås för tillfället."
+
+#: searx/plugins/tor_check.py:78
+msgid "You are using TOR. Your IP address seems to be: {ip_address}."
+msgstr "Du använder TOR. Din IP-adress verkar vara: {ip_address}."
+
+#: searx/plugins/tor_check.py:84
+msgid "You are not using TOR. Your IP address seems to be: {ip_address}."
+msgstr "Du använder inte TOR. Din IP-adress verkar vara: {ip_address}."
 
 #: searx/plugins/tracker_url_remover.py:29
 msgid "Tracker URL remover"
@@ -424,15 +479,17 @@ msgstr "Rapportera ett nytt problem på GitHub"
 
 #: searx/templates/simple/new_issue.html:66
 msgid "Please check for existing bugs about this engine on GitHub"
-msgstr ""
+msgstr "Vänligen kolla efter befintliga buggar om denna motor på GitHub"
 
 #: searx/templates/simple/new_issue.html:69
 msgid "I confirm there is no existing bug about the issue I encounter"
 msgstr ""
+"Jag bekräftar att det inte finns någon befintlig bugg om problemet jag "
+"stöter på"
 
 #: searx/templates/simple/new_issue.html:71
 msgid "If this is a public instance, please specify the URL in the bug report"
-msgstr ""
+msgstr "Om detta är en offentlig instans, vänligen ange URL:en i felrapporten"
 
 #: searx/templates/simple/new_issue.html:72
 msgid "Submit a new issue on Github including the above information"
@@ -648,17 +705,19 @@ msgstr "Inaktiverad"
 
 #: searx/templates/simple/preferences.html:276
 msgid "Proxying image results through SearXNG"
-msgstr ""
+msgstr "Använder proxy för bildresultat via SearXNG"
 
 #: searx/templates/simple/preferences.html:281
 msgid "Query in the page's title"
-msgstr ""
+msgstr "Förfrågan i sidans titel"
 
 #: searx/templates/simple/preferences.html:288
 msgid ""
 "When enabled, the result page's title contains your query. Your browser "
 "can record this title"
 msgstr ""
+"När det är aktiverat innehåller resultatsidans titel din fråga. Din "
+"webbläsare kan spara denna titel"
 
 #: searx/templates/simple/preferences.html:294
 msgid "Engines"
@@ -673,6 +732,8 @@ msgid ""
 "This tab does not show up for search results, but you can search the "
 "engines listed here via bangs."
 msgstr ""
+"Den här fliken visas inte för sökresultat, men du kan söka på motorerna "
+"som listas här via bangs."
 
 #: searx/templates/simple/preferences.html:307
 #: searx/templates/simple/preferences.html:358
@@ -709,11 +770,11 @@ msgstr "Max tid"
 #: searx/templates/simple/preferences.html:315
 #: searx/templates/simple/stats.html:29
 msgid "Reliability"
-msgstr ""
+msgstr "Pålitlighet"
 
 #: searx/templates/simple/preferences.html:353
 msgid "Special Queries"
-msgstr ""
+msgstr "Särskilda förfrågningar"
 
 #: searx/templates/simple/preferences.html:359
 msgid "Keywords"
@@ -753,7 +814,7 @@ msgstr ""
 
 #: searx/templates/simple/preferences.html:396
 msgid "With that list, you can assess SearXNG transparency."
-msgstr ""
+msgstr "Med den listan kan du bedöma SearXNG-transparens."
 
 #: searx/templates/simple/preferences.html:401
 msgid "Cookie name"
@@ -777,13 +838,15 @@ msgstr ""
 
 #: searx/templates/simple/preferences.html:419
 msgid "URL to restore your preferences in another browser"
-msgstr ""
+msgstr "URL för att återställa dina inställningar i en annan webbläsare"
 
 #: searx/templates/simple/preferences.html:423
 msgid ""
 "Specifying custom settings in the preferences URL can be used to sync "
 "preferences across devices."
 msgstr ""
+"Dina anpassade inställningar i inställningarnas URL kan användas för att "
+"synkronisera inställningar mellan olika enheter."
 
 #: searx/templates/simple/preferences.html:428
 msgid ""
@@ -811,7 +874,7 @@ msgstr "Återställ standardvärden"
 
 #: searx/templates/simple/preferences.html:435
 msgid "Back"
-msgstr ""
+msgstr "Tillbaka"
 
 #: searx/templates/simple/results.html:23
 msgid "Answers"
@@ -848,7 +911,7 @@ msgstr "Försök söka efter:"
 
 #: searx/templates/simple/results.html:152
 msgid "Back to top"
-msgstr ""
+msgstr "Tillbaka till början"
 
 #: searx/templates/simple/results.html:170
 msgid "Previous page"
@@ -860,7 +923,7 @@ msgstr "Nästa sida"
 
 #: searx/templates/simple/search.html:3
 msgid "Display the front page"
-msgstr ""
+msgstr "Visa förstasidan"
 
 #: searx/templates/simple/search.html:9
 #: searx/templates/simple/simple_search.html:5
@@ -870,7 +933,7 @@ msgstr "Sök efter..."
 #: searx/templates/simple/search.html:10
 #: searx/templates/simple/simple_search.html:6
 msgid "clear"
-msgstr ""
+msgstr "rensa"
 
 #: searx/templates/simple/search.html:11
 #: searx/templates/simple/simple_search.html:7
@@ -895,7 +958,7 @@ msgstr "Poäng per resultat"
 
 #: searx/templates/simple/stats.html:62
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: searx/templates/simple/stats.html:63
 msgid "HTTP"
@@ -903,7 +966,7 @@ msgstr "HTTP"
 
 #: searx/templates/simple/stats.html:64
 msgid "Processing"
-msgstr ""
+msgstr "Bearbetar"
 
 #: searx/templates/simple/stats.html:102
 msgid "Warnings"
@@ -923,7 +986,7 @@ msgstr "Meddelande"
 
 #: searx/templates/simple/stats.html:112
 msgid "Percentage"
-msgstr ""
+msgstr "Procentsats"
 
 #: searx/templates/simple/stats.html:114
 msgid "Parameter"
@@ -943,11 +1006,11 @@ msgstr "Kod"
 
 #: searx/templates/simple/stats.html:131
 msgid "Checker"
-msgstr ""
+msgstr "Kontrollera"
 
 #: searx/templates/simple/stats.html:134
 msgid "Failed test"
-msgstr ""
+msgstr "Misslyckade testet"
 
 #: searx/templates/simple/stats.html:135
 msgid "Comment(s)"
@@ -987,7 +1050,7 @@ msgstr "Sökmotorer kan inte hämta resultat."
 
 #: searx/templates/simple/messages/no_results.html:15
 msgid "Please, try again later or find another SearXNG instance."
-msgstr ""
+msgstr "Var snäll och försök igen senare eller hitta annan SearXNG-instans."
 
 #: searx/templates/simple/messages/no_results.html:20
 msgid "Sorry!"
@@ -1020,7 +1083,7 @@ msgstr "Format"
 
 #: searx/templates/simple/result_templates/images.html:21
 msgid "Engine"
-msgstr ""
+msgstr "Sökmotor"
 
 #: searx/templates/simple/result_templates/images.html:22
 msgid "View source"

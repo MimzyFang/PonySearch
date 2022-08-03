@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-07-08 18:28+0000\n"
-"PO-Revision-Date: 2022-07-15 07:19+0000\n"
+"POT-Creation-Date: 2022-07-23 14:08+0000\n"
+"PO-Revision-Date: 2022-07-29 07:17+0000\n"
 "Last-Translator: Markus Heiser <markus.heiser@darmarit.de>\n"
 "Language-Team: Italian <https://weblate.bubu1.eu/projects/searxng/searxng/it/"
 ">\n"
@@ -272,6 +272,26 @@ msgstr "Nessun sommario disponibile per questa pubblicazione."
 msgid "Channel"
 msgstr "Canale"
 
+#: searx/engines/tineye.py:40
+msgid ""
+"Could not read that image url. This may be due to an unsupported file "
+"format. TinEye only supports images that are JPEG, PNG, GIF, BMP, TIFF or"
+" WebP."
+msgstr ""
+"Impossibile leggere l'URL dell'immagine. Ciò potrebbe essere dovuto a un "
+"formato del file non supportato. TinEye supporta solo immagini JPEG, PNG, "
+"GIF, BMP, TIFF o Web."
+
+#: searx/engines/tineye.py:46
+msgid ""
+"The image is too simple to find matches. TinEye requires a basic level of"
+" visual detail to successfully identify matches."
+msgstr ""
+
+#: searx/engines/tineye.py:52
+msgid "The image could not be downloaded."
+msgstr ""
+
 #: searx/plugins/hash_plugin.py:24
 msgid "Converts strings to different hash digests."
 msgstr "Converte le stringhe in diversi digest di hash."
@@ -326,6 +346,30 @@ msgid ""
 msgstr ""
 "Mostra il tuo IP se hai cercato \"ip\" ed il tuo user agent se hai "
 "cercato \"user agent\"."
+
+#: searx/plugins/tor_check.py:25
+msgid "Tor check plugin"
+msgstr "Plugin di verifica tor"
+
+#: searx/plugins/tor_check.py:28
+msgid ""
+"This plugin checks if the address of the request is a TOR exit node, and "
+"informs the user if it is, like check.torproject.org but from searxng."
+msgstr ""
+
+#: searx/plugins/tor_check.py:62
+msgid ""
+"The TOR exit node list (https://check.torproject.org/exit-addresses) is "
+"unreachable."
+msgstr ""
+
+#: searx/plugins/tor_check.py:78
+msgid "You are using TOR. Your IP address seems to be: {ip_address}."
+msgstr "Stai usando TOR. Il tuo indirizzo IP risulta essere : {ip_address}."
+
+#: searx/plugins/tor_check.py:84
+msgid "You are not using TOR. Your IP address seems to be: {ip_address}."
+msgstr ""
 
 #: searx/plugins/tracker_url_remover.py:29
 msgid "Tracker URL remover"
@@ -429,15 +473,17 @@ msgstr "proxy"
 
 #: searx/templates/simple/new_issue.html:64
 msgid "Start submiting a new issue on GitHub"
-msgstr ""
+msgstr "Segnala un nuovo problema su GitHub"
 
 #: searx/templates/simple/new_issue.html:66
 msgid "Please check for existing bugs about this engine on GitHub"
-msgstr ""
+msgstr "Cerca bug esistenti riguardo questo motore su GitHub"
 
 #: searx/templates/simple/new_issue.html:69
 msgid "I confirm there is no existing bug about the issue I encounter"
 msgstr ""
+"Confermo che non ci sono bug esistenti riguardo il problema che ho "
+"riscontrato"
 
 #: searx/templates/simple/new_issue.html:71
 msgid "If this is a public instance, please specify the URL in the bug report"

@@ -45,6 +45,7 @@ categories = ['general', 'web']
 paging = True
 time_range_support = True
 safesearch = True
+send_accept_language_header = True
 use_mobile_ui = False
 supported_languages_url = 'https://www.google.com/preferences?#languages'
 
@@ -112,7 +113,7 @@ filter_mapping = {0: 'off', 1: 'medium', 2: 'high'}
 # ------------------------
 
 # google results are grouped into <div class="jtfYYd ..." ../>
-results_xpath = '//div[@class="jtfYYd"]'
+results_xpath = '//div[contains(@class, "jtfYYd")]'
 
 # google *sections* are no usual *results*, we ignore them
 g_section_with_header = './g-section-with-header'
@@ -241,16 +242,6 @@ def get_lang_info(params, lang_list, custom_aliases, supported_any_language):
         # language.
         ret_val['params']['lr'] = "lang_" + lang_list.get(lang_country, language)
 
-        # Accept-Language: fr-CH, fr;q=0.8, en;q=0.6, *;q=0.5
-        ret_val['headers']['Accept-Language'] = ','.join(
-            [
-                lang_country,
-                language + ';q=0.8,',
-                'en;q=0.6',
-                '*;q=0.5',
-            ]
-        )
-
     return ret_val
 
 
@@ -287,7 +278,6 @@ def request(query, params):
                 'oe': "utf8",
                 'start': offset,
                 'filter': '0',
-                'ucbcb': 1,
                 **additional_parameters,
             }
         )
@@ -299,6 +289,7 @@ def request(query, params):
         query_url += '&' + urlencode({'safe': filter_mapping[params['safesearch']]})
     params['url'] = query_url
 
+    params['cookies']['CONSENT'] = "YES+"
     params['headers'].update(lang_info['headers'])
     if use_mobile_ui:
         params['headers']['Accept'] = '*/*'

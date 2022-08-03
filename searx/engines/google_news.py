@@ -70,13 +70,13 @@ time_range_support = True
 #
 #  safesearch : results are identitical for safesearch=0 and safesearch=2
 safesearch = False
+send_accept_language_header = True
 
 
 def request(query, params):
     """Google-News search request"""
 
     lang_info = get_lang_info(params, supported_languages, language_aliases, False)
-    logger.debug("HTTP header Accept-Language --> %s", lang_info['headers']['Accept-Language'])
 
     # google news has only one domain
     lang_info['subdomain'] = 'news.google.com'
@@ -97,13 +97,12 @@ def request(query, params):
         + lang_info['subdomain']
         + '/search'
         + "?"
-        + urlencode(
-            {'q': query, **lang_info['params'], 'ie': "utf8", 'oe': "utf8", 'gl': lang_info['country'], 'ucbcb': 1}
-        )
+        + urlencode({'q': query, **lang_info['params'], 'ie': "utf8", 'oe': "utf8", 'gl': lang_info['country']})
         + ('&ceid=%s' % ceid)
     )  # ceid includes a ':' character which must not be urlencoded
     params['url'] = query_url
 
+    params['cookies']['CONSENT'] = "YES+"
     params['headers'].update(lang_info['headers'])
     params['headers']['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
 
