@@ -210,7 +210,7 @@ checker:
 
   # to activate the scheduler:
   # * uncomment "scheduling" section
-  # * add "cache2 = name=searxcache,items=2000,blocks=2000,blocksize=4096,bitmap=1"
+  # * add "cache2 = name=searxngcache,items=2000,blocks=2000,blocksize=4096,bitmap=1"
   #   to your uwsgi.ini
 
   # scheduling:
@@ -422,18 +422,13 @@ engines:
     categories: general
     disabled: true
     paging: false
-    page_size: 10
     content_html_to_text: true
     title_html_to_text: true
-    search_url: https://api.yep.com/fs/1/?type=web&q={query}&no_correct=false
+    search_url: https://api.yep.com/fs/1/?type=web&q={query}&no_correct=false&limit=100
     results_query: 1/results
     title_query: title
     url_query: url
     content_query: snippet
-    timeout: 12.0
-    headers:
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
-      'Sec-Fetch-Dest': 'document'
     about:
       website: https://yep.com
       use_official_api: false
@@ -965,6 +960,38 @@ engines:
   #   collection: 'reviews'  # name of the db collection
   #   key: 'name'  # key in the collection to search for
 
+  - name: neeva
+    engine: xpath
+    shortcut: nv
+    time_range_support: true
+    time_range_url: '&alf%5Bfreshness%5D={time_range_val}'
+    time_range_map:
+      day: 'Day'
+      week: 'Week'
+      month: 'Month'
+      year: 'Year'
+    search_url: https://neeva.com/search?q={query}&c=All&src=Pagination&page={pageno}{time_range}
+    results_xpath: //div[@class="web-index__component-2rKiM"] | //li[@class="web-rich-deep-links__deepLink-SIbD4"]
+    url_xpath: .//a[@class="lib-doc-title__link-1b9rC"]/@href | ./h2/a/@href
+    title_xpath: .//a[@class="lib-doc-title__link-1b9rC"] | ./h2/a
+    content_xpath: >
+      .//div[@class="lib-doc-snippet__component-3ewW6"]/text() |
+      .//div[@class="lib-doc-snippet__component-3ewW6"]/*[not(self::a)] |
+      ./p
+    content_html_to_text: true
+    suggestion_xpath: //span[@class="result-related-searches__link-2ho_u"]
+    paging: true
+    disabled: true
+    categories: [general, web]
+    timeout: 5.0
+    soft_max_redirects: 2
+    about:
+      website: https://neeva.com
+      official_api_documentation:
+      use_official_api: false
+      require_api_key: false
+      results: HTML
+
   - name: npm
     engine: json_engine
     paging: true
@@ -1171,6 +1198,7 @@ engines:
       results: HTML
 
   - name: qwant
+    qwant_categ: web
     engine: qwant
     shortcut: qw
     categories: [general, web]
@@ -1179,6 +1207,7 @@ engines:
       rosebud: *test_rosebud
 
   - name: qwant news
+    qwant_categ: news
     engine: qwant
     shortcut: qwn
     categories: news
@@ -1186,6 +1215,7 @@ engines:
     network: qwant
 
   - name: qwant images
+    qwant_categ: images
     engine: qwant
     shortcut: qwi
     categories: [images, web]
@@ -1193,6 +1223,7 @@ engines:
     network: qwant
 
   - name: qwant videos
+    qwant_categ: videos
     engine: qwant
     shortcut: qwv
     categories: [videos, web]
@@ -1457,6 +1488,27 @@ engines:
     disabled: true
     about:
       website: https://wiby.me/
+
+  - name: marginalia
+    engine: json_engine
+    shortcut: mar
+    categories: general
+    paging: false
+    # index: {"0": "popular", "1": "blogs", "2": "big_sites",
+    # "3": "default", "4": experimental"}
+    search_url: https://api.marginalia.nu/public/search/{query}?index=4&count=20
+    results_query: results
+    url_query: url
+    title_query: title
+    content_query: description
+    timeout: 1.5
+    disabled: true
+    about:
+      website: https://www.marginalia.nu/
+      official_api_documentation: https://api.marginalia.nu/
+      use_official_api: true
+      require_api_key: true
+      results: JSON
 
   - name: alexandria
     engine: json_engine
@@ -1768,12 +1820,19 @@ engines:
     shortcut: brave
     engine: xpath
     paging: true
+    time_range_support: true
     first_page_num: 0
-    search_url: https://search.brave.com/search?q={query}&offset={pageno}&spellcheck=1
+    time_range_url: "&tf={time_range_val}"
+    search_url: https://search.brave.com/search?q={query}&offset={pageno}&spellcheck=1{time_range}
     url_xpath: //a[@class="result-header"]/@href
     title_xpath: //span[@class="snippet-title"]
     content_xpath: //p[1][@class="snippet-description"]
     suggestion_xpath: //div[@class="text-gray h6"]/a
+    time_range_map:
+      day: 'pd'
+      week: 'pw'
+      month: 'pm'
+      year: 'py'
     categories: [general, web]
     about:
       website: https://brave.com/search/
@@ -1823,6 +1882,43 @@ engines:
     about:
       website: https://petalsearch.com/
       wikidata_id: Q104399280
+      use_official_api: false
+      require_api_key: false
+      results: HTML
+
+  - name: lib.rs
+    shortcut: lrs
+    engine: xpath
+    search_url: https://lib.rs/search?q={query}
+    results_xpath: /html/body/main/div/ol/li/a
+    url_xpath: ./@href
+    title_xpath: ./div[@class="h"]/h4
+    content_xpath: ./div[@class="h"]/p
+    categories: [it, packages]
+    disabled: true
+    about:
+      website: https://lib.rs
+      wikidata_id: Q113486010
+      use_official_api: false
+      require_api_key: false
+      results: HTML
+
+  - name: sourcehut
+    shortcut: srht
+    engine: xpath
+    paging: true
+    search_url: https://sr.ht/projects?page={pageno}&search={query}
+    results_xpath: (//div[@class="event-list"])[1]/div[@class="event"]
+    url_xpath: ./h4/a[2]/@href
+    title_xpath: ./h4/a[2]
+    content_xpath: ./p
+    first_page_num: 1
+    categories: [it, repos]
+    disabled: true
+    about:
+      website: https://sr.ht
+      wikidata_id: Q78514485
+      official_api_documentation: https://man.sr.ht/
       use_official_api: false
       require_api_key: false
       results: HTML
