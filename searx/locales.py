@@ -25,7 +25,10 @@ _flask_babel_get_translations = flask_babel.get_translations
 
 LOCALE_NAMES = {}
 """Mapping of locales and their description.  Locales e.g. 'fr' or 'pt-BR' (see
-:py:obj:`locales_initialize`)."""
+:py:obj:`locales_initialize`).
+
+:meta hide-value:
+"""
 
 RTL_LOCALES: Set[str] = set()
 """List of *Right-To-Left* locales e.g. 'he' or 'fa-IR' (see
@@ -159,7 +162,7 @@ def get_engine_locale(searxng_locale, engine_locales, default=None):
     ``searxng_locale``.
 
     Argument ``engine_locales`` is a python dict that maps *SearXNG locales* to
-    corresponding *engine locales*:
+    corresponding *engine locales*::
 
       <engine>: {
           # SearXNG string : engine-string
@@ -217,7 +220,7 @@ def get_engine_locale(searxng_locale, engine_locales, default=None):
         locale = babel.Locale.parse(searxng_locale, sep='-')
     except babel.core.UnknownLocaleError:
         try:
-            locale = babel.Locale.parse(searxng_locale.split('-')[1])
+            locale = babel.Locale.parse(searxng_locale.split('-')[0])
         except babel.core.UnknownLocaleError:
             return default
 
@@ -252,8 +255,12 @@ def get_engine_locale(searxng_locale, engine_locales, default=None):
             terr_lang_dict[territory] = langs.get(searxng_lang)
 
         # first: check fr-FR, de-DE .. is supported by the engine
+        # exception: 'en' --> 'en-US'
 
         territory = locale.language.upper()
+        if territory == 'EN':
+            territory = 'US'
+
         if terr_lang_dict.get(territory):
             searxng_locale = locale.language + '-' + territory
             engine_locale = engine_locales.get(searxng_locale)

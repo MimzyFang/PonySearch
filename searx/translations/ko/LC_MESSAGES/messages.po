@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # Markus Heiser <markus.heiser@darmarit.de>, 2022.
 # Sangha Lee <totoriato@gmail.com>, 2022.
+# Soochaehwa <Soochaehwa@shwa.space>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-07-23 14:08+0000\n"
-"PO-Revision-Date: 2022-07-29 07:17+0000\n"
-"Last-Translator: Sangha Lee <totoriato@gmail.com>\n"
+"POT-Creation-Date: 2022-09-28 07:29+0000\n"
+"PO-Revision-Date: 2022-09-30 07:43+0000\n"
+"Last-Translator: Markus Heiser <markus.heiser@darmarit.de>\n"
 "Language-Team: Korean <https://weblate.bubu1.eu/projects/searxng/searxng/ko/>"
 "\n"
 "Language: ko\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.13.1\n"
+"X-Generator: Weblate 4.14.1\n"
 "Generated-By: Babel 2.10.3\n"
 
 #. CONSTANT_NAMES['DEFAULT_GROUP_NAME']
@@ -126,6 +127,11 @@ msgstr "소프트웨어 위키"
 msgid "web"
 msgstr "웹"
 
+#. CATEGORY_GROUPS['SCIENTIFIC PUBLICATIONS']
+#: searx/searxng.msg
+msgid "scientific publications"
+msgstr "과학 출판물"
+
 #. STYLE_NAMES['AUTO']
 #: searx/searxng.msg
 msgid "auto"
@@ -141,90 +147,90 @@ msgstr "라이트"
 msgid "dark"
 msgstr "다크"
 
-#: searx/webapp.py:165
+#: searx/webapp.py:164
 msgid "timeout"
 msgstr "대기 시간"
 
-#: searx/webapp.py:166
+#: searx/webapp.py:165
 msgid "parsing error"
 msgstr "구문 분석 오류"
 
-#: searx/webapp.py:167
+#: searx/webapp.py:166
 msgid "HTTP protocol error"
 msgstr "HTTP 프로토콜 오류"
 
-#: searx/webapp.py:168
+#: searx/webapp.py:167
 msgid "network error"
 msgstr "네트워크 오류"
 
-#: searx/webapp.py:170
+#: searx/webapp.py:169
 msgid "unexpected crash"
 msgstr "예상치 못한 충돌"
 
-#: searx/webapp.py:177
+#: searx/webapp.py:176
 msgid "HTTP error"
 msgstr "HTTP 오류"
 
-#: searx/webapp.py:178
+#: searx/webapp.py:177
 msgid "HTTP connection error"
 msgstr "HTTP 연결 오류"
 
-#: searx/webapp.py:184
+#: searx/webapp.py:183
 msgid "proxy error"
 msgstr "프록시 오류"
 
-#: searx/webapp.py:185
+#: searx/webapp.py:184
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
-#: searx/webapp.py:186
+#: searx/webapp.py:185
 msgid "too many requests"
 msgstr "너무 많은 요청"
 
-#: searx/webapp.py:187
+#: searx/webapp.py:186
 msgid "access denied"
 msgstr "액세스 거부"
 
-#: searx/webapp.py:188
+#: searx/webapp.py:187
 msgid "server API error"
 msgstr "서버 API 오류"
 
-#: searx/webapp.py:363
+#: searx/webapp.py:362
 msgid "No item found"
 msgstr "검색 결과가 없습니다"
 
-#: searx/engines/qwant.py:212
-#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:365
+#: searx/engines/qwant.py:217
+#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:364
 msgid "Source"
 msgstr "소스"
 
-#: searx/webapp.py:367
+#: searx/webapp.py:366
 msgid "Error loading the next page"
 msgstr "다음 페이지를 로드하는 동안 오류가 발생했습니다"
 
-#: searx/webapp.py:516 searx/webapp.py:960
+#: searx/webapp.py:518 searx/webapp.py:950
 msgid "Invalid settings, please edit your preferences"
 msgstr "잘못된 설정입니다, 설정을 수정하세요"
 
-#: searx/webapp.py:532
+#: searx/webapp.py:534
 msgid "Invalid settings"
 msgstr "잘못된 설정"
 
-#: searx/webapp.py:609 searx/webapp.py:685
+#: searx/webapp.py:611 searx/webapp.py:687
 msgid "search error"
 msgstr "검색 오류"
 
-#: searx/webapp.py:731
+#: searx/webapp.py:849
+msgid "Suspended"
+msgstr "중단됨"
+
+#: searx/webutils.py:161
 msgid "{minutes} minute(s) ago"
 msgstr "{minutes}분 전"
 
-#: searx/webapp.py:733
+#: searx/webutils.py:162
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours}시간 {minutes}분 전"
-
-#: searx/webapp.py:859
-msgid "Suspended"
-msgstr "중단됨"
 
 #: searx/answerers/random/answerer.py:67
 msgid "Random value generator"
@@ -254,13 +260,17 @@ msgstr "{title} (사용되지 않음)"
 msgid "This entry has been superseded by"
 msgstr "이 항목은 다음으로 대체되었습니다"
 
-#: searx/engines/pubmed.py:78
-msgid "No abstract is available for this publication."
-msgstr "이 출판물에 대한 초록이 없습니다."
-
-#: searx/engines/qwant.py:214
+#: searx/engines/qwant.py:219
 msgid "Channel"
 msgstr "채널"
+
+#: searx/engines/semantic_scholar.py:81
+msgid ""
+"{numCitations} citations from the year {firstCitationVelocityYear} to "
+"{lastCitationVelocityYear}"
+msgstr ""
+"{firstCitationVelocityYear}년부터 {lastCitationVelocityYear}년까지의 "
+"{numCitations}회 인용"
 
 #: searx/engines/tineye.py:40
 msgid ""
@@ -268,21 +278,36 @@ msgid ""
 "format. TinEye only supports images that are JPEG, PNG, GIF, BMP, TIFF or"
 " WebP."
 msgstr ""
-"이미지 주소를 읽을 수 없습니다. 파일 포맷을 지원하지 않아 발생하는 문제일 "
-"수도 있습니다. TinEye는 JPEG, PNG, GIF, BMP, TIFF 그리고 WebP 이미지만 "
-"지원합니다."
+"이미지 주소를 읽을 수 없습니다. 파일 포맷을 지원하지 않아 발생하는 문제일 수도 있습니다. TinEye는 JPEG, PNG, "
+"GIF, BMP, TIFF 그리고 WebP 이미지만 지원합니다."
 
 #: searx/engines/tineye.py:46
 msgid ""
 "The image is too simple to find matches. TinEye requires a basic level of"
 " visual detail to successfully identify matches."
 msgstr ""
-"이미지가 너무 단순해 일치하는 항목을 찾을 수 없습니다. TinEye가 일치하는 "
-"이미지를 성공적으로 식별하기 위해선 최소 수준의 시각적 정보가 필요합니다;."
+"이미지가 너무 단순해 일치하는 항목을 찾을 수 없습니다. TinEye가 일치하는 이미지를 성공적으로 식별하기 위해선 최소 수준의 "
+"시각적 정보가 필요합니다;."
 
 #: searx/engines/tineye.py:52
 msgid "The image could not be downloaded."
 msgstr "다운로드할 수 없는 이미지입니다."
+
+#: searx/engines/wttr.py:101
+msgid "Morning"
+msgstr "아침"
+
+#: searx/engines/wttr.py:101
+msgid "Noon"
+msgstr "정오"
+
+#: searx/engines/wttr.py:101
+msgid "Evening"
+msgstr "저녁"
+
+#: searx/engines/wttr.py:101
+msgid "Night"
+msgstr "밤"
 
 #: searx/plugins/hash_plugin.py:24
 msgid "Converts strings to different hash digests."
@@ -321,7 +346,7 @@ msgid ""
 msgstr "카테고리가 선택되면 즉시 검색을 수행합니다. 여러 카테고리를 선택하려면 비활성화합니다. (JavaScript 필요)"
 
 #: searx/plugins/self_info.py:20
-msgid "Self Informations"
+msgid "Self Information"
 msgstr "본인 정보"
 
 #: searx/plugins/self_info.py:21
@@ -339,15 +364,14 @@ msgid ""
 "This plugin checks if the address of the request is a TOR exit node, and "
 "informs the user if it is, like check.torproject.org but from searxng."
 msgstr ""
-"이 플러그인은 요청한 주소가 TOR 출구 노드인지 확인하고 사용자에게 "
-"알려줍니다, check.torproject.org 와 비슷하지만 searxng 에서 제공됩니다."
+"이 플러그인은 요청한 주소가 TOR 출구 노드인지 확인하고 사용자에게 알려줍니다, check.torproject.org 와 "
+"비슷하지만 searxng 에서 제공됩니다."
 
 #: searx/plugins/tor_check.py:62
 msgid ""
 "The TOR exit node list (https://check.torproject.org/exit-addresses) is "
 "unreachable."
-msgstr "TOR 출구 노드 목록(https://check.torproject.org/exit-addresses)에 연결할 수 "
-"없습니다."
+msgstr "TOR 출구 노드 목록(https://check.torproject.org/exit-addresses)에 연결할 수 없습니다."
 
 #: searx/plugins/tor_check.py:78
 msgid "You are using TOR. Your IP address seems to be: {ip_address}."
@@ -355,8 +379,7 @@ msgstr "TOR 를 사용하고 있습니다. 당신의 아이피 주소는 다음�
 
 #: searx/plugins/tor_check.py:84
 msgid "You are not using TOR. Your IP address seems to be: {ip_address}."
-msgstr "TOR 를 사용하고 있지 않습니다. 당신의 아이피 주소는 다음과 같습니다: "
-"{ip_address}."
+msgstr "TOR 를 사용하고 있지 않습니다. 당신의 아이피 주소는 다음과 같습니다: {ip_address}."
 
 #: searx/plugins/tracker_url_remover.py:29
 msgid "Tracker URL remover"
@@ -409,8 +432,8 @@ msgid "Powered by"
 msgstr "Powered by"
 
 #: searx/templates/simple/base.html:64
-msgid "a privacy-respecting, hackable metasearch engine"
-msgstr "개인 정보를 존중하는 맞춤형 메타 검색 엔진"
+msgid "a privacy-respecting, open metasearch engine"
+msgstr "개인정보를 존중하는 개방형 메타 검색 엔진"
 
 #: searx/templates/simple/base.html:65
 msgid "Source code"
@@ -447,6 +470,7 @@ msgstr "길이"
 
 #: searx/templates/simple/macros.html:37
 #: searx/templates/simple/result_templates/images.html:18
+#: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
 msgstr "저자"
 
@@ -490,17 +514,17 @@ msgid "View error logs and submit a bug report"
 msgstr "오류 로그 보기 및 버그 보고서 제출"
 
 #: searx/templates/simple/preferences.html:53
-#: searx/templates/simple/stats.html:67
+#: searx/templates/simple/stats.html:64
 msgid "Median"
 msgstr "중앙값"
 
 #: searx/templates/simple/preferences.html:54
-#: searx/templates/simple/stats.html:73
+#: searx/templates/simple/stats.html:70
 msgid "P80"
 msgstr "P80"
 
 #: searx/templates/simple/preferences.html:55
-#: searx/templates/simple/stats.html:79
+#: searx/templates/simple/stats.html:76
 msgid "P95"
 msgstr "P95"
 
@@ -510,7 +534,7 @@ msgstr "실패한 검사기 테스트: "
 
 #: searx/templates/simple/preferences.html:85
 msgid "Errors:"
-msgstr "에러:"
+msgstr "오류:"
 
 #: searx/templates/simple/preferences.html:105
 msgid "General"
@@ -662,13 +686,13 @@ msgstr "HTTP 메소드"
 
 #: searx/templates/simple/preferences.html:264
 msgid ""
-"Change how forms are submited, <a "
+"Change how forms are submitted, <a "
 "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
 " rel=\"external\">learn more about request methods</a>"
 msgstr ""
-"폼 제출 방법 변경,<a "
-"href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
-" rel=\"external\">요청 메소드에 대해 더 알아보기</a>"
+"폼 제출 방법 변경,<a href=\"http://en.wikipedia.org/wiki/"
+"Hypertext_Transfer_Protocol#Request_methods\" rel=\"external\">요청 메소드에 "
+"대해 더 알아보기</a>"
 
 #: searx/templates/simple/preferences.html:269
 msgid "Image proxy"
@@ -919,89 +943,85 @@ msgstr "점수"
 msgid "Result count"
 msgstr "결과 개수"
 
-#: searx/templates/simple/stats.html:38
-msgid "Scores per result"
-msgstr "검색결과당 점수"
-
-#: searx/templates/simple/stats.html:62
+#: searx/templates/simple/stats.html:59
 msgid "Total"
 msgstr "합계"
 
-#: searx/templates/simple/stats.html:63
+#: searx/templates/simple/stats.html:60
 msgid "HTTP"
 msgstr "HTTP"
 
-#: searx/templates/simple/stats.html:64
+#: searx/templates/simple/stats.html:61
 msgid "Processing"
 msgstr "처리"
 
-#: searx/templates/simple/stats.html:102
+#: searx/templates/simple/stats.html:99
 msgid "Warnings"
 msgstr "경고"
 
-#: searx/templates/simple/stats.html:102
+#: searx/templates/simple/stats.html:99
 msgid "Errors and exceptions"
 msgstr "에러와 예외"
 
-#: searx/templates/simple/stats.html:108
+#: searx/templates/simple/stats.html:105
 msgid "Exception"
 msgstr "예외"
 
-#: searx/templates/simple/stats.html:110
+#: searx/templates/simple/stats.html:107
 msgid "Message"
 msgstr "메시지"
 
-#: searx/templates/simple/stats.html:112
+#: searx/templates/simple/stats.html:109
 msgid "Percentage"
 msgstr "백분율"
 
-#: searx/templates/simple/stats.html:114
+#: searx/templates/simple/stats.html:111
 msgid "Parameter"
 msgstr "매개변수"
 
-#: searx/templates/simple/stats.html:122
+#: searx/templates/simple/stats.html:119
 msgid "Filename"
 msgstr "파일명"
 
-#: searx/templates/simple/stats.html:123
+#: searx/templates/simple/stats.html:120
 msgid "Function"
 msgstr "함수"
 
-#: searx/templates/simple/stats.html:124
+#: searx/templates/simple/stats.html:121
 msgid "Code"
 msgstr "코드"
 
-#: searx/templates/simple/stats.html:131
+#: searx/templates/simple/stats.html:128
 msgid "Checker"
 msgstr "검사 프로그램"
 
-#: searx/templates/simple/stats.html:134
+#: searx/templates/simple/stats.html:131
 msgid "Failed test"
 msgstr "테스트 실패"
 
-#: searx/templates/simple/stats.html:135
+#: searx/templates/simple/stats.html:132
 msgid "Comment(s)"
 msgstr "설명"
 
 #: searx/templates/simple/filters/time_range.html:3
 msgid "Anytime"
-msgstr "전체"
+msgstr "모든 날짜"
 
 #: searx/templates/simple/filters/time_range.html:6
 msgid "Last day"
-msgstr "전날"
+msgstr "지난 1일"
 
 #: searx/templates/simple/filters/time_range.html:9
 msgid "Last week"
-msgstr "전주"
+msgstr "지난 1주"
 
 #: searx/templates/simple/filters/time_range.html:12
 msgid "Last month"
-msgstr "전달"
+msgstr "지난 1개월"
 
 #: searx/templates/simple/filters/time_range.html:15
 msgid "Last year"
-msgstr "전년"
+msgstr "지난 1년"
 
 #: searx/templates/simple/messages/no_cookies.html:3
 msgid "Information!"
@@ -1065,6 +1085,50 @@ msgstr "지도 표시"
 #: searx/templates/simple/result_templates/map.html:43
 msgid "hide map"
 msgstr "지도 숨기기"
+
+#: searx/templates/simple/result_templates/paper.html:5
+msgid "Published date"
+msgstr "발행일"
+
+#: searx/templates/simple/result_templates/paper.html:9
+msgid "Journal"
+msgstr "발행처"
+
+#: searx/templates/simple/result_templates/paper.html:22
+msgid "Editor"
+msgstr "편집자"
+
+#: searx/templates/simple/result_templates/paper.html:23
+msgid "Publisher"
+msgstr "발행자"
+
+#: searx/templates/simple/result_templates/paper.html:24
+msgid "Type"
+msgstr "분류"
+
+#: searx/templates/simple/result_templates/paper.html:25
+msgid "Tags"
+msgstr "태그"
+
+#: searx/templates/simple/result_templates/paper.html:26
+msgid "DOI"
+msgstr "DOI"
+
+#: searx/templates/simple/result_templates/paper.html:27
+msgid "ISSN"
+msgstr "ISSN"
+
+#: searx/templates/simple/result_templates/paper.html:28
+msgid "ISBN"
+msgstr "ISBN"
+
+#: searx/templates/simple/result_templates/paper.html:33
+msgid "PDF"
+msgstr "PDF"
+
+#: searx/templates/simple/result_templates/paper.html:34
+msgid "HTML"
+msgstr "HTML"
 
 #: searx/templates/simple/result_templates/torrent.html:6
 msgid "magnet link"
@@ -1237,3 +1301,25 @@ msgstr "비디오 숨기기"
 
 #~ msgid "preferences"
 #~ msgstr "설정"
+
+#~ msgid "Scores per result"
+#~ msgstr "검색결과당 점수"
+
+#~ msgid "a privacy-respecting, hackable metasearch engine"
+#~ msgstr "개인 정보를 존중하는 맞춤형 메타 검색 엔진"
+
+#~ msgid "No abstract is available for this publication."
+#~ msgstr "이 출판물에 대한 초록이 없습니다."
+
+#~ msgid "Self Informations"
+#~ msgstr "본인 정보"
+
+#~ msgid ""
+#~ "Change how forms are submited, <a "
+#~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
+#~ " rel=\"external\">learn more about request "
+#~ "methods</a>"
+#~ msgstr ""
+#~ "폼 제출 방법 변경,<a "
+#~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
+#~ " rel=\"external\">요청 메소드에 대해 더 알아보기</a>"

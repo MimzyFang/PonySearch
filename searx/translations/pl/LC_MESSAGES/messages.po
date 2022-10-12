@@ -7,21 +7,20 @@
 # Markus Heiser <markus.heiser@darmarit.de>, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-07-23 14:08+0000\n"
-"PO-Revision-Date: 2022-08-12 07:18+0000\n"
+"POT-Creation-Date: 2022-09-28 07:29+0000\n"
+"PO-Revision-Date: 2022-08-19 07:18+0000\n"
 "Last-Translator: Markus Heiser <markus.heiser@darmarit.de>\n"
-"Language-Team: Polish <https://weblate.bubu1.eu/projects/searxng/searxng/pl/>"
-"\n"
 "Language: pl\n"
+"Language-Team: Polish "
+"<https://weblate.bubu1.eu/projects/searxng/searxng/pl/>\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Weblate 4.13.1\n"
 "Generated-By: Babel 2.10.3\n"
 
 #. CONSTANT_NAMES['DEFAULT_GROUP_NAME']
@@ -129,6 +128,11 @@ msgstr "dokumentacja aplikacji"
 msgid "web"
 msgstr "web"
 
+#. CATEGORY_GROUPS['SCIENTIFIC PUBLICATIONS']
+#: searx/searxng.msg
+msgid "scientific publications"
+msgstr ""
+
 #. STYLE_NAMES['AUTO']
 #: searx/searxng.msg
 msgid "auto"
@@ -144,90 +148,90 @@ msgstr "jasny"
 msgid "dark"
 msgstr "ciemny"
 
-#: searx/webapp.py:165
+#: searx/webapp.py:164
 msgid "timeout"
 msgstr "przekroczenie maksymalnego dozwolonego czasu"
 
-#: searx/webapp.py:166
+#: searx/webapp.py:165
 msgid "parsing error"
 msgstr "błąd przetwarzania"
 
-#: searx/webapp.py:167
+#: searx/webapp.py:166
 msgid "HTTP protocol error"
 msgstr "błąd protokołu HTTP"
 
-#: searx/webapp.py:168
+#: searx/webapp.py:167
 msgid "network error"
 msgstr "błąd sieci"
 
-#: searx/webapp.py:170
+#: searx/webapp.py:169
 msgid "unexpected crash"
 msgstr "niespodziewana awaria"
 
-#: searx/webapp.py:177
+#: searx/webapp.py:176
 msgid "HTTP error"
 msgstr "błąd HTTP"
 
-#: searx/webapp.py:178
+#: searx/webapp.py:177
 msgid "HTTP connection error"
 msgstr "błąd połączenia HTTP"
 
-#: searx/webapp.py:184
+#: searx/webapp.py:183
 msgid "proxy error"
 msgstr "błąd serwera proxy"
 
-#: searx/webapp.py:185
+#: searx/webapp.py:184
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
-#: searx/webapp.py:186
+#: searx/webapp.py:185
 msgid "too many requests"
 msgstr "za dużo zapytań"
 
-#: searx/webapp.py:187
+#: searx/webapp.py:186
 msgid "access denied"
 msgstr "odmowa dostępu"
 
-#: searx/webapp.py:188
+#: searx/webapp.py:187
 msgid "server API error"
 msgstr "błąd serwera API"
 
-#: searx/webapp.py:363
+#: searx/webapp.py:362
 msgid "No item found"
 msgstr "Nie znaleziono elementu"
 
-#: searx/engines/qwant.py:212
-#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:365
+#: searx/engines/qwant.py:217
+#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:364
 msgid "Source"
 msgstr "Źródło"
 
-#: searx/webapp.py:367
+#: searx/webapp.py:366
 msgid "Error loading the next page"
 msgstr "Błąd wczytywania następnej strony"
 
-#: searx/webapp.py:516 searx/webapp.py:960
+#: searx/webapp.py:518 searx/webapp.py:950
 msgid "Invalid settings, please edit your preferences"
 msgstr "Nieprawidłowe ustawienia, proszę zmienić swoje preferencje"
 
-#: searx/webapp.py:532
+#: searx/webapp.py:534
 msgid "Invalid settings"
 msgstr "Nieprawidłowe ustawienia"
 
-#: searx/webapp.py:609 searx/webapp.py:685
+#: searx/webapp.py:611 searx/webapp.py:687
 msgid "search error"
 msgstr "błąd wyszukiwania"
 
-#: searx/webapp.py:731
+#: searx/webapp.py:849
+msgid "Suspended"
+msgstr "Zawieszone"
+
+#: searx/webutils.py:161
 msgid "{minutes} minute(s) ago"
 msgstr "{minutes} minut(y) temu"
 
-#: searx/webapp.py:733
+#: searx/webutils.py:162
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours} godzin(y), {minutes} minut(y) temu"
-
-#: searx/webapp.py:859
-msgid "Suspended"
-msgstr "Zawieszone"
 
 #: searx/answerers/random/answerer.py:67
 msgid "Random value generator"
@@ -257,13 +261,15 @@ msgstr "{title} (PRZESTARZAŁY)"
 msgid "This entry has been superseded by"
 msgstr "Ten wpis został zastąpiony przez"
 
-#: searx/engines/pubmed.py:78
-msgid "No abstract is available for this publication."
-msgstr "Streszczenie nie jest dostępne dla tej publikacji."
-
-#: searx/engines/qwant.py:214
+#: searx/engines/qwant.py:219
 msgid "Channel"
 msgstr "Kanał"
+
+#: searx/engines/semantic_scholar.py:81
+msgid ""
+"{numCitations} citations from the year {firstCitationVelocityYear} to "
+"{lastCitationVelocityYear}"
+msgstr ""
 
 #: searx/engines/tineye.py:40
 msgid ""
@@ -272,18 +278,36 @@ msgid ""
 " WebP."
 msgstr ""
 "Nie można odczytać obrazu z tego adresu URL. Może być to spowodowane "
-"nieobsługiwanym formatem pliku. TinEye obsługuje jedynie obrazy w formatach "
-"JPEG, PNG, GIF, BMP, TIFF i WebP."
+"nieobsługiwanym formatem pliku. TinEye obsługuje jedynie obrazy w "
+"formatach JPEG, PNG, GIF, BMP, TIFF i WebP."
 
 #: searx/engines/tineye.py:46
 msgid ""
 "The image is too simple to find matches. TinEye requires a basic level of"
 " visual detail to successfully identify matches."
 msgstr ""
+"Zdjęcie jest za proste by znaleźć wyniki TinEye wymaga prostego poziomu "
+"szczegółów wizualnych aby poprawnie zidentyfikować wyniki."
 
 #: searx/engines/tineye.py:52
 msgid "The image could not be downloaded."
 msgstr "Nie można pobrać obrazu."
+
+#: searx/engines/wttr.py:101
+msgid "Morning"
+msgstr ""
+
+#: searx/engines/wttr.py:101
+msgid "Noon"
+msgstr ""
+
+#: searx/engines/wttr.py:101
+msgid "Evening"
+msgstr ""
+
+#: searx/engines/wttr.py:101
+msgid "Night"
+msgstr ""
 
 #: searx/plugins/hash_plugin.py:24
 msgid "Converts strings to different hash digests."
@@ -326,8 +350,8 @@ msgstr ""
 "wybrać wiele kategorii. (Wymagany Javascript)"
 
 #: searx/plugins/self_info.py:20
-msgid "Self Informations"
-msgstr "Informacje o sobie"
+msgid "Self Information"
+msgstr ""
 
 #: searx/plugins/self_info.py:21
 msgid ""
@@ -339,19 +363,24 @@ msgstr ""
 
 #: searx/plugins/tor_check.py:25
 msgid "Tor check plugin"
-msgstr ""
+msgstr "Sprawdzenie plugin TOR"
 
 #: searx/plugins/tor_check.py:28
 msgid ""
 "This plugin checks if the address of the request is a TOR exit node, and "
 "informs the user if it is, like check.torproject.org but from searxng."
 msgstr ""
+"Ten plugin sprawdza, czy adres wysyłający zapytanie jest węzłem "
+"wyjściowym sieci Tor, i powiadamia użytkownika jeśli jest, tak jak "
+"check.torproject.org ale z searxng."
 
 #: searx/plugins/tor_check.py:62
 msgid ""
 "The TOR exit node list (https://check.torproject.org/exit-addresses) is "
 "unreachable."
 msgstr ""
+"Lista węzłów wyjsciowych sieci Tor (https://check.torproject.org/exit-"
+"addresses) jest nieosiągalna."
 
 #: searx/plugins/tor_check.py:78
 msgid "You are using TOR. Your IP address seems to be: {ip_address}."
@@ -413,8 +442,8 @@ msgid "Powered by"
 msgstr "Obsługiwane przez"
 
 #: searx/templates/simple/base.html:64
-msgid "a privacy-respecting, hackable metasearch engine"
-msgstr "szanująca prywatność, hackowalna wyszukiwarka metasearch"
+msgid "a privacy-respecting, open metasearch engine"
+msgstr ""
 
 #: searx/templates/simple/base.html:65
 msgid "Source code"
@@ -451,6 +480,7 @@ msgstr "Długość"
 
 #: searx/templates/simple/macros.html:37
 #: searx/templates/simple/result_templates/images.html:18
+#: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
 msgstr "Autor"
 
@@ -496,17 +526,17 @@ msgid "View error logs and submit a bug report"
 msgstr "Zobacz dziennik błędów i zgłoś je"
 
 #: searx/templates/simple/preferences.html:53
-#: searx/templates/simple/stats.html:67
+#: searx/templates/simple/stats.html:64
 msgid "Median"
 msgstr "Mediana"
 
 #: searx/templates/simple/preferences.html:54
-#: searx/templates/simple/stats.html:73
+#: searx/templates/simple/stats.html:70
 msgid "P80"
 msgstr "P80"
 
 #: searx/templates/simple/preferences.html:55
-#: searx/templates/simple/stats.html:79
+#: searx/templates/simple/stats.html:76
 msgid "P95"
 msgstr "P95"
 
@@ -672,13 +702,10 @@ msgstr "Metoda HTTP"
 
 #: searx/templates/simple/preferences.html:264
 msgid ""
-"Change how forms are submited, <a "
+"Change how forms are submitted, <a "
 "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
 " rel=\"external\">learn more about request methods</a>"
 msgstr ""
-"Zmień sposób przesyłania formularzy, <a "
-"href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
-" rel=\"external\">dowiedz się więcej o metodach HTTP</a>"
 
 #: searx/templates/simple/preferences.html:269
 msgid "Image proxy"
@@ -944,67 +971,63 @@ msgstr "Wyniki"
 msgid "Result count"
 msgstr "Ilość wyników"
 
-#: searx/templates/simple/stats.html:38
-msgid "Scores per result"
-msgstr "Wyniki na rezultat"
-
-#: searx/templates/simple/stats.html:62
+#: searx/templates/simple/stats.html:59
 msgid "Total"
 msgstr "Suma"
 
-#: searx/templates/simple/stats.html:63
+#: searx/templates/simple/stats.html:60
 msgid "HTTP"
 msgstr "HTTP"
 
-#: searx/templates/simple/stats.html:64
+#: searx/templates/simple/stats.html:61
 msgid "Processing"
 msgstr "Przetwarzanie"
 
-#: searx/templates/simple/stats.html:102
+#: searx/templates/simple/stats.html:99
 msgid "Warnings"
 msgstr "Ostrzeżenia"
 
-#: searx/templates/simple/stats.html:102
+#: searx/templates/simple/stats.html:99
 msgid "Errors and exceptions"
 msgstr "Błędy i wyjątki"
 
-#: searx/templates/simple/stats.html:108
+#: searx/templates/simple/stats.html:105
 msgid "Exception"
 msgstr "Wyjątek"
 
-#: searx/templates/simple/stats.html:110
+#: searx/templates/simple/stats.html:107
 msgid "Message"
 msgstr "Wiadomość"
 
-#: searx/templates/simple/stats.html:112
+#: searx/templates/simple/stats.html:109
 msgid "Percentage"
 msgstr "Odsetek"
 
-#: searx/templates/simple/stats.html:114
+#: searx/templates/simple/stats.html:111
 msgid "Parameter"
 msgstr "Parametr"
 
-#: searx/templates/simple/stats.html:122
+#: searx/templates/simple/stats.html:119
 msgid "Filename"
 msgstr "Nazwa pliku"
 
-#: searx/templates/simple/stats.html:123
+#: searx/templates/simple/stats.html:120
 msgid "Function"
 msgstr "Funkcja"
 
-#: searx/templates/simple/stats.html:124
+#: searx/templates/simple/stats.html:121
 msgid "Code"
 msgstr "Kod"
 
-#: searx/templates/simple/stats.html:131
+#: searx/templates/simple/stats.html:128
 msgid "Checker"
 msgstr "Weryfikacja"
 
-#: searx/templates/simple/stats.html:134
+#: searx/templates/simple/stats.html:131
 msgid "Failed test"
 msgstr "Test zakończony niepowodzeniem"
 
-#: searx/templates/simple/stats.html:135
+#: searx/templates/simple/stats.html:132
 msgid "Comment(s)"
 msgstr "Komentarz(e)"
 
@@ -1092,6 +1115,50 @@ msgstr "pokaż mapę"
 #: searx/templates/simple/result_templates/map.html:43
 msgid "hide map"
 msgstr "ukryj mapę"
+
+#: searx/templates/simple/result_templates/paper.html:5
+msgid "Published date"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:9
+msgid "Journal"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:22
+msgid "Editor"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:23
+msgid "Publisher"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:24
+msgid "Type"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:25
+msgid "Tags"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:26
+msgid "DOI"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:27
+msgid "ISSN"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:28
+msgid "ISBN"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:33
+msgid "PDF"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:34
+msgid "HTML"
+msgstr ""
 
 #: searx/templates/simple/result_templates/torrent.html:6
 msgid "magnet link"
@@ -1391,3 +1458,27 @@ msgstr "ukryj wideo"
 
 #~ msgid "preferences"
 #~ msgstr "preferencje"
+
+#~ msgid "Scores per result"
+#~ msgstr "Wyniki na rezultat"
+
+#~ msgid "a privacy-respecting, hackable metasearch engine"
+#~ msgstr "szanująca prywatność, hackowalna wyszukiwarka metasearch"
+
+#~ msgid "No abstract is available for this publication."
+#~ msgstr "Streszczenie nie jest dostępne dla tej publikacji."
+
+#~ msgid "Self Informations"
+#~ msgstr "Informacje o sobie"
+
+#~ msgid ""
+#~ "Change how forms are submited, <a "
+#~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
+#~ " rel=\"external\">learn more about request "
+#~ "methods</a>"
+#~ msgstr ""
+#~ "Zmień sposób przesyłania formularzy, <a "
+#~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
+#~ " rel=\"external\">dowiedz się więcej o "
+#~ "metodach HTTP</a>"
+

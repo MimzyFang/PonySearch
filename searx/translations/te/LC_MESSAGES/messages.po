@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-07-23 14:08+0000\n"
+"POT-Creation-Date: 2022-09-28 07:29+0000\n"
 "PO-Revision-Date: 2022-07-15 07:19+0000\n"
 "Last-Translator: Markus Heiser <markus.heiser@darmarit.de>\n"
 "Language: te\n"
@@ -127,6 +127,11 @@ msgstr "సాఫ్ట్‌వేర్ వికీ"
 msgid "web"
 msgstr "వెబ్"
 
+#. CATEGORY_GROUPS['SCIENTIFIC PUBLICATIONS']
+#: searx/searxng.msg
+msgid "scientific publications"
+msgstr ""
+
 #. STYLE_NAMES['AUTO']
 #: searx/searxng.msg
 msgid "auto"
@@ -142,90 +147,90 @@ msgstr "వెలుగు"
 msgid "dark"
 msgstr "చీకటి"
 
-#: searx/webapp.py:165
+#: searx/webapp.py:164
 msgid "timeout"
 msgstr "సమయం ముగిసినది"
 
-#: searx/webapp.py:166
+#: searx/webapp.py:165
 msgid "parsing error"
 msgstr "పార్సింగ్ లోపం"
 
-#: searx/webapp.py:167
+#: searx/webapp.py:166
 msgid "HTTP protocol error"
 msgstr "HTTP నియమాలలో లోపం"
 
-#: searx/webapp.py:168
+#: searx/webapp.py:167
 msgid "network error"
 msgstr "నెట్వర్క్ లోపం"
 
-#: searx/webapp.py:170
+#: searx/webapp.py:169
 msgid "unexpected crash"
 msgstr "ఊహించని లోపం"
 
-#: searx/webapp.py:177
+#: searx/webapp.py:176
 msgid "HTTP error"
 msgstr "HTTP లోపం"
 
-#: searx/webapp.py:178
+#: searx/webapp.py:177
 msgid "HTTP connection error"
 msgstr "HTTP కనెక్షన్ లోపం"
 
-#: searx/webapp.py:184
+#: searx/webapp.py:183
 msgid "proxy error"
 msgstr "ప్రాక్సీ లోపం"
 
-#: searx/webapp.py:185
+#: searx/webapp.py:184
 msgid "CAPTCHA"
 msgstr "క్యాప్చా"
 
-#: searx/webapp.py:186
+#: searx/webapp.py:185
 msgid "too many requests"
 msgstr "చాలా అభ్యర్థనలు"
 
-#: searx/webapp.py:187
+#: searx/webapp.py:186
 msgid "access denied"
 msgstr "అనుమతి లేదు"
 
-#: searx/webapp.py:188
+#: searx/webapp.py:187
 msgid "server API error"
 msgstr "సర్వర్ API లోపం"
 
-#: searx/webapp.py:363
+#: searx/webapp.py:362
 msgid "No item found"
 msgstr "ఏమీ దొరకలేదు"
 
-#: searx/engines/qwant.py:212
-#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:365
+#: searx/engines/qwant.py:217
+#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:364
 msgid "Source"
 msgstr "మూలం"
 
-#: searx/webapp.py:367
+#: searx/webapp.py:366
 msgid "Error loading the next page"
 msgstr "తదుపరి పేజీని లోడ్ చేయడంలో లోపం"
 
-#: searx/webapp.py:516 searx/webapp.py:960
+#: searx/webapp.py:518 searx/webapp.py:950
 msgid "Invalid settings, please edit your preferences"
 msgstr "చెల్లని సెట్టింగ్‌లు, దయచేసి మీ ప్రాధాన్యతలను సవరించండి"
 
-#: searx/webapp.py:532
+#: searx/webapp.py:534
 msgid "Invalid settings"
 msgstr "చెల్లని అమరికలు"
 
-#: searx/webapp.py:609 searx/webapp.py:685
+#: searx/webapp.py:611 searx/webapp.py:687
 msgid "search error"
 msgstr "శోధనలో లోపము"
 
-#: searx/webapp.py:731
+#: searx/webapp.py:849
+msgid "Suspended"
+msgstr "రద్ధు చెయ్యబడింది"
+
+#: searx/webutils.py:161
 msgid "{minutes} minute(s) ago"
 msgstr "{minutes} నిమిషము(ల) క్రిందట"
 
-#: searx/webapp.py:733
+#: searx/webutils.py:162
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours} గంట(లు), {minutes} నిమిషం(లు) క్రితం"
-
-#: searx/webapp.py:859
-msgid "Suspended"
-msgstr "రద్ధు చెయ్యబడింది"
 
 #: searx/answerers/random/answerer.py:67
 msgid "Random value generator"
@@ -255,13 +260,15 @@ msgstr "{title} (వాడుకలో లేదు)"
 msgid "This entry has been superseded by"
 msgstr "దీని ద్వారా ఈ ఎంట్రీ భర్తీ చేయబడింది"
 
-#: searx/engines/pubmed.py:78
-msgid "No abstract is available for this publication."
-msgstr "ఈ ప్రచురణకు సంగ్రహం అందుబాటులో లేదు."
-
-#: searx/engines/qwant.py:214
+#: searx/engines/qwant.py:219
 msgid "Channel"
 msgstr "ఛానెల్"
+
+#: searx/engines/semantic_scholar.py:81
+msgid ""
+"{numCitations} citations from the year {firstCitationVelocityYear} to "
+"{lastCitationVelocityYear}"
+msgstr ""
 
 #: searx/engines/tineye.py:40
 msgid ""
@@ -278,6 +285,22 @@ msgstr ""
 
 #: searx/engines/tineye.py:52
 msgid "The image could not be downloaded."
+msgstr ""
+
+#: searx/engines/wttr.py:101
+msgid "Morning"
+msgstr ""
+
+#: searx/engines/wttr.py:101
+msgid "Noon"
+msgstr ""
+
+#: searx/engines/wttr.py:101
+msgid "Evening"
+msgstr ""
+
+#: searx/engines/wttr.py:101
+msgid "Night"
 msgstr ""
 
 #: searx/plugins/hash_plugin.py:24
@@ -323,8 +346,8 @@ msgstr ""
 "ఎంచుకోవడానికి నిలిపివేయండి. (జావాస్క్రిప్ట్ అవసరం)"
 
 #: searx/plugins/self_info.py:20
-msgid "Self Informations"
-msgstr "స్వీయ సమాచారం"
+msgid "Self Information"
+msgstr ""
 
 #: searx/plugins/self_info.py:21
 msgid ""
@@ -409,8 +432,8 @@ msgid "Powered by"
 msgstr "ద్వారా ఆధారితం"
 
 #: searx/templates/simple/base.html:64
-msgid "a privacy-respecting, hackable metasearch engine"
-msgstr "గోప్యతను గౌరవించే, హ్యాక్ చేయదగిన మెటా సెర్చ్ ఇంజిన్"
+msgid "a privacy-respecting, open metasearch engine"
+msgstr ""
 
 #: searx/templates/simple/base.html:65
 msgid "Source code"
@@ -447,6 +470,7 @@ msgstr "పొడవు"
 
 #: searx/templates/simple/macros.html:37
 #: searx/templates/simple/result_templates/images.html:18
+#: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
 msgstr "రచయిత"
 
@@ -490,17 +514,17 @@ msgid "View error logs and submit a bug report"
 msgstr "ఎర్రర్ లాగ్‌లను వీక్షించండి మరియు బగ్ నివేదికను సమర్పించండి"
 
 #: searx/templates/simple/preferences.html:53
-#: searx/templates/simple/stats.html:67
+#: searx/templates/simple/stats.html:64
 msgid "Median"
 msgstr "మధ్యస్థ"
 
 #: searx/templates/simple/preferences.html:54
-#: searx/templates/simple/stats.html:73
+#: searx/templates/simple/stats.html:70
 msgid "P80"
 msgstr "P80"
 
 #: searx/templates/simple/preferences.html:55
-#: searx/templates/simple/stats.html:79
+#: searx/templates/simple/stats.html:76
 msgid "P95"
 msgstr "P95"
 
@@ -666,13 +690,10 @@ msgstr "HTTP పద్ధతి"
 
 #: searx/templates/simple/preferences.html:264
 msgid ""
-"Change how forms are submited, <a "
+"Change how forms are submitted, <a "
 "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
 " rel=\"external\">learn more about request methods</a>"
 msgstr ""
-"ఫారమ్‌లను ఎలా సమర్పించాలో మార్చండి, <a "
-"href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
-" rel=\"external\">అభ్యర్థన పద్ధతుల గురించి మరింత తెలుసుకోండి</a>"
 
 #: searx/templates/simple/preferences.html:269
 msgid "Image proxy"
@@ -937,67 +958,63 @@ msgstr "స్కోర్లు"
 msgid "Result count"
 msgstr "ఫలితాల గణన"
 
-#: searx/templates/simple/stats.html:38
-msgid "Scores per result"
-msgstr "ఒక్కో ఫలితానికి స్కోర్లు"
-
-#: searx/templates/simple/stats.html:62
+#: searx/templates/simple/stats.html:59
 msgid "Total"
 msgstr "మొత్తం"
 
-#: searx/templates/simple/stats.html:63
+#: searx/templates/simple/stats.html:60
 msgid "HTTP"
 msgstr "HTTP"
 
-#: searx/templates/simple/stats.html:64
+#: searx/templates/simple/stats.html:61
 msgid "Processing"
 msgstr "ప్రాసెసింగ్"
 
-#: searx/templates/simple/stats.html:102
+#: searx/templates/simple/stats.html:99
 msgid "Warnings"
 msgstr "హెచ్చరికలు"
 
-#: searx/templates/simple/stats.html:102
+#: searx/templates/simple/stats.html:99
 msgid "Errors and exceptions"
 msgstr "లోపాలు మరియు మినహాయింపులు"
 
-#: searx/templates/simple/stats.html:108
+#: searx/templates/simple/stats.html:105
 msgid "Exception"
 msgstr "మినహాయింపు"
 
-#: searx/templates/simple/stats.html:110
+#: searx/templates/simple/stats.html:107
 msgid "Message"
 msgstr "సందేశం"
 
-#: searx/templates/simple/stats.html:112
+#: searx/templates/simple/stats.html:109
 msgid "Percentage"
 msgstr "శాతం"
 
-#: searx/templates/simple/stats.html:114
+#: searx/templates/simple/stats.html:111
 msgid "Parameter"
 msgstr "పరిమితి"
 
-#: searx/templates/simple/stats.html:122
+#: searx/templates/simple/stats.html:119
 msgid "Filename"
 msgstr "ఫైల్ పేరు"
 
-#: searx/templates/simple/stats.html:123
+#: searx/templates/simple/stats.html:120
 msgid "Function"
 msgstr "ఫంక్షన్"
 
-#: searx/templates/simple/stats.html:124
+#: searx/templates/simple/stats.html:121
 msgid "Code"
 msgstr "కోడ్"
 
-#: searx/templates/simple/stats.html:131
+#: searx/templates/simple/stats.html:128
 msgid "Checker"
 msgstr "చెకర్"
 
-#: searx/templates/simple/stats.html:134
+#: searx/templates/simple/stats.html:131
 msgid "Failed test"
 msgstr "పరీక్ష విఫలమైంది"
 
-#: searx/templates/simple/stats.html:135
+#: searx/templates/simple/stats.html:132
 msgid "Comment(s)"
 msgstr "వ్యాఖ్య(లు)"
 
@@ -1085,6 +1102,50 @@ msgstr "మ్యాప్ చూపించు"
 #: searx/templates/simple/result_templates/map.html:43
 msgid "hide map"
 msgstr "మ్యాప్‌ను దాచండి"
+
+#: searx/templates/simple/result_templates/paper.html:5
+msgid "Published date"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:9
+msgid "Journal"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:22
+msgid "Editor"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:23
+msgid "Publisher"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:24
+msgid "Type"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:25
+msgid "Tags"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:26
+msgid "DOI"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:27
+msgid "ISSN"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:28
+msgid "ISBN"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:33
+msgid "PDF"
+msgstr ""
+
+#: searx/templates/simple/result_templates/paper.html:34
+msgid "HTML"
+msgstr ""
 
 #: searx/templates/simple/result_templates/torrent.html:6
 msgid "magnet link"
@@ -1376,4 +1437,27 @@ msgstr "వీడియోను దాచిపెట్టు"
 
 #~ msgid "preferences"
 #~ msgstr "అభిరుచులు"
+
+#~ msgid "Scores per result"
+#~ msgstr "ఒక్కో ఫలితానికి స్కోర్లు"
+
+#~ msgid "a privacy-respecting, hackable metasearch engine"
+#~ msgstr "గోప్యతను గౌరవించే, హ్యాక్ చేయదగిన మెటా సెర్చ్ ఇంజిన్"
+
+#~ msgid "No abstract is available for this publication."
+#~ msgstr "ఈ ప్రచురణకు సంగ్రహం అందుబాటులో లేదు."
+
+#~ msgid "Self Informations"
+#~ msgstr "స్వీయ సమాచారం"
+
+#~ msgid ""
+#~ "Change how forms are submited, <a "
+#~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
+#~ " rel=\"external\">learn more about request "
+#~ "methods</a>"
+#~ msgstr ""
+#~ "ఫారమ్‌లను ఎలా సమర్పించాలో మార్చండి, <a "
+#~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
+#~ " rel=\"external\">అభ్యర్థన పద్ధతుల గురించి మరింత"
+#~ " తెలుసుకోండి</a>"
 

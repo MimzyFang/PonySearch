@@ -240,6 +240,7 @@ Global Settings
      query_in_title: false
      infinite_scroll: false
      center_alignment: false
+     cache_url: https://web.archive.org/web/
      default_theme: simple
      theme_args:
        simple_style: auto
@@ -266,6 +267,15 @@ Global Settings
   When enabled, the results are centered instead of being in the left (or RTL)
   side of the screen.  This setting only affects the *desktop layout*
   (:origin:`min-width: @tablet <searx/static/themes/simple/src/less/definitions.less>`)
+
+.. cache_url:
+
+``cache_url`` : ``https://web.archive.org/web/``
+  URL prefix of the internet archive or cache, don't forgett trailing slash (if
+  needed).  The default is https://web.archive.org/web/ alternatives are:
+
+  - https://webcache.googleusercontent.com/search?q=cache:
+  - https://archive.today/
 
 ``default_theme`` :
   Name of the theme you want to use by default on your SearXNG instance.
@@ -331,7 +341,7 @@ Communication with search engines.
    outgoing:
      request_timeout: 2.0       # default timeout in seconds, can be override by engine
      max_request_timeout: 10.0  # the maximum timeout in seconds
-     useragent_suffix: ""       # informations like an email address to the administrator
+     useragent_suffix: ""       # information like an email address to the administrator
      pool_connections: 100      # Maximum number of allowable connections, or null
                                 # for no limits. The default is 100.
      pool_maxsize: 10           # Number of allowable keep-alive connections, or null
