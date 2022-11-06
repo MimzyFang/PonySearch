@@ -20,13 +20,15 @@
 # Raúl Díaz <flan@chocoflan.net>, 2022.
 # Cedrik Boudreau <cedrik@arweave.org>, 2022.
 # alexfs2015 <alex04fs@gmail.com>, 2022.
+# KEINOS <github@keinos.com>, 2022.
+# Peter Martin <weblate@pe7er.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-28 07:29+0000\n"
-"PO-Revision-Date: 2022-09-30 07:43+0000\n"
-"Last-Translator: Markus Heiser <markus.heiser@darmarit.de>\n"
+"POT-Creation-Date: 2022-10-14 14:11+0000\n"
+"PO-Revision-Date: 2022-10-20 07:00+0000\n"
+"Last-Translator: Peter Martin <weblate@pe7er.com>\n"
 "Language-Team: Spanish <https://weblate.bubu1.eu/projects/searxng/searxng/es/"
 ">\n"
 "Language: es\n"
@@ -50,7 +52,7 @@ msgstr "otro"
 #. CATEGORY_NAMES['FILES']
 #: searx/searxng.msg
 msgid "files"
-msgstr "Ficheros"
+msgstr "archivos"
 
 #. CATEGORY_NAMES['GENERAL']
 #: searx/searxng.msg
@@ -60,7 +62,7 @@ msgstr "general"
 #. CATEGORY_NAMES['MUSIC']
 #: searx/searxng.msg
 msgid "music"
-msgstr "Música"
+msgstr "música"
 
 #. CATEGORY_NAMES['SOCIAL_MEDIA']
 #: searx/searxng.msg
@@ -70,12 +72,12 @@ msgstr "redes sociales"
 #. CATEGORY_NAMES['IMAGES']
 #: searx/searxng.msg
 msgid "images"
-msgstr "Imágenes"
+msgstr "imágenes"
 
 #. CATEGORY_NAMES['VIDEOS']
 #: searx/searxng.msg
 msgid "videos"
-msgstr "Vídeos"
+msgstr "vídeos"
 
 #. CATEGORY_NAMES['IT']
 #: searx/searxng.msg
@@ -85,12 +87,12 @@ msgstr "Informática"
 #. CATEGORY_NAMES['NEWS']
 #: searx/searxng.msg
 msgid "news"
-msgstr "Noticias"
+msgstr "noticias"
 
 #. CATEGORY_NAMES['MAP']
 #: searx/searxng.msg
 msgid "map"
-msgstr "Mapa"
+msgstr "mapa"
 
 #. CATEGORY_NAMES['ONIONS']
 #: searx/searxng.msg
@@ -100,52 +102,52 @@ msgstr "onions"
 #. CATEGORY_NAMES['SCIENCE']
 #: searx/searxng.msg
 msgid "science"
-msgstr "Ciencia"
+msgstr "ciencia"
 
 #. CATEGORY_GROUPS['APPS']
 #: searx/searxng.msg
 msgid "apps"
-msgstr "Aplicaciones"
+msgstr "aplicaciones"
 
 #. CATEGORY_GROUPS['DICTIONARIES']
 #: searx/searxng.msg
 msgid "dictionaries"
-msgstr "Diccionarios"
+msgstr "diccionarios"
 
 #. CATEGORY_GROUPS['LYRICS']
 #: searx/searxng.msg
 msgid "lyrics"
-msgstr "Letras"
+msgstr "letras"
 
 #. CATEGORY_GROUPS['PACKAGES']
 #: searx/searxng.msg
 msgid "packages"
-msgstr "Paquetes"
+msgstr "paquetes"
 
 #. CATEGORY_GROUPS['Q_A']
 #: searx/searxng.msg
 msgid "q&a"
-msgstr "Preguntas y respuestas"
+msgstr "preguntas y respuestas"
 
 #. CATEGORY_GROUPS['REPOS']
 #: searx/searxng.msg
 msgid "repos"
-msgstr "Repositorios"
+msgstr "repositorios"
 
 #. CATEGORY_GROUPS['SOFTWARE_WIKIS']
 #: searx/searxng.msg
 msgid "software wikis"
-msgstr "Wikis de software"
+msgstr "wikis de software"
 
 #. CATEGORY_GROUPS['WEB']
 #: searx/searxng.msg
 msgid "web"
-msgstr "Web"
+msgstr "web"
 
 #. CATEGORY_GROUPS['SCIENTIFIC PUBLICATIONS']
 #: searx/searxng.msg
 msgid "scientific publications"
-msgstr "Artículos científicos"
+msgstr "artículos científicos"
 
 #. STYLE_NAMES['AUTO']
 #: searx/searxng.msg
@@ -176,66 +178,70 @@ msgstr "Error de protocolo HTTP"
 
 #: searx/webapp.py:167
 msgid "network error"
-msgstr "Error de red"
+msgstr "error de red"
 
-#: searx/webapp.py:169
+#: searx/webapp.py:168
+msgid "SSL error: certificate validation has failed"
+msgstr "Error SSL: la validación del certificado ha fallado"
+
+#: searx/webapp.py:170
 msgid "unexpected crash"
 msgstr "cierre inesperado"
 
-#: searx/webapp.py:176
+#: searx/webapp.py:177
 msgid "HTTP error"
 msgstr "Error de HTTP"
 
-#: searx/webapp.py:177
+#: searx/webapp.py:178
 msgid "HTTP connection error"
 msgstr "Error de conexión HTTP"
 
-#: searx/webapp.py:183
+#: searx/webapp.py:184
 msgid "proxy error"
 msgstr "error de proxy"
 
-#: searx/webapp.py:184
+#: searx/webapp.py:185
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
-#: searx/webapp.py:185
+#: searx/webapp.py:186
 msgid "too many requests"
 msgstr "demasiadas peticiones"
 
-#: searx/webapp.py:186
+#: searx/webapp.py:187
 msgid "access denied"
 msgstr "acceso denegado"
 
-#: searx/webapp.py:187
+#: searx/webapp.py:188
 msgid "server API error"
 msgstr "error en la API del servidor"
 
-#: searx/webapp.py:362
+#: searx/webapp.py:365
 msgid "No item found"
 msgstr "Ningún artículo encontrado"
 
 #: searx/engines/qwant.py:217
-#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:364
+#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:367
 msgid "Source"
 msgstr "Fuente"
 
-#: searx/webapp.py:366
+#: searx/webapp.py:369
 msgid "Error loading the next page"
 msgstr "Error al cargar la siguiente página"
 
-#: searx/webapp.py:518 searx/webapp.py:950
+#: searx/webapp.py:521 searx/webapp.py:953
 msgid "Invalid settings, please edit your preferences"
 msgstr "Parámetros incorrectos, por favor, cambia tus preferencias"
 
-#: searx/webapp.py:534
+#: searx/webapp.py:537
 msgid "Invalid settings"
 msgstr "Ajustes no válidos"
 
-#: searx/webapp.py:611 searx/webapp.py:687
+#: searx/webapp.py:614 searx/webapp.py:690
 msgid "search error"
 msgstr "error en la búsqueda"
 
-#: searx/webapp.py:849
+#: searx/webapp.py:852
 msgid "Suspended"
 msgstr "Suspendido"
 
@@ -284,6 +290,8 @@ msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
 "{lastCitationVelocityYear}"
 msgstr ""
+"{numCitations} citas desde el año {firstCitationVelocityYear} hasta "
+"{lastCitationVelocityYear}"
 
 #: searx/engines/tineye.py:40
 msgid ""
@@ -725,9 +733,9 @@ msgid ""
 "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
 " rel=\"external\">learn more about request methods</a>"
 msgstr ""
-"Modifica cómo se envían los formularios <a href=\"http://es.wikipedia.org/"
-"wiki/Hypertext_Transfer_Protocol#M.C3.A9todos_de_petici.C3.B3n\" rel="
-"\"external\">más información sobre métodos de peticiones</a>"
+"Modifica cómo se envían los formularios <a "
+"href=\"http://es.wikipedia.org/wiki/Hypertext_Transfer_Protocol#M.C3.A9todos_de_petici.C3.B3n\""
+" rel=\"external\">más información sobre métodos de peticiones</a>"
 
 #: searx/templates/simple/preferences.html:269
 msgid "Image proxy"
@@ -1140,27 +1148,27 @@ msgstr "ocultar mapa"
 
 #: searx/templates/simple/result_templates/paper.html:5
 msgid "Published date"
-msgstr ""
+msgstr "Fecha de Publicación"
 
 #: searx/templates/simple/result_templates/paper.html:9
 msgid "Journal"
-msgstr ""
+msgstr "Periódicos"
 
 #: searx/templates/simple/result_templates/paper.html:22
 msgid "Editor"
-msgstr ""
+msgstr "Editor"
 
 #: searx/templates/simple/result_templates/paper.html:23
 msgid "Publisher"
-msgstr ""
+msgstr "Editor"
 
 #: searx/templates/simple/result_templates/paper.html:24
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: searx/templates/simple/result_templates/paper.html:25
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #: searx/templates/simple/result_templates/paper.html:26
 msgid "DOI"

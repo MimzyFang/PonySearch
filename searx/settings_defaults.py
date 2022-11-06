@@ -174,7 +174,7 @@ SCHEMA = {
         'default_http_headers': SettingsValue(dict, {}),
     },
     'redis': {
-        'url': SettingsValue(str, 'unix:///usr/local/searxng-redis/run/redis.sock?db=0'),
+        'url': SettingsValue((None, False, str), False),
     },
     'ui': {
         'static_path': SettingsDirectoryValue(str, os.path.join(searx_dir, 'static')),
@@ -199,6 +199,7 @@ SCHEMA = {
         'useragent_suffix': SettingsValue(str, ''),
         'request_timeout': SettingsValue(numbers.Real, 3.0),
         'enable_http2': SettingsValue(bool, True),
+        'verify': SettingsValue((bool, str), True),
         'max_request_timeout': SettingsValue((None, numbers.Real), None),
         # Magic number kept from previous code
         'pool_connections': SettingsValue(int, 100),
@@ -224,7 +225,8 @@ SCHEMA = {
     'plugins': SettingsValue(list, []),
     'enabled_plugins': SettingsValue((None, list), None),
     'checker': {
-        'off_when_debug': SettingsValue(bool, True),
+        'off_when_debug': SettingsValue(bool, True, None),
+        'scheduling': SettingsValue((None, dict), None, None),
     },
     'categories_as_tabs': SettingsValue(dict, CATEGORIES_AS_TABS),
     'engines': SettingsValue(list, []),

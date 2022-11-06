@@ -120,6 +120,7 @@ from searx.locales import (
 # renaming names from searx imports ...
 from searx.autocomplete import search_autocomplete, backends as autocomplete_backends
 from searx.languages import language_codes as languages
+from searx.shared.redisdb import initialize as redis_initialize
 from searx.search import SearchWithPlugins, initialize as search_initialize
 from searx.network import stream as http_stream, set_context_network_name
 from searx.search.checker import get_result as checker_get_result
@@ -165,6 +166,7 @@ timeout_text = gettext('timeout')
 parsing_error_text = gettext('parsing error')
 http_protocol_error_text = gettext('HTTP protocol error')
 network_error_text = gettext('network error')
+ssl_cert_error_text = gettext("SSL error: certificate validation has failed")
 exception_classname_to_text = {
     None: gettext('unexpected crash'),
     'timeout': timeout_text,
@@ -189,6 +191,8 @@ exception_classname_to_text = {
     'KeyError': parsing_error_text,
     'json.decoder.JSONDecodeError': parsing_error_text,
     'lxml.etree.ParserError': parsing_error_text,
+    'ssl.SSLCertVerificationError': ssl_cert_error_text,  # for Python > 3.7
+    'ssl.CertificateError': ssl_cert_error_text,  # for Python 3.7
 }
 
 
@@ -1381,6 +1385,7 @@ werkzeug_reloader = flask_run_development or (searx_debug and __name__ == "__mai
 if not werkzeug_reloader or (werkzeug_reloader and os.environ.get("WERKZEUG_RUN_MAIN") == "true"):
     locales_initialize()
     _INFO_PAGES = infopage.InfoPageSet()
+    redis_initialize()
     plugin_initialize(app)
     search_initialize(enable_checker=True, check_network=True, enable_metrics=settings['general']['enable_metrics'])
 
