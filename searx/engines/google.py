@@ -112,9 +112,9 @@ filter_mapping = {0: 'off', 1: 'medium', 2: 'high'}
 # specific xpath variables
 # ------------------------
 
-results_xpath = '//div[contains(@class, "MjjYud")]'
-title_xpath = './/h3[1]'
-href_xpath = './/a/@href'
+results_xpath = './/div[@data-sokoban-container]'
+title_xpath = './/a/h3[1]'
+href_xpath = './/a[h3]/@href'
 content_xpath = './/div[@data-content-feature=1]'
 
 # google *sections* are no usual *results*, we ignore them
@@ -254,7 +254,7 @@ def request(query, params):
     if use_mobile_ui:
         additional_parameters = {
             'asearch': 'arc',
-            'async': 'use_ac:true,_fmt:html',
+            'async': 'use_ac:true,_fmt:prog',
         }
 
     # https://www.google.de/search?q=corona&hl=de&lr=lang_de&start=0&tbs=qdr%3Ad&safe=medium
