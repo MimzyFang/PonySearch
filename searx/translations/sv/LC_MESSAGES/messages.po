@@ -11,13 +11,14 @@
 # Waldemar Björnström <waldemar.bjornstrom@unfnorrbotten.se>, 2022.
 # Solaris <zcauchemar@gmail.com>, 2022.
 # sebstrgg <sebastian@wollter.nu>, 2022.
+# mikni <mikni@proton.me>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-10-14 14:11+0000\n"
-"PO-Revision-Date: 2022-10-28 07:18+0000\n"
-"Last-Translator: Markus Heiser <markus.heiser@darmarit.de>\n"
+"PO-Revision-Date: 2022-11-19 16:21+0000\n"
+"Last-Translator: mikni <mikni@proton.me>\n"
 "Language-Team: Swedish <https://weblate.bubu1.eu/projects/searxng/searxng/sv/"
 ">\n"
 "Language: sv\n"
@@ -279,6 +280,8 @@ msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
 "{lastCitationVelocityYear}"
 msgstr ""
+"{numCitations} citat från år {firstCitationVelocityYear} till "
+"{lastCitationVelocityYear}"
 
 #: searx/engines/tineye.py:40
 msgid ""
@@ -305,19 +308,19 @@ msgstr "Det gick inte att ladda ner bilden."
 
 #: searx/engines/wttr.py:101
 msgid "Morning"
-msgstr ""
+msgstr "Morgon"
 
 #: searx/engines/wttr.py:101
 msgid "Noon"
-msgstr ""
+msgstr "Middag"
 
 #: searx/engines/wttr.py:101
 msgid "Evening"
-msgstr ""
+msgstr "Kväll"
 
 #: searx/engines/wttr.py:101
 msgid "Night"
-msgstr ""
+msgstr "Natt"
 
 #: searx/plugins/hash_plugin.py:24
 msgid "Converts strings to different hash digests."
@@ -361,7 +364,7 @@ msgstr ""
 
 #: searx/plugins/self_info.py:20
 msgid "Self Information"
-msgstr ""
+msgstr "Egen information"
 
 #: searx/plugins/self_info.py:21
 msgid ""
@@ -452,7 +455,7 @@ msgstr "Drivet av"
 
 #: searx/templates/simple/base.html:64
 msgid "a privacy-respecting, open metasearch engine"
-msgstr ""
+msgstr "en privatlivs-respekterande, öppen metasökmotor"
 
 #: searx/templates/simple/base.html:65
 msgid "Source code"
@@ -1160,11 +1163,11 @@ msgstr ""
 
 #: searx/templates/simple/result_templates/paper.html:33
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: searx/templates/simple/result_templates/paper.html:34
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: searx/templates/simple/result_templates/torrent.html:6
 msgid "magnet link"
