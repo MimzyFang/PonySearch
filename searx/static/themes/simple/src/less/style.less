@@ -403,6 +403,9 @@ article[data-vim-selected].category-social {
 
 .engines {
   .ltr-float-right();
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   color: var(--color-result-engines-font);
 
   span {
@@ -529,7 +532,7 @@ article[data-vim-selected].category-social {
 #suggestions {
   .wrapper {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     justify-content: flex-end;
 
     form {
@@ -549,6 +552,10 @@ article[data-vim-selected].category-social {
     background: transparent;
     color: var(--color-result-search-url-font);
     cursor: pointer;
+    width: calc(100%);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
   }
 
   input[type="submit"],
@@ -834,6 +841,9 @@ article[data-vim-selected].category-social {
 
     .engines {
       .ltr-float-right();
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       padding: 0 0 3px 0;
     }
   }
