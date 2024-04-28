@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# pylint: disable=missing-module-docstring
 
 import json
 from urllib.parse import ParseResult
@@ -11,15 +12,15 @@ from searx.preferences import Preferences
 from tests import SearxTestCase
 
 
-class ViewsTestCase(SearxTestCase):
+class ViewsTestCase(SearxTestCase):  # pylint: disable=missing-class-docstring, too-many-public-methods
     def setUp(self):
         # skip init function (no external HTTP request)
-        def dummy(*args, **kwargs):
+        def dummy(*args, **kwargs):  # pylint: disable=unused-argument
             pass
 
         self.setattr4test(searx.search.processors, 'initialize_processor', dummy)
 
-        from searx import webapp  # pylint disable=import-outside-toplevel
+        from searx import webapp  # pylint: disable=import-outside-toplevel
 
         webapp.app.config['TESTING'] = True  # to get better error messages
         self.app = webapp.app.test_client()
@@ -60,16 +61,16 @@ class ViewsTestCase(SearxTestCase):
             Timing(engine='youtube', total=0.9, load=0.6),
         ]
 
-        def search_mock(search_self, *args):
+        def search_mock(search_self, *args):  # pylint: disable=unused-argument
             search_self.result_container = Mock(
                 get_ordered_results=lambda: test_results,
-                answers=dict(),
+                answers={},
                 corrections=set(),
                 suggestions=set(),
                 infoboxes=[],
                 unresponsive_engines=set(),
                 results=test_results,
-                results_number=lambda: 3,
+                number_of_results=3,
                 results_length=lambda: len(test_results),
                 get_timings=lambda: timings,
                 redirect_url=None,
@@ -87,7 +88,8 @@ class ViewsTestCase(SearxTestCase):
 
         self.setattr4test(Preferences, 'get_value', preferences_get_value)
 
-        self.maxDiff = None  # to see full diffs
+        # to see full diffs
+        self.maxDiff = None  # pylint: disable=invalid-name
 
     def test_index_empty(self):
         result = self.app.post('/')
@@ -198,10 +200,8 @@ class ViewsTestCase(SearxTestCase):
         result = self.app.get('/preferences')
         self.assertEqual(result.status_code, 200)
         self.assertIn(b'<form id="search_form" method="post" action="/preferences"', result.data)
-        self.assertIn(
-            b'<input type="checkbox" id="checkbox_general" name="category_general" checked="checked"/>', result.data
-        )
-        self.assertIn(b'<legend id="pref_locale">Interface language</legend>', result.data)
+        self.assertIn(b'<div id="categories_container">', result.data)
+        self.assertIn(b'<legend id="pref_ui_locale">Interface language</legend>', result.data)
 
     def test_browser_locale(self):
         result = self.app.get('/preferences', headers={'Accept-Language': 'zh-tw;q=0.8'})
@@ -217,7 +217,7 @@ class ViewsTestCase(SearxTestCase):
             'Search language ignored browser preference.',
         )
 
-    def test_brower_empty_locale(self):
+    def test_browser_empty_locale(self):
         result = self.app.get('/preferences', headers={'Accept-Language': ''})
         self.assertEqual(result.status_code, 200)
         self.assertIn(

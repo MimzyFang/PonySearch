@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
+# pylint: disable=missing-module-docstring
 """Test some code from module :py:obj:`searx.locales`"""
 
 from searx import locales
@@ -66,7 +65,7 @@ class TestLocales(SearxTestCase):
         #   B. When user selects a language and a territory the results should be
         #      optimized with first priority on territory and second on language.
 
-        # Assume we have an engine that supports the follwoing locales:
+        # Assume we have an engine that supports the following locales:
         locale_tag_list = ['zh-CN', 'zh-HK', 'nl-BE', 'fr-CA']
 
         # Examples (Assumption A.)

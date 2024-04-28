@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# pylint: disable=missing-module-docstring
+
 from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 from searx.exceptions import SearxParameterException
@@ -10,7 +13,7 @@ from searx.utils import detect_language
 
 
 # remove duplicate queries.
-# FIXME: does not fix "!music !soundcloud", because the categories are 'none' and 'music'
+# HINT: does not fix "!music !soundcloud", because the categories are 'none' and 'music'
 def deduplicate_engineref_list(engineref_list: List[EngineRef]) -> List[EngineRef]:
     engineref_dict = {q.category + '|' + q.name: q for q in engineref_list}
     return list(engineref_dict.values())
@@ -55,7 +58,7 @@ def parse_lang(preferences: Preferences, form: Dict[str, str], raw_text_query: R
         return preferences.get_value('language')
     # get language
     # set specific language if set on request, query or preferences
-    # TODO support search with multiple languages
+    # search with multiple languages is not supported (by most engines)
     if len(raw_text_query.languages):
         query_lang = raw_text_query.languages[-1]
     elif 'language' in form:
@@ -153,7 +156,10 @@ def get_selected_categories(preferences: Preferences, form: Optional[Dict[str, s
     return selected_categories
 
 
-def get_engineref_from_category_list(category_list: List[str], disabled_engines: List[str]) -> List[EngineRef]:
+def get_engineref_from_category_list(  # pylint: disable=invalid-name
+    category_list: List[str],
+    disabled_engines: List[str],
+) -> List[EngineRef]:
     result = []
     for categ in category_list:
         result.extend(
@@ -172,7 +178,7 @@ def parse_generic(preferences: Preferences, form: Dict[str, str], disabled_engin
     explicit_engine_list = False
     if not is_locked('categories'):
         # parse the form only if the categories are not locked
-        for pd_name, pd in form.items():
+        for pd_name, pd in form.items():  # pylint: disable=invalid-name
             if pd_name == 'engines':
                 pd_engines = [
                     EngineRef(engine_name, engines[engine_name].categories[0])
@@ -254,6 +260,7 @@ def get_search_query_from_webapp(
     query_time_range = parse_time_range(form)
     query_timeout = parse_timeout(form, raw_text_query)
     external_bang = raw_text_query.external_bang
+    redirect_to_first_result = raw_text_query.redirect_to_first_result
     engine_data = parse_engine_data(form)
 
     query_lang = parse_lang(preferences, form, raw_text_query)
@@ -288,6 +295,7 @@ def get_search_query_from_webapp(
             query_timeout,
             external_bang=external_bang,
             engine_data=engine_data,
+            redirect_to_first_result=redirect_to_first_result,
         ),
         raw_text_query,
         query_engineref_list_unknown,

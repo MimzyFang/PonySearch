@@ -9,8 +9,8 @@ SEARXNG_UWSGI_USE_SOCKET="${SEARXNG_UWSGI_USE_SOCKET:-true}"
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 # shellcheck source=utils/lib_redis.sh
 source "$(dirname "${BASH_SOURCE[0]}")/lib_redis.sh"
-# shellcheck source=utils/brand.env
-source "${REPO_ROOT}/utils/brand.env"
+# shellcheck source=utils/brand.sh
+source "${REPO_ROOT}/utils/brand.sh"
 
 SERVICE_NAME="searxng"
 SERVICE_USER="searxng"
@@ -159,7 +159,7 @@ searxng.instance.env() {
         echo "  SEARXNG_INTERNAL_HTTP: ${SEARXNG_INTERNAL_HTTP}"
     fi
     cat <<EOF
-environment ${SEARXNG_SRC}/utils/brand.env:
+environment:
   GIT_URL              : ${GIT_URL}
   GIT_BRANCH           : ${GIT_BRANCH}
   SEARXNG_URL          : ${SEARXNG_URL}
@@ -177,6 +177,7 @@ main() {
 
     case $1 in
         --getenv)  var="$2"; echo "${!var}"; exit 0;;
+        --cmd)  shift; "$@";;
         -h|--help) usage; exit 0;;
         install)
             sudo_or_exit
@@ -526,7 +527,6 @@ searxng.install.settings() {
 
     if ! [[ -f "${SEARXNG_SRC}/.git/config" ]]; then
         die "Before install settings, first install SearXNG."
-        exit 42
     fi
 
     mkdir -p "$(dirname "${SEARXNG_SETTINGS_PATH}")"
@@ -607,8 +607,8 @@ searxng.install.uwsgi.http() {
 
 searxng.install.uwsgi.socket() {
     rst_para "Install ${SEARXNG_UWSGI_APP} using socket at: ${SEARXNG_UWSGI_SOCKET}"
-    mkdir -p "$(dirname ${SEARXNG_UWSGI_SOCKET})"
-    chown -R "${SERVICE_USER}:${SERVICE_GROUP}" "$(dirname ${SEARXNG_UWSGI_SOCKET})"
+    mkdir -p "$(dirname "${SEARXNG_UWSGI_SOCKET}")"
+    chown -R "${SERVICE_USER}:${SERVICE_GROUP}" "$(dirname "${SEARXNG_UWSGI_SOCKET}")"
 
     case $DIST_ID-$DIST_VERS in
         fedora-*)
@@ -696,7 +696,7 @@ To install uWSGI use::
         die 42 "SearXNG's uWSGI app not available"
     fi
 
-    if ! searxng.instance.exec python -c "from searx.shared import redisdb; redisdb.initialize() or exit(42)"; then
+    if ! searxng.instance.exec python -c "from searx import redisdb; redisdb.initialize() or exit(42)"; then
         rst_para "\
 The configured redis DB is not available: If your server is public to the
 internet, you should setup a bot protection to block excessively bot queries.

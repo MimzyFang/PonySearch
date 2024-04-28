@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """This module holds the *data* created by::
 
   make data.all
@@ -15,6 +14,7 @@ __all__ = [
     'EXTERNAL_BANGS',
     'OSM_KEYS_TAGS',
     'ENGINE_DESCRIPTIONS',
+    'LOCALES',
     'ahmia_blacklist_loader',
 ]
 
@@ -50,3 +50,4 @@ EXTERNAL_BANGS = _load('external_bangs.json')
 OSM_KEYS_TAGS = _load('osm_keys_tags.json')
 ENGINE_DESCRIPTIONS = _load('engine_descriptions.json')
 ENGINE_TRAITS = _load('engine_traits.json')
+LOCALES = _load('locales.json')

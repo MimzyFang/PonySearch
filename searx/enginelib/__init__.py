@@ -1,23 +1,19 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
-"""Engine related implementations
+"""Implementations of the framework for the SearXNG engines.
 
-.. note::
+.. hint::
 
-   The long term goal is to modularize all relevant implementations to the
-   engines here in this Python package.  In addition to improved modularization,
-   this will also be necessary in part because the probability of circular
-   imports will increase due to the increased typification of implementations in
-   the future.
+   The long term goal is to modularize all implementations of the engine
+   framework here in this Python package.  ToDo:
 
-   ToDo:
+   - move implementations of the :ref:`searx.engines loader` to a new module in
+     the :py:obj:`searx.enginelib` namespace.
 
-   - move :py:obj:`searx.engines.load_engine` to a new module `searx.enginelib`.
 """
 
 
 from __future__ import annotations
-from typing import Union, Dict, List, Callable, TYPE_CHECKING
+from typing import List, Callable, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from searx.enginelib import traits
@@ -36,7 +32,7 @@ class Engine:  # pylint: disable=too-few-public-methods
     # Common options in the engine module
 
     engine_type: str
-    """Type of the engine (:origin:`searx/search/processors`)"""
+    """Type of the engine (:ref:`searx.search.processors`)"""
 
     paging: bool
     """Engine supports multiple pages."""
@@ -122,7 +118,7 @@ class Engine:  # pylint: disable=too-few-public-methods
     """Remove the engine from the settings (*disabled & removed*)."""
 
     about: dict
-    """Additional fileds describing the engine.
+    """Additional fields describing the engine.
 
     .. code:: yaml
 
@@ -134,3 +130,15 @@ class Engine:  # pylint: disable=too-few-public-methods
           require_api_key: true
           results: HTML
     """
+
+    using_tor_proxy: bool
+    """Using tor proxy (``true``) or not (``false``) for this engine."""
+
+    send_accept_language_header: bool
+    """When this option is activated, the language (locale) that is selected by
+    the user is used to build and send a ``Accept-Language`` header in the
+    request to the origin search engine."""
+
+    tokens: List[str]
+    """A list of secret tokens to make this engine *private*, more details see
+    :ref:`private engines`."""

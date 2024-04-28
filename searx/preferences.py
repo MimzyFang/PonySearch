@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Searx preferences implementation.
 """
 
@@ -9,6 +8,7 @@ from base64 import urlsafe_b64encode, urlsafe_b64decode
 from zlib import compress, decompress
 from urllib.parse import parse_qs, urlencode
 from typing import Iterable, Dict, List, Optional
+from collections import OrderedDict
 
 import flask
 import babel
@@ -24,9 +24,20 @@ from searx.engines import DEFAULT_CATEGORY
 COOKIE_MAX_AGE = 60 * 60 * 24 * 365 * 5  # 5 years
 DOI_RESOLVERS = list(settings['doi_resolvers'])
 
+MAP_STR2BOOL: Dict[str, bool] = OrderedDict(
+    [
+        ('0', False),
+        ('1', True),
+        ('on', True),
+        ('off', False),
+        ('True', True),
+        ('False', False),
+        ('none', False),
+    ]
+)
+
 
 class ValidationException(Exception):
-
     """Exption from ``cls.__init__`` when configuration value is invalid."""
 
 
@@ -192,6 +203,26 @@ class MapSetting(Setting):
             raise ValidationException('Invalid choice: {0}'.format(data))
         self.value = self.map[data]
         self.key = data  # pylint: disable=attribute-defined-outside-init
+
+    def save(self, name: str, resp: flask.Response):
+        """Save cookie ``name`` in the HTTP response object"""
+        if hasattr(self, 'key'):
+            resp.set_cookie(name, self.key, max_age=COOKIE_MAX_AGE)
+
+
+class BooleanSetting(Setting):
+    """Setting of a boolean value that has to be translated in order to be storable"""
+
+    def normalized_str(self, val):
+        for v_str, v_obj in MAP_STR2BOOL.items():
+            if val == v_obj:
+                return v_str
+        raise ValueError("Invalid value: %s (%s) is not a boolean!" % (repr(val), type(val)))
+
+    def parse(self, data: str):
+        """Parse and validate ``data`` and store the result at ``self.value``"""
+        self.value = MAP_STR2BOOL[data]
+        self.key = self.normalized_str(self.value)  # pylint: disable=attribute-defined-outside-init
 
     def save(self, name: str, resp: flask.Response):
         """Save cookie ``name`` in the HTTP response object"""
@@ -375,16 +406,9 @@ class Preferences:
                 locked=is_locked('autocomplete'),
                 choices=list(autocomplete.backends.keys()) + ['']
             ),
-            'image_proxy': MapSetting(
+            'image_proxy': BooleanSetting(
                 settings['server']['image_proxy'],
-                locked=is_locked('image_proxy'),
-                map={
-                    '': settings['server']['image_proxy'],
-                    '0': False,
-                    '1': True,
-                    'True': True,
-                    'False': False
-                }
+                locked=is_locked('image_proxy')
             ),
             'method': EnumStringSetting(
                 settings['server']['method'],
@@ -405,15 +429,9 @@ class Preferences:
                 locked=is_locked('theme'),
                 choices=themes
             ),
-            'results_on_new_tab': MapSetting(
+            'results_on_new_tab': BooleanSetting(
                 settings['ui']['results_on_new_tab'],
-                locked=is_locked('results_on_new_tab'),
-                map={
-                    '0': False,
-                    '1': True,
-                    'False': False,
-                    'True': True
-                }
+                locked=is_locked('results_on_new_tab')
             ),
             'doi_resolver': MultipleChoiceSetting(
                 [settings['default_doi_resolver'], ],
@@ -425,48 +443,29 @@ class Preferences:
                 locked=is_locked('simple_style'),
                 choices=['', 'auto', 'light', 'dark']
             ),
-            'center_alignment': MapSetting(
+            'center_alignment': BooleanSetting(
                 settings['ui']['center_alignment'],
-                locked=is_locked('center_alignment'),
-                map={
-                    '0': False,
-                    '1': True,
-                    'False': False,
-                    'True': True
-                }
+                locked=is_locked('center_alignment')
             ),
-            'advanced_search': MapSetting(
+            'advanced_search': BooleanSetting(
                 settings['ui']['advanced_search'],
-                locked=is_locked('advanced_search'),
-                map={
-                    '0': False,
-                    '1': True,
-                    'False': False,
-                    'True': True,
-                    'on': True,
-                }
+                locked=is_locked('advanced_search')
             ),
-            'query_in_title': MapSetting(
+            'query_in_title': BooleanSetting(
                 settings['ui']['query_in_title'],
-                locked=is_locked('query_in_title'),
-                map={
-                    '': settings['ui']['query_in_title'],
-                    '0': False,
-                    '1': True,
-                    'True': True,
-                    'False': False
-                }
+                locked=is_locked('query_in_title')
             ),
-            'infinite_scroll': MapSetting(
+            'infinite_scroll': BooleanSetting(
                 settings['ui']['infinite_scroll'],
-                locked=is_locked('infinite_scroll'),
-                map={
-                    '': settings['ui']['infinite_scroll'],
-                    '0': False,
-                    '1': True,
-                    'True': True,
-                    'False': False
-                }
+                locked=is_locked('infinite_scroll')
+            ),
+            'search_on_category_select': BooleanSetting(
+                settings['ui']['search_on_category_select'],
+                locked=is_locked('search_on_category_select')
+            ),
+            'hotkeys': EnumStringSetting(
+                settings['ui']['hotkeys'],
+                choices=['default', 'vim']
             ),
             # fmt: on
         }
@@ -529,6 +528,13 @@ class Preferences:
         disabled_engines = []
         enabled_categories = []
         disabled_plugins = []
+
+        # boolean preferences are not sent by the form if they're false,
+        # so we have to add them as false manually if they're not sent (then they would be true)
+        for key, setting in self.key_value_settings.items():
+            if key not in input_data.keys() and isinstance(setting, BooleanSetting):
+                input_data[key] = 'False'
+
         for user_setting_name, user_setting in input_data.items():
             if user_setting_name in self.key_value_settings:
                 self.key_value_settings[user_setting_name].parse(user_setting)

@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 # pylint: disable=missing-module-docstring, too-few-public-methods
 
 import threading
@@ -8,6 +7,7 @@ from timeit import default_timer
 from uuid import uuid4
 
 import flask
+from flask import copy_current_request_context
 import babel
 
 from searx import settings
@@ -88,7 +88,7 @@ class Search:
         # max of all selected engine timeout
         default_timeout = 0
 
-        # start search-reqest for all selected engines
+        # start search-request for all selected engines
         for engineref in self.search_query.engineref_list:
             processor = PROCESSORS[engineref.name]
 
@@ -140,8 +140,9 @@ class Search:
         search_id = str(uuid4())
 
         for engine_name, query, request_params in requests:
+            _search = copy_current_request_context(PROCESSORS[engine_name].search)
             th = threading.Thread(  # pylint: disable=invalid-name
-                target=PROCESSORS[engine_name].search,
+                target=_search,
                 args=(query, request_params, self.result_container, self.start_time, self.actual_timeout),
                 name=search_id,
             )

@@ -43,7 +43,7 @@ of this container:
 
 - enables :ref:`limiter <limiter>` to protect against bots
 - enables :ref:`image proxy <image_proxy>` for better privacy
-- enables :ref:`cache busting <static_use_hash>` to save bandwith
+- enables :ref:`cache busting <static_use_hash>` to save bandwidth
 
 ----
 
@@ -92,6 +92,9 @@ instance using `docker run <https://docs.docker.com/engine/reference/run/>`_:
                 searxng/searxng
    2f998.... # container's ID
 
+The environment variables UWSGI_WORKERS and UWSGI_THREADS overwrite the default
+number of UWSGI processes and UWSGI threads specified in `/etc/searxng/uwsgi.ini`.
+
 Open your WEB browser and visit the URL:
 
 .. code:: sh
@@ -108,7 +111,7 @@ can modify these files according to your needs and restart the Docker image.
 Use command ``container ls`` to list running containers, add flag `-a
 <https://docs.docker.com/engine/reference/commandline/container_ls>`__ to list
 exited containers also.  With ``container stop`` a running container can be
-stoped.  To get rid of a container use ``container rm``:
+stopped.  To get rid of a container use ``container rm``:
 
 .. code:: sh
 

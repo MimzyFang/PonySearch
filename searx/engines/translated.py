@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-"""
- MyMemory Translated
+"""MyMemory Translated
+
 """
 
 # about
@@ -14,7 +14,7 @@ about = {
 }
 
 engine_type = 'online_dictionary'
-categories = ['dictionaries']
+categories = ['general', 'translate']
 url = 'https://api.mymemory.translated.net/get?q={query}&langpair={from_lang}|{to_lang}{key}'
 web_url = 'https://mymemory.translated.net/en/{from_lang}/{to_lang}/{query}'
 weight = 100
@@ -23,7 +23,7 @@ https_support = True
 api_key = ''
 
 
-def request(query, params):
+def request(query, params):  # pylint: disable=unused-argument
     if api_key:
         key_form = '&key=' + api_key
     else:

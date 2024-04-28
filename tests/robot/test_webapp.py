@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 # pylint: disable=missing-module-docstring,missing-function-docstring
 
 from time import sleep
@@ -75,4 +74,4 @@ def test_search(browser):
     browser.visit(url)
     browser.fill('q', 'test search query')
     browser.find_by_xpath('//button[@type="submit"]').first.click()
-    assert browser.is_text_present('didn\'t find any results')
+    assert browser.is_text_present('No results were found')

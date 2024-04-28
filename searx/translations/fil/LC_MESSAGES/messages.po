@@ -6,34 +6,37 @@
 # gr01d, 2018
 # Markus Heiser <markus.heiser@darmarit.de>, 2022.
 # Hachiki <ninonakano408@gmail.com>, 2022.
-# return42 <markus.heiser@darmarit.de>, 2023.
+# return42 <markus.heiser@darmarit.de>, 2023, 2024.
+# johnmartzbuntia <johnmartibuntia@jmtb.xyz>, 2024.
+# hankskyjames777 <iamjuanz30312@gmail.com>, 2024.
+# return42 <return42@users.noreply.translate.codeberg.org>, 2024.
+# Kita Ikuyo <searinminecraft@courvix.com>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-08 09:24+0000\n"
-"PO-Revision-Date: 2023-05-23 11:37+0000\n"
-"Last-Translator: return42 <markus.heiser@darmarit.de>\n"
-"Language-Team: Filipino <https://translate.codeberg.org/projects/searxng/"
-"searxng/fil/>\n"
+"POT-Creation-Date: 2024-04-26 05:37+0000\n"
+"PO-Revision-Date: 2024-04-03 13:28+0000\n"
+"Last-Translator: Kita Ikuyo <searinminecraft@courvix.com>\n"
 "Language: fil\n"
+"Language-Team: Filipino "
+"<https://translate.codeberg.org/projects/searxng/searxng/fil/>\n"
+"Plural-Forms: nplurals=2; plural=(n == 1 || n==2 || n==3) || (n % 10 != 4"
+" || n % 10 != 6 || n % 10 != 9);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n == 1 || n==2 || n==3) || (n % 10 != 4 || "
-"n % 10 != 6 || n % 10 != 9);\n"
-"X-Generator: Weblate 4.17\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.14.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
 #: searx/searxng.msg
 msgid "without further subgrouping"
-msgstr ""
+msgstr "nang walang karagdagang pagbubuklod ng data"
 
 #. CONSTANT_NAMES['DEFAULT_CATEGORY']
 #: searx/searxng.msg
 msgid "other"
-msgstr "other"
+msgstr "iba pa"
 
 #. CATEGORY_NAMES['FILES']
 #: searx/searxng.msg
@@ -63,7 +66,17 @@ msgstr "larawan"
 #. CATEGORY_NAMES['VIDEOS']
 #: searx/searxng.msg
 msgid "videos"
-msgstr "bidyo"
+msgstr "mga bidyo"
+
+#. CATEGORY_NAMES['RADIO']
+#: searx/engines/radio_browser.py:103 searx/searxng.msg
+msgid "radio"
+msgstr "radyo"
+
+#. CATEGORY_NAMES['TV']
+#: searx/searxng.msg
+msgid "tv"
+msgstr ""
 
 #. CATEGORY_NAMES['IT']
 #: searx/searxng.msg
@@ -73,7 +86,7 @@ msgstr "it"
 #. CATEGORY_NAMES['NEWS']
 #: searx/searxng.msg
 msgid "news"
-msgstr "balita"
+msgstr "mga balita"
 
 #. CATEGORY_NAMES['MAP']
 #: searx/searxng.msg
@@ -83,12 +96,12 @@ msgstr "mapa"
 #. CATEGORY_NAMES['ONIONS']
 #: searx/searxng.msg
 msgid "onions"
-msgstr "sibuyas"
+msgstr "mga onion links"
 
 #. CATEGORY_NAMES['SCIENCE']
 #: searx/searxng.msg
 msgid "science"
-msgstr "siyensya"
+msgstr "agham't siyénsiyá"
 
 #. CATEGORY_GROUPS['APPS']
 #: searx/searxng.msg
@@ -103,7 +116,7 @@ msgstr "diksyonaryo"
 #. CATEGORY_GROUPS['LYRICS']
 #: searx/searxng.msg
 msgid "lyrics"
-msgstr "liriko"
+msgstr "mga liriko"
 
 #. CATEGORY_GROUPS['PACKAGES']
 #: searx/searxng.msg
@@ -123,7 +136,7 @@ msgstr "repositoryo"
 #. CATEGORY_GROUPS['SOFTWARE_WIKIS']
 #: searx/searxng.msg
 msgid "software wikis"
-msgstr "sofwer wikis"
+msgstr "software wikis"
 
 #. CATEGORY_GROUPS['WEB']
 #: searx/searxng.msg
@@ -133,7 +146,7 @@ msgstr "web"
 #. CATEGORY_GROUPS['SCIENTIFIC PUBLICATIONS']
 #: searx/searxng.msg
 msgid "scientific publications"
-msgstr "mga lathalaing pang agham"
+msgstr "mga lathalaing pang agham't siyénsiyá"
 
 #. STYLE_NAMES['AUTO']
 #: searx/searxng.msg
@@ -150,112 +163,262 @@ msgstr "maliwanag"
 msgid "dark"
 msgstr "madilim"
 
-#: searx/webapp.py:165
-msgid "timeout"
-msgstr "panandaliang pagtigil"
+#. BRAND_CUSTOM_LINKS['UPTIME']
+#: searx/searxng.msg
+msgid "Uptime"
+msgstr "\"uptime\""
 
-#: searx/webapp.py:166
-msgid "parsing error"
-msgstr "pag iintinde ng mali"
+#. BRAND_CUSTOM_LINKS['ABOUT']
+#: searx/searxng.msg searx/templates/simple/base.html:50
+msgid "About"
+msgstr "Tungkol"
 
-#: searx/webapp.py:167
-msgid "HTTP protocol error"
-msgstr "HTTPS protokol pagkakamali"
+#. WEATHER_TERMS['AVERAGE TEMP.']
+#: searx/searxng.msg
+msgid "Average temp."
+msgstr ""
 
-#: searx/webapp.py:168
-msgid "network error"
-msgstr "pagkakamali sa network"
+#. WEATHER_TERMS['CLOUD COVER']
+#: searx/searxng.msg
+msgid "Cloud cover"
+msgstr ""
 
-#: searx/webapp.py:169
-msgid "SSL error: certificate validation has failed"
-msgstr "SSL error: Nabigo ang pagpapatunay ng sertipiko"
+#. WEATHER_TERMS['CONDITION']
+#: searx/searxng.msg
+msgid "Condition"
+msgstr ""
 
-#: searx/webapp.py:171
-msgid "unexpected crash"
-msgstr "Hindi inaasahang pagbagsak"
+#. WEATHER_TERMS['CURRENT CONDITION']
+#: searx/searxng.msg
+msgid "Current condition"
+msgstr ""
 
-#: searx/webapp.py:178
-msgid "HTTP error"
-msgstr "HTTP error"
+#. WEATHER_TERMS['EVENING']
+#: searx/engines/wttr.py:100 searx/searxng.msg
+msgid "Evening"
+msgstr "Hapon"
 
-#: searx/webapp.py:179
-msgid "HTTP connection error"
-msgstr "Error sa koneksyong HTTP"
+#. WEATHER_TERMS['FEELS LIKE']
+#: searx/searxng.msg
+msgid "Feels like"
+msgstr ""
 
-#: searx/webapp.py:185
-msgid "proxy error"
-msgstr "Proxy Error"
+#. WEATHER_TERMS['HUMIDITY']
+#: searx/searxng.msg
+msgid "Humidity"
+msgstr ""
 
-#: searx/webapp.py:186
-msgid "CAPTCHA"
-msgstr "CAPTCHA"
+#. WEATHER_TERMS['MAX TEMP.']
+#: searx/searxng.msg
+msgid "Max temp."
+msgstr ""
 
-#: searx/webapp.py:187
-msgid "too many requests"
-msgstr "Masyadong maraming hinihingi"
+#. WEATHER_TERMS['MIN TEMP.']
+#: searx/searxng.msg
+msgid "Min temp."
+msgstr ""
 
-#: searx/webapp.py:188
-msgid "access denied"
-msgstr "walang pahintulot"
+#. WEATHER_TERMS['MORNING']
+#: searx/engines/wttr.py:100 searx/searxng.msg
+msgid "Morning"
+msgstr "Umaga"
 
-#: searx/webapp.py:189
-msgid "server API error"
-msgstr "pagkakamali sa server API"
+#. WEATHER_TERMS['NIGHT']
+#: searx/engines/wttr.py:100 searx/searxng.msg
+msgid "Night"
+msgstr "Gabi"
 
-#: searx/webapp.py:368
+#. WEATHER_TERMS['NOON']
+#: searx/engines/wttr.py:100 searx/searxng.msg
+msgid "Noon"
+msgstr "Tanghali"
+
+#. WEATHER_TERMS['PRESSURE']
+#: searx/searxng.msg
+msgid "Pressure"
+msgstr ""
+
+#. WEATHER_TERMS['SUNRISE']
+#: searx/searxng.msg
+msgid "Sunrise"
+msgstr ""
+
+#. WEATHER_TERMS['SUNSET']
+#: searx/searxng.msg
+msgid "Sunset"
+msgstr ""
+
+#. WEATHER_TERMS['TEMPERATURE']
+#: searx/searxng.msg
+msgid "Temperature"
+msgstr ""
+
+#. WEATHER_TERMS['UV INDEX']
+#: searx/searxng.msg
+msgid "UV index"
+msgstr ""
+
+#. WEATHER_TERMS['VISIBILITY']
+#: searx/searxng.msg
+msgid "Visibility"
+msgstr ""
+
+#. WEATHER_TERMS['WIND']
+#: searx/searxng.msg
+msgid "Wind"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['SUBSCRIBERS']
+#: searx/searxng.msg
+msgid "subscribers"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['POSTS']
+#: searx/searxng.msg
+msgid "posts"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['ACTIVE USERS']
+#: searx/searxng.msg
+msgid "active users"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['COMMENTS']
+#: searx/searxng.msg
+msgid "comments"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['USER']
+#: searx/searxng.msg
+msgid "user"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['COMMUNITY']
+#: searx/searxng.msg
+msgid "community"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['POINTS']
+#: searx/searxng.msg
+msgid "points"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['TITLE']
+#: searx/searxng.msg
+msgid "title"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['AUTHOR']
+#: searx/searxng.msg
+msgid "author"
+msgstr ""
+
+#: searx/webapp.py:330
 msgid "No item found"
 msgstr "Walang nakita na aytem"
 
-#: searx/engines/qwant.py:218
-#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:370
+#: searx/engines/qwant.py:281
+#: searx/templates/simple/result_templates/images.html:23 searx/webapp.py:332
 msgid "Source"
 msgstr "Pinagmulan"
 
-#: searx/webapp.py:372
+#: searx/webapp.py:334
 msgid "Error loading the next page"
-msgstr "Nag error ang pagload ng kabilang pahina"
+msgstr "Error sa paglo-load ng susunod na pahina"
 
-#: searx/webapp.py:527 searx/webapp.py:965
+#: searx/webapp.py:491 searx/webapp.py:887
 msgid "Invalid settings, please edit your preferences"
-msgstr "Maling settings, paki ayos ang preferences"
+msgstr "Di-wastong mga setting, pakibago ang iyong mga kagustuhan"
 
-#: searx/webapp.py:543
+#: searx/webapp.py:507
 msgid "Invalid settings"
-msgstr "Maling settings"
+msgstr "Di-wastong mga setting"
 
-#: searx/webapp.py:620 searx/webapp.py:696
+#: searx/webapp.py:584 searx/webapp.py:666
 msgid "search error"
-msgstr "nagkaproblema sa paghahanap"
+msgstr "nagkaproblema sa paghahanap ng mga resulta"
 
-#: searx/webapp.py:869
+#: searx/webutils.py:36
+msgid "timeout"
+msgstr "panandaliang pagtigil"
+
+#: searx/webutils.py:37
+msgid "parsing error"
+msgstr "error sa pag-parse ng mga resulta"
+
+#: searx/webutils.py:38
+msgid "HTTP protocol error"
+msgstr "Error sa HTTPS protokol"
+
+#: searx/webutils.py:39
+msgid "network error"
+msgstr "Network Error"
+
+#: searx/webutils.py:40
+msgid "SSL error: certificate validation has failed"
+msgstr "SSL error: Nabigo ang pagpapatunay ng sertipiko"
+
+#: searx/webutils.py:42
+msgid "unexpected crash"
+msgstr "Hindi inaasahang pagbagsak"
+
+#: searx/webutils.py:49
+msgid "HTTP error"
+msgstr "HTTP error"
+
+#: searx/webutils.py:50
+msgid "HTTP connection error"
+msgstr "Error sa koneksyong HTTP"
+
+#: searx/webutils.py:56
+msgid "proxy error"
+msgstr "Proxy Error"
+
+#: searx/webutils.py:57
+msgid "CAPTCHA"
+msgstr "CAPTCHA"
+
+#: searx/webutils.py:58
+msgid "too many requests"
+msgstr "masyadong maraming mga kahilingan"
+
+#: searx/webutils.py:59
+msgid "access denied"
+msgstr "tinanggihan ang access"
+
+#: searx/webutils.py:60
+msgid "server API error"
+msgstr "pagkakamali sa server API"
+
+#: searx/webutils.py:79
 msgid "Suspended"
 msgstr "Suspendido"
 
-#: searx/webutils.py:205
+#: searx/webutils.py:314
 msgid "{minutes} minute(s) ago"
 msgstr "{minutes} na minuto ang nakalipas"
 
-#: searx/webutils.py:206
+#: searx/webutils.py:315
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours} oras at {minutes} na minto ang nakalipas"
 
-#: searx/answerers/random/answerer.py:67
+#: searx/answerers/random/answerer.py:75
 msgid "Random value generator"
-msgstr "Random value generator"
+msgstr "Random na generator ng halaga"
 
-#: searx/answerers/random/answerer.py:68
+#: searx/answerers/random/answerer.py:76
 msgid "Generate different random values"
 msgstr "Maglabas ng iba't ibang halaga"
 
-#: searx/answerers/statistics/answerer.py:47
+#: searx/answerers/statistics/answerer.py:48
 msgid "Statistics functions"
 msgstr "Estatistika ng mga tungkulin"
 
-#: searx/answerers/statistics/answerer.py:48
+#: searx/answerers/statistics/answerer.py:49
 msgid "Compute {functions} of the arguments"
 msgstr "Tuusin ang {functions} ng pangangatuwiran"
 
-#: searx/engines/openstreetmap.py:160
+#: searx/engines/openstreetmap.py:159
 msgid "Get directions"
 msgstr "Kumuha ng direksyon"
 
@@ -267,11 +430,28 @@ msgstr "{title} (Luma)"
 msgid "This entry has been superseded by"
 msgstr "Ang tala na ito ay ipinagpaliban ng"
 
-#: searx/engines/qwant.py:220
+#: searx/engines/qwant.py:283
 msgid "Channel"
 msgstr "Tyanel"
 
-#: searx/engines/semantic_scholar.py:81
+#: searx/engines/radio_browser.py:105
+msgid "bitrate"
+msgstr "bitrate"
+
+#: searx/engines/radio_browser.py:106
+msgid "votes"
+msgstr "mga boto"
+
+#: searx/engines/radio_browser.py:107
+msgid "clicks"
+msgstr "mga click"
+
+#: searx/engines/seekr.py:193 searx/engines/yummly.py:71
+#: searx/engines/zlibrary.py:128
+msgid "Language"
+msgstr "Wika"
+
+#: searx/engines/semantic_scholar.py:78
 msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
 "{lastCitationVelocityYear}"
@@ -279,60 +459,56 @@ msgstr ""
 "{numCitations} mga sipi mula sa taon {firstCitationVelocityYear} at "
 "{lastCitationVelocityYear}"
 
-#: searx/engines/tineye.py:40
+#: searx/engines/tineye.py:39
 msgid ""
 "Could not read that image url. This may be due to an unsupported file "
 "format. TinEye only supports images that are JPEG, PNG, GIF, BMP, TIFF or"
 " WebP."
 msgstr ""
+"Hindi mabasa ang url ng imahe. Baka ang format ay hindi suportado. JPEG, "
+"PNG, GIF, BMP, TIFF o WebP lamang ang tinatanggap ng TinEye."
 
-#: searx/engines/tineye.py:46
+#: searx/engines/tineye.py:45
 msgid ""
 "The image is too simple to find matches. TinEye requires a basic level of"
 " visual detail to successfully identify matches."
 msgstr ""
+"Masyadong payak ang imahe. Gusto ni TinEye ng higit pang detalye para "
+"makahanap ng katugma."
 
-#: searx/engines/tineye.py:52
+#: searx/engines/tineye.py:51
 msgid "The image could not be downloaded."
-msgstr "Ang image na ito ay hindi maaaring i-download."
+msgstr "Hindi ma-download ang imahe na ito."
 
-#: searx/engines/wttr.py:101
-msgid "Morning"
-msgstr ""
+#: searx/engines/zlibrary.py:129
+msgid "Book rating"
+msgstr "rating ng libro"
 
-#: searx/engines/wttr.py:101
-msgid "Noon"
-msgstr "Tanghali"
+#: searx/engines/zlibrary.py:130
+msgid "File quality"
+msgstr "Kalidad ng file"
 
-#: searx/engines/wttr.py:101
-msgid "Evening"
-msgstr "Gabi"
-
-#: searx/engines/wttr.py:101
-msgid "Night"
-msgstr ""
-
-#: searx/plugins/hash_plugin.py:24
+#: searx/plugins/hash_plugin.py:10
 msgid "Converts strings to different hash digests."
 msgstr "Isinasalin ang string sa iba't ibang hash digests."
 
-#: searx/plugins/hash_plugin.py:52
+#: searx/plugins/hash_plugin.py:38
 msgid "hash digest"
 msgstr "Hash digest"
 
-#: searx/plugins/hostname_replace.py:9
+#: searx/plugins/hostname_replace.py:12
 msgid "Hostname replace"
-msgstr "Hostname replace"
+msgstr "Palitan ang hostname"
 
-#: searx/plugins/hostname_replace.py:10
+#: searx/plugins/hostname_replace.py:13
 msgid "Rewrite result hostnames or remove results based on the hostname"
 msgstr "Palitan ang resulta ng hostname o tanggalin ang resulta base sa hostname"
 
-#: searx/plugins/oa_doi_rewrite.py:9
+#: searx/plugins/oa_doi_rewrite.py:12
 msgid "Open Access DOI rewrite"
 msgstr "Malayang akses sa muling pagsulat ng DOI"
 
-#: searx/plugins/oa_doi_rewrite.py:10
+#: searx/plugins/oa_doi_rewrite.py:13
 msgid ""
 "Avoid paywalls by redirecting to open-access versions of publications "
 "when available"
@@ -340,23 +516,11 @@ msgstr ""
 "Iwasan ang paywall sa pag-redirect sa open-access na bersyon ng "
 "pahahayagan kapagmakukuha"
 
-#: searx/plugins/search_on_category_select.py:19
-msgid "Search on category select"
-msgstr "Maghanap kapag nakapili ng uri"
-
-#: searx/plugins/search_on_category_select.py:20
-msgid ""
-"Perform search immediately if a category selected. Disable to select "
-"multiple categories. (JavaScript required)"
-msgstr ""
-"Gawin ang paghahanap hanggat maaari kapag nakapili ng uri. Alisin kapag "
-"nakapili ng maraming uri. (Nangagailangan ng JavaScript)"
-
-#: searx/plugins/self_info.py:20
+#: searx/plugins/self_info.py:9
 msgid "Self Information"
-msgstr ""
+msgstr "Pansariling impormasyon"
 
-#: searx/plugins/self_info.py:21
+#: searx/plugins/self_info.py:10
 msgid ""
 "Displays your IP if the query is \"ip\" and your user agent if the query "
 "contains \"user agent\"."
@@ -364,52 +528,48 @@ msgstr ""
 "Ipapakita ang iyong IP kapag ang tanong ay \"ip\" at ang iyong user agent"
 " kapag ang sa tanong ay naglalaman ng \"user agent\"."
 
-#: searx/plugins/tor_check.py:25
+#: searx/plugins/tor_check.py:24
 msgid "Tor check plugin"
 msgstr "Tor check plugin"
 
-#: searx/plugins/tor_check.py:28
+#: searx/plugins/tor_check.py:27
 msgid ""
 "This plugin checks if the address of the request is a Tor exit-node, and "
 "informs the user if it is; like check.torproject.org, but from SearXNG."
 msgstr ""
+"Ang plugin na ito ay tsini-check kung ang address ng request ay isang TOR"
+" exit node, at i-iinform ang user kung oo, gaya ng check.torproject.org "
+"ngunit SearXNG."
 
-#: searx/plugins/tor_check.py:62
+#: searx/plugins/tor_check.py:61
 msgid ""
 "Could not download the list of Tor exit-nodes from: "
 "https://check.torproject.org/exit-addresses"
 msgstr ""
+"Hindi ma-download ang listahan ng mga Tor exit-node mula sa: "
+"https://check.torproject.org/exit-addresses"
 
-#: searx/plugins/tor_check.py:78
+#: searx/plugins/tor_check.py:77
 msgid ""
 "You are using Tor and it looks like you have this external IP address: "
 "{ip_address}"
 msgstr ""
+"Ginagamit mo ang Tor at mukang ito ang iyong external IP address: "
+"{ip_address}"
 
-#: searx/plugins/tor_check.py:86
+#: searx/plugins/tor_check.py:85
 msgid "You are not using Tor and you have this external IP address: {ip_address}"
 msgstr ""
+"Hindi mo ginagamit ang Tor at ito ang iyong external IP address: "
+"{ip_address}"
 
-#: searx/plugins/tracker_url_remover.py:29
+#: searx/plugins/tracker_url_remover.py:16
 msgid "Tracker URL remover"
 msgstr "Alisin ang URL tracker"
 
-#: searx/plugins/tracker_url_remover.py:30
+#: searx/plugins/tracker_url_remover.py:17
 msgid "Remove trackers arguments from the returned URL"
 msgstr "Alisin ang tracker sa ibabalik na URL"
-
-#: searx/plugins/vim_hotkeys.py:3
-msgid "Vim-like hotkeys"
-msgstr "Kasingtulad ng vim hotkeys"
-
-#: searx/plugins/vim_hotkeys.py:4
-msgid ""
-"Navigate search results with Vim-like hotkeys (JavaScript required). "
-"Press \"h\" key on main or result page to get help."
-msgstr ""
-"Maglakbay sa resulta ng paghahanap gamit ang 'Vim-like hotkeys' "
-"(Nangagailangan ito ng JavaScript). Pindutin ang \"h\" na pindutan sa "
-"panguna o ang pahina ng resulta para makahingi ng tulong."
 
 #: searx/templates/simple/404.html:4
 msgid "Page not found"
@@ -424,53 +584,49 @@ msgstr "Pumunta sa %(search_page)s."
 msgid "search page"
 msgstr "ang pahina ng paghahanap"
 
-#: searx/templates/simple/base.html:46
-msgid "About"
-msgstr "Tungkol"
-
-#: searx/templates/simple/base.html:50
+#: searx/templates/simple/base.html:54
 msgid "Donate"
 msgstr "Magbigay"
 
-#: searx/templates/simple/base.html:54
-#: searx/templates/simple/preferences.html:100
+#: searx/templates/simple/base.html:58
+#: searx/templates/simple/preferences.html:156
 msgid "Preferences"
 msgstr "Mga Kagustuhan"
 
-#: searx/templates/simple/base.html:64
+#: searx/templates/simple/base.html:68
 msgid "Powered by"
 msgstr "Pinapatakbo ng"
 
-#: searx/templates/simple/base.html:64
+#: searx/templates/simple/base.html:68
 msgid "a privacy-respecting, open metasearch engine"
-msgstr ""
+msgstr "isang nagrerespeto sa privacy, at open na metasearch engine"
 
-#: searx/templates/simple/base.html:65
+#: searx/templates/simple/base.html:69
+#: searx/templates/simple/result_templates/packages.html:59
 msgid "Source code"
 msgstr "sors kowd"
 
-#: searx/templates/simple/base.html:66
+#: searx/templates/simple/base.html:70
 msgid "Issue tracker"
 msgstr "Tagasubaybay ng isyu"
 
-#: searx/templates/simple/base.html:67 searx/templates/simple/stats.html:18
+#: searx/templates/simple/base.html:71 searx/templates/simple/stats.html:18
 msgid "Engine stats"
 msgstr "Engine stats"
 
-#: searx/templates/simple/base.html:69
-#: searx/templates/simple/messages/no_results.html:15
+#: searx/templates/simple/base.html:73
 msgid "Public instances"
 msgstr "Pampublikong instances"
 
-#: searx/templates/simple/base.html:72
+#: searx/templates/simple/base.html:76
 msgid "Privacy policy"
 msgstr "Polisiyang pampribado"
 
-#: searx/templates/simple/base.html:75
+#: searx/templates/simple/base.html:79
 msgid "Contact instance maintainer"
 msgstr "Kontakin ang iyong instance maintainer"
 
-#: searx/templates/simple/categories.html:24
+#: searx/templates/simple/categories.html:26
 msgid "Click on the magnifier to perform search"
 msgstr "Pindutin ang magnifier para maghanap"
 
@@ -479,7 +635,8 @@ msgid "Length"
 msgstr "Haba"
 
 #: searx/templates/simple/macros.html:37
-#: searx/templates/simple/result_templates/images.html:18
+#: searx/templates/simple/result_templates/files.html:34
+#: searx/templates/simple/result_templates/images.html:19
 #: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
 msgstr "Awtor"
@@ -516,448 +673,110 @@ msgstr ""
 "Mga-submit ng isang bagong issue sa GitHub kasama ng impormasyong nasa "
 "itaas"
 
-#: searx/templates/simple/preferences.html:29
+#: searx/templates/simple/preferences.html:65
 msgid "No HTTPS"
 msgstr "Walang HTTPS"
 
-#: searx/templates/simple/messages/no_results.html:10
-#: searx/templates/simple/preferences.html:31
-#: searx/templates/simple/preferences.html:32
-#: searx/templates/simple/results.html:49
+#: searx/templates/simple/elements/engines_msg.html:18
+#: searx/templates/simple/preferences.html:69
+#: searx/templates/simple/preferences.html:70
 msgid "View error logs and submit a bug report"
 msgstr "Tignan ang error logs at magsumite ng bug report"
 
-#: searx/templates/simple/preferences.html:35
+#: searx/templates/simple/preferences.html:74
 msgid "!bang for this engine"
-msgstr ""
+msgstr "!bang para sa engine"
 
-#: searx/templates/simple/preferences.html:36
+#: searx/templates/simple/preferences.html:80
 msgid "!bang for its categories"
-msgstr ""
+msgstr "!bang para sa katerogidad"
 
-#: searx/templates/simple/preferences.html:54
+#: searx/templates/simple/preferences.html:102
 #: searx/templates/simple/stats.html:64
 msgid "Median"
 msgstr "Gitna"
 
-#: searx/templates/simple/preferences.html:55
+#: searx/templates/simple/preferences.html:103
 #: searx/templates/simple/stats.html:70
 msgid "P80"
 msgstr "P80"
 
-#: searx/templates/simple/preferences.html:56
+#: searx/templates/simple/preferences.html:104
 #: searx/templates/simple/stats.html:76
 msgid "P95"
 msgstr "P95"
 
-#: searx/templates/simple/preferences.html:84
+#: searx/templates/simple/preferences.html:136
 msgid "Failed checker test(s): "
 msgstr "Nabigo ang checker test(s): "
 
-#: searx/templates/simple/preferences.html:86
+#: searx/templates/simple/preferences.html:138
 msgid "Errors:"
 msgstr "Mga error:"
 
-#: searx/templates/simple/preferences.html:106
+#: searx/templates/simple/preferences.html:162
 msgid "General"
 msgstr "Pangkalahatan"
 
-#: searx/templates/simple/preferences.html:109
+#: searx/templates/simple/preferences.html:165
 msgid "Default categories"
 msgstr "Ang mga default na uri"
 
-#: searx/templates/simple/filters/languages.html:1
-#: searx/templates/simple/preferences.html:116
-msgid "Search language"
-msgstr "Ang wika ng paghahanap"
-
-#: searx/templates/simple/filters/languages.html:2
-#: searx/templates/simple/preferences.html:119
-msgid "Default language"
-msgstr "Default na wika"
-
-#: searx/templates/simple/filters/languages.html:4
-#: searx/templates/simple/preferences.html:120
-msgid "Auto-detect"
-msgstr ""
-
-#: searx/templates/simple/preferences.html:127
-msgid "What language do you prefer for search?"
-msgstr "Ano ang gusto mong wika sa paghahanap?"
-
-#: searx/templates/simple/preferences.html:127
-msgid "Choose Auto-detect to let SearXNG detect the language of your query."
-msgstr ""
-
-#: searx/templates/simple/preferences.html:133
-msgid "Autocomplete"
-msgstr "Kusang tinatapos"
-
-#: searx/templates/simple/preferences.html:142
-msgid "Find stuff as you type"
-msgstr "Maghanap habang ikaw ang nag-tytype"
-
-#: searx/templates/simple/filters/safesearch.html:1
-#: searx/templates/simple/filters/safesearch.html:2
-#: searx/templates/simple/filters/safesearch.html:3
-#: searx/templates/simple/filters/safesearch.html:4
-#: searx/templates/simple/preferences.html:147
-#: searx/templates/simple/preferences.html:315
-msgid "SafeSearch"
-msgstr "Ligtas na Paghahanap"
-
-#: searx/templates/simple/filters/safesearch.html:2
-#: searx/templates/simple/preferences.html:150
-msgid "Strict"
-msgstr "Mahigpit"
-
-#: searx/templates/simple/filters/safesearch.html:3
-#: searx/templates/simple/preferences.html:151
-msgid "Moderate"
-msgstr "Banayad"
-
-#: searx/templates/simple/filters/safesearch.html:4
-#: searx/templates/simple/preferences.html:152
-msgid "None"
-msgstr "Wala"
-
-#: searx/templates/simple/preferences.html:155
-msgid "Filter content"
-msgstr "Salain ang mga nilalaman"
-
-#: searx/templates/simple/preferences.html:161
-msgid "Open Access DOI resolver"
-msgstr "Open Access DOI resolver"
-
-#: searx/templates/simple/preferences.html:171
-msgid ""
-"Redirect to open-access versions of publications when available (plugin "
-"required)"
-msgstr ""
-"Mag-redirect sa open-access na mga bersyon ng mga publikasyon kapag "
-"available (kailangan ang plugin)"
-
-#: searx/templates/simple/preferences.html:175
-msgid "Engine tokens"
-msgstr "Mga token ng makina"
-
-#: searx/templates/simple/preferences.html:179
-msgid "Access tokens for private engines"
-msgstr "I-access ang mga token para sa mga pribadong makina"
-
-#: searx/templates/simple/preferences.html:183
+#: searx/templates/simple/preferences.html:187
 msgid "User interface"
 msgstr "Ang User interface"
 
-#: searx/templates/simple/preferences.html:186
-msgid "Interface language"
-msgstr "Ang wika ng Interface"
-
-#: searx/templates/simple/preferences.html:194
-msgid "Change the language of the layout"
-msgstr "Ibahin ang layout pangwika"
-
-#: searx/templates/simple/preferences.html:199
-msgid "Theme"
-msgstr "Tema"
-
-#: searx/templates/simple/preferences.html:207
-msgid "Change SearXNG layout"
-msgstr "Baguhin ang SearXNG layout"
-
-#: searx/templates/simple/preferences.html:210
-msgid "Theme style"
-msgstr "Stilo ng theme"
-
-#: searx/templates/simple/preferences.html:218
-msgid "Choose auto to follow your browser settings"
-msgstr "Pumili ng auto para sundin ang mga setting ng iyong browser"
-
-#: searx/templates/simple/preferences.html:221
-msgid "Center Alignment"
-msgstr "Pag-align sa Gitnang"
-
-#: searx/templates/simple/preferences.html:224
-#: searx/templates/simple/preferences.html:236
-#: searx/templates/simple/preferences.html:248
-msgid "On"
-msgstr "Bukas"
-
-#: searx/templates/simple/preferences.html:225
-#: searx/templates/simple/preferences.html:237
-#: searx/templates/simple/preferences.html:249
-msgid "Off"
-msgstr "Sara"
-
-#: searx/templates/simple/preferences.html:228
-msgid "Displays results in the center of the page (Oscar layout)."
-msgstr "Tignan ang resulta sa gitnang bahagi ng pahina (Oscar layout)."
-
-#: searx/templates/simple/preferences.html:233
-msgid "Results on new tabs"
-msgstr "Ang resulta ay na sa bagong tab"
-
-#: searx/templates/simple/preferences.html:240
-msgid "Open result links on new browser tabs"
-msgstr "Buksan ang resulta sa panibagong browser tab"
-
-#: searx/templates/simple/preferences.html:245
-msgid "Infinite scroll"
-msgstr "Walang hanggan na pag-scroll"
-
-#: searx/templates/simple/preferences.html:252
-msgid "Automatically load next page when scrolling to bottom of current page"
-msgstr ""
-"Awtomatiko na ikarga ang sumunod na pahina kapag nakarating na sa dulo ng"
-" kasalukuyang pahina"
-
-#: searx/templates/simple/preferences.html:258
+#: searx/templates/simple/preferences.html:208
 msgid "Privacy"
 msgstr "Pagiging Pribado"
 
-#: searx/templates/simple/preferences.html:261
-msgid "HTTP Method"
-msgstr "Paraan ng HTTP"
-
-#: searx/templates/simple/preferences.html:268
-msgid ""
-"Change how forms are submitted, <a "
-"href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
-" rel=\"external\">learn more about request methods</a>"
-msgstr ""
-
-#: searx/templates/simple/preferences.html:273
-msgid "Image proxy"
-msgstr "Proxy ng larawan"
-
-#: searx/templates/simple/preferences.html:276
-#: searx/templates/simple/preferences.html:288
-msgid "Enabled"
-msgstr "Paganahin"
-
-#: searx/templates/simple/preferences.html:277
-#: searx/templates/simple/preferences.html:289
-msgid "Disabled"
-msgstr "Hindi paganahin"
-
-#: searx/templates/simple/preferences.html:280
-msgid "Proxying image results through SearXNG"
-msgstr "Ang pag-proxy ng mga resulta ng imahe sa pamamagitan ng SearXNG"
-
-#: searx/templates/simple/preferences.html:285
-msgid "Query in the page's title"
-msgstr "Query sa pamagat ng page"
-
-#: searx/templates/simple/preferences.html:292
-msgid ""
-"When enabled, the result page's title contains your query. Your browser "
-"can record this title"
-msgstr ""
-"Kapag pinagana, ang pamagat ng pahina ng resulta ay naglalaman ng iyong "
-"query. Maaaring i-record ng iyong browser ang pamagat na ito"
-
-#: searx/templates/simple/preferences.html:298
+#: searx/templates/simple/preferences.html:221
 msgid "Engines"
 msgstr "Engines"
 
-#: searx/templates/simple/preferences.html:299
+#: searx/templates/simple/preferences.html:223
 msgid "Currently used search engines"
 msgstr "Ang ginagamit natin na search engines"
 
-#: searx/templates/simple/preferences.html:306
-msgid ""
-"This tab dues not exists in the user interface, but you can search in "
-"these engines by its !bangs."
-msgstr ""
-
-#: searx/templates/simple/preferences.html:311
-#: searx/templates/simple/preferences.html:365
-msgid "Allow"
-msgstr "Payagan"
-
-#: searx/templates/simple/preferences.html:312
-#: searx/templates/simple/stats.html:25
-msgid "Engine name"
-msgstr "Pangalan ng engine"
-
-#: searx/templates/simple/preferences.html:313
-msgid "Bang"
-msgstr ""
-
-#: searx/templates/simple/preferences.html:314
-msgid "Supports selected language"
-msgstr "Suportado ang pinili na wika"
-
-#: searx/templates/simple/filters/time_range.html:1
-#: searx/templates/simple/preferences.html:316
-msgid "Time range"
-msgstr "Agwat ng oras"
-
-#: searx/templates/simple/preferences.html:317
-#: searx/templates/simple/stats.html:28
-msgid "Response time"
-msgstr "Oras ng pagtugon"
-
-#: searx/templates/simple/preferences.html:318
-msgid "Max time"
-msgstr "Ang max na oras"
-
-#: searx/templates/simple/preferences.html:319
-#: searx/templates/simple/stats.html:29
-msgid "Reliability"
-msgstr "pagiging maaasahan"
-
-#: searx/templates/simple/preferences.html:360
+#: searx/templates/simple/preferences.html:231
 msgid "Special Queries"
 msgstr "Mga Espesyal na Queries"
 
-#: searx/templates/simple/preferences.html:366
-msgid "Keywords"
-msgstr "Mga keyword"
-
-#: searx/templates/simple/preferences.html:367
-msgid "Name"
-msgstr "Pangalan"
-
-#: searx/templates/simple/preferences.html:368
-msgid "Description"
-msgstr "Paglalarawan"
-
-#: searx/templates/simple/preferences.html:369
-msgid "Examples"
-msgstr "Mga halimbawa"
-
-#: searx/templates/simple/preferences.html:372
-msgid "This is the list of SearXNG's instant answering modules."
-msgstr "Ito ang listahan ng mga instant answering module ng SearXNG."
-
-#: searx/templates/simple/preferences.html:383
-msgid "This is the list of plugins."
-msgstr "Ito ang listahan ng mga plugin."
-
-#: searx/templates/simple/preferences.html:400
+#: searx/templates/simple/preferences.html:237
 msgid "Cookies"
 msgstr "Cookies"
-
-#: searx/templates/simple/preferences.html:402
-msgid ""
-"This is the list of cookies and their values SearXNG is storing on your "
-"computer."
-msgstr ""
-"Ito ang listahan ng mga cookies at values na ini-store ng SearXNG sa "
-"i'yong computer."
-
-#: searx/templates/simple/preferences.html:403
-msgid "With that list, you can assess SearXNG transparency."
-msgstr ""
-
-#: searx/templates/simple/preferences.html:408
-msgid "Cookie name"
-msgstr "Pangalan ng cookie"
-
-#: searx/templates/simple/preferences.html:409
-msgid "Value"
-msgstr "Nilalaman"
-
-#: searx/templates/simple/preferences.html:421
-msgid "Search URL of the currently saved preferences"
-msgstr "Search URL ng kasalukuyan na naka-save sa preferences"
-
-#: searx/templates/simple/preferences.html:425
-msgid ""
-"Note: specifying custom settings in the search URL can reduce privacy by "
-"leaking data to the clicked result sites."
-msgstr ""
-"Tandaan: kapag gumawa ng sariling settings sa search URL mababawasan ang "
-"pagiging pribado dahil magkakaroon ng butas sa datos dahil sa pag-pindot "
-"sa resulta na sites."
-
-#: searx/templates/simple/preferences.html:426
-msgid "URL to restore your preferences in another browser"
-msgstr ""
-
-#: searx/templates/simple/preferences.html:430
-msgid ""
-"Specifying custom settings in the preferences URL can be used to sync "
-"preferences across devices."
-msgstr ""
-
-#: searx/templates/simple/preferences.html:435
-msgid ""
-"These settings are stored in your cookies, this allows us not to store "
-"this data about you."
-msgstr ""
-"Ang settings ay nakalagay sa cookies upang hindi kami makakuha ng datos "
-"mula sa iyo."
-
-#: searx/templates/simple/preferences.html:437
-msgid ""
-"These cookies serve your sole convenience, we don't use these cookies to "
-"track you."
-msgstr ""
-"Hindi namin ginagamit ang cookies para i-track ka, ito ay para maging "
-"maayos ang paggamit mo."
-
-#: searx/templates/simple/preferences.html:440
-msgid "Save"
-msgstr ""
-
-#: searx/templates/simple/preferences.html:441
-msgid "Reset defaults"
-msgstr "I-reset ang defaults"
-
-#: searx/templates/simple/preferences.html:442
-msgid "Back"
-msgstr ""
 
 #: searx/templates/simple/results.html:23
 msgid "Answers"
 msgstr "Mga sagot"
 
-#: searx/templates/simple/results.html:39
+#: searx/templates/simple/results.html:38
 msgid "Number of results"
 msgstr "Bilang ng resulta"
 
-#: searx/templates/simple/messages/no_results.html:6
-#: searx/templates/simple/results.html:46
-msgid "Error!"
-msgstr "Kamalian!"
+#: searx/templates/simple/results.html:44
+msgid "Info"
+msgstr "Impormasyon"
 
-#: searx/templates/simple/results.html:46
-msgid "Engines cannot retrieve results"
-msgstr "Hindi makuha ng engines ang mga resulta"
-
-#: searx/templates/simple/results.html:68
-msgid "Suggestions"
-msgstr "Mga mungkahi"
-
-#: searx/templates/simple/results.html:90
-msgid "Search URL"
-msgstr "URL ng Search"
-
-#: searx/templates/simple/results.html:96
-msgid "Download results"
-msgstr "I-download ang mga resulta"
-
-#: searx/templates/simple/results.html:120
+#: searx/templates/simple/results.html:73
 msgid "Try searching for:"
 msgstr "Subukan maghanap ng:"
 
-#: searx/templates/simple/results.html:152
+#: searx/templates/simple/results.html:105
 msgid "Back to top"
-msgstr ""
+msgstr "Balik sa taas"
 
-#: searx/templates/simple/results.html:170
+#: searx/templates/simple/results.html:123
 msgid "Previous page"
-msgstr ""
+msgstr "Kaninang Pahina"
 
-#: searx/templates/simple/results.html:187
+#: searx/templates/simple/results.html:141
 msgid "Next page"
-msgstr ""
+msgstr "Susunod na page"
 
 #: searx/templates/simple/search.html:3
 msgid "Display the front page"
-msgstr ""
+msgstr "Ipakita ang front page"
 
 #: searx/templates/simple/search.html:9
 #: searx/templates/simple/simple_search.html:5
@@ -967,16 +786,21 @@ msgstr "Maghanap ng..."
 #: searx/templates/simple/search.html:10
 #: searx/templates/simple/simple_search.html:6
 msgid "clear"
-msgstr ""
+msgstr "Malinaw"
 
 #: searx/templates/simple/search.html:11
 #: searx/templates/simple/simple_search.html:7
 msgid "search"
-msgstr ""
+msgstr "maghanap"
 
 #: searx/templates/simple/stats.html:21
 msgid "There is currently no data available. "
 msgstr "Wala pa sa ngayon na makitang datos."
+
+#: searx/templates/simple/preferences/engines.html:18
+#: searx/templates/simple/stats.html:25
+msgid "Engine name"
+msgstr "Pangalan ng engine"
 
 #: searx/templates/simple/stats.html:26
 msgid "Scores"
@@ -984,23 +808,33 @@ msgstr "Iskor"
 
 #: searx/templates/simple/stats.html:27
 msgid "Result count"
-msgstr ""
+msgstr "bilang ng mga resulta"
+
+#: searx/templates/simple/preferences/engines.html:25
+#: searx/templates/simple/stats.html:28
+msgid "Response time"
+msgstr "Oras ng pagtugon"
+
+#: searx/templates/simple/preferences/engines.html:29
+#: searx/templates/simple/stats.html:29
+msgid "Reliability"
+msgstr "pagiging maaasahan"
 
 #: searx/templates/simple/stats.html:59
 msgid "Total"
-msgstr ""
+msgstr "Kabuuan"
 
 #: searx/templates/simple/stats.html:60
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 #: searx/templates/simple/stats.html:61
 msgid "Processing"
-msgstr ""
+msgstr "prumoproseso"
 
 #: searx/templates/simple/stats.html:99
 msgid "Warnings"
-msgstr ""
+msgstr "Mga babala"
 
 #: searx/templates/simple/stats.html:99
 msgid "Errors and exceptions"
@@ -1008,43 +842,122 @@ msgstr "Mga error at exceptions"
 
 #: searx/templates/simple/stats.html:105
 msgid "Exception"
-msgstr ""
+msgstr "pagkakabigo/eksepsyon"
 
 #: searx/templates/simple/stats.html:107
 msgid "Message"
-msgstr ""
+msgstr "Mensahe"
 
 #: searx/templates/simple/stats.html:109
 msgid "Percentage"
-msgstr ""
+msgstr "porsyento"
 
 #: searx/templates/simple/stats.html:111
 msgid "Parameter"
-msgstr ""
+msgstr "pamantayan"
 
+#: searx/templates/simple/result_templates/files.html:36
 #: searx/templates/simple/stats.html:119
 msgid "Filename"
-msgstr ""
+msgstr "pangalan ng file"
 
 #: searx/templates/simple/stats.html:120
 msgid "Function"
-msgstr ""
+msgstr "gawain"
 
 #: searx/templates/simple/stats.html:121
 msgid "Code"
-msgstr ""
+msgstr "code"
 
 #: searx/templates/simple/stats.html:128
 msgid "Checker"
-msgstr ""
+msgstr "tagasuri"
 
 #: searx/templates/simple/stats.html:131
 msgid "Failed test"
-msgstr ""
+msgstr "Nabigong Pagsusulit"
 
 #: searx/templates/simple/stats.html:132
 msgid "Comment(s)"
-msgstr ""
+msgstr "(mga) komento"
+
+#: searx/templates/simple/elements/apis.html:3
+msgid "Download results"
+msgstr "I-download ang mga resulta"
+
+#: searx/templates/simple/elements/engines_msg.html:7
+msgid "Messages from the search engines"
+msgstr "Mga mensahe mula sa mga search engine"
+
+#: searx/templates/simple/elements/engines_msg.html:12
+msgid "Error!"
+msgstr "Kamalian!"
+
+#: searx/templates/simple/elements/engines_msg.html:13
+msgid "Engines cannot retrieve results"
+msgstr "Hindi makuha ng engines ang mga resulta"
+
+#: searx/templates/simple/elements/search_url.html:3
+msgid "Search URL"
+msgstr "URL ng Search"
+
+#: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
+msgid "Copied"
+msgstr "nakopya"
+
+#: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
+msgid "Copy"
+msgstr "kopyahin"
+
+#: searx/templates/simple/elements/suggestions.html:3
+msgid "Suggestions"
+msgstr "Mga mungkahi"
+
+#: searx/templates/simple/filters/languages.html:1
+#: searx/templates/simple/preferences/language.html:2
+msgid "Search language"
+msgstr "Ang wika ng paghahanap"
+
+#: searx/templates/simple/filters/languages.html:2
+#: searx/templates/simple/preferences/language.html:7
+msgid "Default language"
+msgstr "Default na wika"
+
+#: searx/templates/simple/filters/languages.html:4
+#: searx/templates/simple/preferences/language.html:11
+msgid "Auto-detect"
+msgstr "awtomatikong pangdedetekta"
+
+#: searx/templates/simple/filters/safesearch.html:1
+#: searx/templates/simple/filters/safesearch.html:2
+#: searx/templates/simple/filters/safesearch.html:3
+#: searx/templates/simple/filters/safesearch.html:4
+#: searx/templates/simple/preferences/engines.html:21
+#: searx/templates/simple/preferences/safesearch.html:2
+msgid "SafeSearch"
+msgstr "Ligtas na Paghahanap"
+
+#: searx/templates/simple/filters/safesearch.html:2
+#: searx/templates/simple/preferences/safesearch.html:7
+msgid "Strict"
+msgstr "Mahigpit"
+
+#: searx/templates/simple/filters/safesearch.html:3
+#: searx/templates/simple/preferences/safesearch.html:11
+msgid "Moderate"
+msgstr "Banayad"
+
+#: searx/templates/simple/filters/safesearch.html:4
+#: searx/templates/simple/preferences/safesearch.html:15
+msgid "None"
+msgstr "Wala"
+
+#: searx/templates/simple/filters/time_range.html:1
+#: searx/templates/simple/preferences/engines.html:22
+msgid "Time range"
+msgstr "Agwat ng oras"
 
 #: searx/templates/simple/filters/time_range.html:3
 msgid "Anytime"
@@ -1075,30 +988,340 @@ msgid "currently, there are no cookies defined."
 msgstr "wala pang cookies na naka-define sa ngayon."
 
 #: searx/templates/simple/messages/no_results.html:6
-msgid "Engines cannot retrieve results."
-msgstr "Hindi makuha ng engines ang mga resulta."
-
-#: searx/templates/simple/messages/no_results.html:15
-msgid "Please, try again later or find another SearXNG instance."
-msgstr "Pakiusap, subukan muli mamaya o humanap ng ibang SearXNG instance."
-
-#: searx/templates/simple/messages/no_results.html:20
 msgid "Sorry!"
 msgstr "Paumanhin!"
 
+#: searx/templates/simple/messages/no_results.html:12
+msgid "No results were found. You can try to:"
+msgstr "Walang mga resultang nahanap. Pwede mong subukang:"
+
+#: searx/templates/simple/messages/no_results.html:14
+msgid "There are no more results. You can try to:"
+msgstr "Walang karagdagang mga resulta. Maaari mong subukan ang:"
+
+#: searx/templates/simple/messages/no_results.html:19
+msgid "Refresh the page."
+msgstr "I-refresh ang pahina."
+
+#: searx/templates/simple/messages/no_results.html:20
+msgid "Search for another query or select another category (above)."
+msgstr "Hanapin ang iba pang query o pumili ng ibang kategorya (sa itaas)."
+
 #: searx/templates/simple/messages/no_results.html:21
+msgid "Change the search engine used in the preferences:"
+msgstr "Baguhin ang ginagamit na search engine sa mga nais:"
+
+#: searx/templates/simple/messages/no_results.html:22
+msgid "Switch to another instance:"
+msgstr "Lumipat sa ibang \"instance\":"
+
+#: searx/templates/simple/messages/no_results.html:24
+msgid "Search for another query or select another category."
+msgstr "Humanap ng ibang query o pumili ng ibang kategorya."
+
+#: searx/templates/simple/messages/no_results.html:25
+msgid "Go back to the previous page using the previous page button."
+msgstr "Bumalik sa nakaraang pahina gamit ang button ng nakaraang pahina."
+
+#: searx/templates/simple/preferences/answerers.html:4
+#: searx/templates/simple/preferences/engines.html:17
+msgid "Allow"
+msgstr "Payagan"
+
+#: searx/templates/simple/preferences/answerers.html:5
+msgid "Keywords"
+msgstr "Mga keyword"
+
+#: searx/templates/simple/preferences/answerers.html:6
+#: searx/templates/simple/result_templates/packages.html:7
+msgid "Name"
+msgstr "Pangalan"
+
+#: searx/templates/simple/preferences/answerers.html:7
+msgid "Description"
+msgstr "Paglalarawan"
+
+#: searx/templates/simple/preferences/answerers.html:8
+msgid "Examples"
+msgstr "Mga halimbawa"
+
+#: searx/templates/simple/preferences/answerers.html:13
+msgid "This is the list of SearXNG's instant answering modules."
+msgstr "Ito ang listahan ng mga instant answering module ng SearXNG."
+
+#: searx/templates/simple/preferences/answerers.html:29
+msgid "This is the list of plugins."
+msgstr "Ito ang listahan ng mga plugin."
+
+#: searx/templates/simple/preferences/autocomplete.html:2
+msgid "Autocomplete"
+msgstr "Kusang tinatapos"
+
+#: searx/templates/simple/preferences/autocomplete.html:15
+msgid "Find stuff as you type"
+msgstr "Maghanap habang ikaw ang nag-tytype"
+
+#: searx/templates/simple/preferences/center_alignment.html:2
+msgid "Center Alignment"
+msgstr "Pag-align sa Gitnang"
+
+#: searx/templates/simple/preferences/center_alignment.html:14
+msgid "Displays results in the center of the page (Oscar layout)."
+msgstr "Tignan ang resulta sa gitnang bahagi ng pahina (Oscar layout)."
+
+#: searx/templates/simple/preferences/cookies.html:2
 msgid ""
-"we didn't find any results. Please use another query or search in more "
-"categories."
+"This is the list of cookies and their values SearXNG is storing on your "
+"computer."
 msgstr ""
-"wala kaming nakita na resulta. Pakiusap na ibahin ang tanong o maghanap "
-"sa maraming uri."
+"Ito ang listahan ng mga cookies at values na ini-store ng SearXNG sa "
+"i'yong computer."
+
+#: searx/templates/simple/preferences/cookies.html:3
+msgid "With that list, you can assess SearXNG transparency."
+msgstr "Sa tulong ng listahan, maaari mong suriin ang transparansiya ng SearXNG."
+
+#: searx/templates/simple/preferences/cookies.html:9
+msgid "Cookie name"
+msgstr "Pangalan ng cookie"
+
+#: searx/templates/simple/preferences/cookies.html:10
+msgid "Value"
+msgstr "Nilalaman"
+
+#: searx/templates/simple/preferences/cookies.html:23
+msgid "Search URL of the currently saved preferences"
+msgstr "Search URL ng kasalukuyan na naka-save sa preferences"
+
+#: searx/templates/simple/preferences/cookies.html:32
+msgid ""
+"Note: specifying custom settings in the search URL can reduce privacy by "
+"leaking data to the clicked result sites."
+msgstr ""
+"Tandaan: kapag gumawa ng sariling settings sa search URL mababawasan ang "
+"pagiging pribado dahil magkakaroon ng butas sa datos dahil sa pag-pindot "
+"sa resulta na sites."
+
+#: searx/templates/simple/preferences/cookies.html:35
+msgid "URL to restore your preferences in another browser"
+msgstr "URL para ibalik ang iyong mga preference sa ibang browser"
+
+#: searx/templates/simple/preferences/cookies.html:43
+msgid ""
+"Specifying custom settings in the preferences URL can be used to sync "
+"preferences across devices."
+msgstr ""
+"Ang pagtukoy ng pasadyang mga setting sa URL ng mga preference ay "
+"maaaring gamitin upang i-sync ang mga preference sa iba't ibang mga "
+"aparato."
+
+#: searx/templates/simple/preferences/cookies.html:46
+msgid "Copy preferences hash"
+msgstr "Kopyahin ang hash ng mga preference"
+
+#: searx/templates/simple/preferences/cookies.html:57
+msgid "Insert copied preferences hash (without URL) to restore"
+msgstr ""
+"Ilagay ang kinopyahang hash ng mga preference (walang URL) upang mag-"
+"restore"
+
+#: searx/templates/simple/preferences/cookies.html:59
+msgid "Preferences hash"
+msgstr "Hash ng mga preference"
+
+#: searx/templates/simple/preferences/doi_resolver.html:2
+msgid "Open Access DOI resolver"
+msgstr "Open Access DOI resolver"
+
+#: searx/templates/simple/preferences/doi_resolver.html:14
+msgid "Select service used by DOI rewrite"
+msgstr "Pumili ng serbisyo na ginagamit sa pagsulat ng DOI"
+
+#: searx/templates/simple/preferences/engines.html:9
+msgid ""
+"This tab does not exists in the user interface, but you can search in "
+"these engines by its !bangs."
+msgstr ""
+"Ang tab na ito ay hindi umiiral sa interface ng gumagamit, ngunit maaari "
+"kang maghanap sa mga engine na ito sa pamamagitan ng kanilang !bangs."
+
+#: searx/templates/simple/preferences/engines.html:19
+msgid "!bang"
+msgstr "!bang"
+
+#: searx/templates/simple/preferences/engines.html:20
+msgid "Supports selected language"
+msgstr "Suportado ang pinili na wika"
+
+#: searx/templates/simple/preferences/engines.html:23
+msgid "Weight"
+msgstr "Timbang"
+
+#: searx/templates/simple/preferences/engines.html:27
+msgid "Max time"
+msgstr "Ang max na oras"
+
+#: searx/templates/simple/preferences/footer.html:2
+msgid ""
+"These settings are stored in your cookies, this allows us not to store "
+"this data about you."
+msgstr ""
+"Ang settings ay nakalagay sa cookies upang hindi kami makakuha ng datos "
+"mula sa iyo."
+
+#: searx/templates/simple/preferences/footer.html:3
+msgid ""
+"These cookies serve your sole convenience, we don't use these cookies to "
+"track you."
+msgstr ""
+"Hindi namin ginagamit ang cookies para i-track ka, ito ay para maging "
+"maayos ang paggamit mo."
+
+#: searx/templates/simple/preferences/footer.html:6
+msgid "Save"
+msgstr "I-save"
+
+#: searx/templates/simple/preferences/footer.html:9
+msgid "Reset defaults"
+msgstr "I-reset ang defaults"
+
+#: searx/templates/simple/preferences/footer.html:13
+msgid "Back"
+msgstr "Bumalik"
+
+#: searx/templates/simple/preferences/hotkeys.html:2
+msgid "Hotkeys"
+msgstr "Mga Hotkeys"
+
+#: searx/templates/simple/preferences/hotkeys.html:13
+msgid "Vim-like"
+msgstr "Katulad ng Vim"
+
+#: searx/templates/simple/preferences/hotkeys.html:18
+msgid ""
+"Navigate search results with hotkeys (JavaScript required). Press \"h\" "
+"key on main or result page to get help."
+msgstr ""
+"Mag-navigate sa mga resulta ng paghahanap gamit ang mga hotkey "
+"(JavaScript ay kinakailangan). Pindutin ang \"h\" na key sa pangunahin o "
+"resultang pahina para sa tulong."
+
+#: searx/templates/simple/preferences/image_proxy.html:2
+msgid "Image proxy"
+msgstr "Proxy ng larawan"
+
+#: searx/templates/simple/preferences/image_proxy.html:14
+msgid "Proxying image results through SearXNG"
+msgstr "Ang pag-proxy ng mga resulta ng imahe sa pamamagitan ng SearXNG"
+
+#: searx/templates/simple/preferences/infinite_scroll.html:2
+msgid "Infinite scroll"
+msgstr "Walang hanggan na pag-scroll"
+
+#: searx/templates/simple/preferences/infinite_scroll.html:14
+msgid "Automatically load next page when scrolling to bottom of current page"
+msgstr ""
+"Awtomatiko na ikarga ang sumunod na pahina kapag nakarating na sa dulo ng"
+" kasalukuyang pahina"
+
+#: searx/templates/simple/preferences/language.html:24
+msgid "What language do you prefer for search?"
+msgstr "Ano ang gusto mong wika sa paghahanap?"
+
+#: searx/templates/simple/preferences/language.html:25
+msgid "Choose Auto-detect to let SearXNG detect the language of your query."
+msgstr ""
+"Pumili ng Auto-detect upang payagan ang SearXNG na matukoy ang wika ng "
+"iyong query."
+
+#: searx/templates/simple/preferences/method.html:2
+msgid "HTTP Method"
+msgstr "Paraan ng HTTP"
+
+#: searx/templates/simple/preferences/method.html:14
+msgid "Change how forms are submitted"
+msgstr "Ipalit panong i-submit ang mga form"
+
+#: searx/templates/simple/preferences/query_in_title.html:2
+msgid "Query in the page's title"
+msgstr "Query sa pamagat ng page"
+
+#: searx/templates/simple/preferences/query_in_title.html:14
+msgid ""
+"When enabled, the result page's title contains your query. Your browser "
+"can record this title"
+msgstr ""
+"Kapag pinagana, ang pamagat ng pahina ng resulta ay naglalaman ng iyong "
+"query. Maaaring i-record ng iyong browser ang pamagat na ito"
+
+#: searx/templates/simple/preferences/results_on_new_tab.html:2
+msgid "Results on new tabs"
+msgstr "Ang resulta ay na sa bagong tab"
+
+#: searx/templates/simple/preferences/results_on_new_tab.html:14
+msgid "Open result links on new browser tabs"
+msgstr "Buksan ang resulta sa panibagong browser tab"
+
+#: searx/templates/simple/preferences/safesearch.html:20
+msgid "Filter content"
+msgstr "Salain ang mga nilalaman"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:2
+msgid "Search on category select"
+msgstr "Maghanap kapag nakapili ng uri"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:14
+msgid ""
+"Perform search immediately if a category selected. Disable to select "
+"multiple categories"
+msgstr ""
+"Isagawa ang paghahanap kaagad kung may kategoryang pinili. I-disable "
+"upang pumili ng maramihang mga kategorya"
+
+#: searx/templates/simple/preferences/theme.html:2
+msgid "Theme"
+msgstr "Tema"
+
+#: searx/templates/simple/preferences/theme.html:14
+msgid "Change SearXNG layout"
+msgstr "Baguhin ang SearXNG layout"
+
+#: searx/templates/simple/preferences/theme.html:19
+msgid "Theme style"
+msgstr "Stilo ng theme"
+
+#: searx/templates/simple/preferences/theme.html:31
+msgid "Choose auto to follow your browser settings"
+msgstr "Pumili ng auto para sundin ang mga setting ng iyong browser"
+
+#: searx/templates/simple/preferences/tokens.html:2
+msgid "Engine tokens"
+msgstr "Mga token ng makina"
+
+#: searx/templates/simple/preferences/tokens.html:9
+msgid "Access tokens for private engines"
+msgstr "I-access ang mga token para sa mga pribadong makina"
+
+#: searx/templates/simple/preferences/ui_locale.html:2
+msgid "Interface language"
+msgstr "Ang wika ng Interface"
+
+#: searx/templates/simple/preferences/ui_locale.html:14
+msgid "Change the language of the layout"
+msgstr "Ibahin ang layout pangwika"
+
+#: searx/templates/simple/result_templates/code.html:13
+msgid "repo"
+msgstr "repositoryo"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
+#: searx/templates/simple/result_templates/files.html:11
 msgid "show media"
 msgstr "ipakita ang media"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
 msgid "hide media"
 msgstr "itago ang media"
 
@@ -1107,21 +1330,65 @@ msgstr "itago ang media"
 msgid "This site did not provide any description."
 msgstr "Ang site na ito ay hindi nagbigay ng deskripsyon."
 
-#: searx/templates/simple/result_templates/images.html:19
-msgid "Format"
-msgstr ""
+#: searx/templates/simple/result_templates/files.html:38
+#: searx/templates/simple/result_templates/images.html:22
+#: searx/templates/simple/result_templates/torrent.html:11
+msgid "Filesize"
+msgstr "Laki ng file"
+
+#: searx/templates/simple/result_templates/files.html:39
+#: searx/templates/simple/result_templates/torrent.html:12
+msgid "Bytes"
+msgstr "Bytes"
+
+#: searx/templates/simple/result_templates/files.html:40
+#: searx/templates/simple/result_templates/torrent.html:13
+msgid "kiB"
+msgstr "kiB"
+
+#: searx/templates/simple/result_templates/files.html:41
+#: searx/templates/simple/result_templates/torrent.html:14
+msgid "MiB"
+msgstr "MiB"
+
+#: searx/templates/simple/result_templates/files.html:42
+#: searx/templates/simple/result_templates/torrent.html:15
+msgid "GiB"
+msgstr "GiB"
+
+#: searx/templates/simple/result_templates/files.html:43
+#: searx/templates/simple/result_templates/torrent.html:16
+msgid "TiB"
+msgstr "TiB"
+
+#: searx/templates/simple/result_templates/files.html:47
+msgid "Date"
+msgstr "Petsa"
+
+#: searx/templates/simple/result_templates/files.html:49
+#: searx/templates/simple/result_templates/paper.html:24
+msgid "Type"
+msgstr "Uri"
+
+#: searx/templates/simple/result_templates/images.html:20
+msgid "Resolution"
+msgstr "Resolusyon"
 
 #: searx/templates/simple/result_templates/images.html:21
-msgid "Engine"
-msgstr ""
+msgid "Format"
+msgstr "Anyo"
 
-#: searx/templates/simple/result_templates/images.html:22
+#: searx/templates/simple/result_templates/images.html:24
+msgid "Engine"
+msgstr "Engine"
+
+#: searx/templates/simple/result_templates/images.html:25
 msgid "View source"
 msgstr "Tignan ang source"
 
 #: searx/templates/simple/result_templates/map.html:12
 msgid "address"
-msgstr ""
+msgstr "address"
 
 #: searx/templates/simple/result_templates/map.html:43
 msgid "show map"
@@ -1131,49 +1398,74 @@ msgstr "ipakita ang mapa"
 msgid "hide map"
 msgstr "itago ang mapa"
 
+#: searx/templates/simple/result_templates/packages.html:12
+msgid "Version"
+msgstr "Bersyon"
+
+#: searx/templates/simple/result_templates/packages.html:18
+msgid "Maintainer"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:24
+msgid "Updated at"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:30
+#: searx/templates/simple/result_templates/paper.html:25
+msgid "Tags"
+msgstr "Mga Tag/Tatak"
+
+#: searx/templates/simple/result_templates/packages.html:36
+msgid "Popularity"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:42
+msgid "License"
+msgstr "Lisensya"
+
+#: searx/templates/simple/result_templates/packages.html:52
+msgid "Project"
+msgstr ""
+
+#: searx/templates/simple/result_templates/packages.html:55
+msgid "Project homepage"
+msgstr ""
+
 #: searx/templates/simple/result_templates/paper.html:5
 msgid "Published date"
-msgstr ""
+msgstr "Petsa ng Paglathala"
 
 #: searx/templates/simple/result_templates/paper.html:9
 msgid "Journal"
-msgstr ""
+msgstr "Talaan"
 
 #: searx/templates/simple/result_templates/paper.html:22
 msgid "Editor"
-msgstr ""
+msgstr "Patnugot"
 
 #: searx/templates/simple/result_templates/paper.html:23
 msgid "Publisher"
-msgstr ""
-
-#: searx/templates/simple/result_templates/paper.html:24
-msgid "Type"
-msgstr ""
-
-#: searx/templates/simple/result_templates/paper.html:25
-msgid "Tags"
-msgstr ""
+msgstr "tagapaglathala"
 
 #: searx/templates/simple/result_templates/paper.html:26
 msgid "DOI"
-msgstr ""
+msgstr "DOI"
 
 #: searx/templates/simple/result_templates/paper.html:27
 msgid "ISSN"
-msgstr ""
+msgstr "ISSN"
 
 #: searx/templates/simple/result_templates/paper.html:28
 msgid "ISBN"
-msgstr ""
+msgstr "ISBN"
 
 #: searx/templates/simple/result_templates/paper.html:33
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: searx/templates/simple/result_templates/paper.html:34
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: searx/templates/simple/result_templates/torrent.html:6
 msgid "magnet link"
@@ -1181,7 +1473,7 @@ msgstr "i-magnet ang link"
 
 #: searx/templates/simple/result_templates/torrent.html:7
 msgid "torrent file"
-msgstr ""
+msgstr "file na torrent"
 
 #: searx/templates/simple/result_templates/torrent.html:9
 msgid "Seeder"
@@ -1190,30 +1482,6 @@ msgstr "Seeder"
 #: searx/templates/simple/result_templates/torrent.html:9
 msgid "Leecher"
 msgstr "Leecher"
-
-#: searx/templates/simple/result_templates/torrent.html:11
-msgid "Filesize"
-msgstr ""
-
-#: searx/templates/simple/result_templates/torrent.html:12
-msgid "Bytes"
-msgstr "Bytes"
-
-#: searx/templates/simple/result_templates/torrent.html:13
-msgid "kiB"
-msgstr "kiB"
-
-#: searx/templates/simple/result_templates/torrent.html:14
-msgid "MiB"
-msgstr "MiB"
-
-#: searx/templates/simple/result_templates/torrent.html:15
-msgid "GiB"
-msgstr "GiB"
-
-#: searx/templates/simple/result_templates/torrent.html:16
-msgid "TiB"
-msgstr "TiB"
 
 #: searx/templates/simple/result_templates/torrent.html:20
 msgid "Number of Files"
@@ -1569,3 +1837,81 @@ msgstr "itago ang video"
 
 #~ msgid "!bang"
 #~ msgstr ""
+
+#~ msgid ""
+#~ "This tab dues not exists in the"
+#~ " user interface, but you can search"
+#~ " in these engines by its !bangs."
+#~ msgstr ""
+
+#~ msgid "Engines cannot retrieve results."
+#~ msgstr "Hindi makuha ng engines ang mga resulta."
+
+#~ msgid "Please, try again later or find another SearXNG instance."
+#~ msgstr "Pakiusap, subukan muli mamaya o humanap ng ibang SearXNG instance."
+
+#~ msgid ""
+#~ "Redirect to open-access versions of "
+#~ "publications when available (plugin required)"
+#~ msgstr ""
+#~ "Mag-redirect sa open-access na mga"
+#~ " bersyon ng mga publikasyon kapag "
+#~ "available (kailangan ang plugin)"
+
+#~ msgid "Bang"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Change how forms are submitted, <a "
+#~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
+#~ " rel=\"external\">learn more about request "
+#~ "methods</a>"
+#~ msgstr ""
+
+#~ msgid "On"
+#~ msgstr "Bukas"
+
+#~ msgid "Off"
+#~ msgstr "Sara"
+
+#~ msgid "Enabled"
+#~ msgstr "Paganahin"
+
+#~ msgid "Disabled"
+#~ msgstr "Hindi paganahin"
+
+#~ msgid ""
+#~ "Perform search immediately if a category"
+#~ " selected. Disable to select multiple "
+#~ "categories. (JavaScript required)"
+#~ msgstr ""
+#~ "Gawin ang paghahanap hanggat maaari "
+#~ "kapag nakapili ng uri. Alisin kapag "
+#~ "nakapili ng maraming uri. (Nangagailangan "
+#~ "ng JavaScript)"
+
+#~ msgid "Vim-like hotkeys"
+#~ msgstr "Kasingtulad ng vim hotkeys"
+
+#~ msgid ""
+#~ "Navigate search results with Vim-like"
+#~ " hotkeys (JavaScript required). Press \"h\""
+#~ " key on main or result page to"
+#~ " get help."
+#~ msgstr ""
+#~ "Maglakbay sa resulta ng paghahanap gamit"
+#~ " ang 'Vim-like hotkeys' (Nangagailangan "
+#~ "ito ng JavaScript). Pindutin ang \"h\""
+#~ " na pindutan sa panguna o ang "
+#~ "pahina ng resulta para makahingi ng "
+#~ "tulong."
+
+#~ msgid ""
+#~ "we didn't find any results. Please "
+#~ "use another query or search in "
+#~ "more categories."
+#~ msgstr ""
+#~ "wala kaming nakita na resulta. Pakiusap"
+#~ " na ibahin ang tanong o maghanap "
+#~ "sa maraming uri."
+

@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """This is the implementation of the Google Images engine using the internal
 Google API used by the Google Go Android app.
 
@@ -47,6 +46,7 @@ about = {
 # engine dependent config
 categories = ['images', 'web']
 paging = True
+max_page = 50
 time_range_support = True
 safesearch = True
 send_accept_language_header = True
@@ -95,14 +95,14 @@ def response(resp):
     json_start = resp.text.find('{"ischj":')
     json_data = loads(resp.text[json_start:])
 
-    for item in json_data["ischj"]["metadata"]:
+    for item in json_data["ischj"].get("metadata", []):
 
         result_item = {
             'url': item["result"]["referrer_url"],
             'title': item["result"]["page_title"],
             'content': item["text_in_grid"]["snippet"],
             'source': item["result"]["site_title"],
-            'img_format': f'{item["original_image"]["width"]} x {item["original_image"]["height"]}',
+            'resolution': f'{item["original_image"]["width"]} x {item["original_image"]["height"]}',
             'img_src': item["original_image"]["url"],
             'thumbnail_src': item["thumbnail"]["url"],
             'template': 'images.html',

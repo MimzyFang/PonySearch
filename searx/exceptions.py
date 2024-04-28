@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Exception types raised by SearXNG modules.
 """
 
@@ -12,7 +10,7 @@ class SearxException(Exception):
 
 
 class SearxParameterException(SearxException):
-    """Raised when query miss a required paramater"""
+    """Raised when query miss a required parameter"""
 
     def __init__(self, name, value):
         if value == '' or value is None:

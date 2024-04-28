@@ -4,8 +4,9 @@
 """
 
 from json import loads
-from dateutil import parser
 from urllib.parse import urlencode
+
+from dateutil import parser
 from searx.exceptions import SearxEngineAPIException
 
 # about
@@ -55,6 +56,10 @@ def response(resp):
 
     # parse results
     for result in search_results['items']:
+        if "videoId" not in result["id"]:
+            # ignore channels
+            continue
+
         videoid = result['id']['videoId']
 
         title = result['snippet']['title']

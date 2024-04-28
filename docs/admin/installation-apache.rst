@@ -61,7 +61,7 @@ section might give you some guidance.
    - `Apache Fedora`_
    - `Apache directives`_
 
-.. contents:: Contents
+.. contents::
    :depth: 2
    :local:
    :backlinks: entry
@@ -190,7 +190,7 @@ Debian:
 Apache modules
 --------------
 
-To load additional modules, in most distributions you have to un-comment the
+To load additional modules, in most distributions you have to uncomment the
 lines with the corresponding LoadModule_ directive, except in :ref:`Debian's
 Apache layout`.
 

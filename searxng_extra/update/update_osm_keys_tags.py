@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-# lint: pylint
 # SPDX-License-Identifier: AGPL-3.0-or-later
 """Fetch OSM keys and tags.
 
 To get the i18n names, the scripts uses `Wikidata Query Service`_ instead of for
-example `OSM tags API`_ (sidenote: the actual change log from
+example `OSM tags API`_ (side note: the actual change log from
 map.atownsend.org.uk_ might be useful to normalize OSM tags).
 
 Output file: :origin:`searx/data/osm_keys_tags` (:origin:`CI Update data ...
@@ -45,13 +44,14 @@ Output file: :origin:`searx/data/osm_keys_tags` (:origin:`CI Update data ...
 
 import json
 import collections
-from pathlib import Path
 
-from searx import searx_dir
 from searx.network import set_timeout_for_thread
 from searx.engines import wikidata, set_loggers
 from searx.sxng_locales import sxng_locales
 from searx.engines.openstreetmap import get_key_rank, VALUE_TO_LINK
+from searx.data import data_dir
+
+DATA_FILE = data_dir / 'osm_keys_tags.json'
 
 set_loggers(wikidata, 'wikidata')
 
@@ -203,10 +203,6 @@ def optimize_keys(data):
     return data
 
 
-def get_osm_tags_filename():
-    return Path(searx_dir) / "data" / "osm_keys_tags.json"
-
-
 if __name__ == '__main__':
 
     set_timeout_for_thread(60)
@@ -214,5 +210,5 @@ if __name__ == '__main__':
         'keys': optimize_keys(get_keys()),
         'tags': optimize_tags(get_tags()),
     }
-    with open(get_osm_tags_filename(), 'w', encoding="utf8") as f:
-        json.dump(result, f, indent=4, ensure_ascii=False, sort_keys=True)
+    with DATA_FILE.open('w', encoding="utf8") as f:
+        json.dump(result, f, indent=4, sort_keys=True, ensure_ascii=False)

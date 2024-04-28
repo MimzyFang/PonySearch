@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Within this module we implement a *demo online engine*.  Do not look to
 close to the implementation, its just a simple example which queries `The Art
 Institute of Chicago <https://www.artic.edu>`_
@@ -88,11 +87,10 @@ def response(resp):
         results.append(
             {
                 'url': 'https://artic.edu/artworks/%(id)s' % result,
-                'title': result['title'] + " (%(date_display)s) //  %(artist_display)s" % result,
-                'content': result['medium_display'],
+                'title': result['title'] + " (%(date_display)s) // %(artist_display)s" % result,
+                'content': "%(medium_display)s // %(dimensions)s" % result,
                 'author': ', '.join(result['artist_titles']),
                 'img_src': image_api + '/%(image_id)s/full/843,/0/default.jpg' % result,
-                'img_format': result['dimensions'],
                 'template': 'images.html',
             }
         )

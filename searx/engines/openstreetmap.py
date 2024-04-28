@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """OpenStreetMap (Map)
 
 """
@@ -162,8 +161,15 @@ def response(resp):
             }
         )
 
+    # simplify the code below: make sure extratags is a dictionary
+    for result in nominatim_json:
+        if not isinstance(result.get('extratags'), dict):
+            result["extratags"] = {}
+
+    # fetch data from wikidata
     fetch_wikidata(nominatim_json, user_language)
 
+    # create results
     for result in nominatim_json:
         title, address = get_title_address(result)
 
@@ -218,13 +224,12 @@ def fetch_wikidata(nominatim_json, user_language):
     wikidata_ids = []
     wd_to_results = {}
     for result in nominatim_json:
-        e = result.get("extratags")
-        if e:
-            # ignore brand:wikidata
-            wd_id = e.get("wikidata", e.get("wikidata link"))
-            if wd_id and wd_id not in wikidata_ids:
-                wikidata_ids.append("wd:" + wd_id)
-                wd_to_results.setdefault(wd_id, []).append(result)
+        extratags = result['extratags']
+        # ignore brand:wikidata
+        wd_id = extratags.get('wikidata', extratags.get('wikidata link'))
+        if wd_id and wd_id not in wikidata_ids:
+            wikidata_ids.append('wd:' + wd_id)
+            wd_to_results.setdefault(wd_id, []).append(result)
 
     if wikidata_ids:
         user_language = 'en' if user_language == 'all' else user_language.split('-')[0]
@@ -334,12 +339,13 @@ def get_img_src(result):
             img_src = result['wikidata']['image_sign']
 
     # img_src
-    if not img_src and result.get('extratags', {}).get('image'):
-        img_src = result['extratags']['image']
-        del result['extratags']['image']
-    if not img_src and result.get('extratags', {}).get('wikimedia_commons'):
-        img_src = get_external_url('wikimedia_image', result['extratags']['wikimedia_commons'])
-        del result['extratags']['wikimedia_commons']
+    extratags = result['extratags']
+    if not img_src and extratags.get('image'):
+        img_src = extratags['image']
+        del extratags['image']
+    if not img_src and extratags.get('wikimedia_commons'):
+        img_src = get_external_url('wikimedia_image', extratags['wikimedia_commons'])
+        del extratags['wikimedia_commons']
 
     return img_src
 
@@ -348,20 +354,25 @@ def get_links(result, user_language):
     """Return links from result['extratags']"""
     links = []
     link_keys = set()
+    extratags = result['extratags']
+    if not extratags:
+        # minor optimization : no need to check VALUE_TO_LINK if extratags is empty
+        return links, link_keys
     for k, mapping_function in VALUE_TO_LINK.items():
-        raw_value = result['extratags'].get(k)
-        if raw_value:
-            url, url_label = mapping_function(raw_value)
-            if url.startswith('https://wikidata.org'):
-                url_label = result.get('wikidata', {}).get('itemLabel') or url_label
-            links.append(
-                {
-                    'label': get_key_label(k, user_language),
-                    'url': url,
-                    'url_label': url_label,
-                }
-            )
-            link_keys.add(k)
+        raw_value = extratags.get(k)
+        if not raw_value:
+            continue
+        url, url_label = mapping_function(raw_value)
+        if url.startswith('https://wikidata.org'):
+            url_label = result.get('wikidata', {}).get('itemLabel') or url_label
+        links.append(
+            {
+                'label': get_key_label(k, user_language),
+                'url': url,
+                'url_label': url_label,
+            }
+        )
+        link_keys.add(k)
     return links, link_keys
 
 
@@ -433,15 +444,15 @@ def get_key_label(key_name, lang):
     if key_name.startswith('currency:'):
         # currency:EUR --> get the name from the CURRENCIES variable
         # see https://wiki.openstreetmap.org/wiki/Key%3Acurrency
-        # and for exampe https://taginfo.openstreetmap.org/keys/currency:EUR#values
+        # and for example https://taginfo.openstreetmap.org/keys/currency:EUR#values
         # but there is also currency=EUR (currently not handled)
         # https://taginfo.openstreetmap.org/keys/currency#values
         currency = key_name.split(':')
         if len(currency) > 1:
-            o = CURRENCIES['iso4217'].get(currency)
+            o = CURRENCIES['iso4217'].get(currency[1])
             if o:
                 return get_label(o, lang).lower()
-            return currency
+            return currency[1]
 
     labels = OSM_KEYS_TAGS['keys']
     for k in key_name.split(':') + ['*']:

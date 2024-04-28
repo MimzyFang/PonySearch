@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """This is the implementation of the Google WEB engine.  Some of this
 implementations (manly the :py:obj:`get_google_info`) are shared by other
 engines:
@@ -22,8 +21,8 @@ import babel.core
 import babel.languages
 
 from searx.utils import extract_text, eval_xpath, eval_xpath_list, eval_xpath_getindex
-from searx.locales import language_tag, region_tag, get_offical_locales
-from searx import network
+from searx.locales import language_tag, region_tag, get_official_locales
+from searx.network import get  # see https://github.com/searxng/searxng/issues/762
 from searx.exceptions import SearxEngineCaptchaException
 from searx.enginelib.traits import EngineTraits
 
@@ -48,6 +47,7 @@ about = {
 # engine dependent config
 categories = ['general', 'web']
 paging = True
+max_page = 50
 time_range_support = True
 safesearch = True
 
@@ -172,7 +172,8 @@ def get_google_info(params, eng_traits):
     # The Interface Language:
     #   https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages
 
-    ret_val['params']['hl'] = lang_code
+    # https://github.com/searxng/searxng/issues/2515#issuecomment-1607150817
+    ret_val['params']['hl'] = f'{lang_code}-{country}'
 
     # lr parameter:
     #   The lr (language restrict) parameter restricts search results to
@@ -183,8 +184,8 @@ def get_google_info(params, eng_traits):
     #
     # To select 'all' languages an empty 'lr' value is used.
     #
-    # Different to other google services, Google Schloar supports to select more
-    # than one language. The languages are seperated by a pipe '|' (logical OR).
+    # Different to other google services, Google Scholar supports to select more
+    # than one language. The languages are separated by a pipe '|' (logical OR).
     # By example: &lr=lang_zh-TW%7Clang_de selects articles written in
     # traditional chinese OR german language.
 
@@ -197,11 +198,13 @@ def get_google_info(params, eng_traits):
     #   particular country.
     #   https://developers.google.com/custom-search/docs/xml_results#crsp
 
-    ret_val['params']['cr'] = 'country' + country
-    if sxng_locale == 'all':
-        ret_val['params']['cr'] = ''
+    # specify a region (country) only if a region is given in the selected
+    # locale --> https://github.com/searxng/searxng/issues/2672
+    ret_val['params']['cr'] = ''
+    if len(sxng_locale.split('-')) > 1:
+        ret_val['params']['cr'] = 'country' + country
 
-    # gl parameter: (mandatory by Geeogle News)
+    # gl parameter: (mandatory by Google News)
     #   The gl parameter value is a two-letter country code. For WebSearch
     #   results, the gl parameter boosts search results whose country of origin
     #   matches the parameter value. See the Country Codes section for a list of
@@ -212,7 +215,8 @@ def get_google_info(params, eng_traits):
     #   countries other than the United States.
     #   https://developers.google.com/custom-search/docs/xml_results#glsp
 
-    ret_val['params']['gl'] = country
+    # https://github.com/searxng/searxng/issues/2515#issuecomment-1606294635
+    # ret_val['params']['gl'] = country
 
     # ie parameter:
     #   The ie parameter sets the character encoding scheme that should be used
@@ -329,11 +333,13 @@ def response(resp):
 
     # results --> answer
     answer_list = eval_xpath(dom, '//div[contains(@class, "LGOjhe")]')
-    if answer_list:
-        answer_list = [_.xpath("normalize-space()") for _ in answer_list]
-        results.append({'answer': ' '.join(answer_list)})
-    else:
-        logger.debug("did not find 'answer'")
+    for item in answer_list:
+        results.append(
+            {
+                'answer': item.xpath("normalize-space()"),
+                'url': (eval_xpath(item, '../..//a/@href') + [None])[0],
+            }
+        )
 
     # parse results
 
@@ -419,18 +425,17 @@ def fetch_traits(engine_traits: EngineTraits, add_domains: bool = True):
 
     engine_traits.custom['supported_domains'] = {}
 
-    resp = network.get('https://www.google.com/preferences')
-    if not resp.ok:
+    resp = get('https://www.google.com/preferences')
+    if not resp.ok:  # type: ignore
         raise RuntimeError("Response from Google's preferences is not OK.")
 
-    dom = html.fromstring(resp.text)
+    dom = html.fromstring(resp.text.replace('<?xml version="1.0" encoding="UTF-8"?>', ''))
 
     # supported language codes
 
     lang_map = {'no': 'nb'}
-    for x in eval_xpath_list(dom, '//*[@id="langSec"]//input[@name="lr"]'):
-
-        eng_lang = x.get("value").split('_')[-1]
+    for x in eval_xpath_list(dom, "//select[@name='hl']/option"):
+        eng_lang = x.get("value")
         try:
             locale = babel.Locale.parse(lang_map.get(eng_lang, eng_lang), sep='-')
         except babel.UnknownLocaleError:
@@ -450,7 +455,7 @@ def fetch_traits(engine_traits: EngineTraits, add_domains: bool = True):
 
     # supported region codes
 
-    for x in eval_xpath_list(dom, '//*[@name="region"]/..//input[@name="region"]'):
+    for x in eval_xpath_list(dom, "//select[@name='gl']/option"):
         eng_country = x.get("value")
 
         if eng_country in skip_countries:
@@ -459,7 +464,7 @@ def fetch_traits(engine_traits: EngineTraits, add_domains: bool = True):
             engine_traits.all_locale = 'ZZ'
             continue
 
-        sxng_locales = get_offical_locales(eng_country, engine_traits.languages.keys(), regional=True)
+        sxng_locales = get_official_locales(eng_country, engine_traits.languages.keys(), regional=True)
 
         if not sxng_locales:
             print("ERROR: can't map from google country %s (%s) to a babel region." % (x.get('data-name'), eng_country))
@@ -474,18 +479,18 @@ def fetch_traits(engine_traits: EngineTraits, add_domains: bool = True):
     # supported domains
 
     if add_domains:
-        resp = network.get('https://www.google.com/supported_domains')
-        if not resp.ok:
+        resp = get('https://www.google.com/supported_domains')
+        if not resp.ok:  # type: ignore
             raise RuntimeError("Response from https://www.google.com/supported_domains is not OK.")
 
-        for domain in resp.text.split():
+        for domain in resp.text.split():  # type: ignore
             domain = domain.strip()
             if not domain or domain in [
                 '.google.com',
             ]:
                 continue
             region = domain.split('.')[-1].upper()
-            engine_traits.custom['supported_domains'][region] = 'www' + domain
+            engine_traits.custom['supported_domains'][region] = 'www' + domain  # type: ignore
             if region == 'HK':
                 # There is no google.cn, we use .com.hk for zh-CN
-                engine_traits.custom['supported_domains']['CN'] = 'www' + domain
+                engine_traits.custom['supported_domains']['CN'] = 'www' + domain  # type: ignore

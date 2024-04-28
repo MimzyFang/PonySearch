@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
-# pyright: basic
 """WebbApp
 
 """
@@ -22,7 +20,7 @@ from typing import List, Dict, Iterable
 
 import urllib
 import urllib.parse
-from urllib.parse import urlencode, unquote
+from urllib.parse import urlencode, urlparse, unquote
 
 import httpx
 
@@ -57,8 +55,11 @@ from searx import (
 )
 
 from searx import infopage
+from searx import limiter
+from searx.botdetection import link_token
+
 from searx.data import ENGINE_DESCRIPTIONS
-from searx.results import Timing, UnresponsiveEngine
+from searx.results import Timing
 from searx.settings_defaults import OUTPUT_FORMATS
 from searx.settings_loader import get_default_settings_path
 from searx.exceptions import SearxParameterException
@@ -68,18 +69,18 @@ from searx.engines import (
     engines,
     engine_shortcuts,
 )
+
+from searx import webutils
 from searx.webutils import (
-    UnicodeWriter,
     highlight_content,
     get_static_files,
     get_result_templates,
     get_themes,
-    prettify_url,
+    exception_classname_to_text,
     new_hmac,
     is_hmac_of,
     is_flask_run_cmdline,
     group_engines_in_tab,
-    searxng_l10n_timespan,
 )
 from searx.webadapter import (
     get_search_query_from_webapp,
@@ -87,7 +88,6 @@ from searx.webadapter import (
     parse_lang,
 )
 from searx.utils import (
-    html_to_text,
     gen_useragent,
     dict_subset,
 )
@@ -164,39 +164,6 @@ app.jinja_env.add_extension('jinja2.ext.loopcontrols')  # pylint: disable=no-mem
 app.jinja_env.filters['group_engines_in_tab'] = group_engines_in_tab  # pylint: disable=no-member
 app.secret_key = settings['server']['secret_key']
 
-timeout_text = gettext('timeout')
-parsing_error_text = gettext('parsing error')
-http_protocol_error_text = gettext('HTTP protocol error')
-network_error_text = gettext('network error')
-ssl_cert_error_text = gettext("SSL error: certificate validation has failed")
-exception_classname_to_text = {
-    None: gettext('unexpected crash'),
-    'timeout': timeout_text,
-    'asyncio.TimeoutError': timeout_text,
-    'httpx.TimeoutException': timeout_text,
-    'httpx.ConnectTimeout': timeout_text,
-    'httpx.ReadTimeout': timeout_text,
-    'httpx.WriteTimeout': timeout_text,
-    'httpx.HTTPStatusError': gettext('HTTP error'),
-    'httpx.ConnectError': gettext("HTTP connection error"),
-    'httpx.RemoteProtocolError': http_protocol_error_text,
-    'httpx.LocalProtocolError': http_protocol_error_text,
-    'httpx.ProtocolError': http_protocol_error_text,
-    'httpx.ReadError': network_error_text,
-    'httpx.WriteError': network_error_text,
-    'httpx.ProxyError': gettext("proxy error"),
-    'searx.exceptions.SearxEngineCaptchaException': gettext("CAPTCHA"),
-    'searx.exceptions.SearxEngineTooManyRequestsException': gettext("too many requests"),
-    'searx.exceptions.SearxEngineAccessDeniedException': gettext("access denied"),
-    'searx.exceptions.SearxEngineAPIException': gettext("server API error"),
-    'searx.exceptions.SearxEngineXPathException': parsing_error_text,
-    'KeyError': parsing_error_text,
-    'json.decoder.JSONDecodeError': parsing_error_text,
-    'lxml.etree.ParserError': parsing_error_text,
-    'ssl.SSLCertVerificationError': ssl_cert_error_text,  # for Python > 3.7
-    'ssl.CertificateError': ssl_cert_error_text,  # for Python 3.7
-}
-
 
 class ExtendedRequest(flask.Request):
     """This class is never initialized and only used for type checking."""
@@ -249,7 +216,7 @@ def code_highlighter(codelines, language=None):
         lexer = get_lexer_by_name(language, stripall=True)
 
     except Exception as e:  # pylint: disable=broad-except
-        logger.exception(e, exc_info=True)
+        logger.warning("pygments lexer: %s " % e)
         # if lexer is not found, using default one
         lexer = get_lexer_by_name('text', stripall=True)
 
@@ -394,8 +361,8 @@ def get_client_settings():
         'http_method': req_pref.get_value('method'),
         'infinite_scroll': req_pref.get_value('infinite_scroll'),
         'translations': get_translations(),
-        'search_on_category_select': req_pref.plugins.choices['searx.plugins.search_on_category_select'],
-        'hotkeys': req_pref.plugins.choices['searx.plugins.vim_hotkeys'],
+        'search_on_category_select': req_pref.get_value('search_on_category_select'),
+        'hotkeys': req_pref.get_value('hotkeys'),
         'theme_static_path': custom_url_for('static', filename='themes/simple'),
     }
 
@@ -416,11 +383,14 @@ def render(template_name: str, **kwargs):
     kwargs['endpoint'] = 'results' if 'q' in kwargs else request.endpoint
     kwargs['cookies'] = request.cookies
     kwargs['errors'] = request.errors
+    kwargs['link_token'] = link_token.get_token()
 
     # values from the preferences
     kwargs['preferences'] = request.preferences
     kwargs['autocomplete'] = request.preferences.get_value('autocomplete')
     kwargs['infinite_scroll'] = request.preferences.get_value('infinite_scroll')
+    kwargs['search_on_category_select'] = request.preferences.get_value('search_on_category_select')
+    kwargs['hotkeys'] = request.preferences.get_value('hotkeys')
     kwargs['results_on_new_tab'] = request.preferences.get_value('results_on_new_tab')
     kwargs['advanced_search'] = request.preferences.get_value('advanced_search')
     kwargs['query_in_title'] = request.preferences.get_value('query_in_title')
@@ -476,6 +446,7 @@ def render(template_name: str, **kwargs):
             }
         )
     )
+    kwargs['urlparse'] = urlparse
 
     # scripts from plugins
     kwargs['scripts'] = set()
@@ -642,6 +613,12 @@ def health():
     return Response('OK', mimetype='text/plain')
 
 
+@app.route('/client<token>.css', methods=['GET', 'POST'])
+def client_token(token=None):
+    link_token.ping(request, token)
+    return Response('', mimetype='text/css')
+
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     """Search query in q and return results.
@@ -678,9 +655,7 @@ def search():
         search_query, raw_text_query, _, _, selected_locale = get_search_query_from_webapp(
             request.preferences, request.form
         )
-        # search = Search(search_query) #  without plugins
         search = SearchWithPlugins(search_query, request.user_plugins, request)  # pylint: disable=redefined-outer-name
-
         result_container = search.search()
 
     except SearxParameterException as e:
@@ -690,45 +665,58 @@ def search():
         logger.exception(e, exc_info=True)
         return index_error(output_format, gettext('search error')), 500
 
-    # results
-    results = result_container.get_ordered_results()
-    number_of_results = result_container.results_number()
-    if number_of_results < result_container.results_length():
-        number_of_results = 0
-
-    # checkin for a external bang
+    # 1. check if the result is a redirect for an external bang
     if result_container.redirect_url:
         return redirect(result_container.redirect_url)
 
-    # Server-Timing header
+    # 2. add Server-Timing header for measuring performance characteristics of
+    # web applications
     request.timings = result_container.get_timings()  # pylint: disable=assigning-non-slot
+
+    # 3. formats without a template
+
+    if output_format == 'json':
+
+        response = webutils.get_json_response(search_query, result_container)
+        return Response(response, mimetype='application/json')
+
+    if output_format == 'csv':
+
+        csv = webutils.CSVWriter(StringIO())
+        webutils.write_csv_response(csv, result_container)
+        csv.stream.seek(0)
+
+        response = Response(csv.stream.read(), mimetype='application/csv')
+        cont_disp = 'attachment;Filename=searx_-_{0}.csv'.format(search_query.query)
+        response.headers.add('Content-Disposition', cont_disp)
+        return response
+
+    # 4. formats rendered by a template / RSS & HTML
 
     current_template = None
     previous_result = None
 
-    # output
+    results = result_container.get_ordered_results()
+
+    if search_query.redirect_to_first_result and results:
+        return redirect(results[0]['url'], 302)
+
     for result in results:
         if output_format == 'html':
             if 'content' in result and result['content']:
                 result['content'] = highlight_content(escape(result['content'][:1024]), search_query.query)
             if 'title' in result and result['title']:
                 result['title'] = highlight_content(escape(result['title'] or ''), search_query.query)
-        else:
-            if result.get('content'):
-                result['content'] = html_to_text(result['content']).strip()
-            # removing html content and whitespace duplications
-            result['title'] = ' '.join(html_to_text(result['title']).strip().split())
 
         if 'url' in result:
-            result['pretty_url'] = prettify_url(result['url'])
-
+            result['pretty_url'] = webutils.prettify_url(result['url'])
         if result.get('publishedDate'):  # do not try to get a date from an empty string or a None type
             try:  # test if publishedDate >= 1900 (datetime module bug)
                 result['pubdate'] = result['publishedDate'].strftime('%Y-%m-%d %H:%M:%S%z')
             except ValueError:
                 result['publishedDate'] = None
             else:
-                result['publishedDate'] = searxng_l10n_timespan(result['publishedDate'])
+                result['publishedDate'] = webutils.searxng_l10n_timespan(result['publishedDate'])
 
         # set result['open_group'] = True when the template changes from the previous result
         # set result['close_group'] = True when the template changes on the next result
@@ -742,42 +730,7 @@ def search():
     if previous_result:
         previous_result['close_group'] = True
 
-    if output_format == 'json':
-        x = {
-            'query': search_query.query,
-            'number_of_results': number_of_results,
-            'results': results,
-            'answers': list(result_container.answers),
-            'corrections': list(result_container.corrections),
-            'infoboxes': result_container.infoboxes,
-            'suggestions': list(result_container.suggestions),
-            'unresponsive_engines': __get_translated_errors(result_container.unresponsive_engines),
-        }
-        response = json.dumps(x, default=lambda item: list(item) if isinstance(item, set) else item)
-        return Response(response, mimetype='application/json')
-
-    if output_format == 'csv':
-        csv = UnicodeWriter(StringIO())
-        keys = ('title', 'url', 'content', 'host', 'engine', 'score', 'type')
-        csv.writerow(keys)
-        for row in results:
-            row['host'] = row['parsed_url'].netloc
-            row['type'] = 'result'
-            csv.writerow([row.get(key, '') for key in keys])
-        for a in result_container.answers:
-            row = {'title': a, 'type': 'answer'}
-            csv.writerow([row.get(key, '') for key in keys])
-        for a in result_container.suggestions:
-            row = {'title': a, 'type': 'suggestion'}
-            csv.writerow([row.get(key, '') for key in keys])
-        for a in result_container.corrections:
-            row = {'title': a, 'type': 'correction'}
-            csv.writerow([row.get(key, '') for key in keys])
-        csv.stream.seek(0)
-        response = Response(csv.stream.read(), mimetype='application/csv')
-        cont_disp = 'attachment;Filename=searx_-_{0}.csv'.format(search_query.query)
-        response.headers.add('Content-Disposition', cont_disp)
-        return response
+    # 4.a RSS
 
     if output_format == 'rss':
         response_rss = render(
@@ -787,11 +740,11 @@ def search():
             corrections=result_container.corrections,
             suggestions=result_container.suggestions,
             q=request.form['q'],
-            number_of_results=number_of_results,
+            number_of_results=result_container.number_of_results,
         )
         return Response(response_rss, mimetype='text/xml')
 
-    # HTML output format
+    # 4.b HTML
 
     # suggestions: use RawTextQuery to get the suggestion URLs with the same bang
     suggestion_urls = list(
@@ -819,14 +772,14 @@ def search():
         selected_categories = search_query.categories,
         pageno = search_query.pageno,
         time_range = search_query.time_range or '',
-        number_of_results = format_decimal(number_of_results),
+        number_of_results = format_decimal(result_container.number_of_results),
         suggestions = suggestion_urls,
         answers = result_container.answers,
         corrections = correction_urls,
         infoboxes = result_container.infoboxes,
         engine_data = result_container.engine_data,
         paging = result_container.paging,
-        unresponsive_engines = __get_translated_errors(
+        unresponsive_engines = webutils.get_translated_errors(
             result_container.unresponsive_engines
         ),
         current_locale = request.preferences.get_value("locale"),
@@ -839,25 +792,6 @@ def search():
         timeout_limit = request.form.get('timeout_limit', None)
         # fmt: on
     )
-
-
-def __get_translated_errors(unresponsive_engines: Iterable[UnresponsiveEngine]):
-    translated_errors = []
-
-    # make a copy unresponsive_engines to avoid "RuntimeError: Set changed size
-    # during iteration" it happens when an engine modifies the ResultContainer
-    # after the search_multiple_requests method has stopped waiting
-
-    for unresponsive_engine in unresponsive_engines:
-        error_user_text = exception_classname_to_text.get(unresponsive_engine.error_type)
-        if not error_user_text:
-            error_user_text = exception_classname_to_text[None]
-        error_msg = gettext(error_user_text)
-        if unresponsive_engine.suspended:
-            error_msg = gettext('Suspended') + ': ' + error_msg
-        translated_errors.append((unresponsive_engine.engine, error_msg))
-
-    return sorted(translated_errors, key=lambda e: e[0])
 
 
 @app.route('/about', methods=['GET'])
@@ -939,8 +873,8 @@ def preferences():
     # pylint: disable=too-many-locals, too-many-return-statements, too-many-branches
     # pylint: disable=too-many-statements
 
-    # save preferences using the link the /preferences?preferences=...&save=1
-    if request.args.get('save') == '1':
+    # save preferences using the link the /preferences?preferences=...
+    if request.args.get('preferences') or request.form.get('preferences'):
         resp = make_response(redirect(url_for('index', _external=True)))
         return request.preferences.save(resp)
 
@@ -1010,19 +944,19 @@ def preferences():
         errors = engine_errors.get(e.name) or []
         if counter('engine', e.name, 'search', 'count', 'sent') == 0:
             # no request
-            reliablity = None
+            reliability = None
         elif checker_success and not errors:
-            reliablity = 100
+            reliability = 100
         elif 'simple' in checker_result.get('errors', {}):
-            # the basic (simple) test doesn't work: the engine is broken accoding to the checker
+            # the basic (simple) test doesn't work: the engine is broken according to the checker
             # even if there is no exception
-            reliablity = 0
+            reliability = 0
         else:
             # pylint: disable=consider-using-generator
-            reliablity = 100 - sum([error['percentage'] for error in errors if not error.get('secondary')])
+            reliability = 100 - sum([error['percentage'] for error in errors if not error.get('secondary')])
 
         reliabilities[e.name] = {
-            'reliablity': reliablity,
+            'reliability': reliability,
             'errors': [],
             'checker': checker_results.get(e.name, {}).get('errors', {}).keys(),
         }
@@ -1216,7 +1150,7 @@ def stats():
     reverse, key_name, default_value = STATS_SORT_PARAMETERS[sort_order]
 
     def get_key(engine_stat):
-        reliability = engine_reliabilities.get(engine_stat['name'], {}).get('reliablity', 0)
+        reliability = engine_reliabilities.get(engine_stat['name'], {}).get('reliability', 0)
         reliability_order = 0 if reliability else 1
         if key_name == 'reliability':
             key = reliability
@@ -1227,6 +1161,21 @@ def stats():
                 reliability_order = 1 - reliability_order
         return (reliability_order, key, engine_stat['name'])
 
+    technical_report = []
+    for error in engine_reliabilities.get(selected_engine_name, {}).get('errors', []):
+        technical_report.append(
+            f"\
+            Error: {error['exception_classname'] or error['log_message']} \
+            Parameters: {error['log_parameters']} \
+            File name: {error['filename'] }:{ error['line_no'] } \
+            Error Function: {error['function']} \
+            Code: {error['code']} \
+            ".replace(
+                ' ' * 12, ''
+            ).strip()
+        )
+    technical_report = ' '.join(technical_report)
+
     engine_stats['time'] = sorted(engine_stats['time'], reverse=reverse, key=get_key)
     return render(
         # fmt: off
@@ -1236,6 +1185,7 @@ def stats():
         engine_reliabilities = engine_reliabilities,
         selected_engine_name = selected_engine_name,
         searx_git_branch = GIT_BRANCH,
+        technical_report = technical_report,
         # fmt: on
     )
 
@@ -1331,6 +1281,8 @@ def config():
     for _ in plugins:
         _plugins.append({'name': _.name, 'enabled': _.default_on})
 
+    _limiter_cfg = limiter.get_cfg()
+
     return jsonify(
         {
             'categories': list(categories.keys()),
@@ -1350,8 +1302,14 @@ def config():
                 'GIT_BRANCH': GIT_BRANCH,
                 'DOCS_URL': get_setting('brand.docs_url'),
             },
+            'limiter': {
+                'enabled': limiter.is_installed(),
+                'botdetection.ip_limit.link_token': _limiter_cfg.get('botdetection.ip_limit.link_token'),
+                'botdetection.ip_lists.pass_searxng_org': _limiter_cfg.get('botdetection.ip_lists.pass_searxng_org'),
+            },
             'doi_resolvers': list(settings['doi_resolvers'].keys()),
             'default_doi_resolver': settings['default_doi_resolver'],
+            'public_instance': settings['server']['public_instance'],
         }
     )
 
@@ -1379,6 +1337,7 @@ if not werkzeug_reloader or (werkzeug_reloader and os.environ.get("WERKZEUG_RUN_
     redis_initialize()
     plugin_initialize(app)
     search_initialize(enable_checker=True, check_network=True, enable_metrics=settings['general']['enable_metrics'])
+    limiter.initialize(app, settings)
 
 
 def run():

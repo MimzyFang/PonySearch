@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Google Play Apps & Google Play Movies
 """
 
@@ -48,7 +47,8 @@ def response(resp):
         return response_movies(resp)
     if play_categ == 'apps':
         return response_apps(resp)
-    return []
+
+    raise ValueError(f"Unsupported play category: {play_categ}")
 
 
 def response_movies(resp):

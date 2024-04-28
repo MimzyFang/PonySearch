@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Implementation of the default settings.
 
 """
@@ -151,6 +150,7 @@ SCHEMA = {
         'docs_url': SettingsValue(str, 'https://docs.searxng.org'),
         'public_instances': SettingsValue((False, str), 'https://searx.space'),
         'wiki_url': SettingsValue(str, 'https://github.com/searxng/searxng/wiki'),
+        'custom': SettingsValue(dict, {'links': {}}),
     },
     'search': {
         'safe_search': SettingsValue((0, 1, 2), 0),
@@ -169,11 +169,13 @@ SCHEMA = {
             'recaptcha_SearxEngineCaptcha': SettingsValue(numbers.Real, 604800),
         },
         'formats': SettingsValue(list, OUTPUT_FORMATS),
+        'max_page': SettingsValue(int, 0),
     },
     'server': {
         'port': SettingsValue((int, str), 8888, 'SEARXNG_PORT'),
         'bind_address': SettingsValue(str, '127.0.0.1', 'SEARXNG_BIND_ADDRESS'),
         'limiter': SettingsValue(bool, False),
+        'public_instance': SettingsValue(bool, False),
         'secret_key': SettingsValue(str, environ_name='SEARXNG_SECRET'),
         'base_url': SettingsValue((False, str), False, 'SEARXNG_BASE_URL'),
         'image_proxy': SettingsValue(bool, False),
@@ -199,6 +201,8 @@ SCHEMA = {
         'query_in_title': SettingsValue(bool, False),
         'infinite_scroll': SettingsValue(bool, False),
         'cache_url': SettingsValue(str, 'https://web.archive.org/web/'),
+        'search_on_category_select': SettingsValue(bool, True),
+        'hotkeys': SettingsValue(('default', 'vim'), 'default'),
     },
     'preferences': {
         'lock': SettingsValue(list, []),
@@ -209,9 +213,7 @@ SCHEMA = {
         'enable_http2': SettingsValue(bool, True),
         'verify': SettingsValue((bool, str), True),
         'max_request_timeout': SettingsValue((None, numbers.Real), None),
-        # Magic number kept from previous code
         'pool_connections': SettingsValue(int, 100),
-        # Picked from constructor
         'pool_maxsize': SettingsValue(int, 10),
         'keepalive_expiry': SettingsValue(numbers.Real, 5.0),
         # default maximum redirect

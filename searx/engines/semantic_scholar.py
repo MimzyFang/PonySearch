@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Semantic Scholar (Science)
 """
 
@@ -33,8 +32,6 @@ def request(query, params):
             "page": params['pageno'],
             "pageSize": 10,
             "sort": "relevance",
-            "useFallbackRankerService": False,
-            "useFallbackSearchCluster": False,
             "getQuerySuggestions": False,
             "authors": [],
             "coAuthors": [],

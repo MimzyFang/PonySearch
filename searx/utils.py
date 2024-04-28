@@ -1,12 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
-# pyright: basic
 """Utility functions for the engines
 
 """
 import re
 import importlib
 import importlib.util
+import json
 import types
 
 from typing import Optional, Union, Any, Set, List, Dict, MutableMapping, Tuple, Callable
@@ -14,10 +13,12 @@ from numbers import Number
 from os.path import splitext, join
 from random import choice
 from html.parser import HTMLParser
+from html import escape
 from urllib.parse import urljoin, urlparse
+from markdown_it import MarkdownIt
 
 from lxml import html
-from lxml.etree import ElementBase, XPath, XPathError, XPathSyntaxError, _ElementStringResult, _ElementUnicodeResult
+from lxml.etree import ElementBase, XPath, XPathError, XPathSyntaxError
 
 from searx import settings
 from searx.data import USER_AGENTS, data_dir
@@ -36,11 +37,16 @@ _BLOCKED_TAGS = ('script', 'style')
 _ECMA_UNESCAPE4_RE = re.compile(r'%u([0-9a-fA-F]{4})', re.UNICODE)
 _ECMA_UNESCAPE2_RE = re.compile(r'%([0-9a-fA-F]{2})', re.UNICODE)
 
+_JS_QUOTE_KEYS_RE = re.compile(r'([\{\s,])(\w+)(:)')
+_JS_VOID_RE = re.compile(r'void\s+[0-9]+|void\s*\([0-9]+\)')
+_JS_DECIMAL_RE = re.compile(r":\s*\.")
+
 _STORAGE_UNIT_VALUE: Dict[str, int] = {
     'TB': 1024 * 1024 * 1024 * 1024,
     'GB': 1024 * 1024 * 1024,
     'MB': 1024 * 1024,
     'TiB': 1000 * 1000 * 1000 * 1000,
+    'GiB': 1000 * 1000 * 1000,
     'MiB': 1000 * 1000,
     'KiB': 1000,
 }
@@ -48,7 +54,7 @@ _STORAGE_UNIT_VALUE: Dict[str, int] = {
 _XPATH_CACHE: Dict[str, XPath] = {}
 _LANG_TO_LC_CACHE: Dict[str, Dict[str, str]] = {}
 
-_FASTTEXT_MODEL: Optional["fasttext.FastText._FastText"] = None
+_FASTTEXT_MODEL: Optional["fasttext.FastText._FastText"] = None  # type: ignore
 """fasttext model to predict laguage of a search term"""
 
 SEARCH_LANGUAGE_CODES = frozenset([searxng_locale[0].split('-')[0] for searxng_locale in sxng_locales])
@@ -82,7 +88,7 @@ class _HTMLTextExtractorException(Exception):
     """Internal exception raised when the HTML is invalid"""
 
 
-class _HTMLTextExtractor(HTMLParser):  # pylint: disable=W0223  # (see https://bugs.python.org/issue31844)
+class _HTMLTextExtractor(HTMLParser):
     """Internal class to extract text from HTML"""
 
     def __init__(self):
@@ -131,6 +137,11 @@ class _HTMLTextExtractor(HTMLParser):  # pylint: disable=W0223  # (see https://b
     def get_text(self):
         return ''.join(self.result).strip()
 
+    def error(self, message):
+        # error handle is needed in <py3.10
+        # https://github.com/python/cpython/pull/8562/files
+        raise AssertionError(message)
+
 
 def html_to_text(html_str: str) -> str:
     """Extract text from a HTML string
@@ -147,15 +158,44 @@ def html_to_text(html_str: str) -> str:
 
         >>> html_to_text('<style>.span { color: red; }</style><span>Example</span>')
         'Example'
+
+        >>> html_to_text(r'regexp: (?<![a-zA-Z]')
+        'regexp: (?<![a-zA-Z]'
     """
     html_str = html_str.replace('\n', ' ').replace('\r', ' ')
     html_str = ' '.join(html_str.split())
     s = _HTMLTextExtractor()
     try:
         s.feed(html_str)
+    except AssertionError:
+        s = _HTMLTextExtractor()
+        s.feed(escape(html_str, quote=True))
     except _HTMLTextExtractorException:
         logger.debug("HTMLTextExtractor: invalid HTML\n%s", html_str)
     return s.get_text()
+
+
+def markdown_to_text(markdown_str: str) -> str:
+    """Extract text from a Markdown string
+
+    Args:
+        * markdown_str (str): string Markdown
+
+    Returns:
+        * str: extracted text
+
+    Examples:
+        >>> markdown_to_text('[example](https://example.com)')
+        'example'
+
+        >>> markdown_to_text('## Headline')
+        'Headline'
+    """
+
+    html_str = (
+        MarkdownIt("commonmark", {"typographer": True}).enable(["replacements", "smartquotes"]).render(markdown_str)
+    )
+    return html_to_text(html_str)
 
 
 def extract_text(xpath_results, allow_none: bool = False) -> Optional[str]:
@@ -177,7 +217,7 @@ def extract_text(xpath_results, allow_none: bool = False) -> Optional[str]:
         text: str = html.tostring(xpath_results, encoding='unicode', method='text', with_tail=False)
         text = text.strip().replace('\n', ' ')
         return ' '.join(text.split())
-    if isinstance(xpath_results, (_ElementStringResult, _ElementUnicodeResult, str, Number, bool)):
+    if isinstance(xpath_results, (str, Number, bool)):
         return str(xpath_results)
     if xpath_results is None and allow_none:
         return None
@@ -310,6 +350,18 @@ def get_torrent_size(filesize: str, filesize_multiplier: str) -> Optional[int]:
         return int(float(filesize) * multiplier)
     except ValueError:
         return None
+
+
+def humanize_bytes(size, precision=2):
+    """Determine the *human readable* value of bytes on 1024 base (1KB=1024B)."""
+    s = ['B ', 'KB', 'MB', 'GB', 'TB']
+
+    x = len(s)
+    p = 0
+    while size > 1024 and p < x:
+        p += 1
+        size = size / 1024.0
+    return "%.*f %s" % (precision, size, s[p])
 
 
 def convert_str_to_int(number_str: str) -> int:
@@ -514,7 +566,7 @@ def eval_xpath_list(element: ElementBase, xpath_spec: XPathSpecType, min_len: Op
 
 def eval_xpath_getindex(elements: ElementBase, xpath_spec: XPathSpecType, index: int, default=_NOTSET):
     """Call eval_xpath_list then get one element using the index parameter.
-    If the index does not exist, either aise an exception is default is not set,
+    If the index does not exist, either raise an exception is default is not set,
     other return the default value (can be None).
 
     Args:
@@ -541,7 +593,7 @@ def eval_xpath_getindex(elements: ElementBase, xpath_spec: XPathSpecType, index:
     return default
 
 
-def _get_fasttext_model() -> "fasttext.FastText._FastText":
+def _get_fasttext_model() -> "fasttext.FastText._FastText":  # type: ignore
     global _FASTTEXT_MODEL  # pylint: disable=global-statement
     if _FASTTEXT_MODEL is None:
         import fasttext  # pylint: disable=import-outside-toplevel
@@ -599,7 +651,7 @@ def detect_language(text: str, threshold: float = 0.3, only_search_languages: bo
 
     b. Most of SearXNG's engines do not support all the languages from `language
        identification model`_ and there is also a discrepancy in the ISO-639-3
-       (fastext) and ISO-639-2 (SearXNG)handling.  Further more, in SearXNG the
+       (fasttext) and ISO-639-2 (SearXNG)handling.  Further more, in SearXNG the
        locales like ``zh-TH`` (``zh-CN``) are mapped to ``zh_Hant``
        (``zh_Hans``) while the `language identification model`_ reduce both to
        ``zh``.
@@ -621,3 +673,73 @@ def detect_language(text: str, threshold: float = 0.3, only_search_languages: bo
             return None
         return language
     return None
+
+
+def js_variable_to_python(js_variable):
+    """Convert a javascript variable into JSON and then load the value
+
+    It does not deal with all cases, but it is good enough for now.
+    chompjs has a better implementation.
+    """
+    # when in_string is not None, it contains the character that has opened the string
+    # either simple quote or double quote
+    in_string = None
+    # cut the string:
+    # r"""{ a:"f\"irst", c:'sec"ond'}"""
+    # becomes
+    # ['{ a:', '"', 'f\\', '"', 'irst', '"', ', c:', "'", 'sec', '"', 'ond', "'", '}']
+    parts = re.split(r'(["\'])', js_variable)
+    # previous part (to check the escape character antislash)
+    previous_p = ""
+    for i, p in enumerate(parts):
+        # parse characters inside a ECMA string
+        if in_string:
+            # we are in a JS string: replace the colon by a temporary character
+            # so quote_keys_regex doesn't have to deal with colon inside the JS strings
+            parts[i] = parts[i].replace(':', chr(1))
+            if in_string == "'":
+                # the JS string is delimited by simple quote.
+                # This is not supported by JSON.
+                # simple quote delimited string are converted to double quote delimited string
+                # here, inside a JS string, we escape the double quote
+                parts[i] = parts[i].replace('"', r'\"')
+
+        # deal with delimiters and escape character
+        if not in_string and p in ('"', "'"):
+            # we are not in string
+            # but p is double or simple quote
+            # that's the start of a new string
+            # replace simple quote by double quote
+            # (JSON doesn't support simple quote)
+            parts[i] = '"'
+            in_string = p
+            continue
+        if p == in_string:
+            # we are in a string and the current part MAY close the string
+            if len(previous_p) > 0 and previous_p[-1] == '\\':
+                # there is an antislash just before: the ECMA string continue
+                continue
+            # the current p close the string
+            # replace simple quote by double quote
+            parts[i] = '"'
+            in_string = None
+
+        if not in_string:
+            # replace void 0 by null
+            # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void
+            # we are sure there is no string in p
+            parts[i] = _JS_VOID_RE.sub("null", p)
+        # update previous_p
+        previous_p = p
+    # join the string
+    s = ''.join(parts)
+    # add quote around the key
+    # { a: 12 }
+    # becomes
+    # { "a": 12 }
+    s = _JS_QUOTE_KEYS_RE.sub(r'\1"\2"\3', s)
+    s = _JS_DECIMAL_RE.sub(":0.", s)
+    # replace the surogate character by colon
+    s = s.replace(chr(1), ':')
+    # load the JSON and return the result
+    return json.loads(s)

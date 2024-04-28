@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Słownik Języka Polskiego
 
 Dictionary of the polish language from PWN (sjp.pwn)
@@ -80,7 +79,7 @@ def response(resp):
     for src in definitions:
         infobox += f"<div><small>{src[0]}</small>"
         infobox += "<ul>"
-        for (def_text, sub_def) in src[1]:
+        for def_text, sub_def in src[1]:
             infobox += f"<li>{def_text}</li>"
             if sub_def:
                 infobox += "<ol>"

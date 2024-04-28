@@ -37,7 +37,7 @@ docs.live <make docs.live>` to build HTML while editing.
    - DOT_, `Graphviz's dot`_, Graphviz_
 
 
-.. contents:: Contents
+.. contents::
    :depth: 3
    :local:
    :backlinks: entry
@@ -235,7 +235,7 @@ To refer anchors use the `ref role`_ markup:
 .. admonition:: ``:ref:`` role
    :class: rst-example
 
-   Visist chapter :ref:`reST anchor`.  Or set hyperlink text manually :ref:`foo
+   Visit chapter :ref:`reST anchor`.  Or set hyperlink text manually :ref:`foo
    bar <reST anchor>`.
 
 .. _reST ordinary ref:
@@ -292,7 +292,7 @@ content becomes smart.
    files & folders origin     :origin:`docs/dev/reST.rst`        ``:origin:`docs/dev/reST.rst```
    pull request               :pull:`4`                          ``:pull:`4```
    patch                      :patch:`af2cae6`                   ``:patch:`af2cae6```
-   PyPi package               :pypi:`searx`                      ``:pypi:`searx```
+   PyPi package               :pypi:`httpx`                      ``:pypi:`httpx```
    manual page man            :man:`bash`                        ``:man:`bash```
    intersphinx_
    --------------------------------------------------------------------------------------------------

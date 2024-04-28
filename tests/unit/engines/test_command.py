@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# pylint: disable=missing-module-docstring
+
 '''
 searx is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -13,7 +16,6 @@ You should have received a copy of the GNU Affero General Public License
 along with searx. If not, see < http://www.gnu.org/licenses/ >.
 
 '''
-
 
 from searx.engines import command as command_engine
 from tests import SearxTestCase

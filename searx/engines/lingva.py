@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Lingva (alternative Google Translate frontend)"""
 
 from json import loads
@@ -14,9 +13,9 @@ about = {
 }
 
 engine_type = 'online_dictionary'
-categories = ['general']
+categories = ['general', 'translate']
 
-url = "https://lingva.ml"
+url = "https://lingva.thedaviddelta.com"
 search_url = "{url}/api/v1/{from_lang}/{to_lang}/{query}"
 
 
@@ -48,8 +47,6 @@ def response(resp):
     infobox = ""
 
     for translation in info["extraTranslations"]:
-        infobox += f"<b>{translation['type']}</b>"
-
         for word in translation["list"]:
             infobox += f"<dl><dt>{word['word']}</dt>"
 

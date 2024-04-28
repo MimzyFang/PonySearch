@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """This is the implementation of the Google Videos engine.
 
 .. admonition:: Content-Security-Policy (CSP)
@@ -57,6 +56,7 @@ about = {
 
 categories = ['videos', 'web']
 paging = True
+max_page = 50
 language_support = True
 time_range_support = True
 safesearch = True
@@ -86,7 +86,7 @@ def request(query, params):
 
     if params['time_range'] in time_range_dict:
         query_url += '&' + urlencode({'tbs': 'qdr:' + time_range_dict[params['time_range']]})
-    if params['safesearch']:
+    if 'safesearch' in params:
         query_url += '&' + urlencode({'safe': filter_mapping[params['safesearch']]})
     params['url'] = query_url
 
@@ -114,10 +114,9 @@ def response(resp):
         title = extract_text(eval_xpath_getindex(result, './/a/h3[1]', 0))
         url = eval_xpath_getindex(result, './/a/h3[1]/../@href', 0)
 
-        c_node = eval_xpath_getindex(result, './/div[@class="Uroaid"]', 0)
+        c_node = eval_xpath_getindex(result, './/div[@class="ITZIwc"]', 0)
         content = extract_text(c_node)
-        pub_info = extract_text(eval_xpath(result, './/div[@class="P7xzyf"]'))
-        length = extract_text(eval_xpath(result, './/div[@class="J1mWY"]'))
+        pub_info = extract_text(eval_xpath(result, './/div[@class="gqF9jc"]'))
 
         results.append(
             {
@@ -126,7 +125,6 @@ def response(resp):
                 'content': content,
                 'author': pub_info,
                 'thumbnail': img_src,
-                'length': length,
                 'template': 'videos.html',
             }
         )

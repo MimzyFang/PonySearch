@@ -17,6 +17,9 @@
   {% else %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/searxng.min.css') }}" type="text/css" media="screen" />
   {% endif %}
+  {% if get_setting('server.limiter') or get_setting('server.public_instance') %}
+  <link rel="stylesheet" href="{{ url_for('client_token', token=link_token) }}" type="text/css" />
+  {% endif %}
   {% block styles %}{% endblock %}
   <!--[if gte IE 9]>-->
   <script src="{{ url_for('static', filename='js/searxng.head.min.js') }}" client_settings="{{ client_settings }}"></script>
@@ -26,6 +29,7 @@
   {% endblock %}
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" sizes="any">
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/favicon.png') }}"/>
 </head>
 <body class="{{ endpoint }}_endpoint" >
   <main id="main_{{  self._TemplateReference__context.name|replace("simple/", "")|replace(".html", "") }}" class="{{body_class}}">
@@ -74,6 +78,9 @@
         {% if get_setting('general.contact_url') %}
         | <a rel="me" href="{{ get_setting('general.contact_url') }}">{{ _('Contact instance maintainer') }}</a>
         {% endif %}
+        {% for title, link in get_setting('brand.custom.links').items() %}
+        | <a href="{{ link }}">{{ _(title) }}</a>
+        {% endfor %}
     </p>
   </footer>
   <!--[if gte IE 9]>-->

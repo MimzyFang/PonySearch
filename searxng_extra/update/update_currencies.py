@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# lint: pylint
 # SPDX-License-Identifier: AGPL-3.0-or-later
-
 """Fetch currencies from :origin:`searx/engines/wikidata.py` engine.
 
 Output file: :origin:`searx/data/currencies.json` (:origin:`CI Update data ...
@@ -15,12 +13,11 @@ import re
 import unicodedata
 import json
 
-# set path
-from os.path import join
-
-from searx import searx_dir
 from searx.locales import LOCALE_NAMES, locales_initialize
 from searx.engines import wikidata, set_loggers
+from searx.data import data_dir
+
+DATA_FILE = data_dir / 'currencies.json'
 
 set_loggers(wikidata, 'wikidata')
 locales_initialize()
@@ -97,8 +94,7 @@ def add_currency_label(db, label, iso4217, language):
 def wikidata_request_result_iterator(request):
     result = wikidata.send_wikidata_query(request.replace('%LANGUAGES_SPARQL%', LANGUAGES_SPARQL))
     if result is not None:
-        for r in result['results']['bindings']:
-            yield r
+        yield from result['results']['bindings']
 
 
 def fetch_db():
@@ -131,23 +127,13 @@ def fetch_db():
         if 'unit' in r:
             add_currency_name(db, r['unit']['value'], iso4217, normalize_name=False)
 
-    # reduce memory usage:
-    # replace lists with one item by the item.
-    # see searx.search.processors.online_currency.name_to_iso4217
-    for name in db['names']:
-        if len(db['names'][name]) == 1:
-            db['names'][name] = db['names'][name][0]
-
     return db
 
 
-def get_filename():
-    return join(join(searx_dir, "data"), "currencies.json")
-
-
 def main():
-    #
+
     db = fetch_db()
+
     # static
     add_currency_name(db, "euro", 'EUR')
     add_currency_name(db, "euros", 'EUR')
@@ -156,8 +142,15 @@ def main():
     add_currency_name(db, "peso", 'MXN')
     add_currency_name(db, "pesos", 'MXN')
 
-    with open(get_filename(), 'w', encoding='utf8') as f:
-        json.dump(db, f, ensure_ascii=False, indent=4)
+    # reduce memory usage:
+    # replace lists with one item by the item.  see
+    # searx.search.processors.online_currency.name_to_iso4217
+    for name in db['names']:
+        if len(db['names'][name]) == 1:
+            db['names'][name] = db['names'][name][0]
+
+    with DATA_FILE.open('w', encoding='utf8') as f:
+        json.dump(db, f, indent=4, sort_keys=True, ensure_ascii=False)
 
 
 if __name__ == '__main__':

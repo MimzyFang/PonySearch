@@ -55,121 +55,160 @@ searxng.ready(function () {
     }
   }, true);
 
-  var vimKeys = {
-    27: {
-      key: 'Escape',
+  /* common base for layouts */
+  var baseKeyBinding = {
+    'Escape': {
+      key: 'ESC',
       fun: removeFocus,
       des: 'remove focus from the focused input',
       cat: 'Control'
     },
-    73: {
+    'c': {
+      key: 'c',
+      fun: copyURLToClipboard,
+      des: 'copy url of the selected result to the clipboard',
+      cat: 'Results'
+    },
+    'h': {
+      key: 'h',
+      fun: toggleHelp,
+      des: 'toggle help window',
+      cat: 'Other'
+    },
+    'i': {
       key: 'i',
       fun: searchInputFocus,
       des: 'focus on the search input',
       cat: 'Control'
     },
-    66: {
-      key: 'b',
-      fun: scrollPage(-window.innerHeight),
-      des: 'scroll one page up',
-      cat: 'Navigation'
-    },
-    70: {
-      key: 'f',
-      fun: scrollPage(window.innerHeight),
-      des: 'scroll one page down',
-      cat: 'Navigation'
-    },
-    85: {
-      key: 'u',
-      fun: scrollPage(-window.innerHeight / 2),
-      des: 'scroll half a page up',
-      cat: 'Navigation'
-    },
-    68: {
-      key: 'd',
-      fun: scrollPage(window.innerHeight / 2),
-      des: 'scroll half a page down',
-      cat: 'Navigation'
-    },
-    71: {
-      key: 'g',
-      fun: scrollPageTo(-document.body.scrollHeight, 'top'),
-      des: 'scroll to the top of the page',
-      cat: 'Navigation'
-    },
-    86: {
-      key: 'v',
-      fun: scrollPageTo(document.body.scrollHeight, 'bottom'),
-      des: 'scroll to the bottom of the page',
-      cat: 'Navigation'
-    },
-    75: {
-      key: 'k',
-      fun: highlightResult('up'),
-      des: 'select previous search result',
-      cat: 'Results'
-    },
-    74: {
-      key: 'j',
-      fun: highlightResult('down'),
-      des: 'select next search result',
-      cat: 'Results'
-    },
-    80: {
-      key: 'p',
-      fun: GoToPreviousPage(),
-      des: 'go to previous page',
-      cat: 'Results'
-    },
-    78: {
+    'n': {
       key: 'n',
       fun: GoToNextPage(),
       des: 'go to next page',
       cat: 'Results'
     },
-    79: {
+    'o': {
       key: 'o',
       fun: openResult(false),
       des: 'open search result',
       cat: 'Results'
     },
-    84: {
-      key: 't',
-      fun: openResult(true),
-      des: 'open the result in a new tab',
+    'p': {
+      key: 'p',
+      fun: GoToPreviousPage(),
+      des: 'go to previous page',
       cat: 'Results'
     },
-    82: {
+    'r': {
       key: 'r',
       fun: reloadPage,
       des: 'reload page from the server',
       cat: 'Control'
     },
-    72: {
-      key: 'h',
-      fun: toggleHelp,
-      des: 'toggle help window',
-      cat: 'Other'
-    }
+    't': {
+      key: 't',
+      fun: openResult(true),
+      des: 'open the result in a new tab',
+      cat: 'Results'
+    },
   };
+  var keyBindingLayouts = {
 
-  if (searxng.settings.hotkeys) {
-    searxng.on(document, "keydown", function (e) {
-      // check for modifiers so we don't break browser's hotkeys
-      if (Object.prototype.hasOwnProperty.call(vimKeys, e.keyCode) && !e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
-        var tagName = e.target.tagName.toLowerCase();
-        if (e.keyCode === 27) {
-          vimKeys[e.keyCode].fun(e);
-        } else {
-          if (e.target === document.body || tagName === 'a' || tagName === 'button') {
-            e.preventDefault();
-            vimKeys[e.keyCode].fun();
-          }
+    "default": Object.assign(
+      { /* SearXNG layout */
+        'ArrowLeft': {
+          key: '←',
+          fun: highlightResult('up'),
+          des: 'select previous search result',
+          cat: 'Results'
+        },
+        'ArrowRight': {
+          key: '→',
+          fun: highlightResult('down'),
+          des: 'select next search result',
+          cat: 'Results'
+        },
+      }, baseKeyBinding),
+
+    'vim': Object.assign(
+      { /* Vim-like Key Layout. */
+        'b': {
+          key: 'b',
+          fun: scrollPage(-window.innerHeight),
+          des: 'scroll one page up',
+          cat: 'Navigation'
+        },
+        'f': {
+          key: 'f',
+          fun: scrollPage(window.innerHeight),
+          des: 'scroll one page down',
+          cat: 'Navigation'
+        },
+        'u': {
+          key: 'u',
+          fun: scrollPage(-window.innerHeight / 2),
+          des: 'scroll half a page up',
+          cat: 'Navigation'
+        },
+        'd': {
+          key: 'd',
+          fun: scrollPage(window.innerHeight / 2),
+          des: 'scroll half a page down',
+          cat: 'Navigation'
+        },
+        'g': {
+          key: 'g',
+          fun: scrollPageTo(-document.body.scrollHeight, 'top'),
+          des: 'scroll to the top of the page',
+          cat: 'Navigation'
+        },
+        'v': {
+          key: 'v',
+          fun: scrollPageTo(document.body.scrollHeight, 'bottom'),
+          des: 'scroll to the bottom of the page',
+          cat: 'Navigation'
+        },
+        'k': {
+          key: 'k',
+          fun: highlightResult('up'),
+          des: 'select previous search result',
+          cat: 'Results'
+        },
+        'j': {
+          key: 'j',
+          fun: highlightResult('down'),
+          des: 'select next search result',
+          cat: 'Results'
+        },
+        'y': {
+          key: 'y',
+          fun: copyURLToClipboard,
+          des: 'copy url of the selected result to the clipboard',
+          cat: 'Results'
+        },
+      }, baseKeyBinding)
+  }
+
+  var keyBindings = keyBindingLayouts[searxng.settings.hotkeys] || keyBindingLayouts.default;
+
+  searxng.on(document, "keydown", function (e) {
+    // check for modifiers so we don't break browser's hotkeys
+    if (
+      Object.prototype.hasOwnProperty.call(keyBindings, e.key)
+        && !e.ctrlKey && !e.altKey
+        && !e.shiftKey && !e.metaKey
+    ) {
+      var tagName = e.target.tagName.toLowerCase();
+      if (e.key === 'Escape') {
+        keyBindings[e.key].fun(e);
+      } else {
+        if (e.target === document.body || tagName === 'a' || tagName === 'button') {
+          e.preventDefault();
+          keyBindings[e.key].fun();
         }
       }
-    });
-  }
+    }
+  });
 
   function highlightResult (which) {
     return function (noScroll, keepFocus) {
@@ -189,6 +228,7 @@ searxng.ready(function () {
       }
 
       var next, results = document.querySelectorAll('.result');
+      results = Array.from(results);  // convert NodeList to Array for further use
 
       if (typeof effectiveWhich !== 'string') {
         next = effectiveWhich;
@@ -209,16 +249,10 @@ searxng.ready(function () {
           }
           break;
         case 'down':
-          next = current.nextElementSibling;
-          if (next === null) {
-            next = results[0];
-          }
+          next = results[results.indexOf(current) + 1] || current;
           break;
         case 'up':
-          next = current.previousElementSibling;
-          if (next === null) {
-            next = results[results.length - 1];
-          }
+          next = results[results.indexOf(current) - 1] || current;
           break;
         case 'bottom':
           next = results[results.length - 1];
@@ -347,8 +381,8 @@ searxng.ready(function () {
   function initHelpContent (divElement) {
     var categories = {};
 
-    for (var k in vimKeys) {
-      var key = vimKeys[k];
+    for (var k in keyBindings) {
+      var key = keyBindings[k];
       categories[key.cat] = categories[key.cat] || [];
       categories[key.cat].push(key);
     }
@@ -362,7 +396,7 @@ searxng.ready(function () {
     }
 
     var html = '<a href="#" class="close" aria-label="close" title="close">×</a>';
-    html += '<h3>How to navigate searx with Vim-like hotkeys</h3>';
+    html += '<h3>How to navigate SearXNG with hotkeys</h3>';
     html += '<table>';
 
     for (var i = 0; i < sorted.length; i++) {
@@ -404,8 +438,6 @@ searxng.ready(function () {
       helpPanel.id = 'vim-hotkeys-help';
       helpPanel.className = 'dialog-modal';
       initHelpContent(helpPanel);
-      initHelpContent(helpPanel);
-      initHelpContent(helpPanel);
       var body = document.getElementsByTagName('body')[0];
       body.appendChild(helpPanel);
     } else {
@@ -413,6 +445,14 @@ searxng.ready(function () {
       helpPanel.classList.toggle('invisible');
       return;
     }
+  }
+
+  function copyURLToClipboard () {
+    var currentUrlElement = document.querySelector('.result[data-vim-selected] h3 a');
+    if (currentUrlElement === null) return;
+
+    const url = currentUrlElement.getAttribute('href');
+    navigator.clipboard.writeText(url);
   }
 
   searxng.scrollPageToSelected = scrollPageToSelected;

@@ -44,10 +44,10 @@ lxc.clean:
 
 PHONY += search.checker search.checker.%
 search.checker: install
-	$(Q)./manage pyenv.cmd searx-checker -v
+	$(Q)./manage pyenv.cmd searxng-checker -v
 
 search.checker.%: install
-	$(Q)./manage pyenv.cmd searx-checker -v "$(subst _, ,$(patsubst search.checker.%,%,$@))"
+	$(Q)./manage pyenv.cmd searxng-checker -v "$(subst _, ,$(patsubst search.checker.%,%,$@))"
 
 PHONY += test ci.test test.shell
 ci.test: test.yamllint test.black test.pyright test.pylint test.unit test.robot test.rst test.pybabel
@@ -56,34 +56,32 @@ test.shell:
 	$(Q)shellcheck -x -s dash \
 		dockerfiles/docker-entrypoint.sh
 	$(Q)shellcheck -x -s bash \
-		utils/brand.env \
+		utils/brand.sh \
 		$(MTOOLS) \
 		utils/lib.sh \
-		utils/lib_nvm.sh \
-		utils/lib_static.sh \
+		utils/lib_sxng*.sh \
 		utils/lib_go.sh \
+		utils/lib_nvm.sh \
 		utils/lib_redis.sh \
-		utils/filtron.sh \
-		utils/searx.sh \
 		utils/searxng.sh \
-		utils/morty.sh \
 		utils/lxc.sh \
-		utils/lxc-searxng.env
+		utils/lxc-searxng.env \
+		utils/searx.sh \
+		utils/filtron.sh \
+		utils/morty.sh
 	$(Q)$(MTOOLS) build_msg TEST "$@ OK"
 
 
 # wrap ./manage script
 
-MANAGE += buildenv
 MANAGE += weblate.translations.commit weblate.push.translations
-MANAGE += data.all data.traits data.useragents
+MANAGE += data.all data.traits data.useragents data.locales
 MANAGE += docs.html docs.live docs.gh-pages docs.prebuild docs.clean
 MANAGE += docker.build docker.push docker.buildx
 MANAGE += gecko.driver
 MANAGE += node.env node.env.dev node.clean
 MANAGE += py.build py.clean
 MANAGE += pyenv pyenv.install pyenv.uninstall
-MANAGE += pypi.upload pypi.upload.test
 MANAGE += format.python
 MANAGE += test.yamllint test.pylint test.pyright test.black test.pybabel test.unit test.coverage test.robot test.rst test.clean
 MANAGE += themes.all themes.simple themes.simple.test pygments.less

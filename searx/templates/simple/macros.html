@@ -42,7 +42,7 @@
 {%- macro result_sub_footer(result, proxify) -%}
 <div class="engines">
   {% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}
-  {{ result_link(cache_url + result.url, icon_small('ellipsis-vertical-outline') + _('cached'), "cache_link") }}&lrm; {% if proxify and proxify_results %} {{ result_link(proxify(result.url), icon('link') + _('proxied'), "proxyfied_link") }} {% endif %}
+  {{ icon_small('ellipsis-vertical-outline') + result_link(cache_url + result.url, _('cached'), "cache_link") }}&lrm; {% if proxify and proxify_results %} {{ result_link(proxify(result.url), _('proxied'), "proxyfied_link") }} {% endif %}
 </div>{{- '' -}}
 <div class="break"></div>{{- '' -}}
 {%- endmacro -%}
@@ -52,33 +52,12 @@
 </article>
 {%- endmacro -%}
 
-<!-- -->
-{%- macro tabs_open() -%}
-<div class="tabs" role="tablist">
-{%- endmacro -%}
-
-{%- macro tab_header(name, id, label, checked) -%}
-<input type="radio" name="{{ name }}" id="tab-{{ id }}" {% if checked is sameas true %}checked="checked"{% endif %} />
-<label id="tab-label-{{ label }}" for="tab-{{ id }}" role="tab" aria-controls="tab-content-{{ id }}">{{ label }}</label>
-<section id="tab-content-{{ id }}" role="tabpanel" aria-labelledby="tab-label-{{ label }}" aria-hidden="false">
-{%- endmacro -%}
-
-{%- macro tab_footer() -%}
-</section>
-{%- endmacro -%}
-
-{%- macro tabs_close() -%}
-</div>
-{%- endmacro -%}
-
+<!-- input checkbox, on/off slider user can tap-->
 {%- macro checkbox_onoff(name, checked) -%}
-  <input type="checkbox" name="{{ name }}" id="{{ name }}" value="None" class="checkbox-onoff" {% if checked %}checked{% endif %} />
-{%- endmacro -%}
-
-{%- macro checkbox(name, checked, disabled) -%}
-{%- if checked == '?' -%}
-  {{- icon_small('warning') -}}
-{%- else -%}
-  <input type="checkbox"{% if name %} name="{{ name }}"{% endif %} value="None"{% if checked %} checked{% endif %}{% if disabled %} disabled{% endif %} />
-{%- endif -%}
+  <input type="checkbox" {{- ' ' -}}
+         name="{{ name }}" {{- ' ' -}}
+         id="{{ name }}" {{- ' ' -}}
+         aria-labelledby="pref_{{ name }}"{{- ' ' -}}
+         class="checkbox-onoff"{{- ' ' -}}
+         {%- if checked -%} checked{%- endif -%}/>
 {%- endmacro -%}

@@ -1,12 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """This module implements functions needed for the autocompleter.
 
 """
 # pylint: disable=use-dict-literal
 
 import json
-from urllib.parse import urlencode
+from urllib.parse import urlencode, quote_plus
 
 import lxml
 from httpx import HTTPError
@@ -16,15 +15,24 @@ from searx.engines import (
     engines,
     google,
 )
-from searx.network import get as http_get
+from searx.network import get as http_get, post as http_post
 from searx.exceptions import SearxEngineResponseException
 
 
-def get(*args, **kwargs):
+def update_kwargs(**kwargs):
     if 'timeout' not in kwargs:
         kwargs['timeout'] = settings['outgoing']['request_timeout']
     kwargs['raise_for_httperror'] = True
+
+
+def get(*args, **kwargs):
+    update_kwargs(**kwargs)
     return http_get(*args, **kwargs)
+
+
+def post(*args, **kwargs):
+    update_kwargs(**kwargs)
+    return http_post(*args, **kwargs)
 
 
 def brave(query, _lang):
@@ -110,6 +118,18 @@ def google_complete(query, sxng_locale):
     return results
 
 
+def mwmbl(query, _lang):
+    """Autocomplete from Mwmbl_."""
+
+    # mwmbl autocompleter
+    url = 'https://api.mwmbl.org/search/complete?{query}'
+
+    results = get(url.format(query=urlencode({'q': query}))).json()[1]
+
+    # results starting with `go:` are direct urls and not useful for auto completion
+    return [result for result in results if not result.startswith("go: ") and not result.startswith("search: ")]
+
+
 def seznam(query, _lang):
     # seznam search autocompleter
     url = 'https://suggest.seznam.cz/fulltext/cs?{query}'
@@ -131,6 +151,18 @@ def seznam(query, _lang):
         for item in data.get('result', [])
         if item.get('itemType', None) == 'ItemType.TEXT'
     ]
+
+
+def stract(query, _lang):
+    # stract autocompleter (beta)
+    url = f"https://stract.com/beta/api/autosuggest?q={quote_plus(query)}"
+
+    resp = post(url)
+
+    if not resp.ok:
+        return []
+
+    return [suggestion['raw'] for suggestion in resp.json()]
 
 
 def startpage(query, sxng_locale):
@@ -208,8 +240,10 @@ backends = {
     'dbpedia': dbpedia,
     'duckduckgo': duckduckgo,
     'google': google_complete,
+    'mwmbl': mwmbl,
     'seznam': seznam,
     'startpage': startpage,
+    'stract': stract,
     'swisscows': swisscows,
     'qwant': qwant,
     'wikipedia': wikipedia,

@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 # pylint: disable=missing-module-docstring, global-statement
 
 import asyncio
@@ -78,7 +77,7 @@ def _get_timeout(start_time, kwargs):
     # 2 minutes timeout for the requests without timeout
     timeout = timeout or 120
 
-    # ajdust actual timeout
+    # adjust actual timeout
     timeout += 0.2  # overhead
     if start_time:
         timeout -= default_timer() - start_time

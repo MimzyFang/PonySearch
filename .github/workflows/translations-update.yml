@@ -6,12 +6,12 @@ on:
 
 jobs:
   babel:
-    name: "create PR for additons from weblate"
+    name: "create PR for additions from weblate"
     runs-on: ubuntu-20.04
     if: ${{ github.repository_owner == 'searxng' && github.ref == 'refs/heads/master' }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: '0'
         token: ${{ secrets.WEBLATE_GITHUB_TOKEN }}
@@ -45,15 +45,15 @@ jobs:
       uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ secrets.WEBLATE_GITHUB_TOKEN }}
-        commit-message: Update translations
+        commit-message: '[l10n] update translations from Weblate'
         committer: searxng-bot <searxng-bot@users.noreply.github.com>
         author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
         signoff: false
         branch: translations_update
         delete-branch: true
         draft: false
-        title: 'Update translations'
+        title: '[l10n] update translations from Weblate'
         body: |
-          Update translations
+          update translations from Weblate
         labels: |
           translation

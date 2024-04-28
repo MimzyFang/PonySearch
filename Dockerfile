@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.19
 ENTRYPOINT ["/sbin/tini","--","/usr/local/searxng/dockerfiles/docker-entrypoint.sh"]
 EXPOSE 8080
 VOLUME /etc/searxng
@@ -15,7 +15,9 @@ ENV INSTANCE_NAME=searxng \
     MORTY_KEY= \
     MORTY_URL= \
     SEARXNG_SETTINGS_PATH=/etc/searxng/settings.yml \
-    UWSGI_SETTINGS_PATH=/etc/searxng/uwsgi.ini
+    UWSGI_SETTINGS_PATH=/etc/searxng/uwsgi.ini \
+    UWSGI_WORKERS=%k \
+    UWSGI_THREADS=4
 
 WORKDIR /usr/local/searxng
 
@@ -43,7 +45,7 @@ RUN apk add --no-cache -t build-dependencies \
     uwsgi \
     uwsgi-python3 \
     brotli \
- && pip3 install --no-cache -r requirements.txt \
+ && pip3 install --break-system-packages --no-cache -r requirements.txt \
  && apk del build-dependencies \
  && rm -rf /root/.cache
 

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# pylint: disable=missing-module-docstring, invalid-name
 
 from copy import copy
 
@@ -23,11 +24,11 @@ TEST_ENGINES = [
 ]
 
 
-class SearchQueryTestCase(SearxTestCase):
+class SearchQueryTestCase(SearxTestCase):  # pylint: disable=missing-class-docstring
     def test_repr(self):
         s = SearchQuery('test', [EngineRef('bing', 'general')], 'all', 0, 1, '1', 5.0, 'g')
         self.assertEqual(
-            repr(s), "SearchQuery('test', [EngineRef('bing', 'general')], 'all', 0, 1, '1', 5.0, 'g')"
+            repr(s), "SearchQuery('test', [EngineRef('bing', 'general')], 'all', 0, 1, '1', 5.0, 'g', None)"
         )  # noqa
 
     def test_eq(self):
@@ -42,7 +43,13 @@ class SearchQueryTestCase(SearxTestCase):
         self.assertEqual(s, t)
 
 
-class SearchTestCase(SearxTestCase):
+class SearchTestCase(SearxTestCase):  # pylint: disable=missing-class-docstring
+    def setUp(self):
+
+        from searx import webapp  # pylint: disable=import-outside-toplevel
+
+        self.app = webapp.app
+
     @classmethod
     def setUpClass(cls):
         searx.search.initialize(TEST_ENGINES)
@@ -53,7 +60,8 @@ class SearchTestCase(SearxTestCase):
             'test', [EngineRef(PUBLIC_ENGINE_NAME, 'general')], 'en-US', SAFESEARCH, PAGENO, None, None
         )
         search = searx.search.Search(search_query)
-        search.search()
+        with self.app.test_request_context('/search'):
+            search.search()
         self.assertEqual(search.actual_timeout, 3.0)
 
     def test_timeout_query_above_default_nomax(self):
@@ -62,7 +70,8 @@ class SearchTestCase(SearxTestCase):
             'test', [EngineRef(PUBLIC_ENGINE_NAME, 'general')], 'en-US', SAFESEARCH, PAGENO, None, 5.0
         )
         search = searx.search.Search(search_query)
-        search.search()
+        with self.app.test_request_context('/search'):
+            search.search()
         self.assertEqual(search.actual_timeout, 3.0)
 
     def test_timeout_query_below_default_nomax(self):
@@ -71,7 +80,8 @@ class SearchTestCase(SearxTestCase):
             'test', [EngineRef(PUBLIC_ENGINE_NAME, 'general')], 'en-US', SAFESEARCH, PAGENO, None, 1.0
         )
         search = searx.search.Search(search_query)
-        search.search()
+        with self.app.test_request_context('/search'):
+            search.search()
         self.assertEqual(search.actual_timeout, 1.0)
 
     def test_timeout_query_below_max(self):
@@ -80,7 +90,8 @@ class SearchTestCase(SearxTestCase):
             'test', [EngineRef(PUBLIC_ENGINE_NAME, 'general')], 'en-US', SAFESEARCH, PAGENO, None, 5.0
         )
         search = searx.search.Search(search_query)
-        search.search()
+        with self.app.test_request_context('/search'):
+            search.search()
         self.assertEqual(search.actual_timeout, 5.0)
 
     def test_timeout_query_above_max(self):
@@ -89,7 +100,8 @@ class SearchTestCase(SearxTestCase):
             'test', [EngineRef(PUBLIC_ENGINE_NAME, 'general')], 'en-US', SAFESEARCH, PAGENO, None, 15.0
         )
         search = searx.search.Search(search_query)
-        search.search()
+        with self.app.test_request_context('/search'):
+            search.search()
         self.assertEqual(search.actual_timeout, 10.0)
 
     def test_external_bang(self):
@@ -119,6 +131,7 @@ class SearchTestCase(SearxTestCase):
         )
 
         search = searx.search.Search(search_query)
-        results = search.search()
+        with self.app.test_request_context('/search'):
+            results = search.search()
         # This should not redirect
         self.assertTrue(results.redirect_url is None)

@@ -7,30 +7,33 @@
 # Issa1552 <fairfull.playing@gmail.com>, 2020
 # Matija Kromar <matija.kromar@gmail.com>, 2022.
 # Markus Heiser <markus.heiser@darmarit.de>, 2022.
-# SecularSteve <fairfull.playing@gmail.com>, 2022.
+# SecularSteve <fairfull.playing@gmail.com>, 2022, 2023.
 # prljav <marin.ruskica@gmail.com>, 2022.
 # ptomljanovic <phill2605@gmail.com>, 2022.
+# return42 <markus.heiser@darmarit.de>, 2023.
+# return42 <return42@users.noreply.translate.codeberg.org>, 2024.
+# Uzakmo <Uzakmo@users.noreply.translate.codeberg.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-08 09:24+0000\n"
-"PO-Revision-Date: 2022-11-04 07:18+0000\n"
-"Last-Translator: ptomljanovic <phill2605@gmail.com>\n"
+"POT-Creation-Date: 2024-04-26 05:37+0000\n"
+"PO-Revision-Date: 2024-04-07 07:18+0000\n"
+"Last-Translator: Uzakmo <Uzakmo@users.noreply.translate.codeberg.org>\n"
 "Language: hr\n"
 "Language-Team: Croatian "
-"<https://weblate.bubu1.eu/projects/searxng/searxng/hr/>\n"
+"<https://translate.codeberg.org/projects/searxng/searxng/hr/>\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.14.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
 #: searx/searxng.msg
 msgid "without further subgrouping"
-msgstr ""
+msgstr "bez daljnjeg podgrupiranja"
 
 #. CONSTANT_NAMES['DEFAULT_CATEGORY']
 #: searx/searxng.msg
@@ -67,6 +70,16 @@ msgstr "slike"
 msgid "videos"
 msgstr "video zapisi"
 
+#. CATEGORY_NAMES['RADIO']
+#: searx/engines/radio_browser.py:103 searx/searxng.msg
+msgid "radio"
+msgstr "radio"
+
+#. CATEGORY_NAMES['TV']
+#: searx/searxng.msg
+msgid "tv"
+msgstr ""
+
 #. CATEGORY_NAMES['IT']
 #: searx/searxng.msg
 msgid "it"
@@ -85,7 +98,7 @@ msgstr "karta"
 #. CATEGORY_NAMES['ONIONS']
 #: searx/searxng.msg
 msgid "onions"
-msgstr "vamata"
+msgstr "kapule"
 
 #. CATEGORY_NAMES['SCIENCE']
 #: searx/searxng.msg
@@ -105,7 +118,7 @@ msgstr "rječnici"
 #. CATEGORY_GROUPS['LYRICS']
 #: searx/searxng.msg
 msgid "lyrics"
-msgstr "tekst"
+msgstr "tekstovi"
 
 #. CATEGORY_GROUPS['PACKAGES']
 #: searx/searxng.msg
@@ -152,114 +165,264 @@ msgstr "svijetlo"
 msgid "dark"
 msgstr "tamno"
 
-#: searx/webapp.py:165
-msgid "timeout"
-msgstr "pauza"
+#. BRAND_CUSTOM_LINKS['UPTIME']
+#: searx/searxng.msg
+msgid "Uptime"
+msgstr "Vrijeme rada"
 
-#: searx/webapp.py:166
-msgid "parsing error"
-msgstr "pogreška pri raščlanjivanju"
+#. BRAND_CUSTOM_LINKS['ABOUT']
+#: searx/searxng.msg searx/templates/simple/base.html:50
+msgid "About"
+msgstr "O nama"
 
-#: searx/webapp.py:167
-msgid "HTTP protocol error"
-msgstr "greška HTTP protokola"
+#. WEATHER_TERMS['AVERAGE TEMP.']
+#: searx/searxng.msg
+msgid "Average temp."
+msgstr ""
 
-#: searx/webapp.py:168
-msgid "network error"
-msgstr "greška u mreži"
+#. WEATHER_TERMS['CLOUD COVER']
+#: searx/searxng.msg
+msgid "Cloud cover"
+msgstr ""
 
-#: searx/webapp.py:169
-msgid "SSL error: certificate validation has failed"
-msgstr "SSL pogreška: provjera valjanosti certifikata nije uspjela"
+#. WEATHER_TERMS['CONDITION']
+#: searx/searxng.msg
+msgid "Condition"
+msgstr ""
 
-#: searx/webapp.py:171
-msgid "unexpected crash"
-msgstr "neočekivano rušenje"
+#. WEATHER_TERMS['CURRENT CONDITION']
+#: searx/searxng.msg
+msgid "Current condition"
+msgstr ""
 
-#: searx/webapp.py:178
-msgid "HTTP error"
-msgstr "HTTP greška"
+#. WEATHER_TERMS['EVENING']
+#: searx/engines/wttr.py:100 searx/searxng.msg
+msgid "Evening"
+msgstr "Večer"
 
-#: searx/webapp.py:179
-msgid "HTTP connection error"
-msgstr "greška HTTP veze"
+#. WEATHER_TERMS['FEELS LIKE']
+#: searx/searxng.msg
+msgid "Feels like"
+msgstr ""
 
-#: searx/webapp.py:185
-msgid "proxy error"
-msgstr "proxy greška"
+#. WEATHER_TERMS['HUMIDITY']
+#: searx/searxng.msg
+msgid "Humidity"
+msgstr ""
 
-#: searx/webapp.py:186
-msgid "CAPTCHA"
-msgstr "CAPTCHA"
+#. WEATHER_TERMS['MAX TEMP.']
+#: searx/searxng.msg
+msgid "Max temp."
+msgstr ""
 
-#: searx/webapp.py:187
-msgid "too many requests"
-msgstr "previše upita"
+#. WEATHER_TERMS['MIN TEMP.']
+#: searx/searxng.msg
+msgid "Min temp."
+msgstr ""
 
-#: searx/webapp.py:188
-msgid "access denied"
-msgstr "pristup odbijen"
+#. WEATHER_TERMS['MORNING']
+#: searx/engines/wttr.py:100 searx/searxng.msg
+msgid "Morning"
+msgstr "Jutro"
 
-#: searx/webapp.py:189
-msgid "server API error"
-msgstr "server API greška"
+#. WEATHER_TERMS['NIGHT']
+#: searx/engines/wttr.py:100 searx/searxng.msg
+msgid "Night"
+msgstr "Noć"
 
-#: searx/webapp.py:368
+#. WEATHER_TERMS['NOON']
+#: searx/engines/wttr.py:100 searx/searxng.msg
+msgid "Noon"
+msgstr "Podne"
+
+#. WEATHER_TERMS['PRESSURE']
+#: searx/searxng.msg
+msgid "Pressure"
+msgstr ""
+
+#. WEATHER_TERMS['SUNRISE']
+#: searx/searxng.msg
+msgid "Sunrise"
+msgstr ""
+
+#. WEATHER_TERMS['SUNSET']
+#: searx/searxng.msg
+msgid "Sunset"
+msgstr ""
+
+#. WEATHER_TERMS['TEMPERATURE']
+#: searx/searxng.msg
+msgid "Temperature"
+msgstr ""
+
+#. WEATHER_TERMS['UV INDEX']
+#: searx/searxng.msg
+msgid "UV index"
+msgstr ""
+
+#. WEATHER_TERMS['VISIBILITY']
+#: searx/searxng.msg
+msgid "Visibility"
+msgstr ""
+
+#. WEATHER_TERMS['WIND']
+#: searx/searxng.msg
+msgid "Wind"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['SUBSCRIBERS']
+#: searx/searxng.msg
+msgid "subscribers"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['POSTS']
+#: searx/searxng.msg
+msgid "posts"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['ACTIVE USERS']
+#: searx/searxng.msg
+msgid "active users"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['COMMENTS']
+#: searx/searxng.msg
+msgid "comments"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['USER']
+#: searx/searxng.msg
+msgid "user"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['COMMUNITY']
+#: searx/searxng.msg
+msgid "community"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['POINTS']
+#: searx/searxng.msg
+msgid "points"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['TITLE']
+#: searx/searxng.msg
+msgid "title"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['AUTHOR']
+#: searx/searxng.msg
+msgid "author"
+msgstr ""
+
+#: searx/webapp.py:330
 msgid "No item found"
 msgstr "Nije pronađena nijedna stavka"
 
-#: searx/engines/qwant.py:218
-#: searx/templates/simple/result_templates/images.html:20 searx/webapp.py:370
+#: searx/engines/qwant.py:281
+#: searx/templates/simple/result_templates/images.html:23 searx/webapp.py:332
 msgid "Source"
 msgstr "Izvor"
 
-#: searx/webapp.py:372
+#: searx/webapp.py:334
 msgid "Error loading the next page"
 msgstr "Greška u učitavnju sljedeće stranice"
 
-#: searx/webapp.py:527 searx/webapp.py:965
+#: searx/webapp.py:491 searx/webapp.py:887
 msgid "Invalid settings, please edit your preferences"
 msgstr "Nevažeće postavke, molimo uredite svoje postavke"
 
-#: searx/webapp.py:543
+#: searx/webapp.py:507
 msgid "Invalid settings"
 msgstr "Nevažeće postavke"
 
-#: searx/webapp.py:620 searx/webapp.py:696
+#: searx/webapp.py:584 searx/webapp.py:666
 msgid "search error"
 msgstr "greška u pretraživanju"
 
-#: searx/webapp.py:869
-msgid "Suspended"
-msgstr "Zaustavljeno"
+#: searx/webutils.py:36
+msgid "timeout"
+msgstr "pauza"
 
-#: searx/webutils.py:205
+#: searx/webutils.py:37
+msgid "parsing error"
+msgstr "pogreška pri raščlanjivanju"
+
+#: searx/webutils.py:38
+msgid "HTTP protocol error"
+msgstr "greška HTTP protokola"
+
+#: searx/webutils.py:39
+msgid "network error"
+msgstr "greška u mreži"
+
+#: searx/webutils.py:40
+msgid "SSL error: certificate validation has failed"
+msgstr "SSL pogreška: provjera valjanosti certifikata nije uspjela"
+
+#: searx/webutils.py:42
+msgid "unexpected crash"
+msgstr "neočekivani prekid"
+
+#: searx/webutils.py:49
+msgid "HTTP error"
+msgstr "HTTP greška"
+
+#: searx/webutils.py:50
+msgid "HTTP connection error"
+msgstr "greška HTTP veze"
+
+#: searx/webutils.py:56
+msgid "proxy error"
+msgstr "proxy greška"
+
+#: searx/webutils.py:57
+msgid "CAPTCHA"
+msgstr "CAPTCHA"
+
+#: searx/webutils.py:58
+msgid "too many requests"
+msgstr "previše upita"
+
+#: searx/webutils.py:59
+msgid "access denied"
+msgstr "pristup odbijen"
+
+#: searx/webutils.py:60
+msgid "server API error"
+msgstr "server API greška"
+
+#: searx/webutils.py:79
+msgid "Suspended"
+msgstr "Suspendirano"
+
+#: searx/webutils.py:314
 msgid "{minutes} minute(s) ago"
 msgstr "prije {minutes} minut(u,e,a)"
 
-#: searx/webutils.py:206
+#: searx/webutils.py:315
 msgid "{hours} hour(s), {minutes} minute(s) ago"
-msgstr "prije {hours} sat(i) i {minutes} minut(u,e,a)"
+msgstr "prije {hours} sat(i,a) i {minutes} minut(u,e,a)"
 
-#: searx/answerers/random/answerer.py:67
+#: searx/answerers/random/answerer.py:75
 msgid "Random value generator"
-msgstr "Generator vrijednosti nasumice"
+msgstr "Nasumični generator vrijednosti"
 
-#: searx/answerers/random/answerer.py:68
+#: searx/answerers/random/answerer.py:76
 msgid "Generate different random values"
-msgstr "Generirajte različite slučajne vrijednosti"
-
-#: searx/answerers/statistics/answerer.py:47
-msgid "Statistics functions"
-msgstr "Funkcije statistike"
+msgstr "Generirajte različite nasumične vrijednosti"
 
 #: searx/answerers/statistics/answerer.py:48
+msgid "Statistics functions"
+msgstr "Statistične funkcije"
+
+#: searx/answerers/statistics/answerer.py:49
 msgid "Compute {functions} of the arguments"
 msgstr "Izračunajte {functions} argumenata"
 
-#: searx/engines/openstreetmap.py:160
+#: searx/engines/openstreetmap.py:159
 msgid "Get directions"
-msgstr "Uzmi upute za smjer"
+msgstr "Dobij upute"
 
 #: searx/engines/pdbe.py:96
 msgid "{title} (OBSOLETE)"
@@ -269,11 +432,28 @@ msgstr "{title} (ZASTARJELO)"
 msgid "This entry has been superseded by"
 msgstr "Ovaj je unos zamijenio"
 
-#: searx/engines/qwant.py:220
+#: searx/engines/qwant.py:283
 msgid "Channel"
 msgstr "Kanal"
 
-#: searx/engines/semantic_scholar.py:81
+#: searx/engines/radio_browser.py:105
+msgid "bitrate"
+msgstr "bitrata"
+
+#: searx/engines/radio_browser.py:106
+msgid "votes"
+msgstr "glasovi"
+
+#: searx/engines/radio_browser.py:107
+msgid "clicks"
+msgstr "klikovi"
+
+#: searx/engines/seekr.py:193 searx/engines/yummly.py:71
+#: searx/engines/zlibrary.py:128
+msgid "Language"
+msgstr "Jezik"
+
+#: searx/engines/semantic_scholar.py:78
 msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
 "{lastCitationVelocityYear}"
@@ -281,7 +461,7 @@ msgstr ""
 "{numCitations} citati iz godine {firstCitationVelocityYear} do "
 "{lastCitationVelocityYear}"
 
-#: searx/engines/tineye.py:40
+#: searx/engines/tineye.py:39
 msgid ""
 "Could not read that image url. This may be due to an unsupported file "
 "format. TinEye only supports images that are JPEG, PNG, GIF, BMP, TIFF or"
@@ -291,7 +471,7 @@ msgstr ""
 "format dokumenta. TinEye samo podržava slike JPEG, PNG, GIF, BMP, TIFF i "
 "WebP formata."
 
-#: searx/engines/tineye.py:46
+#: searx/engines/tineye.py:45
 msgid ""
 "The image is too simple to find matches. TinEye requires a basic level of"
 " visual detail to successfully identify matches."
@@ -299,69 +479,51 @@ msgstr ""
 "Slika je previše jednostavna da bi se pronašla sličnost. TinEye zahtjeva "
 "osnovnu razinu detalja za pronalaženje sličnosti."
 
-#: searx/engines/tineye.py:52
+#: searx/engines/tineye.py:51
 msgid "The image could not be downloaded."
 msgstr "Sliku nije moguće preuzeti."
 
-#: searx/engines/wttr.py:101
-msgid "Morning"
-msgstr "Jutro"
+#: searx/engines/zlibrary.py:129
+msgid "Book rating"
+msgstr "Ocjena knjige"
 
-#: searx/engines/wttr.py:101
-msgid "Noon"
-msgstr "Podne"
+#: searx/engines/zlibrary.py:130
+msgid "File quality"
+msgstr "Kvaliteta datoteke"
 
-#: searx/engines/wttr.py:101
-msgid "Evening"
-msgstr "Večer"
-
-#: searx/engines/wttr.py:101
-msgid "Night"
-msgstr "Noć"
-
-#: searx/plugins/hash_plugin.py:24
+#: searx/plugins/hash_plugin.py:10
 msgid "Converts strings to different hash digests."
 msgstr "Pretvara niz u drukčije hash mješavine."
 
-#: searx/plugins/hash_plugin.py:52
+#: searx/plugins/hash_plugin.py:38
 msgid "hash digest"
-msgstr "Izlaz heš funkcije"
+msgstr "Izlaz hash funkcije"
 
-#: searx/plugins/hostname_replace.py:9
+#: searx/plugins/hostname_replace.py:12
 msgid "Hostname replace"
-msgstr "Lokalnoime zamijeniti"
+msgstr "Zamjena lokalnog imena"
 
-#: searx/plugins/hostname_replace.py:10
+#: searx/plugins/hostname_replace.py:13
 msgid "Rewrite result hostnames or remove results based on the hostname"
-msgstr "Ponovo upišite rezultat hostnameova ili maknite rezultate"
+msgstr ""
+"Ispravite (prepišite) rezultat hostnameova ili maknite rezultate bazirane"
+" na hostname"
 
-#: searx/plugins/oa_doi_rewrite.py:9
+#: searx/plugins/oa_doi_rewrite.py:12
 msgid "Open Access DOI rewrite"
 msgstr "Otvoreni pristup DOI prijepisa"
 
-#: searx/plugins/oa_doi_rewrite.py:10
+#: searx/plugins/oa_doi_rewrite.py:13
 msgid ""
 "Avoid paywalls by redirecting to open-access versions of publications "
 "when available"
 msgstr "Izbjegnite plaćanje u slučaju dostupnosti besplatne objave"
 
-#: searx/plugins/search_on_category_select.py:19
-msgid "Search on category select"
-msgstr "Traži u odabranoj kategoriji"
-
-#: searx/plugins/search_on_category_select.py:20
-msgid ""
-"Perform search immediately if a category selected. Disable to select "
-"multiple categories. (JavaScript required)"
-msgstr ""
-"Izvrši pretraživanje odmah ako je odabrana kategorija. Onemogući odabir "
-"više kategorija. (Potreban je JavaScript)"
-
-#: searx/plugins/self_info.py:20
+#: searx/plugins/self_info.py:9
 msgid "Self Information"
 msgstr "Informacije o sebi"
 
-#: searx/plugins/self_info.py:21
+#: searx/plugins/self_info.py:10
 msgid ""
 "Displays your IP if the query is \"ip\" and your user agent if the query "
 "contains \"user agent\"."
@@ -369,52 +531,44 @@ msgstr ""
 "Prikazuje vašu IP adresu ako je upit \"ip\" i vaš korisnički agent ako "
 "upit sadrži \"user agent\"."
 
-#: searx/plugins/tor_check.py:25
+#: searx/plugins/tor_check.py:24
 msgid "Tor check plugin"
 msgstr "Tor plugin za provjeru"
 
-#: searx/plugins/tor_check.py:28
+#: searx/plugins/tor_check.py:27
 msgid ""
 "This plugin checks if the address of the request is a Tor exit-node, and "
 "informs the user if it is; like check.torproject.org, but from SearXNG."
 msgstr ""
+"Ovaj plugin provjerava da li je adresa zahtjeva TOR izlazna adresa, i "
+"šalje obavijest korisniku, kao check.torproject.org ali od strane "
+"SearXNG."
 
-#: searx/plugins/tor_check.py:62
+#: searx/plugins/tor_check.py:61
 msgid ""
 "Could not download the list of Tor exit-nodes from: "
 "https://check.torproject.org/exit-addresses"
 msgstr ""
+"Nije moguće preuzeti popis Tor izlaznih čvorova s: "
+"https://check.torproject.org/exit-addresses"
 
-#: searx/plugins/tor_check.py:78
+#: searx/plugins/tor_check.py:77
 msgid ""
 "You are using Tor and it looks like you have this external IP address: "
 "{ip_address}"
-msgstr ""
+msgstr "Vi koristite Tor i izgleda da imate ovu vanjsku IP adresu: {ip_address}"
 
-#: searx/plugins/tor_check.py:86
+#: searx/plugins/tor_check.py:85
 msgid "You are not using Tor and you have this external IP address: {ip_address}"
-msgstr ""
+msgstr "Vi ne koristite Tor i imate ovu vanjsku IP adresu: {ip_address}"
 
-#: searx/plugins/tracker_url_remover.py:29
+#: searx/plugins/tracker_url_remover.py:16
 msgid "Tracker URL remover"
 msgstr "Ukloni praćenje URL-ova"
 
-#: searx/plugins/tracker_url_remover.py:30
+#: searx/plugins/tracker_url_remover.py:17
 msgid "Remove trackers arguments from the returned URL"
 msgstr "Ukloni elemente za označavanje rezultata vraćenih s URL-a"
-
-#: searx/plugins/vim_hotkeys.py:3
-msgid "Vim-like hotkeys"
-msgstr "Vim tipkovni prečaci"
-
-#: searx/plugins/vim_hotkeys.py:4
-msgid ""
-"Navigate search results with Vim-like hotkeys (JavaScript required). "
-"Press \"h\" key on main or result page to get help."
-msgstr ""
-"Kretanje rezultatima pretraživanja pomoću tipkovnih prečaca sličnih Vim-u"
-" (potreban je JavaScript). Pritisnite tipku \"h\" na glavnoj stranici ili"
-" stranici s rezultatima kako biste dobili pomoć."
 
 #: searx/templates/simple/404.html:4
 msgid "Page not found"
@@ -429,53 +583,49 @@ msgstr "Idi na %(search_page)s."
 msgid "search page"
 msgstr "pretraži stranicu"
 
-#: searx/templates/simple/base.html:46
-msgid "About"
-msgstr "O nama"
-
-#: searx/templates/simple/base.html:50
+#: searx/templates/simple/base.html:54
 msgid "Donate"
 msgstr "Donirajte"
 
-#: searx/templates/simple/base.html:54
-#: searx/templates/simple/preferences.html:100
+#: searx/templates/simple/base.html:58
+#: searx/templates/simple/preferences.html:156
 msgid "Preferences"
 msgstr "Postavke"
 
-#: searx/templates/simple/base.html:64
+#: searx/templates/simple/base.html:68
 msgid "Powered by"
 msgstr "Pokreće"
 
-#: searx/templates/simple/base.html:64
+#: searx/templates/simple/base.html:68
 msgid "a privacy-respecting, open metasearch engine"
 msgstr "otvoreni metapretraživač koji poštuje privatnost"
 
-#: searx/templates/simple/base.html:65
+#: searx/templates/simple/base.html:69
+#: searx/templates/simple/result_templates/packages.html:59
 msgid "Source code"
 msgstr "Izvorni kod"
 
-#: searx/templates/simple/base.html:66
+#: searx/templates/simple/base.html:70
 msgid "Issue tracker"
 msgstr "Tragač problema"
 
-#: searx/templates/simple/base.html:67 searx/templates/simple/stats.html:18
+#: searx/templates/simple/base.html:71 searx/templates/simple/stats.html:18
 msgid "Engine stats"
 msgstr "Podaci o tražilici"
 
-#: searx/templates/simple/base.html:69
-#: searx/templates/simple/messages/no_results.html:15
+#: searx/templates/simple/base.html:73
 msgid "Public instances"
 msgstr "Javne instance"
 
-#: searx/templates/simple/base.html:72
+#: searx/templates/simple/base.html:76
 msgid "Privacy policy"
 msgstr "Politika privatnosti"
 
-#: searx/templates/simple/base.html:75
+#: searx/templates/simple/base.html:79
 msgid "Contact instance maintainer"
 msgstr "Kontaktirajte održavatelja instance"
 
-#: searx/templates/simple/categories.html:24
+#: searx/templates/simple/categories.html:26
 msgid "Click on the magnifier to perform search"
 msgstr "Kliknite na povećalo za izvođenje pretraživanja"
 
@@ -484,7 +634,8 @@ msgid "Length"
 msgstr "Dužina"
 
 #: searx/templates/simple/macros.html:37
-#: searx/templates/simple/result_templates/images.html:18
+#: searx/templates/simple/result_templates/files.html:34
+#: searx/templates/simple/result_templates/images.html:19
 #: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
 msgstr "Autor"
@@ -517,447 +668,104 @@ msgstr "Ako je ovo javna instanca, navedite URL u izvješću o pogrešci"
 msgid "Submit a new issue on Github including the above information"
 msgstr "Postavi novi problem na Github uključujući podatke poviše"
 
-#: searx/templates/simple/preferences.html:29
+#: searx/templates/simple/preferences.html:65
 msgid "No HTTPS"
 msgstr "Nema HTTPS"
 
-#: searx/templates/simple/messages/no_results.html:10
-#: searx/templates/simple/preferences.html:31
-#: searx/templates/simple/preferences.html:32
-#: searx/templates/simple/results.html:49
+#: searx/templates/simple/elements/engines_msg.html:18
+#: searx/templates/simple/preferences.html:69
+#: searx/templates/simple/preferences.html:70
 msgid "View error logs and submit a bug report"
 msgstr "Pogledajte zapisnike grešaka i pošaljite izvješće o greškama"
 
-#: searx/templates/simple/preferences.html:35
+#: searx/templates/simple/preferences.html:74
 msgid "!bang for this engine"
-msgstr ""
+msgstr "!bang za ovaj motor"
 
-#: searx/templates/simple/preferences.html:36
+#: searx/templates/simple/preferences.html:80
 msgid "!bang for its categories"
-msgstr ""
+msgstr "!bang za svoje kategorije"
 
-#: searx/templates/simple/preferences.html:54
+#: searx/templates/simple/preferences.html:102
 #: searx/templates/simple/stats.html:64
 msgid "Median"
 msgstr "Medijan"
 
-#: searx/templates/simple/preferences.html:55
+#: searx/templates/simple/preferences.html:103
 #: searx/templates/simple/stats.html:70
 msgid "P80"
 msgstr "P80"
 
-#: searx/templates/simple/preferences.html:56
+#: searx/templates/simple/preferences.html:104
 #: searx/templates/simple/stats.html:76
 msgid "P95"
 msgstr "P95"
 
-#: searx/templates/simple/preferences.html:84
+#: searx/templates/simple/preferences.html:136
 msgid "Failed checker test(s): "
 msgstr "Neuspjeli test(ovi) za provjeru: "
 
-#: searx/templates/simple/preferences.html:86
+#: searx/templates/simple/preferences.html:138
 msgid "Errors:"
 msgstr "Greške:"
 
-#: searx/templates/simple/preferences.html:106
+#: searx/templates/simple/preferences.html:162
 msgid "General"
 msgstr "Općenito"
 
-#: searx/templates/simple/preferences.html:109
+#: searx/templates/simple/preferences.html:165
 msgid "Default categories"
 msgstr "Zadane kategorije"
 
-#: searx/templates/simple/filters/languages.html:1
-#: searx/templates/simple/preferences.html:116
-msgid "Search language"
-msgstr "Jezik pretraživanja"
-
-#: searx/templates/simple/filters/languages.html:2
-#: searx/templates/simple/preferences.html:119
-msgid "Default language"
-msgstr "Zadani jezik"
-
-#: searx/templates/simple/filters/languages.html:4
-#: searx/templates/simple/preferences.html:120
-msgid "Auto-detect"
-msgstr ""
-
-#: searx/templates/simple/preferences.html:127
-msgid "What language do you prefer for search?"
-msgstr "Koji jezik želite za pretraživanje?"
-
-#: searx/templates/simple/preferences.html:127
-msgid "Choose Auto-detect to let SearXNG detect the language of your query."
-msgstr ""
-
-#: searx/templates/simple/preferences.html:133
-msgid "Autocomplete"
-msgstr "Automatsko dovršavanje"
-
-#: searx/templates/simple/preferences.html:142
-msgid "Find stuff as you type"
-msgstr "Pronađite stvari prilikom upisivanja"
-
-#: searx/templates/simple/filters/safesearch.html:1
-#: searx/templates/simple/filters/safesearch.html:2
-#: searx/templates/simple/filters/safesearch.html:3
-#: searx/templates/simple/filters/safesearch.html:4
-#: searx/templates/simple/preferences.html:147
-#: searx/templates/simple/preferences.html:315
-msgid "SafeSearch"
-msgstr "Sigurno pretraživanje"
-
-#: searx/templates/simple/filters/safesearch.html:2
-#: searx/templates/simple/preferences.html:150
-msgid "Strict"
-msgstr "Strogo"
-
-#: searx/templates/simple/filters/safesearch.html:3
-#: searx/templates/simple/preferences.html:151
-msgid "Moderate"
-msgstr "Umjereno"
-
-#: searx/templates/simple/filters/safesearch.html:4
-#: searx/templates/simple/preferences.html:152
-msgid "None"
-msgstr "Ništa"
-
-#: searx/templates/simple/preferences.html:155
-msgid "Filter content"
-msgstr "Filtriranje sadržaja"
-
-#: searx/templates/simple/preferences.html:161
-msgid "Open Access DOI resolver"
-msgstr "Otvoreni pristup DOI rješenja"
-
-#: searx/templates/simple/preferences.html:171
-msgid ""
-"Redirect to open-access versions of publications when available (plugin "
-"required)"
-msgstr ""
-"Preusmjeri na verzije izdanja otvorenog pristupa kada je isto dostupno "
-"(potreban je dodatak)"
-
-#: searx/templates/simple/preferences.html:175
-msgid "Engine tokens"
-msgstr "Motorni žetoni"
-
-#: searx/templates/simple/preferences.html:179
-msgid "Access tokens for private engines"
-msgstr "Pristupite žetone za privatne motore"
-
-#: searx/templates/simple/preferences.html:183
+#: searx/templates/simple/preferences.html:187
 msgid "User interface"
 msgstr "Korisničko sučelje"
 
-#: searx/templates/simple/preferences.html:186
-msgid "Interface language"
-msgstr "Jezik sučelja"
-
-#: searx/templates/simple/preferences.html:194
-msgid "Change the language of the layout"
-msgstr "Promijenite jezik prikaza"
-
-#: searx/templates/simple/preferences.html:199
-msgid "Theme"
-msgstr "Tema"
-
-#: searx/templates/simple/preferences.html:207
-msgid "Change SearXNG layout"
-msgstr "Promijenite izgled SearXNG-a"
-
-#: searx/templates/simple/preferences.html:210
-msgid "Theme style"
-msgstr "Izgled teme"
-
-#: searx/templates/simple/preferences.html:218
-msgid "Choose auto to follow your browser settings"
-msgstr "Odaberite automatski kako biste pratili postavke vašeg preglednika"
-
-#: searx/templates/simple/preferences.html:221
-msgid "Center Alignment"
-msgstr "Središnje poravnanje"
-
-#: searx/templates/simple/preferences.html:224
-#: searx/templates/simple/preferences.html:236
-#: searx/templates/simple/preferences.html:248
-msgid "On"
-msgstr "Uključeno"
-
-#: searx/templates/simple/preferences.html:225
-#: searx/templates/simple/preferences.html:237
-#: searx/templates/simple/preferences.html:249
-msgid "Off"
-msgstr "Isključeno"
-
-#: searx/templates/simple/preferences.html:228
-msgid "Displays results in the center of the page (Oscar layout)."
-msgstr "Prikazuje rezultate u sredini stranice (Oscar raspored)."
-
-#: searx/templates/simple/preferences.html:233
-msgid "Results on new tabs"
-msgstr "Rezultati u novim karticama"
-
-#: searx/templates/simple/preferences.html:240
-msgid "Open result links on new browser tabs"
-msgstr "Otvorite veze rezultata na novim karticama preglednika"
-
-#: searx/templates/simple/preferences.html:245
-msgid "Infinite scroll"
-msgstr "Beskonačno pomicanje"
-
-#: searx/templates/simple/preferences.html:252
-msgid "Automatically load next page when scrolling to bottom of current page"
-msgstr ""
-"Automatski učitajte sljedeću stranicu kada se pomaknete do dna trenutne "
-"stranice"
-
-#: searx/templates/simple/preferences.html:258
+#: searx/templates/simple/preferences.html:208
 msgid "Privacy"
 msgstr "Privatnost"
 
-#: searx/templates/simple/preferences.html:261
-msgid "HTTP Method"
-msgstr "HTTP metoda"
-
-#: searx/templates/simple/preferences.html:268
-msgid ""
-"Change how forms are submitted, <a "
-"href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
-" rel=\"external\">learn more about request methods</a>"
-msgstr ""
-"Promijenite način slanja obrazaca, <a "
-"href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
-" rel=\"external\">saznajte više o metodama zahtjeva</a>"
-
-#: searx/templates/simple/preferences.html:273
-msgid "Image proxy"
-msgstr "Proxy slike"
-
-#: searx/templates/simple/preferences.html:276
-#: searx/templates/simple/preferences.html:288
-msgid "Enabled"
-msgstr "Omogućeno"
-
-#: searx/templates/simple/preferences.html:277
-#: searx/templates/simple/preferences.html:289
-msgid "Disabled"
-msgstr "Onemogućeno"
-
-#: searx/templates/simple/preferences.html:280
-msgid "Proxying image results through SearXNG"
-msgstr "Proxy slikovni rezultati putem SearXNG-a"
-
-#: searx/templates/simple/preferences.html:285
-msgid "Query in the page's title"
-msgstr "Upit u naslovu stranice"
-
-#: searx/templates/simple/preferences.html:292
-msgid ""
-"When enabled, the result page's title contains your query. Your browser "
-"can record this title"
-msgstr ""
-"Kada je omogućeno, naslov stranice s rezultatima sadrži vaš upit. Vaš "
-"preglednik može zabilježiti ovaj naslov"
-
-#: searx/templates/simple/preferences.html:298
+#: searx/templates/simple/preferences.html:221
 msgid "Engines"
 msgstr "Tražilice"
 
-#: searx/templates/simple/preferences.html:299
+#: searx/templates/simple/preferences.html:223
 msgid "Currently used search engines"
 msgstr "Trenutno korištene tražilice"
 
-#: searx/templates/simple/preferences.html:306
-msgid ""
-"This tab dues not exists in the user interface, but you can search in "
-"these engines by its !bangs."
-msgstr ""
-
-#: searx/templates/simple/preferences.html:311
-#: searx/templates/simple/preferences.html:365
-msgid "Allow"
-msgstr "Dozvoli"
-
-#: searx/templates/simple/preferences.html:312
-#: searx/templates/simple/stats.html:25
-msgid "Engine name"
-msgstr "Naziv tražilice"
-
-#: searx/templates/simple/preferences.html:313
-msgid "Bang"
-msgstr ""
-
-#: searx/templates/simple/preferences.html:314
-msgid "Supports selected language"
-msgstr "Podržava odabrani jezik"
-
-#: searx/templates/simple/filters/time_range.html:1
-#: searx/templates/simple/preferences.html:316
-msgid "Time range"
-msgstr "Vremenski raspon"
-
-#: searx/templates/simple/preferences.html:317
-#: searx/templates/simple/stats.html:28
-msgid "Response time"
-msgstr "Vrijeme odziva"
-
-#: searx/templates/simple/preferences.html:318
-msgid "Max time"
-msgstr "Maksimalno vrijeme"
-
-#: searx/templates/simple/preferences.html:319
-#: searx/templates/simple/stats.html:29
-msgid "Reliability"
-msgstr "Pouzdanost"
-
-#: searx/templates/simple/preferences.html:360
+#: searx/templates/simple/preferences.html:231
 msgid "Special Queries"
 msgstr "Posebni upiti"
 
-#: searx/templates/simple/preferences.html:366
-msgid "Keywords"
-msgstr "Ključne riječi"
-
-#: searx/templates/simple/preferences.html:367
-msgid "Name"
-msgstr "Naziv"
-
-#: searx/templates/simple/preferences.html:368
-msgid "Description"
-msgstr "Opis"
-
-#: searx/templates/simple/preferences.html:369
-msgid "Examples"
-msgstr "Primjeri"
-
-#: searx/templates/simple/preferences.html:372
-msgid "This is the list of SearXNG's instant answering modules."
-msgstr "Ovo je popis SearXNG-ovih modula za trenutno javljanje."
-
-#: searx/templates/simple/preferences.html:383
-msgid "This is the list of plugins."
-msgstr "Ovo je popis dodataka."
-
-#: searx/templates/simple/preferences.html:400
+#: searx/templates/simple/preferences.html:237
 msgid "Cookies"
 msgstr "Kolačići"
-
-#: searx/templates/simple/preferences.html:402
-msgid ""
-"This is the list of cookies and their values SearXNG is storing on your "
-"computer."
-msgstr ""
-"Ovo je popis kolačića i njihovih vrijednosti koje SearXNG pohranjuje na "
-"vašem kompjuteru."
-
-#: searx/templates/simple/preferences.html:403
-msgid "With that list, you can assess SearXNG transparency."
-msgstr "S tim popisom možete procijeniti prozirnost SearXNG-a."
-
-#: searx/templates/simple/preferences.html:408
-msgid "Cookie name"
-msgstr "Naziv kolačića"
-
-#: searx/templates/simple/preferences.html:409
-msgid "Value"
-msgstr "Vrijednost"
-
-#: searx/templates/simple/preferences.html:421
-msgid "Search URL of the currently saved preferences"
-msgstr "Pretraži URL adresu trenutno spremljenih postavki"
-
-#: searx/templates/simple/preferences.html:425
-msgid ""
-"Note: specifying custom settings in the search URL can reduce privacy by "
-"leaking data to the clicked result sites."
-msgstr ""
-"Napomena: određivanje prilagođenih postavki u URL-u za pretraživanje može"
-" smanjiti privatnost zbog propuštanja podataka na kliknute web lokacije "
-"rezultata."
-
-#: searx/templates/simple/preferences.html:426
-msgid "URL to restore your preferences in another browser"
-msgstr "URL da biste vratili vaše postavke u drugom pregledniku"
-
-#: searx/templates/simple/preferences.html:430
-msgid ""
-"Specifying custom settings in the preferences URL can be used to sync "
-"preferences across devices."
-msgstr ""
-"Navođenje prilagođenih postavki u URL-u može se koristiti za "
-"sinkronizaciju postavki na svim uređajima."
-
-#: searx/templates/simple/preferences.html:435
-msgid ""
-"These settings are stored in your cookies, this allows us not to store "
-"this data about you."
-msgstr ""
-"Ove postavke su pohranjene u Vašim kolačićima, što omogućuje da ne "
-"spremamo podatke o Vama."
-
-#: searx/templates/simple/preferences.html:437
-msgid ""
-"These cookies serve your sole convenience, we don't use these cookies to "
-"track you."
-msgstr ""
-"Ovi kolačići služe Vašoj pogodnosti, ne upotrebljavamo te kolačiće da bi "
-"Vas pratili."
-
-#: searx/templates/simple/preferences.html:440
-msgid "Save"
-msgstr "Sačuvati"
-
-#: searx/templates/simple/preferences.html:441
-msgid "Reset defaults"
-msgstr "Vraćanje zadanih postavki"
-
-#: searx/templates/simple/preferences.html:442
-msgid "Back"
-msgstr "Natrag"
 
 #: searx/templates/simple/results.html:23
 msgid "Answers"
 msgstr "Odgovori"
 
-#: searx/templates/simple/results.html:39
+#: searx/templates/simple/results.html:38
 msgid "Number of results"
 msgstr "Broj rezultata"
 
-#: searx/templates/simple/messages/no_results.html:6
-#: searx/templates/simple/results.html:46
-msgid "Error!"
-msgstr "Greška!"
+#: searx/templates/simple/results.html:44
+msgid "Info"
+msgstr "Informacije"
 
-#: searx/templates/simple/results.html:46
-msgid "Engines cannot retrieve results"
-msgstr "Tražilice ne mogu dohvatiti rezultate"
-
-#: searx/templates/simple/results.html:68
-msgid "Suggestions"
-msgstr "Prijedlozi"
-
-#: searx/templates/simple/results.html:90
-msgid "Search URL"
-msgstr "Pretraži URL"
-
-#: searx/templates/simple/results.html:96
-msgid "Download results"
-msgstr "Preuzmi rezultate"
-
-#: searx/templates/simple/results.html:120
+#: searx/templates/simple/results.html:73
 msgid "Try searching for:"
 msgstr "Pokušajte tražiti sljedeće:"
 
-#: searx/templates/simple/results.html:152
+#: searx/templates/simple/results.html:105
 msgid "Back to top"
 msgstr "Natrag na vrh"
 
-#: searx/templates/simple/results.html:170
+#: searx/templates/simple/results.html:123
 msgid "Previous page"
 msgstr "Prethodna stranica"
 
-#: searx/templates/simple/results.html:187
+#: searx/templates/simple/results.html:141
 msgid "Next page"
 msgstr "Sljedeća stranica"
 
@@ -984,6 +792,11 @@ msgstr "traži"
 msgid "There is currently no data available. "
 msgstr "Trenutačno nema dostupnih podataka."
 
+#: searx/templates/simple/preferences/engines.html:18
+#: searx/templates/simple/stats.html:25
+msgid "Engine name"
+msgstr "Naziv tražilice"
+
 #: searx/templates/simple/stats.html:26
 msgid "Scores"
 msgstr "Pogodci"
@@ -991,6 +804,16 @@ msgstr "Pogodci"
 #: searx/templates/simple/stats.html:27
 msgid "Result count"
 msgstr "Broj rezultata"
+
+#: searx/templates/simple/preferences/engines.html:25
+#: searx/templates/simple/stats.html:28
+msgid "Response time"
+msgstr "Vrijeme odziva"
+
+#: searx/templates/simple/preferences/engines.html:29
+#: searx/templates/simple/stats.html:29
+msgid "Reliability"
+msgstr "Pouzdanost"
 
 #: searx/templates/simple/stats.html:59
 msgid "Total"
@@ -1028,6 +851,7 @@ msgstr "Postotak"
 msgid "Parameter"
 msgstr "Parametar"
 
+#: searx/templates/simple/result_templates/files.html:36
 #: searx/templates/simple/stats.html:119
 msgid "Filename"
 msgstr "Naziv datoteke"
@@ -1051,6 +875,84 @@ msgstr "Neuspjeli test"
 #: searx/templates/simple/stats.html:132
 msgid "Comment(s)"
 msgstr "Komentar(i)"
+
+#: searx/templates/simple/elements/apis.html:3
+msgid "Download results"
+msgstr "Preuzmi rezultate"
+
+#: searx/templates/simple/elements/engines_msg.html:7
+msgid "Messages from the search engines"
+msgstr "Poruke s tražilica"
+
+#: searx/templates/simple/elements/engines_msg.html:12
+msgid "Error!"
+msgstr "Greška!"
+
+#: searx/templates/simple/elements/engines_msg.html:13
+msgid "Engines cannot retrieve results"
+msgstr "Tražilice ne mogu dohvatiti rezultate"
+
+#: searx/templates/simple/elements/search_url.html:3
+msgid "Search URL"
+msgstr "Pretraži URL"
+
+#: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
+msgid "Copied"
+msgstr "Kopirano"
+
+#: searx/templates/simple/elements/search_url.html:4
+#: searx/templates/simple/preferences/cookies.html:54
+msgid "Copy"
+msgstr "Kopiraj"
+
+#: searx/templates/simple/elements/suggestions.html:3
+msgid "Suggestions"
+msgstr "Prijedlozi"
+
+#: searx/templates/simple/filters/languages.html:1
+#: searx/templates/simple/preferences/language.html:2
+msgid "Search language"
+msgstr "Jezik pretraživanja"
+
+#: searx/templates/simple/filters/languages.html:2
+#: searx/templates/simple/preferences/language.html:7
+msgid "Default language"
+msgstr "Zadani jezik"
+
+#: searx/templates/simple/filters/languages.html:4
+#: searx/templates/simple/preferences/language.html:11
+msgid "Auto-detect"
+msgstr "Automatski otkrij"
+
+#: searx/templates/simple/filters/safesearch.html:1
+#: searx/templates/simple/filters/safesearch.html:2
+#: searx/templates/simple/filters/safesearch.html:3
+#: searx/templates/simple/filters/safesearch.html:4
+#: searx/templates/simple/preferences/engines.html:21
+#: searx/templates/simple/preferences/safesearch.html:2
+msgid "SafeSearch"
+msgstr "Sigurno pretraživanje"
+
+#: searx/templates/simple/filters/safesearch.html:2
+#: searx/templates/simple/preferences/safesearch.html:7
+msgid "Strict"
+msgstr "Strogo"
+
+#: searx/templates/simple/filters/safesearch.html:3
+#: searx/templates/simple/preferences/safesearch.html:11
+msgid "Moderate"
+msgstr "Umjereno"
+
+#: searx/templates/simple/filters/safesearch.html:4
+#: searx/templates/simple/preferences/safesearch.html:15
+msgid "None"
+msgstr "Ništa"
+
+#: searx/templates/simple/filters/time_range.html:1
+#: searx/templates/simple/preferences/engines.html:22
+msgid "Time range"
+msgstr "Vremenski raspon"
 
 #: searx/templates/simple/filters/time_range.html:3
 msgid "Anytime"
@@ -1081,32 +983,335 @@ msgid "currently, there are no cookies defined."
 msgstr "trenutačno nema definiranih kolačića."
 
 #: searx/templates/simple/messages/no_results.html:6
-msgid "Engines cannot retrieve results."
-msgstr "Tražilice ne mogu dohvatiti rezultate."
-
-#: searx/templates/simple/messages/no_results.html:15
-msgid "Please, try again later or find another SearXNG instance."
-msgstr ""
-"Molimo vas da pokušate ponovo kasnije ili da pronađete drugu SearXNG "
-"instancu."
-
-#: searx/templates/simple/messages/no_results.html:20
 msgid "Sorry!"
 msgstr "Ispričavamo se!"
 
+#: searx/templates/simple/messages/no_results.html:12
+msgid "No results were found. You can try to:"
+msgstr "Nema rezultata. Možete pokušati:"
+
+#: searx/templates/simple/messages/no_results.html:14
+msgid "There are no more results. You can try to:"
+msgstr "Nema više rezultata. Možete pokušati:"
+
+#: searx/templates/simple/messages/no_results.html:19
+msgid "Refresh the page."
+msgstr "Osvježiti stranicu."
+
+#: searx/templates/simple/messages/no_results.html:20
+msgid "Search for another query or select another category (above)."
+msgstr "Potražiti druge upite ili da odaberete drugu kategoriju (iznad)."
+
 #: searx/templates/simple/messages/no_results.html:21
+msgid "Change the search engine used in the preferences:"
+msgstr "Promijenite tražilicu korištenu u postavkama:"
+
+#: searx/templates/simple/messages/no_results.html:22
+msgid "Switch to another instance:"
+msgstr "Prijeđi na drugu instancu:"
+
+#: searx/templates/simple/messages/no_results.html:24
+msgid "Search for another query or select another category."
+msgstr "Potražite drugi upit ili odaberite drugu kategoriju."
+
+#: searx/templates/simple/messages/no_results.html:25
+msgid "Go back to the previous page using the previous page button."
+msgstr "Vratite se na prethodnu stranicu pomoću gumba prethodne stranice."
+
+#: searx/templates/simple/preferences/answerers.html:4
+#: searx/templates/simple/preferences/engines.html:17
+msgid "Allow"
+msgstr "Dozvoli"
+
+#: searx/templates/simple/preferences/answerers.html:5
+msgid "Keywords"
+msgstr "Ključne riječi"
+
+#: searx/templates/simple/preferences/answerers.html:6
+#: searx/templates/simple/result_templates/packages.html:7
+msgid "Name"
+msgstr "Naziv"
+
+#: searx/templates/simple/preferences/answerers.html:7
+msgid "Description"
+msgstr "Opis"
+
+#: searx/templates/simple/preferences/answerers.html:8
+msgid "Examples"
+msgstr "Primjeri"
+
+#: searx/templates/simple/preferences/answerers.html:13
+msgid "This is the list of SearXNG's instant answering modules."
+msgstr "Ovo je popis SearXNG-ovih modula za trenutno javljanje."
+
+#: searx/templates/simple/preferences/answerers.html:29
+msgid "This is the list of plugins."
+msgstr "Ovo je popis dodataka."
+
+#: searx/templates/simple/preferences/autocomplete.html:2
+msgid "Autocomplete"
+msgstr "Automatsko dovršavanje"
+
+#: searx/templates/simple/preferences/autocomplete.html:15
+msgid "Find stuff as you type"
+msgstr "Pronađite stvari prilikom upisivanja"
+
+#: searx/templates/simple/preferences/center_alignment.html:2
+msgid "Center Alignment"
+msgstr "Središnje poravnanje"
+
+#: searx/templates/simple/preferences/center_alignment.html:14
+msgid "Displays results in the center of the page (Oscar layout)."
+msgstr "Prikazuje rezultate u sredini stranice (Oscar raspored)."
+
+#: searx/templates/simple/preferences/cookies.html:2
 msgid ""
-"we didn't find any results. Please use another query or search in more "
-"categories."
+"This is the list of cookies and their values SearXNG is storing on your "
+"computer."
 msgstr ""
-"nema rezultata pretraživanja. Unesite novi upit ili pretražite u više "
-"kategorija."
+"Ovo je popis kolačića i njihovih vrijednosti koje SearXNG pohranjuje na "
+"vašem kompjuteru."
+
+#: searx/templates/simple/preferences/cookies.html:3
+msgid "With that list, you can assess SearXNG transparency."
+msgstr "S tim popisom možete procijeniti prozirnost SearXNG-a."
+
+#: searx/templates/simple/preferences/cookies.html:9
+msgid "Cookie name"
+msgstr "Naziv kolačića"
+
+#: searx/templates/simple/preferences/cookies.html:10
+msgid "Value"
+msgstr "Vrijednost"
+
+#: searx/templates/simple/preferences/cookies.html:23
+msgid "Search URL of the currently saved preferences"
+msgstr "Pretraži URL adresu trenutno spremljenih postavki"
+
+#: searx/templates/simple/preferences/cookies.html:32
+msgid ""
+"Note: specifying custom settings in the search URL can reduce privacy by "
+"leaking data to the clicked result sites."
+msgstr ""
+"Napomena: određivanje prilagođenih postavki u URL-u za pretraživanje može"
+" smanjiti privatnost zbog propuštanja podataka na kliknute web lokacije "
+"rezultata."
+
+#: searx/templates/simple/preferences/cookies.html:35
+msgid "URL to restore your preferences in another browser"
+msgstr "URL da biste vratili vaše postavke u drugom pregledniku"
+
+#: searx/templates/simple/preferences/cookies.html:43
+msgid ""
+"Specifying custom settings in the preferences URL can be used to sync "
+"preferences across devices."
+msgstr ""
+"Navođenje prilagođenih postavki u URL-u može se koristiti za "
+"sinkronizaciju postavki na svim uređajima."
+
+#: searx/templates/simple/preferences/cookies.html:46
+msgid "Copy preferences hash"
+msgstr "Kopirajte preferencu hash-a"
+
+#: searx/templates/simple/preferences/cookies.html:57
+msgid "Insert copied preferences hash (without URL) to restore"
+msgstr "Umetnite kopiranu preferencu hash-a (bez URL-a) za rješenje"
+
+#: searx/templates/simple/preferences/cookies.html:59
+msgid "Preferences hash"
+msgstr "Preference hash-a"
+
+#: searx/templates/simple/preferences/doi_resolver.html:2
+msgid "Open Access DOI resolver"
+msgstr "Otvoreni pristup DOI rješenja"
+
+#: searx/templates/simple/preferences/doi_resolver.html:14
+msgid "Select service used by DOI rewrite"
+msgstr "Odaberite uslugu koju koristi DOI iznovopis"
+
+#: searx/templates/simple/preferences/engines.html:9
+msgid ""
+"This tab does not exists in the user interface, but you can search in "
+"these engines by its !bangs."
+msgstr ""
+"Ova kartica ne postoji u korisničkom sučelju, ali u ovim tražilicama "
+"možete pretraživati po !bangs-ima."
+
+#: searx/templates/simple/preferences/engines.html:19
+msgid "!bang"
+msgstr "!bang"
+
+#: searx/templates/simple/preferences/engines.html:20
+msgid "Supports selected language"
+msgstr "Podržava odabrani jezik"
+
+#: searx/templates/simple/preferences/engines.html:23
+msgid "Weight"
+msgstr "Težina"
+
+#: searx/templates/simple/preferences/engines.html:27
+msgid "Max time"
+msgstr "Maksimalno vrijeme"
+
+#: searx/templates/simple/preferences/footer.html:2
+msgid ""
+"These settings are stored in your cookies, this allows us not to store "
+"this data about you."
+msgstr ""
+"Ove postavke su pohranjene u Vašim kolačićima, što omogućuje da ne "
+"spremamo podatke o Vama."
+
+#: searx/templates/simple/preferences/footer.html:3
+msgid ""
+"These cookies serve your sole convenience, we don't use these cookies to "
+"track you."
+msgstr ""
+"Ovi kolačići služe Vašoj pogodnosti, ne upotrebljavamo te kolačiće da bi "
+"Vas pratili."
+
+#: searx/templates/simple/preferences/footer.html:6
+msgid "Save"
+msgstr "Sačuvati"
+
+#: searx/templates/simple/preferences/footer.html:9
+msgid "Reset defaults"
+msgstr "Vraćanje zadanih postavki"
+
+#: searx/templates/simple/preferences/footer.html:13
+msgid "Back"
+msgstr "Natrag"
+
+#: searx/templates/simple/preferences/hotkeys.html:2
+msgid "Hotkeys"
+msgstr "Prečaci"
+
+#: searx/templates/simple/preferences/hotkeys.html:13
+msgid "Vim-like"
+msgstr "Slično Vimu"
+
+#: searx/templates/simple/preferences/hotkeys.html:18
+msgid ""
+"Navigate search results with hotkeys (JavaScript required). Press \"h\" "
+"key on main or result page to get help."
+msgstr ""
+"Krećite se rezultatima pretraživanja pomoću prečaca (potreban je "
+"JavaScript). Pritisnite tipku \"h\" na glavnoj stranici ili stranici s "
+"rezultatima za pomoć."
+
+#: searx/templates/simple/preferences/image_proxy.html:2
+msgid "Image proxy"
+msgstr "Proxy slike"
+
+#: searx/templates/simple/preferences/image_proxy.html:14
+msgid "Proxying image results through SearXNG"
+msgstr "Proxy slikovni rezultati putem SearXNG-a"
+
+#: searx/templates/simple/preferences/infinite_scroll.html:2
+msgid "Infinite scroll"
+msgstr "Beskonačno pomicanje"
+
+#: searx/templates/simple/preferences/infinite_scroll.html:14
+msgid "Automatically load next page when scrolling to bottom of current page"
+msgstr ""
+"Automatski učitajte sljedeću stranicu kada se pomaknete do dna trenutne "
+"stranice"
+
+#: searx/templates/simple/preferences/language.html:24
+msgid "What language do you prefer for search?"
+msgstr "Koji jezik želite za pretraživanje?"
+
+#: searx/templates/simple/preferences/language.html:25
+msgid "Choose Auto-detect to let SearXNG detect the language of your query."
+msgstr "Odaberite Automatsko otkrivanje kako bi SearXNG otkrio jezik vašeg upita."
+
+#: searx/templates/simple/preferences/method.html:2
+msgid "HTTP Method"
+msgstr "HTTP metoda"
+
+#: searx/templates/simple/preferences/method.html:14
+msgid "Change how forms are submitted"
+msgstr "Promijenite način slanja obrazaca"
+
+#: searx/templates/simple/preferences/query_in_title.html:2
+msgid "Query in the page's title"
+msgstr "Upit u naslovu stranice"
+
+#: searx/templates/simple/preferences/query_in_title.html:14
+msgid ""
+"When enabled, the result page's title contains your query. Your browser "
+"can record this title"
+msgstr ""
+"Kada je omogućeno, naslov stranice s rezultatima sadrži vaš upit. Vaš "
+"preglednik može zabilježiti ovaj naslov"
+
+#: searx/templates/simple/preferences/results_on_new_tab.html:2
+msgid "Results on new tabs"
+msgstr "Rezultati u novim karticama"
+
+#: searx/templates/simple/preferences/results_on_new_tab.html:14
+msgid "Open result links on new browser tabs"
+msgstr "Otvorite veze rezultata na novim karticama preglednika"
+
+#: searx/templates/simple/preferences/safesearch.html:20
+msgid "Filter content"
+msgstr "Filtriranje sadržaja"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:2
+msgid "Search on category select"
+msgstr "Traži u odabranoj kategoriji"
+
+#: searx/templates/simple/preferences/search_on_category_select.html:14
+msgid ""
+"Perform search immediately if a category selected. Disable to select "
+"multiple categories"
+msgstr ""
+"Izvršite pretragu odmah ako je odabrana kategorija. Onemogući odabir više"
+" kategorija"
+
+#: searx/templates/simple/preferences/theme.html:2
+msgid "Theme"
+msgstr "Tema"
+
+#: searx/templates/simple/preferences/theme.html:14
+msgid "Change SearXNG layout"
+msgstr "Promijenite izgled SearXNG-a"
+
+#: searx/templates/simple/preferences/theme.html:19
+msgid "Theme style"
+msgstr "Izgled teme"
+
+#: searx/templates/simple/preferences/theme.html:31
+msgid "Choose auto to follow your browser settings"
+msgstr "Odaberite automatski kako biste pratili postavke vašeg preglednika"
+
+#: searx/templates/simple/preferences/tokens.html:2
+msgid "Engine tokens"
+msgstr "Motorni žetoni"
+
+#: searx/templates/simple/preferences/tokens.html:9
+msgid "Access tokens for private engines"
+msgstr "Pristupite žetone za privatne motore"
+
+#: searx/templates/simple/preferences/ui_locale.html:2
+msgid "Interface language"
+msgstr "Jezik sučelja"
+
+#: searx/templates/simple/preferences/ui_locale.html:14
+msgid "Change the language of the layout"
+msgstr "Promijenite jezik prikaza"
+
+#: searx/templates/simple/result_templates/code.html:13
+msgid "repo"
+msgstr "repozitoriji"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
+#: searx/templates/simple/result_templates/files.html:11
 msgid "show media"
 msgstr "prikaži medije"
 
 #: searx/templates/simple/result_templates/default.html:6
+#: searx/templates/simple/result_templates/files.html:8
 msgid "hide media"
 msgstr "sakrij medije"
 
@@ -1115,15 +1320,59 @@ msgstr "sakrij medije"
 msgid "This site did not provide any description."
 msgstr "Ova stranica nije dala nikakav opis."
 
-#: searx/templates/simple/result_templates/images.html:19
+#: searx/templates/simple/result_templates/files.html:38
+#: searx/templates/simple/result_templates/images.html:22
+#: searx/templates/simple/result_templates/torrent.html:11
+msgid "Filesize"
+msgstr "Veličina datoteke"
+
+#: searx/templates/simple/result_templates/files.html:39
+#: searx/templates/simple/result_templates/torrent.html:12
+msgid "Bytes"
+msgstr "Bajti"
+
+#: searx/templates/simple/result_templates/files.html:40
+#: searx/templates/simple/result_templates/torrent.html:13
+msgid "kiB"
+msgstr "kiB"
+
+#: searx/templates/simple/result_templates/files.html:41
+#: searx/templates/simple/result_templates/torrent.html:14
+msgid "MiB"
+msgstr "MiB"
+
+#: searx/templates/simple/result_templates/files.html:42
+#: searx/templates/simple/result_templates/torrent.html:15
+msgid "GiB"
+msgstr "GiB"
+
+#: searx/templates/simple/result_templates/files.html:43
+#: searx/templates/simple/result_templates/torrent.html:16
+msgid "TiB"
+msgstr "TiB"
+
+#: searx/templates/simple/result_templates/files.html:47
+msgid "Date"
+msgstr "Datum"
+
+#: searx/templates/simple/result_templates/files.html:49
+#: searx/templates/simple/result_templates/paper.html:24
+msgid "Type"
+msgstr "Tip"
+
+#: searx/templates/simple/result_templates/images.html:20
+msgid "Resolution"
+msgstr "Razlučivost"
+
+#: searx/templates/simple/result_templates/images.html:21
 msgid "Format"
 msgstr "Format"
 
-#: searx/templates/simple/result_templates/images.html:21
+#: searx/templates/simple/result_templates/images.html:24
 msgid "Engine"
 msgstr "Motor"
 
-#: searx/templates/simple/result_templates/images.html:22
+#: searx/templates/simple/result_templates/images.html:25
 msgid "View source"
 msgstr "Prikaži izvor"
 
@@ -1138,6 +1387,39 @@ msgstr "prikaži kartu"
 #: searx/templates/simple/result_templates/map.html:43
 msgid "hide map"
 msgstr "sakrij kartu"
+
+#: searx/templates/simple/result_templates/packages.html:12
+msgid "Version"
+msgstr "Verzija"
+
+#: searx/templates/simple/result_templates/packages.html:18
+msgid "Maintainer"
+msgstr "Održavatelj"
+
+#: searx/templates/simple/result_templates/packages.html:24
+msgid "Updated at"
+msgstr "Ažurirano u"
+
+#: searx/templates/simple/result_templates/packages.html:30
+#: searx/templates/simple/result_templates/paper.html:25
+msgid "Tags"
+msgstr "Oznake"
+
+#: searx/templates/simple/result_templates/packages.html:36
+msgid "Popularity"
+msgstr "Popularnost"
+
+#: searx/templates/simple/result_templates/packages.html:42
+msgid "License"
+msgstr "Licenca"
+
+#: searx/templates/simple/result_templates/packages.html:52
+msgid "Project"
+msgstr "Projekt"
+
+#: searx/templates/simple/result_templates/packages.html:55
+msgid "Project homepage"
+msgstr "Projekt početna stranica"
 
 #: searx/templates/simple/result_templates/paper.html:5
 msgid "Published date"
@@ -1154,14 +1436,6 @@ msgstr "Urednik"
 #: searx/templates/simple/result_templates/paper.html:23
 msgid "Publisher"
 msgstr "Izdavač"
-
-#: searx/templates/simple/result_templates/paper.html:24
-msgid "Type"
-msgstr "Tip"
-
-#: searx/templates/simple/result_templates/paper.html:25
-msgid "Tags"
-msgstr "Oznake"
 
 #: searx/templates/simple/result_templates/paper.html:26
 msgid "DOI"
@@ -1198,30 +1472,6 @@ msgstr "Hranilac"
 #: searx/templates/simple/result_templates/torrent.html:9
 msgid "Leecher"
 msgstr "Leecher"
-
-#: searx/templates/simple/result_templates/torrent.html:11
-msgid "Filesize"
-msgstr "Veličina datoteke"
-
-#: searx/templates/simple/result_templates/torrent.html:12
-msgid "Bytes"
-msgstr "Bajti"
-
-#: searx/templates/simple/result_templates/torrent.html:13
-msgid "kiB"
-msgstr "kiB"
-
-#: searx/templates/simple/result_templates/torrent.html:14
-msgid "MiB"
-msgstr "MiB"
-
-#: searx/templates/simple/result_templates/torrent.html:15
-msgid "GiB"
-msgstr "GiB"
-
-#: searx/templates/simple/result_templates/torrent.html:16
-msgid "TiB"
-msgstr "TiB"
 
 #: searx/templates/simple/result_templates/torrent.html:20
 msgid "Number of Files"
@@ -1570,4 +1820,85 @@ msgstr "sakrij video"
 
 #~ msgid "!bang"
 #~ msgstr ""
+
+#~ msgid ""
+#~ "This tab dues not exists in the"
+#~ " user interface, but you can search"
+#~ " in these engines by its !bangs."
+#~ msgstr ""
+
+#~ msgid "Engines cannot retrieve results."
+#~ msgstr "Tražilice ne mogu dohvatiti rezultate."
+
+#~ msgid "Please, try again later or find another SearXNG instance."
+#~ msgstr ""
+#~ "Molimo vas da pokušate ponovo kasnije"
+#~ " ili da pronađete drugu SearXNG "
+#~ "instancu."
+
+#~ msgid ""
+#~ "Redirect to open-access versions of "
+#~ "publications when available (plugin required)"
+#~ msgstr ""
+#~ "Preusmjeri na verzije izdanja otvorenog "
+#~ "pristupa kada je isto dostupno (potreban"
+#~ " je dodatak)"
+
+#~ msgid "Bang"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Change how forms are submitted, <a "
+#~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
+#~ " rel=\"external\">learn more about request "
+#~ "methods</a>"
+#~ msgstr ""
+#~ "Promijenite način slanja obrazaca, <a "
+#~ "href=\"http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods\""
+#~ " rel=\"external\">saznajte više o metodama "
+#~ "zahtjeva</a>"
+
+#~ msgid "On"
+#~ msgstr "Uključeno"
+
+#~ msgid "Off"
+#~ msgstr "Isključeno"
+
+#~ msgid "Enabled"
+#~ msgstr "Omogućeno"
+
+#~ msgid "Disabled"
+#~ msgstr "Onemogućeno"
+
+#~ msgid ""
+#~ "Perform search immediately if a category"
+#~ " selected. Disable to select multiple "
+#~ "categories. (JavaScript required)"
+#~ msgstr ""
+#~ "Izvrši pretraživanje odmah ako je "
+#~ "odabrana kategorija. Onemogući odabir više "
+#~ "kategorija. (Potreban je JavaScript)"
+
+#~ msgid "Vim-like hotkeys"
+#~ msgstr "Vim tipkovni prečaci"
+
+#~ msgid ""
+#~ "Navigate search results with Vim-like"
+#~ " hotkeys (JavaScript required). Press \"h\""
+#~ " key on main or result page to"
+#~ " get help."
+#~ msgstr ""
+#~ "Kretanje rezultatima pretraživanja pomoću "
+#~ "tipkovnih prečaca sličnih Vim-u (potreban "
+#~ "je JavaScript). Pritisnite tipku \"h\" "
+#~ "na glavnoj stranici ili stranici s "
+#~ "rezultatima kako biste dobili pomoć."
+
+#~ msgid ""
+#~ "we didn't find any results. Please "
+#~ "use another query or search in "
+#~ "more categories."
+#~ msgstr ""
+#~ "nema rezultata pretraživanja. Unesite novi "
+#~ "upit ili pretražite u više kategorija."
 

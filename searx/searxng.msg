@@ -11,6 +11,9 @@ __all__ = [
     'CATEGORY_NAMES',
     'CATEGORY_GROUPS',
     'STYLE_NAMES',
+    'BRAND_CUSTOM_LINKS',
+    'WEATHER_TERMS',
+    'SOCIAL_MEDIA_TERMS',
 ]
 
 CONSTANT_NAMES = {
@@ -26,6 +29,8 @@ CATEGORY_NAMES = {
     'SOCIAL_MEDIA': 'social media',
     'IMAGES': 'images',
     'VIDEOS': 'videos',
+    'RADIO': 'radio',
+    'TV': 'tv',
     'IT': 'it',
     'NEWS': 'news',
     'MAP': 'map',
@@ -50,4 +55,43 @@ STYLE_NAMES = {
     'AUTO': 'auto',
     'LIGHT': 'light',
     'DARK': 'dark',
+}
+
+BRAND_CUSTOM_LINKS = {
+    'UPTIME': 'Uptime',
+    'ABOUT': 'About',
+}
+
+WEATHER_TERMS = {
+    'AVERAGE TEMP.': 'Average temp.',
+    'CLOUD COVER': 'Cloud cover',
+    'CONDITION': 'Condition',
+    'CURRENT CONDITION': 'Current condition',
+    'EVENING': 'Evening',
+    'FEELS LIKE': 'Feels like',
+    'HUMIDITY': 'Humidity',
+    'MAX TEMP.': 'Max temp.',
+    'MIN TEMP.': 'Min temp.',
+    'MORNING': 'Morning',
+    'NIGHT': 'Night',
+    'NOON': 'Noon',
+    'PRESSURE': 'Pressure',
+    'SUNRISE': 'Sunrise',
+    'SUNSET': 'Sunset',
+    'TEMPERATURE': 'Temperature',
+    'UV INDEX': 'UV index',
+    'VISIBILITY': 'Visibility',
+    'WIND': 'Wind',
+}
+
+SOCIAL_MEDIA_TERMS = {
+    'SUBSCRIBERS': 'subscribers',
+    'POSTS': 'posts',
+    'ACTIVE USERS': 'active users',
+    'COMMENTS': 'comments',
+    'USER': 'user',
+    'COMMUNITY': 'community',
+    'POINTS': 'points',
+    'TITLE': 'title',
+    'AUTHOR': 'author',
 }

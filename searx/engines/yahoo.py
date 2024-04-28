@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Yahoo Search (Web)
 
 Languages are supported by mapping the language to a domain.  If domain is not
@@ -133,12 +132,8 @@ def response(resp):
             continue
         url = parse_url(url)
 
-        title = eval_xpath_getindex(result, './/h3/a', 0, default=None)
-        if title is None:
-            continue
-        offset = len(extract_text(title.xpath('span')))
-        title = extract_text(title)[offset:]
-
+        title = eval_xpath_getindex(result, './/h3//a/@aria-label', 0, default='')
+        title = extract_text(title)
         content = eval_xpath_getindex(result, './/div[contains(@class, "compText")]', 0, default='')
         content = extract_text(content, allow_none=True)
 
@@ -164,7 +159,7 @@ def fetch_traits(engine_traits: EngineTraits):
 
     resp = network.get('https://search.yahoo.com/preferences/languages')
     if not resp.ok:
-        print("ERROR: response from peertube is not OK.")
+        print("ERROR: response from yahoo is not OK.")
 
     dom = html.fromstring(resp.text)
     offset = len('lang_')

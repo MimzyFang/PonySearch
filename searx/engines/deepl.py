@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Deepl translation engine"""
 
 from json import loads
@@ -14,7 +13,7 @@ about = {
 }
 
 engine_type = 'online_dictionary'
-categories = ['general']
+categories = ['general', 'translate']
 
 url = 'https://api-free.deepl.com/v2/translate'
 api_key = None
@@ -52,11 +51,6 @@ def response(resp):
 
     infobox += "</dl>"
 
-    results.append(
-        {
-            'infobox': 'Deepl',
-            'content': infobox,
-        }
-    )
+    results.append({'answer': infobox})
 
     return results

@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """This module implements the Wikipedia engine.  Some of this implementations
 are shared by other engines:
 
@@ -61,7 +60,7 @@ import babel
 from lxml import html
 
 from searx import utils
-from searx import network
+from searx import network as _network
 from searx import locales
 from searx.enginelib.traits import EngineTraits
 
@@ -76,6 +75,11 @@ about = {
     "require_api_key": False,
     "results": 'JSON',
 }
+
+display_type = ["infobox"]
+"""A list of display types composed from ``infobox`` and ``list``.  The latter
+one will add a hit to the result list.  The first one will show a hit in the
+info box.  Both values can be set, or one of the two can be set."""
 
 send_accept_language_header = True
 """The HTTP ``Accept-Language`` header is needed for wikis where
@@ -180,23 +184,28 @@ def response(resp):
             ):
                 return []
 
-    network.raise_for_httperror(resp)
+    _network.raise_for_httperror(resp)
 
     api_result = resp.json()
     title = utils.html_to_text(api_result.get('titles', {}).get('display') or api_result.get('title'))
     wikipedia_link = api_result['content_urls']['desktop']['page']
-    results.append({'url': wikipedia_link, 'title': title, 'content': api_result.get('description', '')})
 
-    if api_result.get('type') == 'standard':
-        results.append(
-            {
-                'infobox': title,
-                'id': wikipedia_link,
-                'content': api_result.get('extract', ''),
-                'img_src': api_result.get('thumbnail', {}).get('source'),
-                'urls': [{'title': 'Wikipedia', 'url': wikipedia_link}],
-            }
-        )
+    if "list" in display_type or api_result.get('type') != 'standard':
+        # show item in the result list if 'list' is in the display options or it
+        # is a item that can't be displayed in a infobox.
+        results.append({'url': wikipedia_link, 'title': title, 'content': api_result.get('description', '')})
+
+    if "infobox" in display_type:
+        if api_result.get('type') == 'standard':
+            results.append(
+                {
+                    'infobox': title,
+                    'id': wikipedia_link,
+                    'content': api_result.get('extract', ''),
+                    'img_src': api_result.get('thumbnail', {}).get('source'),
+                    'urls': [{'title': 'Wikipedia', 'url': wikipedia_link}],
+                }
+            )
 
     return results
 
@@ -267,7 +276,7 @@ def fetch_wikimedia_traits(engine_traits: EngineTraits):
         for sxng_tag in sxng_tag_list:
             engine_traits.regions[sxng_tag] = eng_tag
 
-    resp = network.get(list_of_wikipedias)
+    resp = _network.get(list_of_wikipedias)
     if not resp.ok:
         print("ERROR: response from Wikipedia is not OK.")
 

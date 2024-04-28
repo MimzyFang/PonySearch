@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# lint: pylint
 # SPDX-License-Identifier: AGPL-3.0-or-later
-
 """Fetch website description from websites and from
 :origin:`searx/engines/wikidata.py` engine.
 
@@ -24,6 +22,9 @@ from searx import searx_dir
 from searx.utils import gen_useragent, detect_language
 import searx.search
 import searx.network
+from searx.data import data_dir
+
+DATA_FILE = data_dir / 'engine_descriptions.json'
 
 set_loggers(wikidata, 'wikidata')
 locales_initialize()
@@ -362,8 +363,8 @@ def main():
     fetch_website_descriptions()
 
     output = get_output()
-    with open(get_engine_descriptions_filename(), 'w', encoding='utf8') as f:
-        f.write(json.dumps(output, indent=1, separators=(',', ':'), ensure_ascii=False))
+    with DATA_FILE.open('w', encoding='utf8') as f:
+        f.write(json.dumps(output, indent=1, separators=(',', ':'), sort_keys=True, ensure_ascii=False))
 
 
 if __name__ == "__main__":

@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# pylint: disable=missing-module-docstring
+
 import re
 from collections import defaultdict
 from operator import itemgetter
@@ -6,6 +9,7 @@ from typing import List, NamedTuple, Set
 from urllib.parse import urlparse, unquote
 
 from searx import logger
+from searx import utils
 from searx.engines import engines
 from searx.metrics import histogram_observe, counter_add, count_error
 
@@ -18,8 +22,7 @@ WHITESPACE_REGEX = re.compile('( |\t|\n)+', re.M | re.U)
 def result_content_len(content):
     if isinstance(content, str):
         return len(CONTENT_LEN_IGNORED_CHARS_REGEX.sub('', content))
-    else:
-        return 0
+    return 0
 
 
 def compare_urls(url_a, url_b):
@@ -55,7 +58,7 @@ def compare_urls(url_a, url_b):
     return unquote(path_a) == unquote(path_b)
 
 
-def merge_two_infoboxes(infobox1, infobox2):
+def merge_two_infoboxes(infobox1, infobox2):  # pylint: disable=too-many-branches, too-many-statements
     # get engines weights
     if hasattr(engines[infobox1['engine']], 'weight'):
         weight1 = engines[infobox1['engine']].weight
@@ -139,13 +142,13 @@ def result_score(result):
     return sum((occurrences * weight) / position for position in result['positions'])
 
 
-class Timing(NamedTuple):
+class Timing(NamedTuple):  # pylint: disable=missing-class-docstring
     engine: str
     total: float
     load: float
 
 
-class UnresponsiveEngine(NamedTuple):
+class UnresponsiveEngine(NamedTuple):  # pylint: disable=missing-class-docstring
     engine: str
     error_type: str
     suspended: bool
@@ -188,7 +191,7 @@ class ResultContainer:
         self.on_result = lambda _: True
         self._lock = RLock()
 
-    def extend(self, engine_name, results):
+    def extend(self, engine_name, results):  # pylint: disable=too-many-branches
         if self._closed:
             return
 
@@ -231,7 +234,7 @@ class ResultContainer:
         if engine_name in engines:
             histogram_observe(standard_result_count, 'engine', engine_name, 'result', 'count')
 
-        if not self.paging and standard_result_count > 0 and engine_name in engines and engines[engine_name].paging:
+        if not self.paging and engine_name in engines and engines[engine_name].paging:
             self.paging = True
 
     def _merge_infobox(self, infobox):
@@ -313,11 +316,11 @@ class ResultContainer:
                 if result_template != 'images.html':
                     # not an image, same template, same url : it's a duplicate
                     return merged_result
-                else:
-                    # it's an image
-                    # it's a duplicate if the parsed_url, template and img_src are different
-                    if result.get('img_src', '') == merged_result.get('img_src', ''):
-                        return merged_result
+
+                # it's an image
+                # it's a duplicate if the parsed_url, template and img_src are different
+                if result.get('img_src', '') == merged_result.get('img_src', ''):
+                    return merged_result
         return None
 
     def __merge_duplicated_http_result(self, duplicated, result, position):
@@ -353,6 +356,13 @@ class ResultContainer:
         for result in self._merged_results:
             score = result_score(result)
             result['score'] = score
+
+            # removing html content and whitespace duplications
+            if result.get('content'):
+                result['content'] = utils.html_to_text(result['content']).strip()
+            if result.get('title'):
+                result['title'] = ' '.join(utils.html_to_text(result['title']).strip().split())
+
             for result_engine in result['engines']:
                 counter_add(score, 'engine', result_engine, 'score')
 
@@ -363,11 +373,11 @@ class ResultContainer:
         categoryPositions = {}
 
         for res in results:
-            # FIXME : handle more than one category per engine
+            # do we need to handle more than one category per engine?
             engine = engines[res['engine']]
             res['category'] = engine.categories[0] if len(engine.categories) > 0 else ''
 
-            # FIXME : handle more than one category per engine
+            # do we need to handle more than one category per engine?
             category = (
                 res['category']
                 + ':'
@@ -389,7 +399,7 @@ class ResultContainer:
 
                 # update every index after the current one
                 # (including the current one)
-                for k in categoryPositions:
+                for k in categoryPositions:  # pylint: disable=consider-using-dict-items
                     v = categoryPositions[k]['index']
                     if v >= index:
                         categoryPositions[k]['index'] = v + 1
@@ -415,11 +425,19 @@ class ResultContainer:
     def results_length(self):
         return len(self._merged_results)
 
-    def results_number(self):
+    @property
+    def number_of_results(self) -> int:
+        """Returns the average of results number, returns zero if the average
+        result number is smaller than the actual result count."""
+
         resultnum_sum = sum(self._number_of_results)
         if not resultnum_sum or not self._number_of_results:
             return 0
-        return resultnum_sum / len(self._number_of_results)
+
+        average = int(resultnum_sum / len(self._number_of_results))
+        if average < self.results_length():
+            average = 0
+        return average
 
     def add_unresponsive_engine(self, engine_name: str, error_type: str, suspended: bool = False):
         if engines[engine_name].display_error_messages:

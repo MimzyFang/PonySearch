@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# pylint: disable=missing-module-docstring, invalid-name
+
 from __future__ import annotations
 
 import os
@@ -9,31 +11,80 @@ import hmac
 import re
 import inspect
 import itertools
+import json
 from datetime import datetime, timedelta
 from typing import Iterable, List, Tuple, Dict, TYPE_CHECKING
 
 from io import StringIO
 from codecs import getincrementalencoder
 
-from flask_babel import gettext, format_date
+from flask_babel import gettext, format_date  # type: ignore
 
 from searx import logger, settings
 from searx.engines import DEFAULT_CATEGORY
 
 if TYPE_CHECKING:
     from searx.enginelib import Engine
-
+    from searx.results import ResultContainer
+    from searx.search import SearchQuery
+    from searx.results import UnresponsiveEngine
 
 VALID_LANGUAGE_CODE = re.compile(r'^[a-z]{2,3}(-[a-zA-Z]{2})?$')
 
 logger = logger.getChild('webutils')
 
+timeout_text = gettext('timeout')
+parsing_error_text = gettext('parsing error')
+http_protocol_error_text = gettext('HTTP protocol error')
+network_error_text = gettext('network error')
+ssl_cert_error_text = gettext("SSL error: certificate validation has failed")
+exception_classname_to_text = {
+    None: gettext('unexpected crash'),
+    'timeout': timeout_text,
+    'asyncio.TimeoutError': timeout_text,
+    'httpx.TimeoutException': timeout_text,
+    'httpx.ConnectTimeout': timeout_text,
+    'httpx.ReadTimeout': timeout_text,
+    'httpx.WriteTimeout': timeout_text,
+    'httpx.HTTPStatusError': gettext('HTTP error'),
+    'httpx.ConnectError': gettext("HTTP connection error"),
+    'httpx.RemoteProtocolError': http_protocol_error_text,
+    'httpx.LocalProtocolError': http_protocol_error_text,
+    'httpx.ProtocolError': http_protocol_error_text,
+    'httpx.ReadError': network_error_text,
+    'httpx.WriteError': network_error_text,
+    'httpx.ProxyError': gettext("proxy error"),
+    'searx.exceptions.SearxEngineCaptchaException': gettext("CAPTCHA"),
+    'searx.exceptions.SearxEngineTooManyRequestsException': gettext("too many requests"),
+    'searx.exceptions.SearxEngineAccessDeniedException': gettext("access denied"),
+    'searx.exceptions.SearxEngineAPIException': gettext("server API error"),
+    'searx.exceptions.SearxEngineXPathException': parsing_error_text,
+    'KeyError': parsing_error_text,
+    'json.decoder.JSONDecodeError': parsing_error_text,
+    'lxml.etree.ParserError': parsing_error_text,
+    'ssl.SSLCertVerificationError': ssl_cert_error_text,  # for Python > 3.7
+    'ssl.CertificateError': ssl_cert_error_text,  # for Python 3.7
+}
 
-class UnicodeWriter:
-    """
-    A CSV writer which will write rows to CSV file "f",
-    which is encoded in the given encoding.
-    """
+
+def get_translated_errors(unresponsive_engines: Iterable[UnresponsiveEngine]):
+    translated_errors = []
+
+    for unresponsive_engine in unresponsive_engines:
+        error_user_text = exception_classname_to_text.get(unresponsive_engine.error_type)
+        if not error_user_text:
+            error_user_text = exception_classname_to_text[None]
+        error_msg = gettext(error_user_text)
+        if unresponsive_engine.suspended:
+            error_msg = gettext('Suspended') + ': ' + error_msg
+        translated_errors.append((unresponsive_engine.engine, error_msg))
+
+    return sorted(translated_errors, key=lambda e: e[0])
+
+
+class CSVWriter:
+    """A CSV writer which will write rows to CSV file "f", which is encoded in
+    the given encoding."""
 
     def __init__(self, f, dialect=csv.excel, encoding="utf-8", **kwds):
         # Redirect output to a queue
@@ -57,6 +108,69 @@ class UnicodeWriter:
     def writerows(self, rows):
         for row in rows:
             self.writerow(row)
+
+
+def write_csv_response(csv: CSVWriter, rc: ResultContainer) -> None:  # pylint: disable=redefined-outer-name
+    """Write rows of the results to a query (``application/csv``) into a CSV
+    table (:py:obj:`CSVWriter`).  First line in the table contain the column
+    names.  The column "type" specifies the type, the following types are
+    included in the table:
+
+    - result
+    - answer
+    - suggestion
+    - correction
+
+    """
+
+    results = rc.get_ordered_results()
+    keys = ('title', 'url', 'content', 'host', 'engine', 'score', 'type')
+    csv.writerow(keys)
+
+    for row in results:
+        row['host'] = row['parsed_url'].netloc
+        row['type'] = 'result'
+        csv.writerow([row.get(key, '') for key in keys])
+
+    for a in rc.answers:
+        row = {'title': a, 'type': 'answer'}
+        csv.writerow([row.get(key, '') for key in keys])
+
+    for a in rc.suggestions:
+        row = {'title': a, 'type': 'suggestion'}
+        csv.writerow([row.get(key, '') for key in keys])
+
+    for a in rc.corrections:
+        row = {'title': a, 'type': 'correction'}
+        csv.writerow([row.get(key, '') for key in keys])
+
+
+class JSONEncoder(json.JSONEncoder):  # pylint: disable=missing-class-docstring
+    def default(self, o):
+        if isinstance(o, datetime):
+            return o.isoformat()
+        if isinstance(o, timedelta):
+            return o.total_seconds()
+        if isinstance(o, set):
+            return list(o)
+        return super().default(o)
+
+
+def get_json_response(sq: SearchQuery, rc: ResultContainer) -> str:
+    """Returns the JSON string of the results to a query (``application/json``)"""
+    results = rc.number_of_results
+    x = {
+        'query': sq.query,
+        'number_of_results': results,
+        'results': rc.get_ordered_results(),
+        'answers': list(rc.answers),
+        'corrections': list(rc.corrections),
+        'infoboxes': rc.infoboxes,
+        'suggestions': list(rc.suggestions),
+        'unresponsive_engines': get_translated_errors(rc.unresponsive_engines),
+    }
+    response = json.dumps(x, cls=JSONEncoder)
+    return response
 
 
 def get_themes(templates_path):
@@ -114,8 +228,7 @@ def prettify_url(url, max_length=74):
     if len(url) > max_length:
         chunk_len = int(max_length / 2 + 1)
         return '{0}[...]{1}'.format(url[:chunk_len], url[-chunk_len:])
-    else:
-        return url
+    return url
 
 
 def contains_cjko(s: str) -> bool:
@@ -157,8 +270,7 @@ def regex_highlight_cjk(word: str) -> str:
     rword = re.escape(word)
     if contains_cjko(rword):
         return fr'({rword})'
-    else:
-        return fr'\b({rword})(?!\w)'
+    return fr'\b({rword})(?!\w)'
 
 
 def highlight_content(content, query):
@@ -167,7 +279,6 @@ def highlight_content(content, query):
         return None
 
     # ignoring html contents
-    # TODO better html content detection
     if content.find('<') != -1:
         return content
 
@@ -178,10 +289,8 @@ def highlight_content(content, query):
         if len(qs) > 0:
             queries.extend(re.findall(regex_highlight_cjk(qs), content, flags=re.I | re.U))
     if len(queries) > 0:
-        for q in set(queries):
-            content = re.sub(
-                regex_highlight_cjk(q), f'<span class="highlight">{q}</span>'.replace('\\', r'\\'), content
-            )
+        regex = re.compile("|".join(map(regex_highlight_cjk, queries)))
+        return regex.sub(lambda match: f'<span class="highlight">{match.group(0)}</span>'.replace('\\', r'\\'), content)
     return content
 
 
@@ -243,8 +352,8 @@ def group_engines_in_tab(engines: Iterable[Engine]) -> List[Tuple[str, Iterable[
     sorted_groups = sorted(((name, list(engines)) for name, engines in subgroups), key=group_sort_key)
 
     ret_val = []
-    for groupname, engines in sorted_groups:
+    for groupname, _engines in sorted_groups:
         group_bang = '!' + groupname.replace(' ', '_') if groupname != NO_SUBGROUPING else ''
-        ret_val.append((groupname, group_bang, sorted(engines, key=engine_sort_key)))
+        ret_val.append((groupname, group_bang, sorted(_engines, key=engine_sort_key)))
 
     return ret_val

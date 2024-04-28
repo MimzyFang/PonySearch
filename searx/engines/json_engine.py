@@ -1,4 +1,15 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
+"""The JSON engine is a *generic* engine with which it is possible to configure
+engines in the settings.
+
+.. todo::
+
+   - The JSON engine needs documentation!!
+
+   - The parameters of the JSON engine should be adapted to those of the XPath
+     engine.
+
+"""
 
 from collections.abc import Iterable
 from json import loads
@@ -8,6 +19,7 @@ from searx.utils import to_string, html_to_text
 
 search_url = None
 url_query = None
+url_prefix = ""
 content_query = None
 title_query = None
 content_html_to_text = False
@@ -31,32 +43,31 @@ first_page_num = 1
 
 
 def iterate(iterable):
-    if type(iterable) == dict:
-        it = iterable.items()
+    if isinstance(iterable, dict):
+        items = iterable.items()
 
     else:
-        it = enumerate(iterable)
-    for index, value in it:
+        items = enumerate(iterable)
+    for index, value in items:
         yield str(index), value
 
 
 def is_iterable(obj):
-    if type(obj) == str:
+    if isinstance(obj, str):
         return False
     return isinstance(obj, Iterable)
 
 
-def parse(query):
-    q = []
+def parse(query):  # pylint: disable=redefined-outer-name
+    q = []  # pylint: disable=invalid-name
     for part in query.split('/'):
         if part == '':
             continue
-        else:
-            q.append(part)
+        q.append(part)
     return q
 
 
-def do_query(data, q):
+def do_query(data, q):  # pylint: disable=invalid-name
     ret = []
     if not q:
         return ret
@@ -86,10 +97,10 @@ def query(data, query_string):
     return do_query(data, q)
 
 
-def request(query, params):
+def request(query, params):  # pylint: disable=redefined-outer-name
     query = urlencode({'q': query})[2:]
 
-    fp = {'query': query}
+    fp = {'query': query}  # pylint: disable=invalid-name
     if paging and search_url.find('{pageno}') >= 0:
         fp['pageno'] = (params['pageno'] - 1) * page_size + first_page_num
 
@@ -114,22 +125,22 @@ def response(resp):
     content_filter = html_to_text if content_html_to_text else identity
 
     if results_query:
-        rs = query(json, results_query)
-        if not len(rs):
+        rs = query(json, results_query)  # pylint: disable=invalid-name
+        if not rs:
             return results
         for result in rs[0]:
             try:
                 url = query(result, url_query)[0]
                 title = query(result, title_query)[0]
-            except:
+            except:  # pylint: disable=bare-except
                 continue
             try:
                 content = query(result, content_query)[0]
-            except:
+            except:  # pylint: disable=bare-except
                 content = ""
             results.append(
                 {
-                    'url': to_string(url),
+                    'url': url_prefix + to_string(url),
                     'title': title_filter(to_string(title)),
                     'content': content_filter(to_string(content)),
                 }
@@ -138,7 +149,7 @@ def response(resp):
         for url, title, content in zip(query(json, url_query), query(json, title_query), query(json, content_query)):
             results.append(
                 {
-                    'url': to_string(url),
+                    'url': url_prefix + to_string(url),
                     'title': title_filter(to_string(title)),
                     'content': content_filter(to_string(content)),
                 }

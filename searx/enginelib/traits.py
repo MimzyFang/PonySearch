@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
 """Engine's traits are fetched from the origin engines and stored in a JSON file
 in the *data folder*.  Most often traits are languages and region codes and
 their mapping from SearXNG's representation to the representation in the origin
@@ -13,8 +12,8 @@ used.
 from __future__ import annotations
 import json
 import dataclasses
-from typing import Dict, Iterable, Union, Callable, Optional, TYPE_CHECKING
-from typing_extensions import Literal, Self
+import types
+from typing import Dict, Literal, Iterable, Union, Callable, Optional, TYPE_CHECKING
 
 from searx import locales
 from searx.data import data_dir, ENGINE_TRAITS
@@ -82,8 +81,7 @@ class EngineTraits:
     """
 
     custom: Dict[str, Union[Dict[str, Dict], Iterable[str]]] = dataclasses.field(default_factory=dict)
-    """A place to store engine's custom traits, not related to the SearXNG core
-
+    """A place to store engine's custom traits, not related to the SearXNG core.
     """
 
     def get_language(self, searxng_locale: str, default=None):
@@ -95,8 +93,8 @@ class EngineTraits:
         :param default: engine's default language
 
         The *best fits* rules are implemented in
-        :py:obj:`locales.get_engine_locale`.  Except for the special value ``all``
-        which is determined from :py:obj`EngineTraits.all_language`.
+        :py:obj:`searx.locales.get_engine_locale`.  Except for the special value ``all``
+        which is determined from :py:obj:`EngineTraits.all_locale`.
         """
         if searxng_locale == 'all' and self.all_locale is not None:
             return self.all_locale
@@ -111,18 +109,20 @@ class EngineTraits:
         :param default: engine's default region
 
         The *best fits* rules are implemented in
-        :py:obj:`locales.get_engine_locale`.  Except for the special value ``all``
-        which is determined from :py:obj`EngineTraits.all_language`.
+        :py:obj:`searx.locales.get_engine_locale`.  Except for the special value ``all``
+        which is determined from :py:obj:`EngineTraits.all_locale`.
         """
         if searxng_locale == 'all' and self.all_locale is not None:
             return self.all_locale
         return locales.get_engine_locale(searxng_locale, self.regions, default=default)
 
     def is_locale_supported(self, searxng_locale: str) -> bool:
-        """A *locale* (SearXNG's internal representation) is considered to be supported
-        by the engine if the *region* or the *language* is supported by the
-        engine.  For verification the functions :py:func:`self.get_region` and
-        :py:func:`self.get_region` are used.
+        """A *locale* (SearXNG's internal representation) is considered to be
+        supported by the engine if the *region* or the *language* is supported
+        by the engine.
+
+        For verification the functions :py:func:`EngineTraits.get_region` and
+        :py:func:`EngineTraits.get_language` are used.
         """
         if self.data_type == 'traits_v1':
             return bool(self.get_region(searxng_locale) or self.get_language(searxng_locale))
@@ -134,7 +134,7 @@ class EngineTraits:
         return EngineTraits(**dataclasses.asdict(self))
 
     @classmethod
-    def fetch_traits(cls, engine: Engine) -> Union[Self, None]:
+    def fetch_traits(cls, engine: Engine) -> Union['EngineTraits', None]:
         """Call a function ``fetch_traits(engine_traits)`` from engines namespace to fetch
         and set properties from the origin engine in the object ``engine_traits``.  If
         function does not exists, ``None`` is returned.
@@ -166,7 +166,7 @@ class EngineTraits:
         #   - name: google italian
         #     engine: google
         #     language: it
-        #     region: it-IT
+        #     region: it-IT                                      # type: ignore
 
         traits = self.copy()
 
@@ -202,7 +202,7 @@ class EngineTraitsMap(Dict[str, EngineTraits]):
             json.dump(self, f, indent=2, sort_keys=True, cls=EngineTraitsEncoder)
 
     @classmethod
-    def from_data(cls) -> Self:
+    def from_data(cls) -> 'EngineTraitsMap':
         """Instantiate :class:`EngineTraitsMap` object from :py:obj:`ENGINE_TRAITS`"""
         obj = cls()
         for k, v in ENGINE_TRAITS.items():
@@ -210,7 +210,7 @@ class EngineTraitsMap(Dict[str, EngineTraits]):
         return obj
 
     @classmethod
-    def fetch_traits(cls, log: Callable) -> Self:
+    def fetch_traits(cls, log: Callable) -> 'EngineTraitsMap':
         from searx import engines  # pylint: disable=cyclic-import, import-outside-toplevel
 
         names = list(engines.engines)
@@ -228,7 +228,7 @@ class EngineTraitsMap(Dict[str, EngineTraits]):
 
         return obj
 
-    def set_traits(self, engine: Engine):
+    def set_traits(self, engine: Engine | types.ModuleType):
         """Set traits in a :py:obj:`Engine` namespace.
 
         :param engine: engine instance build by :py:func:`searx.engines.load_engine`

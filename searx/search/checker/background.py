@@ -1,15 +1,12 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# lint: pylint
-# pylint: disable=missing-module-docstring
-# pyright: basic
+# pylint: disable=missing-module-docstring, cyclic-import
 
 import json
 import time
 import threading
 import os
 import signal
-from typing import Dict, Union, List, Any, Tuple, Optional
-from typing_extensions import TypedDict, Literal
+from typing import Any, Dict, List, Literal, Optional, Tuple, TypedDict, Union
 
 import redis.exceptions
 

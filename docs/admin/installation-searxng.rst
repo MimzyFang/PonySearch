@@ -4,7 +4,7 @@
 Step by step installation
 =========================
 
-.. contents:: Contents
+.. contents::
    :depth: 2
    :local:
    :backlinks: entry
@@ -73,7 +73,7 @@ Configuration
 
 .. sidebar:: ``use_default_settings: True``
 
-   - :ref:`settings global`
+   - :ref:`settings.yml`
    - :ref:`settings location`
    - :ref:`settings use_default_settings`
    - :origin:`/etc/searxng/settings.yml <utils/templates/etc/searxng/settings.yml>`
@@ -86,7 +86,7 @@ below. This setup:
 
 - enables :ref:`limiter <limiter>` to protect against bots
 - enables :ref:`image proxy <image_proxy>` for better privacy
-- enables :ref:`cache busting <static_use_hash>` to save bandwith
+- enables :ref:`cache busting <static_use_hash>` to save bandwidth
 
 Modify the ``/etc/searxng/settings.yml`` to your needs:
 
