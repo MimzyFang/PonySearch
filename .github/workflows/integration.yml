@@ -12,7 +12,7 @@ permissions:
 jobs:
   python:
     name: Python ${{ matrix.python-version }}
-    runs-on: podman
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         os: [ubuntu-20.04]

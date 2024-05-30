@@ -7,7 +7,7 @@ on:
 jobs:
   updateData:
     name: Update data - ${{ matrix.fetch }}
-    runs-on: podman
+    runs-on: ubuntu-20.04
     if: ${{ github.repository_owner == 'searxng'}}
     strategy:
       fail-fast: false
