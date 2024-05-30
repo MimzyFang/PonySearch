@@ -12,6 +12,9 @@ themes.:
   simple.:
     build   : build simple theme
     test    : test simple theme
+  marlo.:
+    build   : build simple theme
+    test    : test simple theme
 EOF
 }
 
@@ -20,6 +23,7 @@ themes.all() {
         pygments.less
         node.env
         themes.simple
+        themes.marlo
     )
     dump_return $?
 }
@@ -56,10 +60,26 @@ themes.simple() {
     dump_return $?
 }
 
+themes.marlo() {
+    (   set -e
+        build_msg GRUNT "theme: marlo"
+        npm --prefix searx/static/themes/marlo run build
+    )
+    dump_return $?
+}
+
 themes.simple.test() {
     build_msg TEST "theme: simple"
     nodejs.ensure
     npm --prefix searx/static/themes/simple install
     npm --prefix searx/static/themes/simple run test
+    dump_return $?
+}
+
+themes.marlo.test() {
+    build_msg TEST "theme: marlo"
+    nodejs.ensure
+    npm --prefix searx/static/themes/marlo install
+    npm --prefix searx/static/themes/marlo run test
     dump_return $?
 }
