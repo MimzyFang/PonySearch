@@ -78,6 +78,7 @@ Startpage's category (for Web-search, News, Videos, ..) is set by
    yet implemented.
 
 """
+# pylint: disable=too-many-statements
 
 from typing import TYPE_CHECKING
 from collections import OrderedDict
@@ -88,7 +89,7 @@ from datetime import datetime, timedelta
 
 import dateutil.parser
 import lxml.html
-import babel
+import babel.localedata
 
 from searx.utils import extract_text, eval_xpath, gen_useragent
 from searx.network import get  # see https://github.com/searxng/searxng/issues/762
@@ -142,9 +143,6 @@ search_url = base_url + '/sp/search'
 # specific xpath variables
 # ads xpath //div[@id="results"]/div[@id="sponsored"]//div[@class="result"]
 # not ads: div[@class="result"] are the direct childs of div[@id="results"]
-results_xpath = '//div[@class="w-gl__result__main"]'
-link_xpath = './/a[@class="w-gl__result-title result-link"]'
-content_xpath = './/p[@class="w-gl__description"]'
 search_form_xpath = '//form[@id="search"]'
 """XPath of Startpage's origin search form
 
@@ -334,8 +332,8 @@ def _response_cat_web(dom):
     results = []
 
     # parse results
-    for result in eval_xpath(dom, results_xpath):
-        links = eval_xpath(result, link_xpath)
+    for result in eval_xpath(dom, '//div[@class="w-gl"]/div[contains(@class, "result")]'):
+        links = eval_xpath(result, './/a[contains(@class, "result-title result-link")]')
         if not links:
             continue
         link = links[0]
@@ -349,12 +347,9 @@ def _response_cat_web(dom):
         if re.match(r"^http(s|)://(www\.)?startpage\.com/do/search\?.*$", url):
             continue
 
-        title = extract_text(link)
-
-        if eval_xpath(result, content_xpath):
-            content: str = extract_text(eval_xpath(result, content_xpath))  # type: ignore
-        else:
-            content = ''
+        title = extract_text(eval_xpath(link, 'h2'))
+        content = eval_xpath(result, './/p[contains(@class, "description")]')
+        content = extract_text(content, allow_none=True) or ''
 
         published_date = None
 
@@ -445,10 +440,12 @@ def fetch_traits(engine_traits: EngineTraits):
 
     # get the native name of every language known by babel
 
-    for lang_code in filter(
-        lambda lang_code: lang_code.find('_') == -1, babel.localedata.locale_identifiers()  # type: ignore
-    ):
-        native_name = babel.Locale(lang_code).get_language_name().lower()  # type: ignore
+    for lang_code in filter(lambda lang_code: lang_code.find('_') == -1, babel.localedata.locale_identifiers()):
+        native_name = babel.Locale(lang_code).get_language_name()
+        if not native_name:
+            print(f"ERROR: language name of startpage's language {lang_code} is unknown by babel")
+            continue
+        native_name = native_name.lower()
         # add native name exactly as it is
         catalog_engine2code[native_name] = lang_code
 
