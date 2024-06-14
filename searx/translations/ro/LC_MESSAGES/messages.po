@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-05-09 15:27+0000\n"
-"PO-Revision-Date: 2024-04-18 13:18+0000\n"
+"POT-Creation-Date: 2024-06-07 12:50+0000\n"
+"PO-Revision-Date: 2024-05-29 09:18+0000\n"
 "Last-Translator: return42 <return42@users.noreply.translate.codeberg.org>"
 "\n"
 "Language: ro\n"
@@ -30,7 +30,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.15.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
 #: searx/searxng.msg
@@ -80,7 +80,7 @@ msgstr "radio"
 #. CATEGORY_NAMES['TV']
 #: searx/searxng.msg
 msgid "tv"
-msgstr ""
+msgstr "tv"
 
 #. CATEGORY_NAMES['IT']
 #: searx/searxng.msg
@@ -105,7 +105,7 @@ msgstr "cepe"
 #. CATEGORY_NAMES['SCIENCE']
 #: searx/searxng.msg
 msgid "science"
-msgstr "ștință"
+msgstr "știință"
 
 #. CATEGORY_GROUPS['APPS']
 #: searx/searxng.msg
@@ -280,7 +280,7 @@ msgstr ""
 #. SOCIAL_MEDIA_TERMS['POSTS']
 #: searx/searxng.msg
 msgid "posts"
-msgstr ""
+msgstr "Postări"
 
 #. SOCIAL_MEDIA_TERMS['ACTIVE USERS']
 #: searx/searxng.msg
@@ -290,17 +290,17 @@ msgstr ""
 #. SOCIAL_MEDIA_TERMS['COMMENTS']
 #: searx/searxng.msg
 msgid "comments"
-msgstr ""
+msgstr "Comentarii"
 
 #. SOCIAL_MEDIA_TERMS['USER']
 #: searx/searxng.msg
 msgid "user"
-msgstr ""
+msgstr "utilizator"
 
 #. SOCIAL_MEDIA_TERMS['COMMUNITY']
 #: searx/searxng.msg
 msgid "community"
-msgstr ""
+msgstr "comunitate"
 
 #. SOCIAL_MEDIA_TERMS['POINTS']
 #: searx/searxng.msg
@@ -310,11 +310,26 @@ msgstr ""
 #. SOCIAL_MEDIA_TERMS['TITLE']
 #: searx/searxng.msg
 msgid "title"
-msgstr ""
+msgstr "Titlu"
 
 #. SOCIAL_MEDIA_TERMS['AUTHOR']
 #: searx/searxng.msg
 msgid "author"
+msgstr "autor"
+
+#. SOCIAL_MEDIA_TERMS['THREAD OPEN']
+#: searx/engines/discourse.py:121 searx/searxng.msg
+msgid "open"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['THREAD CLOSED']
+#: searx/engines/discourse.py:121 searx/searxng.msg
+msgid "closed"
+msgstr ""
+
+#. SOCIAL_MEDIA_TERMS['THREAD ANSWERED']
+#: searx/engines/discourse.py:132 searx/searxng.msg
+msgid "answered"
 msgstr ""
 
 #: searx/webapp.py:330
@@ -505,13 +520,17 @@ msgstr "Convertește șirurile în diferite rezumate hash."
 msgid "hash digest"
 msgstr "rezumat hash"
 
-#: searx/plugins/hostname_replace.py:12
+#: searx/plugins/hostname_replace.py:7
 msgid "Hostname replace"
 msgstr "Schimbă hostname-ul"
 
-#: searx/plugins/hostname_replace.py:13
-msgid "Rewrite result hostnames or remove results based on the hostname"
-msgstr "Rescrie hostname-urile rezultate sau șterge rezultatele bazate pe hostname"
+#: searx/plugins/hostnames.py:68
+msgid "Hostnames plugin"
+msgstr ""
+
+#: searx/plugins/hostnames.py:69
+msgid "Rewrite hostnames, remove results or prioritize them based on the hostname"
+msgstr ""
 
 #: searx/plugins/oa_doi_rewrite.py:12
 msgid "Open Access DOI rewrite"
@@ -639,22 +658,22 @@ msgstr "Contactați întreținătorul instanței"
 msgid "Click on the magnifier to perform search"
 msgstr "Apăsați pe lupă pentru a executa căutarea"
 
-#: searx/templates/simple/macros.html:36
+#: searx/templates/simple/macros.html:35
 msgid "Length"
 msgstr "Lungime"
 
-#: searx/templates/simple/macros.html:37
+#: searx/templates/simple/macros.html:36
 #: searx/templates/simple/result_templates/files.html:34
 #: searx/templates/simple/result_templates/images.html:19
 #: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
 msgstr "Autor"
 
-#: searx/templates/simple/macros.html:45
+#: searx/templates/simple/macros.html:44
 msgid "cached"
 msgstr "stocat temporar"
 
-#: searx/templates/simple/macros.html:45
+#: searx/templates/simple/macros.html:44
 msgid "proxied"
 msgstr "delegat"
 
@@ -1936,4 +1955,9 @@ msgstr "ascunde video"
 #~ "n-am găsit nici un rezultat. Folosiți"
 #~ " o altă interogare sau căutați în "
 #~ "mai multe categorii."
+
+#~ msgid "Rewrite result hostnames or remove results based on the hostname"
+#~ msgstr ""
+#~ "Rescrie hostname-urile rezultate sau "
+#~ "șterge rezultatele bazate pe hostname"
 
