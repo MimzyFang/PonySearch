@@ -5,6 +5,7 @@
 """
 from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 from json import loads
+
 from searx import logger
 
 # about
@@ -36,7 +37,8 @@ def clean_url(url):
 
 def request(query, params):
     params['url'] = search_url + urlencode(
-        {'q': query, 'filter_id': filter_id, 'page': params['pageno'], 'per_page': page_size, 'sf': sort_field, 'sd': sort_direction}
+        {'q': query, 'filter_id': filter_id, 'page': params['pageno'], 'per_page': page_size, 'sf': sort_field,
+         'sd': sort_direction}
     )
     logger.debug("query_url --> %s", params['url'])
     return params
