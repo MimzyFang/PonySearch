@@ -5,6 +5,7 @@
 """
 from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 from json import loads
+from searx import logger
 
 # about
 about = {
@@ -21,7 +22,9 @@ search_url = base_url + 'api/v1/json/search/images?'
 categories = ['images']
 page_size = 20
 paging = True
-filter_id = 100073
+filter_id = 214606
+sort_field = "wilson_score"
+sort_direction = "desc"
 
 
 def clean_url(url):
@@ -33,7 +36,7 @@ def clean_url(url):
 
 def request(query, params):
     params['url'] = search_url + urlencode(
-        {'q': query, 'filter_id': filter_id, 'page': params['pageno'], 'per_page': page_size}
+        {'q': query, 'filter_id': filter_id, 'page': params['pageno'], 'per_page': page_size, 'sf': sort_field, 'sd': sort_direction}
     )
     logger.debug("query_url --> %s", params['url'])
     return params
@@ -48,7 +51,7 @@ def response(resp):
             results.append(
                 {
                     'template': 'images.html',
-                    'url': 'https://derpibooru.org/images/' + str(result.get('id')),
+                    'url': base_url + 'images/' + str(result.get('id')),
                     'thumbnail_src': clean_url(result['representations']['thumb']),
                     'img_src': clean_url(result['representations']['full']),
                     'title': result.get('name') or 'unknown',
