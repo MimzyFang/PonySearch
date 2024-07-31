@@ -623,6 +623,24 @@ engines:
     shortcut: dh
     categories: [it, packages]
 
+  - name: encyclosearch
+    engine: json_engine
+    shortcut: es
+    categories: general
+    paging: true
+    search_url: https://encyclosearch.org/encyclosphere/search?q={query}&page={pageno}&resultsPerPage=15
+    results_query: Results
+    url_query: SourceURL
+    title_query: Title
+    content_query: Description
+    disabled: true
+    about:
+      website: https://encyclosearch.org
+      official_api_documentation: https://encyclosearch.org/docs/#/rest-api
+      use_official_api: true
+      require_api_key: false
+      results: JSON
+
   - name: erowid
     engine: xpath
     paging: true
@@ -795,6 +813,11 @@ engines:
     engine: fyyd
     shortcut: fy
     timeout: 8.0
+    disabled: true
+
+  - name: geizhals
+    engine: geizhals
+    shortcut: geiz
     disabled: true
 
   - name: genius
@@ -2139,28 +2162,35 @@ engines:
     disabled: true
 
   - name: yacy
+    # https://docs.searxng.org/dev/engines/online/yacy.html
     engine: yacy
     categories: general
     search_type: text
     base_url:
       - https://yacy.searchlab.eu
-      - https://search.lomig.me
-      - https://yacy.ecosys.eu
-      - https://search.webproject.link
+      # see https://github.com/searxng/searxng/pull/3631#issuecomment-2240903027
+      # - https://search.kyun.li
+      # - https://yacy.securecomcorp.eu
+      # - https://yacy.myserv.ca
+      # - https://yacy.nsupdate.info
+      # - https://yacy.electroncash.de
     shortcut: ya
     disabled: true
-    # required if you aren't using HTTPS for your local yacy instance
-    # https://docs.searxng.org/dev/engines/online/yacy.html
-    # enable_http: true
-    # timeout: 3.0
-    # search_mode: 'global'
+    # if you aren't using HTTPS for your local yacy instance disable https
+    # enable_http: false
+    search_mode: 'global'
+    # timeout can be reduced in 'local' search mode
+    timeout: 5.0
 
   - name: yacy images
     engine: yacy
+    network: yacy
     categories: images
     search_type: image
     shortcut: yai
     disabled: true
+    # timeout can be reduced in 'local' search mode
+    timeout: 5.0
 
   - name: rumble
     engine: rumble

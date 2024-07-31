@@ -44,16 +44,6 @@ _JS_QUOTE_KEYS_RE = re.compile(r'([\{\s,])(\w+)(:)')
 _JS_VOID_RE = re.compile(r'void\s+[0-9]+|void\s*\([0-9]+\)')
 _JS_DECIMAL_RE = re.compile(r":\s*\.")
 
-_STORAGE_UNIT_VALUE: Dict[str, int] = {
-    'TB': 1024 * 1024 * 1024 * 1024,
-    'GB': 1024 * 1024 * 1024,
-    'MB': 1024 * 1024,
-    'TiB': 1000 * 1000 * 1000 * 1000,
-    'GiB': 1000 * 1000 * 1000,
-    'MiB': 1000 * 1000,
-    'KiB': 1000,
-}
-
 _XPATH_CACHE: Dict[str, XPath] = {}
 _LANG_TO_LC_CACHE: Dict[str, Dict[str, str]] = {}
 
@@ -342,6 +332,18 @@ def humanize_bytes(size, precision=2):
         p += 1
         size = size / 1024.0
     return "%.*f %s" % (precision, size, s[p])
+
+
+def humanize_number(size, precision=0):
+    """Determine the *human readable* value of a decimal number."""
+    s = ['', 'K', 'M', 'B', 'T']
+
+    x = len(s)
+    p = 0
+    while size > 1000 and p < x:
+        p += 1
+        size = size / 1000.0
+    return "%.*f%s" % (precision, size, s[p])
 
 
 def convert_str_to_int(number_str: str) -> int:
