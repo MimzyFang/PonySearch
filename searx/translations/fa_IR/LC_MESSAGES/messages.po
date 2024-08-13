@@ -15,21 +15,22 @@
 # arashe22 <arashe22@proton.me>, 2023.
 # return42 <return42@users.noreply.translate.codeberg.org>, 2024.
 # tegcope <tegcope@users.noreply.translate.codeberg.org>, 2024.
+# Thecode764 <Thecode764@users.noreply.translate.codeberg.org>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-17 12:15+0000\n"
-"PO-Revision-Date: 2024-07-13 12:18+0000\n"
-"Last-Translator: return42 <return42@users.noreply.translate.codeberg.org>\n"
-"Language-Team: Persian <https://translate.codeberg.org/projects/searxng/"
-"searxng/fa/>\n"
+"POT-Creation-Date: 2024-08-08 10:01+0000\n"
+"PO-Revision-Date: 2024-08-02 07:09+0000\n"
+"Last-Translator: Thecode764 "
+"<Thecode764@users.noreply.translate.codeberg.org>\n"
 "Language: fa_IR\n"
+"Language-Team: Persian "
+"<https://translate.codeberg.org/projects/searxng/searxng/fa/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.6.2\n"
 "Generated-By: Babel 2.15.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -280,27 +281,27 @@ msgstr ""
 #. SOCIAL_MEDIA_TERMS['POSTS']
 #: searx/searxng.msg
 msgid "posts"
-msgstr ""
+msgstr "پست ها"
 
 #. SOCIAL_MEDIA_TERMS['ACTIVE USERS']
 #: searx/searxng.msg
 msgid "active users"
-msgstr ""
+msgstr "کاربران فعال"
 
 #. SOCIAL_MEDIA_TERMS['COMMENTS']
 #: searx/searxng.msg
 msgid "comments"
-msgstr ""
+msgstr "نظر ها"
 
 #. SOCIAL_MEDIA_TERMS['USER']
 #: searx/searxng.msg
 msgid "user"
-msgstr ""
+msgstr "کاربر"
 
 #. SOCIAL_MEDIA_TERMS['COMMUNITY']
 #: searx/searxng.msg
 msgid "community"
-msgstr ""
+msgstr "جمعیت"
 
 #. SOCIAL_MEDIA_TERMS['POINTS']
 #: searx/searxng.msg
@@ -318,17 +319,17 @@ msgid "author"
 msgstr ""
 
 #. SOCIAL_MEDIA_TERMS['THREAD OPEN']
-#: searx/engines/discourse.py:121 searx/searxng.msg
+#: searx/engines/discourse.py:149 searx/searxng.msg
 msgid "open"
 msgstr ""
 
 #. SOCIAL_MEDIA_TERMS['THREAD CLOSED']
-#: searx/engines/discourse.py:121 searx/searxng.msg
+#: searx/engines/discourse.py:149 searx/searxng.msg
 msgid "closed"
 msgstr ""
 
 #. SOCIAL_MEDIA_TERMS['THREAD ANSWERED']
-#: searx/engines/discourse.py:132 searx/searxng.msg
+#: searx/engines/discourse.py:160 searx/searxng.msg
 msgid "answered"
 msgstr ""
 
@@ -421,19 +422,19 @@ msgstr "{minutes} دقیقه پیش"
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours} ساعت و {minutes} دقیقه پیش"
 
-#: searx/answerers/random/answerer.py:75
+#: searx/answerers/random/answerer.py:76
 msgid "Random value generator"
 msgstr "ایجادگر مقدار تصادفی"
 
-#: searx/answerers/random/answerer.py:76
+#: searx/answerers/random/answerer.py:77
 msgid "Generate different random values"
 msgstr "ایجاد مقادیر تصادفی متفاوت"
 
-#: searx/answerers/statistics/answerer.py:48
+#: searx/answerers/statistics/answerer.py:50
 msgid "Statistics functions"
 msgstr "توابع آماری"
 
-#: searx/answerers/statistics/answerer.py:49
+#: searx/answerers/statistics/answerer.py:51
 msgid "Compute {functions} of the arguments"
 msgstr "پردازش {functions} از آرگومان ها"
 
@@ -466,7 +467,7 @@ msgid "clicks"
 msgstr "کلیک ها"
 
 #: searx/engines/seekr.py:193 searx/engines/yummly.py:71
-#: searx/engines/zlibrary.py:128
+#: searx/engines/zlibrary.py:137
 msgid "Language"
 msgstr "زبان"
 
@@ -500,11 +501,11 @@ msgstr ""
 msgid "The image could not be downloaded."
 msgstr "تصویر نمیتواند دانلود شود."
 
-#: searx/engines/zlibrary.py:129
+#: searx/engines/zlibrary.py:138
 msgid "Book rating"
 msgstr "رتبه بندی کتاب"
 
-#: searx/engines/zlibrary.py:130
+#: searx/engines/zlibrary.py:139
 msgid "File quality"
 msgstr "کیفیت فایل"
 
@@ -520,15 +521,11 @@ msgstr "رشته‌ها را به چکیده‌های هش تبدیل می‌ک�
 msgid "hash digest"
 msgstr "چکیدهٔ هش"
 
-#: searx/plugins/hostname_replace.py:7
-msgid "Hostname replace"
-msgstr "جایگزینی نام میزبان"
-
-#: searx/plugins/hostnames.py:68
+#: searx/plugins/hostnames.py:91
 msgid "Hostnames plugin"
 msgstr ""
 
-#: searx/plugins/hostnames.py:69
+#: searx/plugins/hostnames.py:92
 msgid "Rewrite hostnames, remove results or prioritize them based on the hostname"
 msgstr ""
 
@@ -673,17 +670,21 @@ msgid "Length"
 msgstr "طول"
 
 #: searx/templates/simple/macros.html:36
+msgid "Views"
+msgstr ""
+
+#: searx/templates/simple/macros.html:37
 #: searx/templates/simple/result_templates/files.html:34
 #: searx/templates/simple/result_templates/images.html:19
 #: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
 msgstr "نویسنده"
 
-#: searx/templates/simple/macros.html:44
+#: searx/templates/simple/macros.html:45
 msgid "cached"
 msgstr "جاسازی‌شده"
 
-#: searx/templates/simple/macros.html:44
+#: searx/templates/simple/macros.html:45
 msgid "proxied"
 msgstr "پروکسی‌شده"
 
@@ -956,12 +957,12 @@ msgstr "پیشنهادها"
 msgid "Search language"
 msgstr "زبان جست‌وجو"
 
-#: searx/templates/simple/filters/languages.html:2
+#: searx/templates/simple/filters/languages.html:4
 #: searx/templates/simple/preferences/language.html:7
 msgid "Default language"
 msgstr "زبان پیش‌گزیده"
 
-#: searx/templates/simple/filters/languages.html:4
+#: searx/templates/simple/filters/languages.html:8
 #: searx/templates/simple/preferences/language.html:11
 msgid "Auto-detect"
 msgstr "انتخاب خودکار"
@@ -1941,3 +1942,7 @@ msgstr "پنهان‌سازی ویدئو"
 
 #~ msgid "TiB"
 #~ msgstr "ترابایت"
+
+#~ msgid "Hostname replace"
+#~ msgstr "جایگزینی نام میزبان"
+

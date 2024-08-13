@@ -13,22 +13,21 @@
 # SomeTr <SomeTr@users.noreply.translate.codeberg.org>, 2023, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-17 12:15+0000\n"
-"PO-Revision-Date: 2024-06-18 21:18+0000\n"
+"POT-Creation-Date: 2024-08-08 10:01+0000\n"
+"PO-Revision-Date: 2024-07-28 14:18+0000\n"
 "Last-Translator: SomeTr <SomeTr@users.noreply.translate.codeberg.org>\n"
-"Language-Team: Ukrainian <https://translate.codeberg.org/projects/searxng/"
-"searxng/uk/>\n"
 "Language: uk\n"
+"Language-Team: Ukrainian "
+"<https://translate.codeberg.org/projects/searxng/searxng/uk/>\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 !="
+" 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n "
+"% 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9)"
+" || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 "
-"? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > "
-"14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % "
-"100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
-"X-Generator: Weblate 5.5.5\n"
 "Generated-By: Babel 2.15.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -317,17 +316,17 @@ msgid "author"
 msgstr "автор"
 
 #. SOCIAL_MEDIA_TERMS['THREAD OPEN']
-#: searx/engines/discourse.py:121 searx/searxng.msg
+#: searx/engines/discourse.py:149 searx/searxng.msg
 msgid "open"
 msgstr "відкрито"
 
 #. SOCIAL_MEDIA_TERMS['THREAD CLOSED']
-#: searx/engines/discourse.py:121 searx/searxng.msg
+#: searx/engines/discourse.py:149 searx/searxng.msg
 msgid "closed"
 msgstr "закрито"
 
 #. SOCIAL_MEDIA_TERMS['THREAD ANSWERED']
-#: searx/engines/discourse.py:132 searx/searxng.msg
+#: searx/engines/discourse.py:160 searx/searxng.msg
 msgid "answered"
 msgstr "є відповідь"
 
@@ -374,7 +373,7 @@ msgstr "помилка мережі"
 
 #: searx/webutils.py:40
 msgid "SSL error: certificate validation has failed"
-msgstr "помилка SSL: не вдалося перевірити сертифікат"
+msgstr "Помилка SSL: не вдалося перевірити сертифікат"
 
 #: searx/webutils.py:42
 msgid "unexpected crash"
@@ -420,19 +419,19 @@ msgstr "{minutes} хвилин тому"
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours} годин, {minutes} хвилин тому"
 
-#: searx/answerers/random/answerer.py:75
+#: searx/answerers/random/answerer.py:76
 msgid "Random value generator"
 msgstr "Генератор випадкових значень"
 
-#: searx/answerers/random/answerer.py:76
+#: searx/answerers/random/answerer.py:77
 msgid "Generate different random values"
 msgstr "Створити різні випадкові значення"
 
-#: searx/answerers/statistics/answerer.py:48
+#: searx/answerers/statistics/answerer.py:50
 msgid "Statistics functions"
 msgstr "Функції статистики"
 
-#: searx/answerers/statistics/answerer.py:49
+#: searx/answerers/statistics/answerer.py:51
 msgid "Compute {functions} of the arguments"
 msgstr "Розрахувати {functions} аргументів"
 
@@ -465,7 +464,7 @@ msgid "clicks"
 msgstr "кліки"
 
 #: searx/engines/seekr.py:193 searx/engines/yummly.py:71
-#: searx/engines/zlibrary.py:128
+#: searx/engines/zlibrary.py:137
 msgid "Language"
 msgstr "Мова"
 
@@ -499,11 +498,11 @@ msgstr ""
 msgid "The image could not be downloaded."
 msgstr "Зображення неможливо завантажити."
 
-#: searx/engines/zlibrary.py:129
+#: searx/engines/zlibrary.py:138
 msgid "Book rating"
 msgstr "Рейтинг книги"
 
-#: searx/engines/zlibrary.py:130
+#: searx/engines/zlibrary.py:139
 msgid "File quality"
 msgstr "Якість файлу"
 
@@ -519,15 +518,11 @@ msgstr "Конвертує рядки в різні геш-послідовно�
 msgid "hash digest"
 msgstr "геш-послідовність"
 
-#: searx/plugins/hostname_replace.py:7
-msgid "Hostname replace"
-msgstr "Зміна імені сайту"
-
-#: searx/plugins/hostnames.py:68
+#: searx/plugins/hostnames.py:91
 msgid "Hostnames plugin"
 msgstr "Плагін Hostnames"
 
-#: searx/plugins/hostnames.py:69
+#: searx/plugins/hostnames.py:92
 msgid "Rewrite hostnames, remove results or prioritize them based on the hostname"
 msgstr ""
 "Переписування імен хостів, видалення результатів або визначення їх "
@@ -671,17 +666,21 @@ msgid "Length"
 msgstr "Довжина"
 
 #: searx/templates/simple/macros.html:36
+msgid "Views"
+msgstr "Перегляди"
+
+#: searx/templates/simple/macros.html:37
 #: searx/templates/simple/result_templates/files.html:34
 #: searx/templates/simple/result_templates/images.html:19
 #: searx/templates/simple/result_templates/paper.html:6
 msgid "Author"
 msgstr "Автор"
 
-#: searx/templates/simple/macros.html:44
+#: searx/templates/simple/macros.html:45
 msgid "cached"
 msgstr "кеш"
 
-#: searx/templates/simple/macros.html:44
+#: searx/templates/simple/macros.html:45
 msgid "proxied"
 msgstr "проксовано"
 
@@ -956,12 +955,12 @@ msgstr "Пропозиції"
 msgid "Search language"
 msgstr "Мова пошуку"
 
-#: searx/templates/simple/filters/languages.html:2
+#: searx/templates/simple/filters/languages.html:4
 #: searx/templates/simple/preferences/language.html:7
 msgid "Default language"
 msgstr "Стандартна мова"
 
-#: searx/templates/simple/filters/languages.html:4
+#: searx/templates/simple/filters/languages.html:8
 #: searx/templates/simple/preferences/language.html:11
 msgid "Auto-detect"
 msgstr "Автовизначення"
@@ -1922,3 +1921,7 @@ msgstr "приховати відео"
 
 #~ msgid "TiB"
 #~ msgstr "ТіБ"
+
+#~ msgid "Hostname replace"
+#~ msgstr "Зміна імені сайту"
+
