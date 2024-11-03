@@ -62,7 +62,7 @@ filter_mapping = {0: 'off', 1: 'medium', 2: 'high'}
 results_xpath = './/div[contains(@jscontroller, "SC7lYd")]'
 title_xpath = './/a/h3[1]'
 href_xpath = './/a[h3]/@href'
-content_xpath = './/div[@data-sncf="1"]'
+content_xpath = './/div[contains(@data-sncf, "1")]'
 
 # Suggestions are links placed in a *card-section*, we extract only the text
 # from the links not the links itself.
@@ -441,7 +441,7 @@ def fetch_traits(engine_traits: EngineTraits, add_domains: bool = True):
         try:
             locale = babel.Locale.parse(lang_map.get(eng_lang, eng_lang), sep='-')
         except babel.UnknownLocaleError:
-            print("ERROR: %s -> %s is unknown by babel" % (x.get("data-name"), eng_lang))
+            print("INFO:  google UI language %s (%s) is unknown by babel" % (eng_lang, x.text.split("(")[0].strip()))
             continue
         sxng_lang = language_tag(locale)
 

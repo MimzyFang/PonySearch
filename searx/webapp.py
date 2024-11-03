@@ -123,6 +123,8 @@ from searx.locales import (
 
 # renaming names from searx imports ...
 from searx.autocomplete import search_autocomplete, backends as autocomplete_backends
+from searx import favicons
+
 from searx.redisdb import initialize as redis_initialize
 from searx.sxng_locales import sxng_locales
 from searx.search import SearchWithPlugins, initialize as search_initialize
@@ -388,6 +390,7 @@ def render(template_name: str, **kwargs):
     # values from the preferences
     kwargs['preferences'] = request.preferences
     kwargs['autocomplete'] = request.preferences.get_value('autocomplete')
+    kwargs['favicon_resolver'] = request.preferences.get_value('favicon_resolver')
     kwargs['infinite_scroll'] = request.preferences.get_value('infinite_scroll')
     kwargs['search_on_category_select'] = request.preferences.get_value('search_on_category_select')
     kwargs['hotkeys'] = request.preferences.get_value('hotkeys')
@@ -431,6 +434,7 @@ def render(template_name: str, **kwargs):
     # helpers to create links to other pages
     kwargs['url_for'] = custom_url_for  # override url_for function in templates
     kwargs['image_proxify'] = image_proxify
+    kwargs['favicon_url'] = favicons.favicon_url
     kwargs['proxify'] = morty_proxify if settings['result_proxy']['url'] is not None else None
     kwargs['proxify_results'] = settings['result_proxy']['proxify_results']
     kwargs['cache_url'] = settings['ui']['cache_url']
@@ -513,7 +517,7 @@ def pre_request():
         preferences.parse_dict({"language": language})
         logger.debug('set language %s (from browser)', preferences.get_value("language"))
 
-    # locale is defined neither in settings nor in preferences
+    # UI locale is defined neither in settings nor in preferences
     # use browser headers
     if not preferences.get_value("locale"):
         locale = _get_browser_language(request, LOCALE_NAMES.keys())
@@ -761,6 +765,11 @@ def search():
         )
     )
 
+    # engine_timings: get engine response times sorted from slowest to fastest
+    engine_timings = sorted(result_container.get_timings(), reverse=True, key=lambda e: e.total)
+    max_response_time = engine_timings[0].total if engine_timings else None
+    engine_timings_pairs = [(timing.engine, timing.total) for timing in engine_timings]
+
     # search_query.lang contains the user choice (all, auto, en, ...)
     # when the user choice is "auto", search.search_query.lang contains the detected language
     # otherwise it is equals to search_query.lang
@@ -789,7 +798,9 @@ def search():
             settings['search']['languages'],
             fallback=request.preferences.get_value("language")
         ),
-        timeout_limit = request.form.get('timeout_limit', None)
+        timeout_limit = request.form.get('timeout_limit', None),
+        timings = engine_timings_pairs,
+        max_response_time = max_response_time
         # fmt: on
     )
 
@@ -1013,6 +1024,7 @@ def preferences():
         ],
         disabled_engines = disabled_engines,
         autocomplete_backends = autocomplete_backends,
+        favicon_resolver_names = favicons.proxy.CFG.resolver_map.keys(),
         shortcuts = {y: x for x, y in engine_shortcuts.items()},
         themes = themes,
         plugins = plugins,
@@ -1024,6 +1036,9 @@ def preferences():
         preferences = True
         # fmt: on
     )
+
+
+app.add_url_rule('/favicon_proxy', methods=['GET'], endpoint="favicon_proxy", view_func=favicons.favicon_proxy)
 
 
 @app.route('/image_proxy', methods=['GET'])
@@ -1337,6 +1352,7 @@ if not werkzeug_reloader or (werkzeug_reloader and os.environ.get("WERKZEUG_RUN_
     plugin_initialize(app)
     search_initialize(enable_checker=True, check_network=True, enable_metrics=settings['general']['enable_metrics'])
     limiter.initialize(app, settings)
+    favicons.init()
 
 
 def run():
