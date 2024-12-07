@@ -87,10 +87,7 @@ from searx.webadapter import (
     get_selected_categories,
     parse_lang,
 )
-from searx.utils import (
-    gen_useragent,
-    dict_subset,
-)
+from searx.utils import gen_useragent, dict_subset
 from searx.version import VERSION_STRING, GIT_URL, GIT_BRANCH
 from searx.query import RawTextQuery
 from searx.plugins import Plugin, plugins, initialize as plugin_initialize
@@ -104,13 +101,7 @@ from searx.answerers import (
     answerers,
     ask,
 )
-from searx.metrics import (
-    get_engines_stats,
-    get_engine_errors,
-    get_reliabilities,
-    histogram,
-    counter,
-)
+from searx.metrics import get_engines_stats, get_engine_errors, get_reliabilities, histogram, counter, openmetrics
 from searx.flaskfix import patch_application
 
 from searx.locales import (
@@ -349,6 +340,14 @@ def get_enabled_categories(category_names: Iterable[str]):
 
 
 def get_pretty_url(parsed_url: urllib.parse.ParseResult):
+    url_formatting_pref = request.preferences.get_value('url_formatting')
+
+    if url_formatting_pref == 'full':
+        return [parsed_url.geturl()]
+
+    if url_formatting_pref == 'host':
+        return [parsed_url.netloc]
+
     path = parsed_url.path
     path = path[:-1] if len(path) > 0 and path[-1] == '/' else path
     path = unquote(path.replace("/", " › "))
@@ -365,6 +364,7 @@ def get_client_settings():
         'translations': get_translations(),
         'search_on_category_select': req_pref.get_value('search_on_category_select'),
         'hotkeys': req_pref.get_value('hotkeys'),
+        'url_formatting': req_pref.get_value('url_formatting'),
         'theme_static_path': custom_url_for('static', filename='themes/simple'),
     }
 
@@ -394,6 +394,7 @@ def render(template_name: str, **kwargs):
     kwargs['infinite_scroll'] = request.preferences.get_value('infinite_scroll')
     kwargs['search_on_category_select'] = request.preferences.get_value('search_on_category_select')
     kwargs['hotkeys'] = request.preferences.get_value('hotkeys')
+    kwargs['url_formatting'] = request.preferences.get_value('url_formatting')
     kwargs['results_on_new_tab'] = request.preferences.get_value('results_on_new_tab')
     kwargs['advanced_search'] = request.preferences.get_value('advanced_search')
     kwargs['query_in_title'] = request.preferences.get_value('query_in_title')
@@ -623,6 +624,14 @@ def client_token(token=None):
     return Response('', mimetype='text/css')
 
 
+@app.route('/rss.xsl', methods=['GET', 'POST'])
+def rss_xsl():
+    return render_template(
+        f"{request.preferences.get_value('theme')}/rss.xsl",
+        url_for=custom_url_for,
+    )
+
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     """Search query in q and return results.
@@ -740,9 +749,6 @@ def search():
         response_rss = render(
             'opensearch_response_rss.xml',
             results=results,
-            answers=result_container.answers,
-            corrections=result_container.corrections,
-            suggestions=result_container.suggestions,
             q=request.form['q'],
             number_of_results=result_container.number_of_results,
         )
@@ -1216,6 +1222,30 @@ def stats_errors():
 def stats_checker():
     result = checker_get_result()
     return jsonify(result)
+
+
+@app.route('/metrics')
+def stats_open_metrics():
+    password = settings['general'].get("open_metrics")
+
+    if not (settings['general'].get("enable_metrics") and password):
+        return Response('open metrics is disabled', status=404, mimetype='text/plain')
+
+    if not request.authorization or request.authorization.password != password:
+        return Response('access forbidden', status=401, mimetype='text/plain')
+
+    filtered_engines = dict(filter(lambda kv: request.preferences.validate_token(kv[1]), engines.items()))
+
+    checker_results = checker_get_result()
+    checker_results = (
+        checker_results['engines'] if checker_results['status'] == 'ok' and 'engines' in checker_results else {}
+    )
+
+    engine_stats = get_engines_stats(filtered_engines)
+    engine_reliabilities = get_reliabilities(filtered_engines, checker_results)
+    metrics_text = openmetrics(engine_stats, engine_reliabilities)
+
+    return Response(metrics_text, mimetype='text/plain')
 
 
 @app.route('/robots.txt', methods=['GET'])

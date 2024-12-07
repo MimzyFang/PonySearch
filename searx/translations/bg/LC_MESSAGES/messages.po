@@ -17,10 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-05 06:24+0000\n"
-"PO-Revision-Date: 2024-10-13 03:30+0000\n"
-"Last-Translator: stoychevww <stoychevww@users.noreply.translate.codeberg.org>"
-"\n"
+"POT-Creation-Date: 2024-11-24 11:51+0000\n"
+"PO-Revision-Date: 2024-11-25 12:40+0000\n"
+"Last-Translator: return42 <return42@users.noreply.translate.codeberg.org>\n"
 "Language-Team: Bulgarian <https://translate.codeberg.org/projects/searxng/"
 "searxng/bg/>\n"
 "Language: bg\n"
@@ -28,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.8.1\n"
 "Generated-By: Babel 2.16.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -59,7 +58,7 @@ msgstr "музика"
 #. CATEGORY_NAMES['SOCIAL_MEDIA']
 #: searx/searxng.msg
 msgid "social media"
-msgstr "социална мрежа"
+msgstr "социална медия"
 
 #. CATEGORY_NAMES['IMAGES']
 #: searx/searxng.msg
@@ -159,12 +158,12 @@ msgstr "автоматичен"
 #. STYLE_NAMES['LIGHT']
 #: searx/searxng.msg
 msgid "light"
-msgstr "светъл"
+msgstr "светло"
 
 #. STYLE_NAMES['DARK']
 #: searx/searxng.msg
 msgid "dark"
-msgstr "тъмен"
+msgstr "тъмно"
 
 #. STYLE_NAMES['BLACK']
 #: searx/searxng.msg
@@ -304,7 +303,7 @@ msgid "active users"
 msgstr "активни потребители"
 
 #. SOCIAL_MEDIA_TERMS['COMMENTS']
-#: searx/engines/discourse.py:157 searx/engines/hackernews.py:78
+#: searx/engines/discourse.py:157 searx/engines/hackernews.py:82
 #: searx/engines/lemmy.py:130 searx/searxng.msg
 msgid "comments"
 msgstr "Коментари"
@@ -320,7 +319,7 @@ msgid "community"
 msgstr "общност"
 
 #. SOCIAL_MEDIA_TERMS['POINTS']
-#: searx/engines/hackernews.py:78 searx/searxng.msg
+#: searx/engines/hackernews.py:82 searx/searxng.msg
 msgid "points"
 msgstr "Точки"
 
@@ -330,7 +329,7 @@ msgid "title"
 msgstr "Заглавие"
 
 #. SOCIAL_MEDIA_TERMS['AUTHOR']
-#: searx/engines/hackernews.py:81 searx/searxng.msg
+#: searx/engines/hackernews.py:85 searx/searxng.msg
 msgid "author"
 msgstr "Автор"
 
@@ -364,7 +363,7 @@ msgstr "Грешка при зареждането на следващата с�
 
 #: searx/webapp.py:495 searx/webapp.py:898
 msgid "Invalid settings, please edit your preferences"
-msgstr "Неправилни настройки, моля проверете предпочитанията си"
+msgstr "Неправилни настройки, моля редактирайте предпочитанията си"
 
 #: searx/webapp.py:511
 msgid "Invalid settings"
@@ -412,11 +411,11 @@ msgstr "прокси грешка"
 
 #: searx/webutils.py:57
 msgid "CAPTCHA"
-msgstr "Кепча"
+msgstr "CAPTCHA"
 
 #: searx/webutils.py:58
 msgid "too many requests"
-msgstr "твърде много искания"
+msgstr "твърде много повиквания"
 
 #: searx/webutils.py:59
 msgid "access denied"
@@ -520,7 +519,7 @@ msgstr ""
 
 #: searx/engines/tineye.py:57
 msgid "The image could not be downloaded."
-msgstr "Снимката не може да бъде смъкната."
+msgstr "Снимката не може да бъде свалена."
 
 #: searx/engines/zlibrary.py:138
 msgid "Book rating"
@@ -530,7 +529,7 @@ msgstr "Рейтинг на книги"
 msgid "File quality"
 msgstr "Качество на файл"
 
-#: searx/plugins/calculator.py:14
+#: searx/plugins/calculator.py:18
 msgid "Calculate mathematical expressions via the search bar"
 msgstr "Изчеслете математически изрази през лентата за търсене"
 
@@ -705,7 +704,7 @@ msgid "proxied"
 msgstr "прекарана"
 
 #: searx/templates/simple/new_issue.html:64
-msgid "Start submiting a new issue on GitHub"
+msgid "Start submitting a new issue on GitHub"
 msgstr "Предявете нов проблем в GitHub"
 
 #: searx/templates/simple/new_issue.html:66
@@ -1978,3 +1977,6 @@ msgstr "скрий видеото"
 
 #~ msgid "Engines cannot retrieve results"
 #~ msgstr "Търсачките не можаха да намерят резултати"
+
+#~ msgid "Start submiting a new issue on GitHub"
+#~ msgstr "Предявете нов проблем в GitHub"

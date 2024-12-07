@@ -12,6 +12,10 @@ general:
   contact_url: false
   # record stats
   enable_metrics: true
+  # expose stats in open metrics format at /metrics
+  # leave empty to disable (no password set)
+  # open_metrics: <password>
+  open_metrics: ''
 
 brand:
   new_issue_url: https://github.com/searxng/searxng/issues/new
@@ -141,6 +145,8 @@ ui:
   search_on_category_select: true
   # Hotkeys: default or vim
   hotkeys: default
+  # URL formatting: pretty, full or host
+  url_formatting: pretty
 
 # Lock arbitrary settings on the preferences page.  To find the ID of the user
 # setting you want to lock, check the ID of the form on the page "preferences".
@@ -226,15 +232,12 @@ outgoing:
 #   - 'Hash plugin'
 #   - 'Self Information'
 #   - 'Tracker URL remover'
+#   - 'Unit converter plugin'
 #   - 'Ahmia blacklist'  # activation depends on outgoing.using_tor_proxy
 #   # these plugins are disabled if nothing is configured ..
 #   - 'Hostnames plugin'  # see 'hostnames' configuration below
 #   - 'Open Access DOI rewrite'
 #   - 'Tor check plugin'
-#   # Read the docs before activate: auto-detection of the language could be
-#   # detrimental to users expectations / users can activate the plugin in the
-#   # preferences if they want.
-#   - 'Autodetect search language'
 
 # Configuration of the "Hostnames plugin":
 #
@@ -328,6 +331,36 @@ engines:
     shortcut: 9g
     disabled: true
 
+  - name: adobe stock
+    engine: adobe_stock
+    shortcut: asi
+    categories: ["images"]
+    # https://docs.searxng.org/dev/engines/online/adobe_stock.html
+    adobe_order: relevance
+    adobe_content_types: ["photo", "illustration", "zip_vector", "template", "3d", "image"]
+    timeout: 6
+    disabled: true
+
+  - name: adobe stock video
+    engine: adobe_stock
+    shortcut: asv
+    network: adobe stock
+    categories: ["videos"]
+    adobe_order: relevance
+    adobe_content_types: ["video"]
+    timeout: 6
+    disabled: true
+
+  - name: adobe stock audio
+    engine: adobe_stock
+    shortcut: asa
+    network: adobe stock
+    categories: ["music"]
+    adobe_order: relevance
+    adobe_content_types: ["audio"]
+    timeout: 6
+    disabled: true
+
   - name: alpine linux packages
     engine: alpinelinux
     disabled: true
@@ -412,7 +445,6 @@ engines:
     shortcut: wp
     # add "list" to the array to get results in the results list
     display_type: ["infobox"]
-    base_url: 'https://{language}.wikipedia.org/'
     categories: [general]
 
   - name: bilibili
@@ -531,6 +563,8 @@ engines:
     url_query: link
     title_query: title
     content_query: snippet
+    title_html_to_text: true
+    content_html_to_text: true
     disabled: true
     about:
       website: https://crowdview.ai/
@@ -1625,11 +1659,6 @@ engines:
     api_site: 'askubuntu'
     categories: [it, q&a]
 
-  - name: internetarchivescholar
-    engine: internet_archive_scholar
-    shortcut: ias
-    timeout: 15.0
-
   - name: superuser
     engine: stackexchange
     shortcut: su
@@ -2211,7 +2240,6 @@ engines:
   - name: wordnik
     engine: wordnik
     shortcut: def
-    base_url: https://www.wordnik.com/
     categories: [dictionaries]
     timeout: 5.0
 
@@ -2255,13 +2283,6 @@ engines:
     shortcut: sevid
     categories: videos
     seekr_category: videos
-    disabled: true
-
-  - name: sjp.pwn
-    engine: sjp
-    shortcut: sjp
-    base_url: https://sjp.pwn.pl/
-    timeout: 5.0
     disabled: true
 
   - name: stract

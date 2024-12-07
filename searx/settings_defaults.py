@@ -143,6 +143,7 @@ SCHEMA = {
         'contact_url': SettingsValue((None, False, str), None),
         'donation_url': SettingsValue((bool, str), "https://docs.searxng.org/donate.html"),
         'enable_metrics': SettingsValue(bool, True),
+        'open_metrics': SettingsValue(str, ''),
     },
     'brand': {
         'issue_url': SettingsValue(str, 'https://github.com/searxng/searxng/issues'),
@@ -204,6 +205,7 @@ SCHEMA = {
         'cache_url': SettingsValue(str, 'https://web.archive.org/web/'),
         'search_on_category_select': SettingsValue(bool, True),
         'hotkeys': SettingsValue(('default', 'vim'), 'default'),
+        'url_formatting': SettingsValue(('pretty', 'full', 'host'), 'pretty'),
     },
     'preferences': {
         'lock': SettingsValue(list, []),
