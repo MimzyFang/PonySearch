@@ -4,7 +4,7 @@
 declare _Blue
 declare _creset
 
-export NODE_MINIMUM_VERSION="16.13.0"
+export NODE_MINIMUM_VERSION="18.17.0"
 
 node.help(){
     cat <<EOF
@@ -25,8 +25,8 @@ nodejs.ensure() {
 node.env() {
     nodejs.ensure
     (   set -e
-        build_msg INSTALL "[npm] ./searx/static/themes/simple/package.json"
-        npm --prefix searx/static/themes/simple install
+        build_msg INSTALL "[npm] ./client/simple/package.json"
+        npm --prefix client/simple install
     )
     dump_return $?
 }
@@ -44,7 +44,7 @@ node.clean() {
     fi
     build_msg CLEAN "themes -- locally installed npm dependencies"
     (   set -e
-        npm --prefix searx/static/themes/simple run clean \
+        npm --prefix client/simple run clean \
 	    | prefix_stdout "${_Blue}CLEAN    ${_creset} "
 	if [ "${PIPESTATUS[0]}" -ne "0" ]; then
             return 1

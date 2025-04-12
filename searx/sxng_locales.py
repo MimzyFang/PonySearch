@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-'''List of SearXNG's locale codes.
+'''List of SearXNG's locale codes used for the search language/region.
 
 .. hint::
 
@@ -48,6 +48,7 @@ sxng_locales = (
     ('es-PE', 'Español', 'Perú', 'Spanish', '\U0001f1f5\U0001f1ea'),
     ('et', 'Eesti', '', 'Estonian', '\U0001f310'),
     ('et-EE', 'Eesti', 'Eesti', 'Estonian', '\U0001f1ea\U0001f1ea'),
+    ('eu', 'Euskara', '', 'Basque', '\U0001f310'),
     ('fa', 'فارسی', '', 'Persian', '\U0001f310'),
     ('fi', 'Suomi', '', 'Finnish', '\U0001f310'),
     ('fi-FI', 'Suomi', 'Suomi', 'Finnish', '\U0001f1eb\U0001f1ee'),
@@ -66,6 +67,7 @@ sxng_locales = (
     ('hu-HU', 'Magyar', 'Magyarország', 'Hungarian', '\U0001f1ed\U0001f1fa'),
     ('id', 'Indonesia', '', 'Indonesian', '\U0001f310'),
     ('id-ID', 'Indonesia', 'Indonesia', 'Indonesian', '\U0001f1ee\U0001f1e9'),
+    ('is', 'Íslenska', '', 'Icelandic', '\U0001f310'),
     ('it', 'Italiano', '', 'Italian', '\U0001f310'),
     ('it-CH', 'Italiano', 'Svizzera', 'Italian', '\U0001f1e8\U0001f1ed'),
     ('it-IT', 'Italiano', 'Italia', 'Italian', '\U0001f1ee\U0001f1f9'),
@@ -106,6 +108,7 @@ sxng_locales = (
     ('uk', 'Українська', '', 'Ukrainian', '\U0001f310'),
     ('ur', 'اردو', '', 'Urdu', '\U0001f310'),
     ('vi', 'Tiếng Việt', '', 'Vietnamese', '\U0001f310'),
+    ('vi-VN', 'Tiếng Việt', 'Việt Nam', 'Vietnamese', '\U0001f1fb\U0001f1f3'),
     ('zh', '中文', '', 'Chinese', '\U0001f310'),
     ('zh-CN', '中文', '中国', 'Chinese', '\U0001f1e8\U0001f1f3'),
     ('zh-HK', '中文', '中國香港特別行政區', 'Chinese', '\U0001f1ed\U0001f1f0'),

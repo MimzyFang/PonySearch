@@ -6,14 +6,14 @@
 # return42 <markus.heiser@darmarit.de>, 2023.
 # return42 <return42@users.noreply.translate.codeberg.org>, 2024, 2025.
 # Anonymous <anonymous@users.noreply.translate.codeberg.org>, 2025.
+# gkkulik <gkkulik@noreply.codeberg.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-01-29 05:08+0000\n"
-"PO-Revision-Date: 2025-01-06 15:53+0000\n"
-"Last-Translator: return42 <return42@users.noreply.translate.codeberg.org>"
-"\n"
+"POT-Creation-Date: 2025-03-29 09:21+0000\n"
+"PO-Revision-Date: 2025-03-16 13:04+0000\n"
+"Last-Translator: gkkulik <gkkulik@noreply.codeberg.org>\n"
 "Language: szl\n"
 "Language-Team: Silesian "
 "<https://translate.codeberg.org/projects/searxng/searxng/szl/>\n"
@@ -21,12 +21,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
 #: searx/searxng.msg
 msgid "without further subgrouping"
-msgstr ""
+msgstr "bez dalszych podgrup"
 
 #. CONSTANT_NAMES['DEFAULT_CATEGORY']
 #: searx/searxng.msg
@@ -66,12 +66,12 @@ msgstr "wideo"
 #. CATEGORY_NAMES['RADIO']
 #: searx/engines/radio_browser.py:103 searx/searxng.msg
 msgid "radio"
-msgstr ""
+msgstr "radio"
 
 #. CATEGORY_NAMES['TV']
 #: searx/searxng.msg
 msgid "tv"
-msgstr ""
+msgstr "tv"
 
 #. CATEGORY_NAMES['IT']
 #: searx/searxng.msg
@@ -161,12 +161,12 @@ msgstr "ciymny"
 #. STYLE_NAMES['BLACK']
 #: searx/searxng.msg
 msgid "black"
-msgstr ""
+msgstr "czorny"
 
 #. BRAND_CUSTOM_LINKS['UPTIME']
 #: searx/searxng.msg
 msgid "Uptime"
-msgstr ""
+msgstr "Czas fungowanio"
 
 #. BRAND_CUSTOM_LINKS['ABOUT']
 #: searx/searxng.msg searx/templates/simple/base.html:49
@@ -176,24 +176,24 @@ msgstr "Informacyje"
 #. WEATHER_TERMS['AVERAGE TEMP.']
 #: searx/engines/wttr.py:32 searx/searxng.msg
 msgid "Average temp."
-msgstr ""
+msgstr "Postrzednio tymperatura"
 
 #. WEATHER_TERMS['CLOUD COVER']
 #: searx/engines/open_meteo.py:91 searx/searxng.msg
 msgid "Cloud cover"
-msgstr ""
+msgstr "Pokrycie chmurami"
 
 #. WEATHER_TERMS['CONDITION']
 #: searx/engines/duckduckgo_weather.py:45 searx/engines/wttr.py:51
 #: searx/searxng.msg
 msgid "Condition"
-msgstr ""
+msgstr "Stōn"
 
 #. WEATHER_TERMS['CURRENT CONDITION']
 #: searx/engines/duckduckgo_weather.py:118 searx/engines/wttr.py:104
 #: searx/searxng.msg
 msgid "Current condition"
-msgstr ""
+msgstr "Teroźny stōn"
 
 #. WEATHER_TERMS['EVENING']
 #: searx/engines/wttr.py:100 searx/searxng.msg
@@ -204,25 +204,25 @@ msgstr "Wieczōr"
 #: searx/engines/duckduckgo_weather.py:53 searx/engines/open_meteo.py:81
 #: searx/engines/wttr.py:59 searx/searxng.msg
 msgid "Feels like"
-msgstr ""
+msgstr "Czuć choćby"
 
 #. WEATHER_TERMS['HUMIDITY']
 #: searx/engines/duckduckgo_weather.py:64 searx/engines/open_meteo.py:93
 #: searx/engines/wttr.py:68 searx/searxng.msg
 msgid "Humidity"
-msgstr ""
+msgstr "Wilgłość"
 
 #. WEATHER_TERMS['MAX TEMP.']
 #: searx/engines/duckduckgo_weather.py:77 searx/engines/wttr.py:34
 #: searx/searxng.msg
 msgid "Max temp."
-msgstr ""
+msgstr "Maks. tymperatura"
 
 #. WEATHER_TERMS['MIN TEMP.']
 #: searx/engines/duckduckgo_weather.py:73 searx/engines/wttr.py:33
 #: searx/searxng.msg
 msgid "Min temp."
-msgstr ""
+msgstr "Min. tymperatura"
 
 #. WEATHER_TERMS['MORNING']
 #: searx/engines/wttr.py:100 searx/searxng.msg
@@ -242,110 +242,110 @@ msgstr "Połednie"
 #. WEATHER_TERMS['PRESSURE']
 #: searx/engines/open_meteo.py:95 searx/searxng.msg
 msgid "Pressure"
-msgstr ""
+msgstr "Ciśniynie"
 
 #. WEATHER_TERMS['SUNRISE']
 #: searx/engines/duckduckgo_weather.py:81 searx/engines/wttr.py:36
 #: searx/searxng.msg
 msgid "Sunrise"
-msgstr ""
+msgstr "Wschōd słōńca"
 
 #. WEATHER_TERMS['SUNSET']
 #: searx/engines/duckduckgo_weather.py:82 searx/engines/wttr.py:37
 #: searx/searxng.msg
 msgid "Sunset"
-msgstr ""
+msgstr "Zachōd słōńca"
 
 #. WEATHER_TERMS['TEMPERATURE']
 #: searx/engines/duckduckgo_weather.py:48 searx/engines/open_meteo.py:76
 #: searx/engines/wttr.py:55 searx/searxng.msg
 msgid "Temperature"
-msgstr ""
+msgstr "Tymperatura"
 
 #. WEATHER_TERMS['UV INDEX']
 #: searx/engines/duckduckgo_weather.py:80 searx/engines/wttr.py:35
 #: searx/searxng.msg
 msgid "UV index"
-msgstr ""
+msgstr "Indeks UV"
 
 #. WEATHER_TERMS['VISIBILITY']
 #: searx/engines/duckduckgo_weather.py:62 searx/engines/wttr.py:66
 #: searx/searxng.msg
 msgid "Visibility"
-msgstr ""
+msgstr "Widoczność"
 
 #. WEATHER_TERMS['WIND']
 #: searx/engines/duckduckgo_weather.py:58 searx/engines/open_meteo.py:86
 #: searx/engines/wttr.py:62 searx/searxng.msg
 msgid "Wind"
-msgstr ""
+msgstr "Wiater"
 
 #. SOCIAL_MEDIA_TERMS['SUBSCRIBERS']
 #: searx/engines/lemmy.py:85 searx/searxng.msg
 msgid "subscribers"
-msgstr ""
+msgstr "subskrybyńcio"
 
 #. SOCIAL_MEDIA_TERMS['POSTS']
 #: searx/engines/lemmy.py:86 searx/searxng.msg
 msgid "posts"
-msgstr ""
+msgstr "wpisy"
 
 #. SOCIAL_MEDIA_TERMS['ACTIVE USERS']
 #: searx/engines/lemmy.py:87 searx/searxng.msg
 msgid "active users"
-msgstr ""
+msgstr "aktywni używocze"
 
 #. SOCIAL_MEDIA_TERMS['COMMENTS']
 #: searx/engines/discourse.py:157 searx/engines/hackernews.py:82
 #: searx/engines/lemmy.py:130 searx/searxng.msg
 msgid "comments"
-msgstr ""
+msgstr "kōmyntorze"
 
 #. SOCIAL_MEDIA_TERMS['USER']
 #: searx/engines/lemmy.py:129 searx/engines/lemmy.py:164 searx/searxng.msg
 msgid "user"
-msgstr ""
+msgstr "używocz"
 
 #. SOCIAL_MEDIA_TERMS['COMMUNITY']
 #: searx/engines/lemmy.py:131 searx/engines/lemmy.py:165 searx/searxng.msg
 msgid "community"
-msgstr ""
+msgstr "społeczność"
 
 #. SOCIAL_MEDIA_TERMS['POINTS']
 #: searx/engines/hackernews.py:82 searx/searxng.msg
 msgid "points"
-msgstr ""
+msgstr "pōnkty"
 
 #. SOCIAL_MEDIA_TERMS['TITLE']
 #: searx/searxng.msg
 msgid "title"
-msgstr ""
+msgstr "tytuł"
 
 #. SOCIAL_MEDIA_TERMS['AUTHOR']
 #: searx/engines/hackernews.py:85 searx/searxng.msg
 msgid "author"
-msgstr ""
+msgstr "autōr"
 
 #. SOCIAL_MEDIA_TERMS['THREAD OPEN']
 #: searx/engines/discourse.py:149 searx/searxng.msg
 msgid "open"
-msgstr ""
+msgstr "ôtwarty"
 
 #. SOCIAL_MEDIA_TERMS['THREAD CLOSED']
 #: searx/engines/discourse.py:149 searx/searxng.msg
 msgid "closed"
-msgstr ""
+msgstr "zawarty"
 
 #. SOCIAL_MEDIA_TERMS['THREAD ANSWERED']
 #: searx/engines/discourse.py:160 searx/searxng.msg
 msgid "answered"
-msgstr ""
+msgstr "ôdpedziany"
 
 #: searx/webapp.py:312
 msgid "No item found"
 msgstr "Żodyn elymynt niy znojdziōny"
 
-#: searx/engines/qwant.py:288
+#: searx/engines/qwant.py:291
 #: searx/templates/simple/result_templates/images.html:23 searx/webapp.py:314
 msgid "Source"
 msgstr "Zdrzōdło"
@@ -423,10 +423,12 @@ msgid "Suspended"
 msgstr "Strzimane"
 
 #: searx/webutils.py:314
+#, python-brace-format
 msgid "{minutes} minute(s) ago"
 msgstr "{minutes} minut(y) tymu"
 
 #: searx/webutils.py:315
+#, python-brace-format
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours} godzin(y), {minutes} minut(y) tymu"
 
@@ -435,14 +437,16 @@ msgid "Generate different random values"
 msgstr "Wygyneruj insze werty losowe"
 
 #: searx/answerers/statistics.py:36
+#, python-brace-format
 msgid "Compute {func} of the arguments"
-msgstr ""
+msgstr "Porachuj {func} ôd argumyntōw"
 
 #: searx/engines/openstreetmap.py:158
 msgid "Show route in map .."
-msgstr ""
+msgstr "Pokoż trasa na karcie..."
 
 #: searx/engines/pdbe.py:96
+#, python-brace-format
 msgid "{title} (OBSOLETE)"
 msgstr "{title} (ZASTARZAŁE)"
 
@@ -450,28 +454,29 @@ msgstr "{title} (ZASTARZAŁE)"
 msgid "This entry has been superseded by"
 msgstr "Tyn wpis bōł zastōmpiōny ôd"
 
-#: searx/engines/qwant.py:290
+#: searx/engines/qwant.py:293
 msgid "Channel"
 msgstr "Kanał"
 
 #: searx/engines/radio_browser.py:105
 msgid "bitrate"
-msgstr ""
+msgstr "cug bitōw"
 
 #: searx/engines/radio_browser.py:106
 msgid "votes"
-msgstr ""
+msgstr "głosy"
 
 #: searx/engines/radio_browser.py:107
 msgid "clicks"
-msgstr ""
+msgstr "kliki"
 
 #: searx/engines/seekr.py:193 searx/engines/yummly.py:71
 #: searx/engines/zlibrary.py:137
 msgid "Language"
-msgstr ""
+msgstr "Jynzyk"
 
-#: searx/engines/semantic_scholar.py:78
+#: searx/engines/semantic_scholar.py:79
+#, python-brace-format
 msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
 "{lastCitationVelocityYear}"
@@ -479,7 +484,7 @@ msgstr ""
 "{numCitations} cytowań ôd roku {firstCitationVelocityYear} do "
 "{lastCitationVelocityYear}"
 
-#: searx/engines/tineye.py:47
+#: searx/engines/tineye.py:48
 msgid ""
 "Could not read that image url. This may be due to an unsupported file "
 "format. TinEye only supports images that are JPEG, PNG, GIF, BMP, TIFF or"
@@ -489,7 +494,7 @@ msgstr ""
 "niyspiyranego formatu zbioru. TinEye spiyro ino ôbrazy JPEG, PNG, GIF, "
 "BMP, TIFF i WebP."
 
-#: searx/engines/tineye.py:53
+#: searx/engines/tineye.py:54
 msgid ""
 "The image is too simple to find matches. TinEye requires a basic level of"
 " visual detail to successfully identify matches."
@@ -504,19 +509,31 @@ msgstr "Tego ôbrazu niy szło ściōngnōńć."
 
 #: searx/engines/zlibrary.py:138
 msgid "Book rating"
-msgstr ""
+msgstr "Ôcyna ksiōnżki"
 
 #: searx/engines/zlibrary.py:139
 msgid "File quality"
+msgstr "Jakość ôd zbioru"
+
+#: searx/plugins/ahmia_filter.py:32
+msgid "Ahmia blacklist"
 msgstr ""
 
-#: searx/plugins/calculator.py:20
-msgid "Calculate mathematical expressions via the search bar"
+#: searx/plugins/ahmia_filter.py:33
+msgid "Filter out onion results that appear in Ahmia's blacklist."
 msgstr ""
+
+#: searx/plugins/calculator.py:38
+msgid "Basic Calculator"
+msgstr ""
+
+#: searx/plugins/calculator.py:39
+msgid "Calculate mathematical expressions via the search bar"
+msgstr "Rachuj matymatyczne wyrazy we posku szukanio"
 
 #: searx/plugins/hash_plugin.py:34
 msgid "Hash plugin"
-msgstr ""
+msgstr "Przidowek hashōw"
 
 #: searx/plugins/hash_plugin.py:35
 msgid "Converts strings to different hash digests."
@@ -526,19 +543,19 @@ msgstr "Kōnwertuje frazy na rozmajte skrōty hash."
 msgid "hash digest"
 msgstr "skrōt hash"
 
-#: searx/plugins/hostnames.py:105
+#: searx/plugins/hostnames.py:123
 msgid "Hostnames plugin"
-msgstr ""
+msgstr "Przidowek hostnames"
 
-#: searx/plugins/hostnames.py:106
+#: searx/plugins/hostnames.py:124
 msgid "Rewrite hostnames, remove results or prioritize them based on the hostname"
 msgstr ""
 
-#: searx/plugins/oa_doi_rewrite.py:15
+#: searx/plugins/oa_doi_rewrite.py:55
 msgid "Open Access DOI rewrite"
 msgstr "Nadpisowanie DOI z ôtwartym dostympym"
 
-#: searx/plugins/oa_doi_rewrite.py:16
+#: searx/plugins/oa_doi_rewrite.py:56
 msgid ""
 "Avoid paywalls by redirecting to open-access versions of publications "
 "when available"
@@ -550,7 +567,7 @@ msgstr ""
 msgid "Self Information"
 msgstr "Włosne informacyje"
 
-#: searx/plugins/self_info.py:38
+#: searx/plugins/self_info.py:39
 msgid ""
 "Displays your IP if the query is \"ip\" and your user agent if the query "
 "is \"user-agent\"."
@@ -564,11 +581,11 @@ msgstr ""
 msgid "Your user-agent is: "
 msgstr ""
 
-#: searx/plugins/tor_check.py:29
+#: searx/plugins/tor_check.py:42
 msgid "Tor check plugin"
 msgstr "Przidowek sprawdzanio necu Tor"
 
-#: searx/plugins/tor_check.py:32
+#: searx/plugins/tor_check.py:44
 msgid ""
 "This plugin checks if the address of the request is a Tor exit-node, and "
 "informs the user if it is; like check.torproject.org, but from SearXNG."
@@ -577,27 +594,31 @@ msgstr ""
 " i informuje używocza, jeźli tak je. To jak check.torproject.org ino ôd "
 "SearXNG."
 
-#: searx/plugins/tor_check.py:69
+#: searx/plugins/tor_check.py:65
 msgid "Could not download the list of Tor exit-nodes from"
 msgstr ""
 
-#: searx/plugins/tor_check.py:81
+#: searx/plugins/tor_check.py:72
 msgid "You are using Tor and it looks like you have the external IP address"
 msgstr ""
 
-#: searx/plugins/tor_check.py:85
+#: searx/plugins/tor_check.py:76
 msgid "You are not using Tor and you have the external IP address"
 msgstr ""
 
-#: searx/plugins/tracker_url_remover.py:18
+#: searx/plugins/tracker_url_remover.py:37
 msgid "Tracker URL remover"
 msgstr "Wymazowanie trackrōw z URL-ōw"
 
-#: searx/plugins/tracker_url_remover.py:19
+#: searx/plugins/tracker_url_remover.py:38
 msgid "Remove trackers arguments from the returned URL"
 msgstr "Wymaż argumynta trackrōw ze swrōcōnyj adresy URL"
 
-#: searx/plugins/unit_converter.py:32
+#: searx/plugins/unit_converter.py:49
+msgid "Unit converter plugin"
+msgstr ""
+
+#: searx/plugins/unit_converter.py:50
 msgid "Convert between units"
 msgstr ""
 
@@ -656,7 +677,7 @@ msgstr "Polityka prywatności"
 msgid "Contact instance maintainer"
 msgstr "Skōntaktuj sie ze administratorym instancyje"
 
-#: searx/templates/simple/categories.html:26
+#: searx/templates/simple/categories.html:30
 msgid "Click on the magnifier to perform search"
 msgstr "Kliknij na lupa, coby wykōnać wyszukowanie"
 
@@ -1144,11 +1165,9 @@ msgstr "URL to prziwrōcynio twojich sztalōnkōw na inkszyj przeglōndarce"
 
 #: searx/templates/simple/preferences/cookies.html:43
 msgid ""
-"Specifying custom settings in the preferences URL can be used to sync "
-"preferences across devices."
+"A URL containing your preferences. This URL can be used to restore your "
+"settings on a different device."
 msgstr ""
-"Skazowanie włosnych parametrōw we adresie sztalōnkōw może być używane do "
-"synchrōnizowanio sztalōnkōw miyndzy maszinami."
 
 #: searx/templates/simple/preferences/cookies.html:46
 msgid "Copy preferences hash"
@@ -1396,7 +1415,7 @@ msgstr "Ta strōna niy podała żodnego ôpisu."
 
 #: searx/templates/simple/result_templates/files.html:38
 #: searx/templates/simple/result_templates/images.html:22
-#: searx/templates/simple/result_templates/torrent.html:11
+#: searx/templates/simple/result_templates/torrent.html:18
 msgid "Filesize"
 msgstr "Miara zbioru"
 
@@ -1506,23 +1525,23 @@ msgstr "PDF"
 msgid "HTML"
 msgstr "HTML"
 
-#: searx/templates/simple/result_templates/torrent.html:6
+#: searx/templates/simple/result_templates/torrent.html:7
 msgid "magnet link"
 msgstr "link magnet"
 
-#: searx/templates/simple/result_templates/torrent.html:7
+#: searx/templates/simple/result_templates/torrent.html:8
 msgid "torrent file"
 msgstr "zbiōr torrent"
 
-#: searx/templates/simple/result_templates/torrent.html:9
+#: searx/templates/simple/result_templates/torrent.html:13
 msgid "Seeder"
 msgstr "Wysyłocz"
 
-#: searx/templates/simple/result_templates/torrent.html:9
+#: searx/templates/simple/result_templates/torrent.html:14
 msgid "Leecher"
 msgstr "Ściōngocz"
 
-#: searx/templates/simple/result_templates/torrent.html:13
+#: searx/templates/simple/result_templates/torrent.html:19
 msgid "Number of Files"
 msgstr "Wielość zbiorōw"
 
@@ -1793,4 +1812,13 @@ msgstr "skryj wideo"
 
 #~ msgid "/"
 #~ msgstr ""
+
+#~ msgid ""
+#~ "Specifying custom settings in the "
+#~ "preferences URL can be used to "
+#~ "sync preferences across devices."
+#~ msgstr ""
+#~ "Skazowanie włosnych parametrōw we adresie "
+#~ "sztalōnkōw może być używane do "
+#~ "synchrōnizowanio sztalōnkōw miyndzy maszinami."
 

@@ -30,7 +30,6 @@ Configured ``brave`` engines:
     brave_category: news
 
   - name: brave.goggles
-    brave_category: goggles
     time_range_support: true
     paging: true
     ...
@@ -131,7 +130,6 @@ from lxml import html
 from searx import locales
 from searx.utils import (
     extract_text,
-    extr,
     eval_xpath,
     eval_xpath_list,
     eval_xpath_getindex,
@@ -208,6 +206,7 @@ def request(query, params):
 
     args = {
         'q': query,
+        'source': 'web',
     }
     if brave_spellcheck:
         args['spellcheck'] = '1'
@@ -238,6 +237,11 @@ def request(query, params):
 
     logger.debug("cookies %s", params['cookies'])
 
+    params['headers']['Sec-Fetch-Dest'] = "document"
+    params['headers']['Sec-Fetch-Mode'] = "navigate"
+    params['headers']['Sec-Fetch-Site'] = "same-origin"
+    params['headers']['Sec-Fetch-User'] = "?1"
+
 
 def _extract_published_date(published_date_raw):
     if published_date_raw is None:
@@ -249,6 +253,33 @@ def _extract_published_date(published_date_raw):
         return None
 
 
+def parse_data_string(resp):
+    # kit.start(app, element, {
+    #    node_ids: [0, 19],
+    #    data: [{"type":"data","data" .... ["q","goggles_id"],"route":1,"url":1}}]
+    #          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    kit_start = resp.text.index("kit.start(app,")
+    start = resp.text[kit_start:].index('data: [{"type":"data"')
+    start = kit_start + start + len('data: ')
+
+    lev = 0
+    end = start
+    inner = False
+    for c in resp.text[start:]:
+        if inner and lev == 0:
+            break
+        end += 1
+        if c == "[":
+            lev += 1
+            inner = True
+            continue
+        if c == "]":
+            lev -= 1
+
+    json_data = js_variable_to_python(resp.text[start:end])
+    return json_data
+
+
 def response(resp) -> EngineResults:
 
     if brave_category in ('search', 'goggles'):
@@ -257,9 +288,8 @@ def response(resp) -> EngineResults:
     if brave_category in ('news'):
         return _parse_news(resp)
 
-    datastr = extr(resp.text, "const data = ", ";\n").strip()
-
-    json_data = js_variable_to_python(datastr)
+    json_data = parse_data_string(resp)
+    # json_data is a list and at the second position (0,1) in this list we find the "response" data we need ..
     json_resp = json_data[1]['data']['body']['response']
 
     if brave_category == 'images':

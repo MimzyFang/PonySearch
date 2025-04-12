@@ -143,10 +143,10 @@ suppress_warnings = ['myst.domains']
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
     "babel" : ("https://babel.readthedocs.io/en/latest/", None),
-    "flask": ("https://flask.palletsprojects.com/", None),
+    "flask": ("https://flask.palletsprojects.com/en/stable/", None),
     "flask_babel": ("https://python-babel.github.io/flask-babel/", None),
-    # "werkzeug": ("https://werkzeug.palletsprojects.com/", None),
-    "jinja": ("https://jinja.palletsprojects.com/", None),
+    "werkzeug": ("https://werkzeug.palletsprojects.com/en/stable/", None),
+    "jinja": ("https://jinja.palletsprojects.com/en/stable/", None),
     "linuxdoc" : ("https://return42.github.io/linuxdoc/", None),
     "sphinx" : ("https://www.sphinx-doc.org/en/master/", None),
     "redis": ('https://redis.readthedocs.io/en/stable/', None),
@@ -161,7 +161,7 @@ issues_github_path = "searxng/searxng"
 notfound_urls_prefix = '/'
 
 sys.path.append(os.path.abspath('_themes'))
-sys.path.insert(0, os.path.abspath("../utils/"))
+sys.path.insert(0, os.path.abspath("../"))
 html_theme_path = ['_themes']
 html_theme = "searxng"
 
@@ -197,7 +197,7 @@ html_sidebars = {
     ],
 }
 singlehtml_sidebars = {"index": ["project.html", "localtoc.html"]}
-html_logo = "../src/brand/searxng-wordmark.svg"
+html_logo = "../client/simple/src/brand/searxng-wordmark.svg"
 html_title = "SearXNG Documentation ({})".format(VERSION_STRING)
 html_show_sourcelink = True
 
