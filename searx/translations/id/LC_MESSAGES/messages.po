@@ -22,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-03-29 09:21+0000\n"
-"PO-Revision-Date: 2025-03-31 14:03+0000\n"
+"POT-Creation-Date: 2025-05-31 18:38+0000\n"
+"PO-Revision-Date: 2025-06-06 05:50+0000\n"
 "Last-Translator: Linerly <linerly@noreply.codeberg.org>\n"
 "Language-Team: Indonesian <https://translate.codeberg.org/projects/searxng/"
 "searxng/id/>\n"
@@ -32,7 +32,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -76,7 +76,7 @@ msgid "videos"
 msgstr "video"
 
 #. CATEGORY_NAMES['RADIO']
-#: searx/engines/radio_browser.py:103 searx/searxng.msg
+#: searx/engines/radio_browser.py:151 searx/searxng.msg
 msgid "radio"
 msgstr "radio"
 
@@ -191,7 +191,7 @@ msgid "Average temp."
 msgstr "suhu rata‐rata."
 
 #. WEATHER_TERMS['CLOUD COVER']
-#: searx/engines/open_meteo.py:91 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Cloud cover"
 msgstr "Tutupan awan"
 
@@ -213,14 +213,14 @@ msgid "Evening"
 msgstr "Sore"
 
 #. WEATHER_TERMS['FEELS LIKE']
-#: searx/engines/duckduckgo_weather.py:53 searx/engines/open_meteo.py:81
-#: searx/engines/wttr.py:59 searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:53 searx/engines/wttr.py:59
+#: searx/searxng.msg
 msgid "Feels like"
 msgstr "terasa seperti"
 
 #. WEATHER_TERMS['HUMIDITY']
-#: searx/engines/duckduckgo_weather.py:64 searx/engines/open_meteo.py:93
-#: searx/engines/wttr.py:68 searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:64 searx/engines/wttr.py:68
+#: searx/searxng.msg searx/templates/simple/answer/weather.html:29
 msgid "Humidity"
 msgstr "kelembapan"
 
@@ -252,7 +252,7 @@ msgid "Noon"
 msgstr "Siang"
 
 #. WEATHER_TERMS['PRESSURE']
-#: searx/engines/open_meteo.py:95 searx/searxng.msg
+#: searx/searxng.msg searx/templates/simple/answer/weather.html:25
 msgid "Pressure"
 msgstr "Tekanan"
 
@@ -269,8 +269,8 @@ msgid "Sunset"
 msgstr "Senja"
 
 #. WEATHER_TERMS['TEMPERATURE']
-#: searx/engines/duckduckgo_weather.py:48 searx/engines/open_meteo.py:76
-#: searx/engines/wttr.py:55 searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:48 searx/engines/wttr.py:55
+#: searx/searxng.msg searx/templates/simple/answer/weather.html:17
 msgid "Temperature"
 msgstr "Suhu"
 
@@ -287,10 +287,215 @@ msgid "Visibility"
 msgstr "Jarak pandang"
 
 #. WEATHER_TERMS['WIND']
-#: searx/engines/duckduckgo_weather.py:58 searx/engines/open_meteo.py:86
-#: searx/engines/wttr.py:62 searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:58 searx/engines/wttr.py:62
+#: searx/searxng.msg searx/templates/simple/answer/weather.html:23
 msgid "Wind"
 msgstr "Angin"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Clear sky"
+msgstr "Langit cerah"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Cloudy"
+msgstr "Berawan"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Fair"
+msgstr "Cerah"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Fog"
+msgstr "Berkabut"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain and thunder"
+msgstr "Hujan lebat dan guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain showers and thunder"
+msgstr "Hujan lebat disertai guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain showers"
+msgstr "Hujan lebat"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain"
+msgstr "Hujan lebat"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet and thunder"
+msgstr "Hujan es lebat dan guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet showers and thunder"
+msgstr "Hujan es lebat disertai guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet showers"
+msgstr "Hujan es lebat"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet"
+msgstr "Hujan es lebat"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow and thunder"
+msgstr "Salju lebat dan guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow showers and thunder"
+msgstr "Hujan salju lebat disertai guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow showers"
+msgstr "Hujan salju lebat"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow"
+msgstr "Salju lebat"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light rain and thunder"
+msgstr "Hujan ringan dan guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light rain showers and thunder"
+msgstr "Hujan ringan disertai guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light rain showers"
+msgstr "Hujan ringan"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light rain"
+msgstr "Hujan ringan"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet and thunder"
+msgstr "Hujan es ringan dan guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet showers and thunder"
+msgstr "Hujan es ringan disertai guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet showers"
+msgstr "Hujan es ringan"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet"
+msgstr "Hujan es ringan"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow and thunder"
+msgstr "Salju ringan dan guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow showers and thunder"
+msgstr "Hujan salju ringan disertai guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow showers"
+msgstr "Hujan salju ringan"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow"
+msgstr "Salju ringan"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Partly cloudy"
+msgstr "Berawan sebagian"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Rain and thunder"
+msgstr "Hujan dan guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Rain showers and thunder"
+msgstr "Hujan disertai guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Rain showers"
+msgstr "Hujan"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Rain"
+msgstr "Hujan"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Sleet and thunder"
+msgstr "Hujan es dan guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Sleet showers and thunder"
+msgstr "Hujan es disertai guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Sleet showers"
+msgstr "Hujan es"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Sleet"
+msgstr "Hujan es"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Snow and thunder"
+msgstr "Salju dan guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Snow showers and thunder"
+msgstr "Hujan salju disertai guntur"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Snow showers"
+msgstr "Hujan salju"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Snow"
+msgstr "Salju"
 
 #. SOCIAL_MEDIA_TERMS['SUBSCRIBERS']
 #: searx/engines/lemmy.py:85 searx/searxng.msg
@@ -353,93 +558,93 @@ msgstr "Tertutup"
 msgid "answered"
 msgstr "dijawab"
 
-#: searx/webapp.py:312
+#: searx/webapp.py:292
 msgid "No item found"
 msgstr "Item tidak ditemukan"
 
 #: searx/engines/qwant.py:291
-#: searx/templates/simple/result_templates/images.html:23 searx/webapp.py:314
+#: searx/templates/simple/result_templates/images.html:23 searx/webapp.py:294
 msgid "Source"
 msgstr "Sumber"
 
-#: searx/webapp.py:316
+#: searx/webapp.py:296
 msgid "Error loading the next page"
 msgstr "Gagal memuat laman berikutnya"
 
-#: searx/webapp.py:469 searx/webapp.py:875
+#: searx/webapp.py:447 searx/webapp.py:845
 msgid "Invalid settings, please edit your preferences"
 msgstr "Pengaturan takvalid. Mohon ubah preferensi Anda"
 
-#: searx/webapp.py:485
+#: searx/webapp.py:463
 msgid "Invalid settings"
 msgstr "Pengaturan takvalid"
 
-#: searx/webapp.py:562 searx/webapp.py:652
+#: searx/webapp.py:540 searx/webapp.py:630
 msgid "search error"
 msgstr "galat pencarian"
 
-#: searx/webutils.py:36
+#: searx/webutils.py:35
 msgid "timeout"
 msgstr "waktu habis"
 
-#: searx/webutils.py:37
+#: searx/webutils.py:36
 msgid "parsing error"
 msgstr "kesalahan penguraian"
 
-#: searx/webutils.py:38
+#: searx/webutils.py:37
 msgid "HTTP protocol error"
 msgstr "kesalahan protokol HTTP"
 
-#: searx/webutils.py:39
+#: searx/webutils.py:38
 msgid "network error"
 msgstr "galat jaringan"
 
-#: searx/webutils.py:40
+#: searx/webutils.py:39
 msgid "SSL error: certificate validation has failed"
 msgstr "Galat SSL: gagal memvalidasi sertifikat"
 
-#: searx/webutils.py:42
+#: searx/webutils.py:41
 msgid "unexpected crash"
 msgstr "kemogokan takterduga"
 
-#: searx/webutils.py:49
+#: searx/webutils.py:48
 msgid "HTTP error"
 msgstr "galat HTTP"
 
-#: searx/webutils.py:50
+#: searx/webutils.py:49
 msgid "HTTP connection error"
 msgstr "galat koneksi HTTP"
 
-#: searx/webutils.py:56
+#: searx/webutils.py:55
 msgid "proxy error"
 msgstr "galat proksi"
 
-#: searx/webutils.py:57
+#: searx/webutils.py:56
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
-#: searx/webutils.py:58
+#: searx/webutils.py:57
 msgid "too many requests"
 msgstr "terlalu banyak permintaan"
 
-#: searx/webutils.py:59
+#: searx/webutils.py:58
 msgid "access denied"
 msgstr "akses ditolak"
 
-#: searx/webutils.py:60
+#: searx/webutils.py:59
 msgid "server API error"
 msgstr "galat API peladen"
 
-#: searx/webutils.py:79
+#: searx/webutils.py:78
 msgid "Suspended"
 msgstr "Ditangguhkan"
 
-#: searx/webutils.py:314
+#: searx/webutils.py:313
 #, python-brace-format
 msgid "{minutes} minute(s) ago"
 msgstr "{minutes} menit yang lalu"
 
-#: searx/webutils.py:315
+#: searx/webutils.py:314
 #, python-brace-format
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "{hours} jam, {minutes} menit yang lalu"
@@ -470,15 +675,15 @@ msgstr "Entri ini telah digantikan oleh"
 msgid "Channel"
 msgstr "Saluran"
 
-#: searx/engines/radio_browser.py:105
+#: searx/engines/radio_browser.py:153
 msgid "bitrate"
 msgstr "kecepatan bit"
 
-#: searx/engines/radio_browser.py:106
+#: searx/engines/radio_browser.py:154
 msgid "votes"
 msgstr "suara"
 
-#: searx/engines/radio_browser.py:107
+#: searx/engines/radio_browser.py:155
 msgid "clicks"
 msgstr "klik"
 
@@ -487,7 +692,7 @@ msgstr "klik"
 msgid "Language"
 msgstr "Bahasa"
 
-#: searx/engines/semantic_scholar.py:79
+#: searx/engines/semantic_scholar.py:101
 #, python-brace-format
 msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
@@ -634,6 +839,11 @@ msgstr "Plugin konverter satuan"
 msgid "Convert between units"
 msgstr "Konversikan antarsatuan"
 
+#: searx/result_types/answer.py:224
+#, python-brace-format
+msgid "{location}: {temperature}, {condition}"
+msgstr "{location}: {temperature}, {condition}"
+
 #: searx/templates/simple/404.html:4
 msgid "Page not found"
 msgstr "Laman tidak ditemukan"
@@ -711,10 +921,6 @@ msgstr "Penulis"
 #: searx/templates/simple/macros.html:50
 msgid "cached"
 msgstr "tembolok"
-
-#: searx/templates/simple/macros.html:50
-msgid "proxied"
-msgstr "proksi"
 
 #: searx/templates/simple/new_issue.html:64
 msgid "Start submitting a new issue on GitHub"
@@ -952,6 +1158,10 @@ msgstr "Definisi"
 msgid "Synonyms"
 msgstr "Sinonim"
 
+#: searx/templates/simple/answer/weather.html:19
+msgid "Feels Like"
+msgstr "Terasa Seperti"
+
 #: searx/templates/simple/elements/answers.html:2
 msgid "Answers"
 msgstr "Jawaban"
@@ -1182,8 +1392,8 @@ msgid ""
 "A URL containing your preferences. This URL can be used to restore your "
 "settings on a different device."
 msgstr ""
-"URL yang berisi preferensi Anda. URL ini dapat digunakan untuk memulihkan "
-"pengaturan Anda pada perangkat yang berbeda."
+"URL yang berisi preferensi Anda. URL ini dapat digunakan untuk memulihkan"
+" pengaturan Anda pada perangkat yang berbeda."
 
 #: searx/templates/simple/preferences/cookies.html:46
 msgid "Copy preferences hash"
@@ -1977,3 +2187,6 @@ msgstr "sembunyikan video"
 #~ "Menyediakan pengaturan kustom pada URL "
 #~ "preferensi agar dapat digunakan untuk "
 #~ "menyinkronkan preferensi pada semua perangkat."
+
+#~ msgid "proxied"
+#~ msgstr "proksi"

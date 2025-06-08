@@ -1,0 +1,36 @@
+---
+name: Cleanup
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "4 4 * * *"
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  container-cache:
+    # FIXME: On forks it fails with "Failed to fetch packages: missing field `id` at line 1 column 141"
+    if: github.repository_owner == 'searxng' || github.event_name == 'workflow_dispatch'
+    name: Container cache
+    runs-on: ubuntu-24.04
+    permissions:
+      # Organization GHCR
+      packages: write
+
+    steps:
+      - name: Prune
+        uses: snok/container-retention-policy@v3.0.0
+        with:
+          account: "${{ github.repository_owner }}"
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          image-names: "cache base"
+          image-tags: "!searxng*"
+          cut-off: "1d"
+          keep-n-most-recent: "100"

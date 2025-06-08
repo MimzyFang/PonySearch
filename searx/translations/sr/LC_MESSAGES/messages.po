@@ -17,20 +17,19 @@
 # return42 <return42@noreply.codeberg.org>, 2025.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-03-29 09:21+0000\n"
+"POT-Creation-Date: 2025-05-31 18:38+0000\n"
 "PO-Revision-Date: 2025-03-31 18:08+0000\n"
 "Last-Translator: return42 <return42@noreply.codeberg.org>\n"
-"Language-Team: Serbian <https://translate.codeberg.org/projects/searxng/"
-"searxng/sr/>\n"
 "Language: sr\n"
+"Language-Team: Serbian "
+"<https://translate.codeberg.org/projects/searxng/searxng/sr/>\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.10.2\n"
 "Generated-By: Babel 2.17.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -74,7 +73,7 @@ msgid "videos"
 msgstr "видео снимци"
 
 #. CATEGORY_NAMES['RADIO']
-#: searx/engines/radio_browser.py:103 searx/searxng.msg
+#: searx/engines/radio_browser.py:151 searx/searxng.msg
 msgid "radio"
 msgstr "радио"
 
@@ -189,7 +188,7 @@ msgid "Average temp."
 msgstr "Просечна температура"
 
 #. WEATHER_TERMS['CLOUD COVER']
-#: searx/engines/open_meteo.py:91 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Cloud cover"
 msgstr "Облачност"
 
@@ -211,14 +210,14 @@ msgid "Evening"
 msgstr "Вече"
 
 #. WEATHER_TERMS['FEELS LIKE']
-#: searx/engines/duckduckgo_weather.py:53 searx/engines/open_meteo.py:81
-#: searx/engines/wttr.py:59 searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:53 searx/engines/wttr.py:59
+#: searx/searxng.msg
 msgid "Feels like"
 msgstr "Осећај"
 
 #. WEATHER_TERMS['HUMIDITY']
-#: searx/engines/duckduckgo_weather.py:64 searx/engines/open_meteo.py:93
-#: searx/engines/wttr.py:68 searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:64 searx/engines/wttr.py:68
+#: searx/searxng.msg searx/templates/simple/answer/weather.html:29
 msgid "Humidity"
 msgstr "Влажност"
 
@@ -250,7 +249,7 @@ msgid "Noon"
 msgstr "Подне"
 
 #. WEATHER_TERMS['PRESSURE']
-#: searx/engines/open_meteo.py:95 searx/searxng.msg
+#: searx/searxng.msg searx/templates/simple/answer/weather.html:25
 msgid "Pressure"
 msgstr "Притисак"
 
@@ -267,8 +266,8 @@ msgid "Sunset"
 msgstr "Залазак Сунца"
 
 #. WEATHER_TERMS['TEMPERATURE']
-#: searx/engines/duckduckgo_weather.py:48 searx/engines/open_meteo.py:76
-#: searx/engines/wttr.py:55 searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:48 searx/engines/wttr.py:55
+#: searx/searxng.msg searx/templates/simple/answer/weather.html:17
 msgid "Temperature"
 msgstr "Температура"
 
@@ -285,10 +284,215 @@ msgid "Visibility"
 msgstr "Видљивост"
 
 #. WEATHER_TERMS['WIND']
-#: searx/engines/duckduckgo_weather.py:58 searx/engines/open_meteo.py:86
-#: searx/engines/wttr.py:62 searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:58 searx/engines/wttr.py:62
+#: searx/searxng.msg searx/templates/simple/answer/weather.html:23
 msgid "Wind"
 msgstr "Ветар"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Clear sky"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Cloudy"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Fair"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Fog"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain showers and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain showers"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet showers and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet showers"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow showers and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow showers"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light rain and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light rain showers and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light rain showers"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light rain"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet showers and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet showers"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow showers and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow showers"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Partly cloudy"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Rain and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Rain showers and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Rain showers"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Rain"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Sleet and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Sleet showers and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Sleet showers"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Sleet"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Snow and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Snow showers and thunder"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Snow showers"
+msgstr ""
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Snow"
+msgstr ""
 
 #. SOCIAL_MEDIA_TERMS['SUBSCRIBERS']
 #: searx/engines/lemmy.py:85 searx/searxng.msg
@@ -351,93 +555,93 @@ msgstr "затворено"
 msgid "answered"
 msgstr "одговорено"
 
-#: searx/webapp.py:312
+#: searx/webapp.py:292
 msgid "No item found"
 msgstr "Ставка није пронађена"
 
 #: searx/engines/qwant.py:291
-#: searx/templates/simple/result_templates/images.html:23 searx/webapp.py:314
+#: searx/templates/simple/result_templates/images.html:23 searx/webapp.py:294
 msgid "Source"
 msgstr "Извор"
 
-#: searx/webapp.py:316
+#: searx/webapp.py:296
 msgid "Error loading the next page"
 msgstr "Грешка приликом учитавања следеће странице"
 
-#: searx/webapp.py:469 searx/webapp.py:875
+#: searx/webapp.py:447 searx/webapp.py:845
 msgid "Invalid settings, please edit your preferences"
 msgstr "Неважеће поставке, молимо уредите свој избор"
 
-#: searx/webapp.py:485
+#: searx/webapp.py:463
 msgid "Invalid settings"
 msgstr "Неважећа подешавања"
 
-#: searx/webapp.py:562 searx/webapp.py:652
+#: searx/webapp.py:540 searx/webapp.py:630
 msgid "search error"
 msgstr "грешка у претрази"
 
-#: searx/webutils.py:36
+#: searx/webutils.py:35
 msgid "timeout"
 msgstr "тајмаут"
 
-#: searx/webutils.py:37
+#: searx/webutils.py:36
 msgid "parsing error"
 msgstr "грешка при парсирању"
 
-#: searx/webutils.py:38
+#: searx/webutils.py:37
 msgid "HTTP protocol error"
 msgstr "грешка у HTTP протоколу"
 
-#: searx/webutils.py:39
+#: searx/webutils.py:38
 msgid "network error"
 msgstr "грешка на мрежи"
 
-#: searx/webutils.py:40
+#: searx/webutils.py:39
 msgid "SSL error: certificate validation has failed"
 msgstr "SSL грешка: валидација сертификата није успела"
 
-#: searx/webutils.py:42
+#: searx/webutils.py:41
 msgid "unexpected crash"
 msgstr "неочекиван престанак рада"
 
-#: searx/webutils.py:49
+#: searx/webutils.py:48
 msgid "HTTP error"
 msgstr "HTTP грешка"
 
-#: searx/webutils.py:50
+#: searx/webutils.py:49
 msgid "HTTP connection error"
 msgstr "проблем при HTTPS конекцији"
 
-#: searx/webutils.py:56
+#: searx/webutils.py:55
 msgid "proxy error"
 msgstr "прокси грешка"
 
-#: searx/webutils.py:57
+#: searx/webutils.py:56
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
-#: searx/webutils.py:58
+#: searx/webutils.py:57
 msgid "too many requests"
 msgstr "превише захтева"
 
-#: searx/webutils.py:59
+#: searx/webutils.py:58
 msgid "access denied"
 msgstr "није дозвољен приступ"
 
-#: searx/webutils.py:60
+#: searx/webutils.py:59
 msgid "server API error"
 msgstr "серверска API грешка"
 
-#: searx/webutils.py:79
+#: searx/webutils.py:78
 msgid "Suspended"
 msgstr "Суспендован"
 
-#: searx/webutils.py:314
+#: searx/webutils.py:313
 #, python-brace-format
 msgid "{minutes} minute(s) ago"
 msgstr "пре {minutes} минут(у,е,а)"
 
-#: searx/webutils.py:315
+#: searx/webutils.py:314
 #, python-brace-format
 msgid "{hours} hour(s), {minutes} minute(s) ago"
 msgstr "пре {hours} час(a) и {minutes} минут(у,е,а)"
@@ -468,15 +672,15 @@ msgstr "Овај унос је заменио"
 msgid "Channel"
 msgstr "Канал"
 
-#: searx/engines/radio_browser.py:105
+#: searx/engines/radio_browser.py:153
 msgid "bitrate"
 msgstr "битрата"
 
-#: searx/engines/radio_browser.py:106
+#: searx/engines/radio_browser.py:154
 msgid "votes"
 msgstr "гласови"
 
-#: searx/engines/radio_browser.py:107
+#: searx/engines/radio_browser.py:155
 msgid "clicks"
 msgstr "кликови"
 
@@ -485,7 +689,7 @@ msgstr "кликови"
 msgid "Language"
 msgstr "Језик"
 
-#: searx/engines/semantic_scholar.py:79
+#: searx/engines/semantic_scholar.py:101
 #, python-brace-format
 msgid ""
 "{numCitations} citations from the year {firstCitationVelocityYear} to "
@@ -630,6 +834,11 @@ msgstr ""
 msgid "Convert between units"
 msgstr "Конвертуј јединице"
 
+#: searx/result_types/answer.py:224
+#, python-brace-format
+msgid "{location}: {temperature}, {condition}"
+msgstr ""
+
 #: searx/templates/simple/404.html:4
 msgid "Page not found"
 msgstr "Страница није пронађена"
@@ -707,10 +916,6 @@ msgstr "Аутор"
 #: searx/templates/simple/macros.html:50
 msgid "cached"
 msgstr "кеширано"
-
-#: searx/templates/simple/macros.html:50
-msgid "proxied"
-msgstr "прокси"
 
 #: searx/templates/simple/new_issue.html:64
 msgid "Start submitting a new issue on GitHub"
@@ -945,6 +1150,10 @@ msgstr "Дефиниције"
 #: searx/templates/simple/answer/translations.html:30
 msgid "Synonyms"
 msgstr "Синоними"
+
+#: searx/templates/simple/answer/weather.html:19
+msgid "Feels Like"
+msgstr ""
 
 #: searx/templates/simple/elements/answers.html:2
 msgid "Answers"
@@ -2074,3 +2283,7 @@ msgstr "сакриј видео"
 #~ "Одређивање прилагођених подешавања у УРЛ-у "
 #~ "може да се користи за синхронизацију "
 #~ "подешавања на свим уређајима."
+
+#~ msgid "proxied"
+#~ msgstr "прокси"
+
