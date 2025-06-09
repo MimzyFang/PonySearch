@@ -17,7 +17,7 @@ permissions:
 jobs:
   container-cache:
     # FIXME: On forks it fails with "Failed to fetch packages: missing field `id` at line 1 column 141"
-    if: github.repository_owner == 'searxng' || github.event_name == 'workflow_dispatch'
+    if: github.repository_owner == 'Fauli1221' || github.event_name == 'workflow_dispatch'
     name: Container cache
     runs-on: ubuntu-24.04
     permissions:
@@ -31,6 +31,6 @@ jobs:
           account: "${{ github.repository_owner }}"
           token: "${{ secrets.GITHUB_TOKEN }}"
           image-names: "cache base"
-          image-tags: "!searxng*"
+          image-tags: "!ponysearch*"
           cut-off: "1d"
           keep-n-most-recent: "100"

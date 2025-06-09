@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   container:
-    if: github.repository_owner == 'searxng'
+    if: github.repository_owner == 'Fauli1221'
     name: Container
     runs-on: ubuntu-24.04-arm
     permissions:
@@ -31,7 +31,7 @@ jobs:
       - name: Run Trivy scanner
         uses: aquasecurity/trivy-action@0.31.0
         with:
-          image-ref: "ghcr.io/searxng/searxng:latest"
+          image-ref: "ghcr.io/fauli1221/ponysearch:latest"
           vuln-type: "os,library"
           severity: "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"
           ignore-unfixed: "false"
