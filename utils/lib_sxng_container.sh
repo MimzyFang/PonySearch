@@ -8,7 +8,7 @@ container.:
 EOF
 }
 
-CONTAINER_IMAGE_ORGANIZATION="fauli1221"
+CONTAINER_IMAGE_ORGANIZATION="mimzyfang"
 CONTAINER_IMAGE_NAME="ponysearch"
 
 container.build() {
