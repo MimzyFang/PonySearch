@@ -15,7 +15,7 @@ const PATH = {
 
   src: "src",
   modules: "node_modules",
-  brand: "src/brand",
+  brand: resolve(ROOT, "client/simple/src/brand"),
   static: resolve(ROOT, "client/simple/static"),
   leaflet: resolve(ROOT, "client/simple/node_modules/leaflet/dist"),
   templates: resolve(ROOT, "searx/templates/simple")
@@ -113,29 +113,42 @@ export default defineConfig({
     // SearXNG brand (static)
 
     plg_svg2png([
-      { src: `${PATH.brand}/searxng-wordmark.svg`, dest: `${PATH.dist}/img/favicon.png` },
-      { src: `${PATH.brand}/searxng.svg`, dest: `${PATH.dist}/img/searxng.png` }
+      { src: `${PATH.brand}/searxng-wordmark.svg`, dest: `${PATH.dist}/img/favicon.png` }
+      //{ src: `${PATH.brand}/searxng.svg`, dest: `${PATH.dist}/img/searxng.png` }
     ]),
+
+    viteStaticCopy({
+      targets: [
+        { src: `${PATH.brand}/searxng.png`, dest: `${PATH.dist}/img/` },
+        { src: `${PATH.brand}/searxng.svg`, dest: `${PATH.dist}/img/` },
+        { src: `${PATH.brand}/favicon.svg`, dest: `${PATH.dist}/img/` },
+        { src: `${PATH.brand}/searxng-wordmark.svg`, dest: `${PATH.templates}/` },
+        { src: `${PATH.brand}/404.png`, dest: `${PATH.dist}/img/` }
+      ]
+    }),
 
     // -- svg
     plg_svg2svg(
       [
-        { src: `${PATH.brand}/searxng.svg`, dest: `${PATH.dist}/img/searxng.svg` },
+        //{ src: `${PATH.brand}/searxng.svg`, dest: `${PATH.dist}/img/searxng.svg` },
         { src: `${PATH.brand}/img_load_error.svg`, dest: `${PATH.dist}/img/img_load_error.svg` }
       ],
       svg2svg_opts
     ),
 
     // -- favicon
+    /*
     plg_svg2svg(
       [{ src: `${PATH.brand}/searxng-wordmark.svg`, dest: `${PATH.dist}/img/favicon.svg` }],
       svg2svg_favicon_opts
     ),
-
+    */
     // -- simple templates
+    /*
     plg_svg2svg(
       [{ src: `${PATH.brand}/searxng-wordmark.svg`, dest: `${PATH.templates}/searxng-wordmark.min.svg` }],
       svg2svg_opts
     )
+    */
   ] // end: plugins
 });
