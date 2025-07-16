@@ -23,7 +23,7 @@ env:
 
 jobs:
   release:
-    if: github.repository_owner == 'Fauli1221' || github.event_name == 'workflow_dispatch'
+    if: github.repository_owner == 'MimzyFang' || github.event_name == 'workflow_dispatch'
     name: Release
     runs-on: ubuntu-24.04-arm
     permissions:
