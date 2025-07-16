@@ -51,19 +51,18 @@
 # Outbreak2096 <outbreak2096@noreply.codeberg.org>, 2025.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-31 18:38+0000\n"
-"PO-Revision-Date: 2025-06-01 06:39+0000\n"
+"POT-Creation-Date: 2025-07-03 14:46+0000\n"
+"PO-Revision-Date: 2025-06-24 15:32+0000\n"
 "Last-Translator: Outbreak2096 <outbreak2096@noreply.codeberg.org>\n"
-"Language-Team: Chinese (Simplified Han script) <https://"
-"translate.codeberg.org/projects/searxng/searxng/zh_Hans/>\n"
 "Language: zh_Hans_CN\n"
+"Language-Team: Chinese (Simplified Han script) "
+"<https://translate.codeberg.org/projects/searxng/searxng/zh_Hans/>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -217,7 +216,7 @@ msgid "About"
 msgstr "关于"
 
 #. WEATHER_TERMS['AVERAGE TEMP.']
-#: searx/engines/wttr.py:32 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Average temp."
 msgstr "平均温度"
 
@@ -227,58 +226,53 @@ msgid "Cloud cover"
 msgstr "云量"
 
 #. WEATHER_TERMS['CONDITION']
-#: searx/engines/duckduckgo_weather.py:45 searx/engines/wttr.py:51
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:45 searx/searxng.msg
 msgid "Condition"
 msgstr "条件"
 
 #. WEATHER_TERMS['CURRENT CONDITION']
-#: searx/engines/duckduckgo_weather.py:118 searx/engines/wttr.py:104
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:118 searx/searxng.msg
 msgid "Current condition"
 msgstr "当前状况"
 
 #. WEATHER_TERMS['EVENING']
-#: searx/engines/wttr.py:100 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Evening"
 msgstr "傍晚"
 
 #. WEATHER_TERMS['FEELS LIKE']
-#: searx/engines/duckduckgo_weather.py:53 searx/engines/wttr.py:59
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:53 searx/searxng.msg
 msgid "Feels like"
 msgstr "体感温度"
 
 #. WEATHER_TERMS['HUMIDITY']
-#: searx/engines/duckduckgo_weather.py:64 searx/engines/wttr.py:68
-#: searx/searxng.msg searx/templates/simple/answer/weather.html:29
+#: searx/engines/duckduckgo_weather.py:64 searx/searxng.msg
+#: searx/templates/simple/answer/weather.html:29
 msgid "Humidity"
 msgstr "湿度"
 
 #. WEATHER_TERMS['MAX TEMP.']
-#: searx/engines/duckduckgo_weather.py:77 searx/engines/wttr.py:34
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:77 searx/searxng.msg
 msgid "Max temp."
 msgstr "最高温度"
 
 #. WEATHER_TERMS['MIN TEMP.']
-#: searx/engines/duckduckgo_weather.py:73 searx/engines/wttr.py:33
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:73 searx/searxng.msg
 msgid "Min temp."
 msgstr "最低温度"
 
 #. WEATHER_TERMS['MORNING']
-#: searx/engines/wttr.py:100 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Morning"
 msgstr "上午"
 
 #. WEATHER_TERMS['NIGHT']
-#: searx/engines/wttr.py:100 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Night"
 msgstr "夜晚"
 
 #. WEATHER_TERMS['NOON']
-#: searx/engines/wttr.py:100 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Noon"
 msgstr "中午"
 
@@ -288,38 +282,34 @@ msgid "Pressure"
 msgstr "气压"
 
 #. WEATHER_TERMS['SUNRISE']
-#: searx/engines/duckduckgo_weather.py:81 searx/engines/wttr.py:36
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:81 searx/searxng.msg
 msgid "Sunrise"
 msgstr "日出"
 
 #. WEATHER_TERMS['SUNSET']
-#: searx/engines/duckduckgo_weather.py:82 searx/engines/wttr.py:37
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:82 searx/searxng.msg
 msgid "Sunset"
 msgstr "日落"
 
 #. WEATHER_TERMS['TEMPERATURE']
-#: searx/engines/duckduckgo_weather.py:48 searx/engines/wttr.py:55
-#: searx/searxng.msg searx/templates/simple/answer/weather.html:17
+#: searx/engines/duckduckgo_weather.py:48 searx/searxng.msg
+#: searx/templates/simple/answer/weather.html:17
 msgid "Temperature"
 msgstr "温度"
 
 #. WEATHER_TERMS['UV INDEX']
-#: searx/engines/duckduckgo_weather.py:80 searx/engines/wttr.py:35
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:80 searx/searxng.msg
 msgid "UV index"
 msgstr "紫外线强度"
 
 #. WEATHER_TERMS['VISIBILITY']
-#: searx/engines/duckduckgo_weather.py:62 searx/engines/wttr.py:66
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:62 searx/searxng.msg
 msgid "Visibility"
 msgstr "能见度"
 
 #. WEATHER_TERMS['WIND']
-#: searx/engines/duckduckgo_weather.py:58 searx/engines/wttr.py:62
-#: searx/searxng.msg searx/templates/simple/answer/weather.html:23
+#: searx/engines/duckduckgo_weather.py:58 searx/searxng.msg
+#: searx/templates/simple/answer/weather.html:23
 msgid "Wind"
 msgstr "风"
 
@@ -327,6 +317,11 @@ msgstr "风"
 #: searx/searxng.msg
 msgid "Clear sky"
 msgstr "晴朗"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Partly cloudy"
+msgstr "局部多云"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
@@ -342,66 +337,6 @@ msgstr "晴"
 #: searx/searxng.msg
 msgid "Fog"
 msgstr "雾"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy rain and thunder"
-msgstr "大雨伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy rain showers and thunder"
-msgstr "大阵雨伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy rain showers"
-msgstr "大阵雨"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy rain"
-msgstr "大雨"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy sleet and thunder"
-msgstr "大冻雨伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy sleet showers and thunder"
-msgstr "大冻雨阵雨伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy sleet showers"
-msgstr "大冻雨阵雨"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy sleet"
-msgstr "大冻雨"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy snow and thunder"
-msgstr "大雪伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy snow showers and thunder"
-msgstr "大阵雪伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy snow showers"
-msgstr "大阵雪"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy snow"
-msgstr "大雪"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
@@ -425,51 +360,6 @@ msgstr "小雨"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
-msgid "Light sleet and thunder"
-msgstr "小冻雨伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light sleet showers and thunder"
-msgstr "小冻雨阵雨伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light sleet showers"
-msgstr "小冻雨阵雨"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light sleet"
-msgstr "小冻雨"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light snow and thunder"
-msgstr "小雪伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light snow showers and thunder"
-msgstr "小阵雪伴有雷声"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light snow showers"
-msgstr "小阵雪"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light snow"
-msgstr "小雪"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Partly cloudy"
-msgstr "局部多云"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
 msgid "Rain and thunder"
 msgstr "雨伴有雷声"
 
@@ -487,6 +377,46 @@ msgstr "阵雨"
 #: searx/searxng.msg
 msgid "Rain"
 msgstr "雨"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain and thunder"
+msgstr "大雨伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain showers and thunder"
+msgstr "大阵雨伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain showers"
+msgstr "大阵雨"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain"
+msgstr "大雨"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet and thunder"
+msgstr "小冻雨伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet showers and thunder"
+msgstr "小冻雨阵雨伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet showers"
+msgstr "小冻雨阵雨"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet"
+msgstr "小冻雨"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
@@ -510,6 +440,46 @@ msgstr "冻雨"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
+msgid "Heavy sleet and thunder"
+msgstr "大冻雨伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet showers and thunder"
+msgstr "大冻雨阵雨伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet showers"
+msgstr "大冻雨阵雨"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet"
+msgstr "大冻雨"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow and thunder"
+msgstr "小雪伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow showers and thunder"
+msgstr "小阵雪伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow showers"
+msgstr "小阵雪"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow"
+msgstr "小雪"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
 msgid "Snow and thunder"
 msgstr "雪伴有雷声"
 
@@ -527,6 +497,26 @@ msgstr "阵雪"
 #: searx/searxng.msg
 msgid "Snow"
 msgstr "雪"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow and thunder"
+msgstr "大雪伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow showers and thunder"
+msgstr "大阵雪伴有雷声"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow showers"
+msgstr "大阵雪"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow"
+msgstr "大雪"
 
 #. SOCIAL_MEDIA_TERMS['SUBSCRIBERS']
 #: searx/engines/lemmy.py:85 searx/searxng.msg
@@ -777,21 +767,23 @@ msgstr "通过搜索栏计算数学表达式"
 msgid "Hash plugin"
 msgstr "散列插件"
 
-#: searx/plugins/hash_plugin.py:35
-msgid "Converts strings to different hash digests."
-msgstr "将字符串转换为不同的散列（hash）摘要值。"
+#: searx/plugins/hash_plugin.py:36
+msgid ""
+"Converts strings to different hash digests. Available functions: md5, "
+"sha1, sha224, sha256, sha384, sha512."
+msgstr "将字符串转换为不同的散列摘要。可用函数：MD5、SHA1、SHA224、SHA256、SHA384、SHA512。"
 
-#: searx/plugins/hash_plugin.py:62
+#: searx/plugins/hash_plugin.py:64
 msgid "hash digest"
-msgstr "散列摘要值"
+msgstr "散列摘要"
 
 #: searx/plugins/hostnames.py:123
 msgid "Hostnames plugin"
 msgstr "主机名插件"
 
 #: searx/plugins/hostnames.py:124
-msgid "Rewrite hostnames, remove results or prioritize them based on the hostname"
-msgstr "重写主机名、删除结果或根据主机名确定优先级"
+msgid "Rewrite hostnames and remove or prioritize results based on the hostname"
+msgstr "重写主机名并根据主机名移除或优先处理结果"
 
 #: searx/plugins/oa_doi_rewrite.py:55
 msgid "Open Access DOI rewrite"
@@ -843,11 +835,11 @@ msgstr "您正在使用 Tor，并且您似乎有外部 IP 地址"
 msgid "You are not using Tor and you have the external IP address"
 msgstr "您未使用 Tor，并且您有外部 IP 地址"
 
-#: searx/plugins/tracker_url_remover.py:37
+#: searx/plugins/tracker_url_remover.py:35
 msgid "Tracker URL remover"
 msgstr "URL 跟踪参数移除工具"
 
-#: searx/plugins/tracker_url_remover.py:38
+#: searx/plugins/tracker_url_remover.py:36
 msgid "Remove trackers arguments from the returned URL"
 msgstr "从返回的 URL 中移除跟踪参数"
 
@@ -1357,16 +1349,16 @@ msgid "Autocomplete"
 msgstr "自动补全"
 
 #: searx/templates/simple/preferences/autocomplete.html:15
-msgid "Find stuff as you type"
-msgstr "自动补全字词"
+msgid "Show possible queries as you type"
+msgstr "输入时显示可能的查询"
 
 #: searx/templates/simple/preferences/center_alignment.html:2
 msgid "Center Alignment"
 msgstr "居中对齐"
 
 #: searx/templates/simple/preferences/center_alignment.html:14
-msgid "Displays results in the center of the page (Oscar layout)."
-msgstr "在页面中心显示结果（Oscar 布局）。"
+msgid "Display results in the center of the page (Oscar layout)."
+msgstr "在页面中央显示结果（Oscar 布局）。"
 
 #: searx/templates/simple/preferences/cookies.html:2
 msgid ""
@@ -1375,8 +1367,8 @@ msgid ""
 msgstr "这是 SearXNG 在您的计算机上存储的 Cookie 的列表及相应的值。"
 
 #: searx/templates/simple/preferences/cookies.html:3
-msgid "With that list, you can assess SearXNG transparency."
-msgstr "您可以凭此列表评估 SearXNG 的透明度。"
+msgid "With this list, you can assess the transparency of SearXNG."
+msgstr "通过此列表，您可以评估 SearXNG 的透明度。"
 
 #: searx/templates/simple/preferences/cookies.html:9
 msgid "Cookie name"
@@ -1434,9 +1426,9 @@ msgstr "选择 DOI 重写使用的服务"
 
 #: searx/templates/simple/preferences/engines.html:9
 msgid ""
-"This tab does not exists in the user interface, but you can search in "
-"these engines by its !bangs."
-msgstr "此标签页在用户界面中不存在，但您可以使用 !bang 在这些引擎中进行搜索。"
+"This tab does not exist in the user interface, but you can search with "
+"these engines via !bangs."
+msgstr "此标签页在用户界面中不存在，但可以通过 !bangs 使用这些引擎进行搜索。"
 
 #: searx/templates/simple/preferences/engines.html:15
 msgid "Enable all"
@@ -1472,15 +1464,13 @@ msgstr "在搜索结果附近显示网站图标"
 
 #: searx/templates/simple/preferences/footer.html:2
 msgid ""
-"These settings are stored in your cookies, this allows us not to store "
+"These settings are stored in your cookies. This allows us not to store "
 "this data about you."
-msgstr "这些设置被存储在您的 Cookie 中，这种保存设置的方式使我们不必保存您的设置数据。"
+msgstr "这些设置存储在您的 Cookie 中。这样我们就不会存储您的相关数据。"
 
 #: searx/templates/simple/preferences/footer.html:3
-msgid ""
-"These cookies serve your sole convenience, we don't use these cookies to "
-"track you."
-msgstr "这些 Cookie 信息用于辅助您便捷地使用本服务，我们绝不利用这些信息来跟踪您。"
+msgid "These cookies serve your sole convenience; we don't use them to track you."
+msgstr "这些 Cookie 仅为您提供方便，我们不会用于追踪您。"
 
 #: searx/templates/simple/preferences/footer.html:6
 msgid "Save"
@@ -1513,15 +1503,17 @@ msgid "Image proxy"
 msgstr "图片代理"
 
 #: searx/templates/simple/preferences/image_proxy.html:14
-msgid "Proxying image results through SearXNG"
-msgstr "通过 SearXNG 代理访问图片结果"
+msgid "Proxy image results through SearXNG"
+msgstr "通过 SearXNG 代理图片结果"
 
 #: searx/templates/simple/preferences/infinite_scroll.html:2
 msgid "Infinite scroll"
-msgstr "无限滚动（瀑布流）"
+msgstr "无限滚动"
 
 #: searx/templates/simple/preferences/infinite_scroll.html:14
-msgid "Automatically load next page when scrolling to bottom of current page"
+msgid ""
+"Automatically load the next page when scrolling to the bottom of the "
+"current page"
 msgstr "滚动到当前页面底部时自动加载下一页"
 
 #: searx/templates/simple/preferences/language.html:24
@@ -1551,12 +1543,12 @@ msgid ""
 msgstr "启用后，结果页的标题会包含您的查询。您的浏览器可以记录此标题"
 
 #: searx/templates/simple/preferences/results_on_new_tab.html:2
-msgid "Results on new tabs"
-msgstr "在新标签页打开搜索结果"
+msgid "Results in new tabs"
+msgstr "新标签页显示结果"
 
 #: searx/templates/simple/preferences/results_on_new_tab.html:14
-msgid "Open result links on new browser tabs"
-msgstr "在新标签页打开搜索结果中的链接"
+msgid "Open result links in new browser tabs"
+msgstr "在新的浏览器标签页中打开结果链接"
 
 #: searx/templates/simple/preferences/safesearch.html:20
 msgid "Filter content"
@@ -1564,21 +1556,21 @@ msgstr "内容过滤"
 
 #: searx/templates/simple/preferences/search_on_category_select.html:2
 msgid "Search on category select"
-msgstr "在选中类别时立即进行搜索"
+msgstr "选择类别时搜索"
 
 #: searx/templates/simple/preferences/search_on_category_select.html:14
 msgid ""
-"Perform search immediately if a category selected. Disable to select "
-"multiple categories"
-msgstr "当一个类别被指定时，立即执行搜索。禁用以选择多个类别"
+"Perform a search immediately if a category is selected. Disable to select"
+" multiple categories"
+msgstr "选择类别后立即执行搜索。禁用以选择多个类别"
 
 #: searx/templates/simple/preferences/theme.html:2
 msgid "Theme"
 msgstr "主题"
 
 #: searx/templates/simple/preferences/theme.html:14
-msgid "Change SearXNG layout"
-msgstr "更改 SearXNG 布局"
+msgid "Change the layout of SearXNG"
+msgstr "更改 SearXNG 的布局"
 
 #: searx/templates/simple/preferences/theme.html:19
 msgid "Theme style"
@@ -2018,7 +2010,7 @@ msgstr "隐藏视频"
 #~ msgstr ""
 
 #~ msgid "Displays results in the center of the page (Oscar layout)."
-#~ msgstr ""
+#~ msgstr "在页面中心显示结果（Oscar 布局）。"
 
 #~ msgid "preferences"
 #~ msgstr "首选项"
@@ -2250,3 +2242,57 @@ msgstr "隐藏视频"
 
 #~ msgid "proxied"
 #~ msgstr "已代理"
+
+#~ msgid ""
+#~ "This tab does not exists in the"
+#~ " user interface, but you can search"
+#~ " in these engines by its !bangs."
+#~ msgstr "此标签页在用户界面中不存在，但您可以使用 !bang 在这些引擎中进行搜索。"
+
+#~ msgid "Results on new tabs"
+#~ msgstr "在新标签页打开搜索结果"
+
+#~ msgid "Open result links on new browser tabs"
+#~ msgstr "在新标签页打开搜索结果中的链接"
+
+#~ msgid "Find stuff as you type"
+#~ msgstr "自动补全字词"
+
+#~ msgid "Converts strings to different hash digests."
+#~ msgstr "将字符串转换为不同的散列（hash）摘要值。"
+
+#~ msgid ""
+#~ "Rewrite hostnames, remove results or "
+#~ "prioritize them based on the hostname"
+#~ msgstr "重写主机名、删除结果或根据主机名确定优先级"
+
+#~ msgid "With that list, you can assess SearXNG transparency."
+#~ msgstr "您可以凭此列表评估 SearXNG 的透明度。"
+
+#~ msgid ""
+#~ "These settings are stored in your "
+#~ "cookies, this allows us not to "
+#~ "store this data about you."
+#~ msgstr "这些设置被存储在您的 Cookie 中，这种保存设置的方式使我们不必保存您的设置数据。"
+
+#~ msgid ""
+#~ "These cookies serve your sole "
+#~ "convenience, we don't use these cookies"
+#~ " to track you."
+#~ msgstr "这些 Cookie 信息用于辅助您便捷地使用本服务，我们绝不利用这些信息来跟踪您。"
+
+#~ msgid "Proxying image results through SearXNG"
+#~ msgstr "通过 SearXNG 代理访问图片结果"
+
+#~ msgid "Automatically load next page when scrolling to bottom of current page"
+#~ msgstr "滚动到当前页面底部时自动加载下一页"
+
+#~ msgid ""
+#~ "Perform search immediately if a category"
+#~ " selected. Disable to select multiple "
+#~ "categories"
+#~ msgstr "当一个类别被指定时，立即执行搜索。禁用以选择多个类别"
+
+#~ msgid "Change SearXNG layout"
+#~ msgstr "更改 SearXNG 布局"
+

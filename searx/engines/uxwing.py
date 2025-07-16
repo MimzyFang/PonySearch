@@ -17,6 +17,7 @@ about = {
 categories = ['images', 'icons']
 
 base_url = "https://uxwing.com"
+enable_http2 = False
 
 
 def request(query, params):

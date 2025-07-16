@@ -42,21 +42,21 @@
 # Pyrbor <pyrbor@users.noreply.translate.codeberg.org>, 2025.
 # Juno Takano <jutty@noreply.codeberg.org>, 2025.
 # rodgui <rodgui@noreply.codeberg.org>, 2025.
+# bdcdo <bdcdo@noreply.codeberg.org>, 2025.
 msgid ""
 msgstr ""
-"Project-Id-Version: searx\n"
+"Project-Id-Version:  searx\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-31 18:38+0000\n"
-"PO-Revision-Date: 2025-06-02 14:58+0000\n"
-"Last-Translator: rodgui <rodgui@noreply.codeberg.org>\n"
-"Language-Team: Portuguese (Brazil) <https://translate.codeberg.org/projects/"
-"searxng/searxng/pt_BR/>\n"
+"POT-Creation-Date: 2025-07-03 14:46+0000\n"
+"PO-Revision-Date: 2025-07-03 10:26+0000\n"
+"Last-Translator: Juno Takano <jutty@noreply.codeberg.org>\n"
 "Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) "
+"<https://translate.codeberg.org/projects/searxng/searxng/pt_BR/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #. CONSTANT_NAMES['NO_SUBGROUPING']
@@ -210,7 +210,7 @@ msgid "About"
 msgstr "Sobre"
 
 #. WEATHER_TERMS['AVERAGE TEMP.']
-#: searx/engines/wttr.py:32 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Average temp."
 msgstr "Temperatura Média"
 
@@ -220,58 +220,53 @@ msgid "Cloud cover"
 msgstr "Nuvens cobertas"
 
 #. WEATHER_TERMS['CONDITION']
-#: searx/engines/duckduckgo_weather.py:45 searx/engines/wttr.py:51
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:45 searx/searxng.msg
 msgid "Condition"
 msgstr "Condição"
 
 #. WEATHER_TERMS['CURRENT CONDITION']
-#: searx/engines/duckduckgo_weather.py:118 searx/engines/wttr.py:104
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:118 searx/searxng.msg
 msgid "Current condition"
 msgstr "Condição atual"
 
 #. WEATHER_TERMS['EVENING']
-#: searx/engines/wttr.py:100 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Evening"
 msgstr "Tarde"
 
 #. WEATHER_TERMS['FEELS LIKE']
-#: searx/engines/duckduckgo_weather.py:53 searx/engines/wttr.py:59
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:53 searx/searxng.msg
 msgid "Feels like"
 msgstr "Sensação térmica"
 
 #. WEATHER_TERMS['HUMIDITY']
-#: searx/engines/duckduckgo_weather.py:64 searx/engines/wttr.py:68
-#: searx/searxng.msg searx/templates/simple/answer/weather.html:29
+#: searx/engines/duckduckgo_weather.py:64 searx/searxng.msg
+#: searx/templates/simple/answer/weather.html:29
 msgid "Humidity"
 msgstr "Umidade"
 
 #. WEATHER_TERMS['MAX TEMP.']
-#: searx/engines/duckduckgo_weather.py:77 searx/engines/wttr.py:34
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:77 searx/searxng.msg
 msgid "Max temp."
 msgstr "Temperatura Máxima"
 
 #. WEATHER_TERMS['MIN TEMP.']
-#: searx/engines/duckduckgo_weather.py:73 searx/engines/wttr.py:33
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:73 searx/searxng.msg
 msgid "Min temp."
 msgstr "Temperatura Mínima"
 
 #. WEATHER_TERMS['MORNING']
-#: searx/engines/wttr.py:100 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Morning"
 msgstr "Manhã"
 
 #. WEATHER_TERMS['NIGHT']
-#: searx/engines/wttr.py:100 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Night"
 msgstr "Noite"
 
 #. WEATHER_TERMS['NOON']
-#: searx/engines/wttr.py:100 searx/searxng.msg
+#: searx/searxng.msg
 msgid "Noon"
 msgstr "Meio dia"
 
@@ -281,38 +276,34 @@ msgid "Pressure"
 msgstr "Pressão"
 
 #. WEATHER_TERMS['SUNRISE']
-#: searx/engines/duckduckgo_weather.py:81 searx/engines/wttr.py:36
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:81 searx/searxng.msg
 msgid "Sunrise"
 msgstr "Nascer do sol"
 
 #. WEATHER_TERMS['SUNSET']
-#: searx/engines/duckduckgo_weather.py:82 searx/engines/wttr.py:37
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:82 searx/searxng.msg
 msgid "Sunset"
 msgstr "Pôr do sol"
 
 #. WEATHER_TERMS['TEMPERATURE']
-#: searx/engines/duckduckgo_weather.py:48 searx/engines/wttr.py:55
-#: searx/searxng.msg searx/templates/simple/answer/weather.html:17
+#: searx/engines/duckduckgo_weather.py:48 searx/searxng.msg
+#: searx/templates/simple/answer/weather.html:17
 msgid "Temperature"
 msgstr "Temperatura"
 
 #. WEATHER_TERMS['UV INDEX']
-#: searx/engines/duckduckgo_weather.py:80 searx/engines/wttr.py:35
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:80 searx/searxng.msg
 msgid "UV index"
 msgstr "Índice UV"
 
 #. WEATHER_TERMS['VISIBILITY']
-#: searx/engines/duckduckgo_weather.py:62 searx/engines/wttr.py:66
-#: searx/searxng.msg
+#: searx/engines/duckduckgo_weather.py:62 searx/searxng.msg
 msgid "Visibility"
 msgstr "Visibilidade"
 
 #. WEATHER_TERMS['WIND']
-#: searx/engines/duckduckgo_weather.py:58 searx/engines/wttr.py:62
-#: searx/searxng.msg searx/templates/simple/answer/weather.html:23
+#: searx/engines/duckduckgo_weather.py:58 searx/searxng.msg
+#: searx/templates/simple/answer/weather.html:23
 msgid "Wind"
 msgstr "Vento"
 
@@ -320,6 +311,11 @@ msgstr "Vento"
 #: searx/searxng.msg
 msgid "Clear sky"
 msgstr "Céu limpo"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Partly cloudy"
+msgstr "Parcialmente nublado"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
@@ -335,66 +331,6 @@ msgstr "Tempo bom"
 #: searx/searxng.msg
 msgid "Fog"
 msgstr "Neblina"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy rain and thunder"
-msgstr "Chuva forte e trovões"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy rain showers and thunder"
-msgstr "Chuva forte com trovões"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy rain showers"
-msgstr "Chuvas fortes"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy rain"
-msgstr "Chuva forte"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy sleet and thunder"
-msgstr "Neve forte e trovões"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy sleet showers and thunder"
-msgstr "Fortes chuvas de granizo e trovões"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy sleet showers"
-msgstr "Chuvas fortes de granizo"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy sleet"
-msgstr "Chuva forte de granizo"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy snow and thunder"
-msgstr "Neve pesada e trovões"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy snow showers and thunder"
-msgstr "Neves pesadas e trovões"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy snow showers"
-msgstr "Fortes chuvas de neve"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Heavy snow"
-msgstr "Neve pesada"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
@@ -418,51 +354,6 @@ msgstr "Chuva leve"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
-msgid "Light sleet and thunder"
-msgstr "Granizo leve e trovão"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light sleet showers and thunder"
-msgstr "Chuvas leves de granizo e trovões"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light sleet showers"
-msgstr "Chuvas leve de granizo"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light sleet"
-msgstr "Neve fraca"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light snow and thunder"
-msgstr "Neve fraca e trovões"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light snow showers and thunder"
-msgstr "Chuvas fraca de neve e trovões"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light snow showers"
-msgstr "Chuvas leve de neve"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Light snow"
-msgstr "Neve suave"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
-msgid "Partly cloudy"
-msgstr "Parcialmente nublado"
-
-#. WEATHER_CONDITIONS
-#: searx/searxng.msg
 msgid "Rain and thunder"
 msgstr "Chuva e trovões"
 
@@ -480,6 +371,46 @@ msgstr "Chuvas"
 #: searx/searxng.msg
 msgid "Rain"
 msgstr "Chuva"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain and thunder"
+msgstr "Chuva forte e trovões"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain showers and thunder"
+msgstr "Chuva forte com trovões"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain showers"
+msgstr "Chuvas fortes"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy rain"
+msgstr "Chuva forte"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet and thunder"
+msgstr "Granizo leve e trovão"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet showers and thunder"
+msgstr "Chuvas leves de granizo e trovões"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet showers"
+msgstr "Chuvas leve de granizo"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light sleet"
+msgstr "Neve fraca"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
@@ -503,6 +434,46 @@ msgstr "Granizo"
 
 #. WEATHER_CONDITIONS
 #: searx/searxng.msg
+msgid "Heavy sleet and thunder"
+msgstr "Neve forte e trovões"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet showers and thunder"
+msgstr "Fortes chuvas de granizo e trovões"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet showers"
+msgstr "Chuvas fortes de granizo"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy sleet"
+msgstr "Chuva forte de granizo"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow and thunder"
+msgstr "Neve fraca e trovões"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow showers and thunder"
+msgstr "Chuvas fraca de neve e trovões"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow showers"
+msgstr "Chuvas leve de neve"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Light snow"
+msgstr "Neve suave"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
 msgid "Snow and thunder"
 msgstr "Neve e trovões"
 
@@ -520,6 +491,26 @@ msgstr "Chuva de neves"
 #: searx/searxng.msg
 msgid "Snow"
 msgstr "Neve"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow and thunder"
+msgstr "Neve pesada e trovões"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow showers and thunder"
+msgstr "Neves pesadas e trovões"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow showers"
+msgstr "Fortes chuvas de neve"
+
+#. WEATHER_CONDITIONS
+#: searx/searxng.msg
+msgid "Heavy snow"
+msgstr "Neve pesada"
 
 #. SOCIAL_MEDIA_TERMS['SUBSCRIBERS']
 #: searx/engines/lemmy.py:85 searx/searxng.msg
@@ -776,11 +767,15 @@ msgstr "Calcular expressões matemáticas pela caixa de pesquisa"
 msgid "Hash plugin"
 msgstr "Plugin da hash"
 
-#: searx/plugins/hash_plugin.py:35
-msgid "Converts strings to different hash digests."
-msgstr "Converte as sequências em diferentes resultados de hash."
+#: searx/plugins/hash_plugin.py:36
+msgid ""
+"Converts strings to different hash digests. Available functions: md5, "
+"sha1, sha224, sha256, sha384, sha512."
+msgstr ""
+"Converte strings para diferentes formatos de saída de hashs. Funções "
+"disponíveis: md5, sha1, sha224, sha256, sha384, sha512."
 
-#: searx/plugins/hash_plugin.py:62
+#: searx/plugins/hash_plugin.py:64
 msgid "hash digest"
 msgstr "resultado de hash"
 
@@ -789,10 +784,8 @@ msgid "Hostnames plugin"
 msgstr "Plugin de Hostnames"
 
 #: searx/plugins/hostnames.py:124
-msgid "Rewrite hostnames, remove results or prioritize them based on the hostname"
-msgstr ""
-"Reescrita de hostnames, remova resultados ou priorize-os com base no "
-"hostname"
+msgid "Rewrite hostnames and remove or prioritize results based on the hostname"
+msgstr "Reescrever hostnames e remover ou priorizar resultados baseado no hostname"
 
 #: searx/plugins/oa_doi_rewrite.py:55
 msgid "Open Access DOI rewrite"
@@ -851,11 +844,11 @@ msgstr "Você está usando o Tor e parece que seu endereço de IP externo é"
 msgid "You are not using Tor and you have the external IP address"
 msgstr "Você não está usando o Tor e seu endereço de IP externo é"
 
-#: searx/plugins/tracker_url_remover.py:37
+#: searx/plugins/tracker_url_remover.py:35
 msgid "Tracker URL remover"
 msgstr "Removedor de rastreador da URL"
 
-#: searx/plugins/tracker_url_remover.py:38
+#: searx/plugins/tracker_url_remover.py:36
 msgid "Remove trackers arguments from the returned URL"
 msgstr "Remover os argumentos de rastreio da URL recebida"
 
@@ -1369,16 +1362,16 @@ msgid "Autocomplete"
 msgstr "Autocompletar"
 
 #: searx/templates/simple/preferences/autocomplete.html:15
-msgid "Find stuff as you type"
-msgstr "Exibir sugestões enquanto você digita"
+msgid "Show possible queries as you type"
+msgstr "Mostra buscas possíveis enquanto você digita"
 
 #: searx/templates/simple/preferences/center_alignment.html:2
 msgid "Center Alignment"
 msgstr "Alinhamento central"
 
 #: searx/templates/simple/preferences/center_alignment.html:14
-msgid "Displays results in the center of the page (Oscar layout)."
-msgstr "Exibe os resultados no centro da página (layout Oscar)."
+msgid "Display results in the center of the page (Oscar layout)."
+msgstr "Exibir resultados no centro da página (Layout Oscar)."
 
 #: searx/templates/simple/preferences/cookies.html:2
 msgid ""
@@ -1389,8 +1382,8 @@ msgstr ""
 "computador."
 
 #: searx/templates/simple/preferences/cookies.html:3
-msgid "With that list, you can assess SearXNG transparency."
-msgstr "Com essa lista, você pode avaliar a transparência do SearXNG."
+msgid "With this list, you can assess the transparency of SearXNG."
+msgstr "Com esta lista, você pode avaliar a transparência do SearXNG."
 
 #: searx/templates/simple/preferences/cookies.html:9
 msgid "Cookie name"
@@ -1451,11 +1444,11 @@ msgstr "Selecione o serviço utilizado pelo DOI rewrite"
 
 #: searx/templates/simple/preferences/engines.html:9
 msgid ""
-"This tab does not exists in the user interface, but you can search in "
-"these engines by its !bangs."
+"This tab does not exist in the user interface, but you can search with "
+"these engines via !bangs."
 msgstr ""
-"Essa aba não existe na interface de usuário, mas você pode pesquisar "
-"nessas ferramentas/motores pelos seus !bangs."
+"Essa aba não existe na interface do usuário, mas você pode buscar com "
+"essas engines via !bangs."
 
 #: searx/templates/simple/preferences/engines.html:15
 msgid "Enable all"
@@ -1491,19 +1484,17 @@ msgstr "Exibir favicons próximo aos resultados da pesquisa"
 
 #: searx/templates/simple/preferences/footer.html:2
 msgid ""
-"These settings are stored in your cookies, this allows us not to store "
+"These settings are stored in your cookies. This allows us not to store "
 "this data about you."
 msgstr ""
-"Essas configurações são armazenadas em seus cookies, nos não armazenamos "
-"nenhum dado a seu respeito."
+"Estas configurações são armazenadas nos seus cookies. Isto permite que "
+"não armazenemos esta informação sobre você."
 
 #: searx/templates/simple/preferences/footer.html:3
-msgid ""
-"These cookies serve your sole convenience, we don't use these cookies to "
-"track you."
+msgid "These cookies serve your sole convenience; we don't use them to track you."
 msgstr ""
-"Estes cookies servem ao seu único propósito, nós não usamos esses cookies"
-" para rastreá-lo."
+"Estes cookies são apenas para a sua própria conveniência; nós não os "
+"usamos para te rastrear."
 
 #: searx/templates/simple/preferences/footer.html:6
 msgid "Save"
@@ -1539,18 +1530,18 @@ msgid "Image proxy"
 msgstr "Proxy de imagem"
 
 #: searx/templates/simple/preferences/image_proxy.html:14
-msgid "Proxying image results through SearXNG"
-msgstr "Usar proxy para resultados da imagem no SearXNG"
+msgid "Proxy image results through SearXNG"
+msgstr "Obter resultados de imagem com o SearXNG como intermediário"
 
 #: searx/templates/simple/preferences/infinite_scroll.html:2
 msgid "Infinite scroll"
 msgstr "Rolagem infinita"
 
 #: searx/templates/simple/preferences/infinite_scroll.html:14
-msgid "Automatically load next page when scrolling to bottom of current page"
-msgstr ""
-"Automaticamente carregar a próxima página ao rolar até o fim da página "
-"atual"
+msgid ""
+"Automatically load the next page when scrolling to the bottom of the "
+"current page"
+msgstr "Carregar a próxima página automaticamente ao chegar no fim da página atual"
 
 #: searx/templates/simple/preferences/language.html:24
 msgid "What language do you prefer for search?"
@@ -1583,12 +1574,12 @@ msgstr ""
 "Seu navegador pode registrar este título"
 
 #: searx/templates/simple/preferences/results_on_new_tab.html:2
-msgid "Results on new tabs"
+msgid "Results in new tabs"
 msgstr "Resultados em novas abas"
 
 #: searx/templates/simple/preferences/results_on_new_tab.html:14
-msgid "Open result links on new browser tabs"
-msgstr "Abrir resultados em novas abas do navegador"
+msgid "Open result links in new browser tabs"
+msgstr "Abre links de resultado em novas abas do navegador"
 
 #: searx/templates/simple/preferences/safesearch.html:20
 msgid "Filter content"
@@ -1600,19 +1591,19 @@ msgstr "Pesquisar na categoria selecionada"
 
 #: searx/templates/simple/preferences/search_on_category_select.html:14
 msgid ""
-"Perform search immediately if a category selected. Disable to select "
-"multiple categories"
+"Perform a search immediately if a category is selected. Disable to select"
+" multiple categories"
 msgstr ""
-"Faça a busca imediatamente se existir uma categoria selecionada. "
-"Desabilite para selecionar múltiplas categorias"
+"Realizar a busca imediatamente se uma categoria for selecionada. Desative"
+" para selecionar múltiplas categorias"
 
 #: searx/templates/simple/preferences/theme.html:2
 msgid "Theme"
 msgstr "Tema"
 
 #: searx/templates/simple/preferences/theme.html:14
-msgid "Change SearXNG layout"
-msgstr "Mudar a interface do SearXNG"
+msgid "Change the layout of SearXNG"
+msgstr "Mudar o layout do SearXNG"
 
 #: searx/templates/simple/preferences/theme.html:19
 msgid "Theme style"
@@ -2064,7 +2055,7 @@ msgstr "ocultar vídeo"
 #~ msgstr ""
 
 #~ msgid "Displays results in the center of the page (Oscar layout)."
-#~ msgstr ""
+#~ msgstr "Exibe os resultados no centro da página (layout Oscar)."
 
 #~ msgid "preferences"
 #~ msgstr "preferências"
@@ -2348,3 +2339,75 @@ msgstr "ocultar vídeo"
 
 #~ msgid "proxied"
 #~ msgstr "por proxy"
+
+#~ msgid ""
+#~ "This tab does not exists in the"
+#~ " user interface, but you can search"
+#~ " in these engines by its !bangs."
+#~ msgstr ""
+#~ "Essa aba não existe na interface "
+#~ "de usuário, mas você pode pesquisar "
+#~ "nessas ferramentas/motores pelos seus !bangs."
+
+#~ msgid "Results on new tabs"
+#~ msgstr "Resultados em novas abas"
+
+#~ msgid "Open result links on new browser tabs"
+#~ msgstr "Abrir resultados em novas abas do navegador"
+
+#~ msgid "Find stuff as you type"
+#~ msgstr "Exibir sugestões enquanto você digita"
+
+#~ msgid "Converts strings to different hash digests."
+#~ msgstr "Converte as sequências em diferentes resultados de hash."
+
+#~ msgid ""
+#~ "Rewrite hostnames, remove results or "
+#~ "prioritize them based on the hostname"
+#~ msgstr ""
+#~ "Reescrita de hostnames, remova resultados "
+#~ "ou priorize-os com base no "
+#~ "hostname"
+
+#~ msgid "With that list, you can assess SearXNG transparency."
+#~ msgstr "Com essa lista, você pode avaliar a transparência do SearXNG."
+
+#~ msgid ""
+#~ "These settings are stored in your "
+#~ "cookies, this allows us not to "
+#~ "store this data about you."
+#~ msgstr ""
+#~ "Essas configurações são armazenadas em "
+#~ "seus cookies, nos não armazenamos nenhum"
+#~ " dado a seu respeito."
+
+#~ msgid ""
+#~ "These cookies serve your sole "
+#~ "convenience, we don't use these cookies"
+#~ " to track you."
+#~ msgstr ""
+#~ "Estes cookies servem ao seu único "
+#~ "propósito, nós não usamos esses cookies"
+#~ " para rastreá-lo."
+
+#~ msgid "Proxying image results through SearXNG"
+#~ msgstr "Usar proxy para resultados da imagem no SearXNG"
+
+#~ msgid "Automatically load next page when scrolling to bottom of current page"
+#~ msgstr ""
+#~ "Automaticamente carregar a próxima página "
+#~ "ao rolar até o fim da página "
+#~ "atual"
+
+#~ msgid ""
+#~ "Perform search immediately if a category"
+#~ " selected. Disable to select multiple "
+#~ "categories"
+#~ msgstr ""
+#~ "Faça a busca imediatamente se existir"
+#~ " uma categoria selecionada. Desabilite para"
+#~ " selecionar múltiplas categorias"
+
+#~ msgid "Change SearXNG layout"
+#~ msgstr "Mudar a interface do SearXNG"
+
