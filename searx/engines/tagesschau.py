@@ -15,16 +15,10 @@ This SearXNG engine uses the `/api2u/search`_ API.
 .. _OpenAPI: https://swagger.io/specification/
 
 """
-from typing import TYPE_CHECKING
 
 from datetime import datetime
 from urllib.parse import urlencode
 import re
-
-if TYPE_CHECKING:
-    import logging
-
-    logger: logging.Logger
 
 about = {
     'website': "https://tagesschau.de",
@@ -101,6 +95,9 @@ def _video(item):
         title = title.replace("_vapp.mxf", "")
         title = re.sub(r"APP\d+ (FC-)?", "", title, count=1)
 
+    # sometimes, only adaptive m3u8 streams are available, so video_url is None
+    url = video_url or f"{base_url}/multimedia/video/{item['sophoraId']}.html"
+
     return {
         'template': 'videos.html',
         'title': title,
@@ -108,5 +105,5 @@ def _video(item):
         'publishedDate': datetime.strptime(item['date'][:19], '%Y-%m-%dT%H:%M:%S'),
         'content': item.get('firstSentence', ''),
         'iframe_src': video_url,
-        'url': video_url,
+        'url': url,
     }

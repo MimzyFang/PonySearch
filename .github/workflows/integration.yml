@@ -25,27 +25,28 @@ jobs:
     name: Python ${{ matrix.python-version }}
     runs-on: ubuntu-24.04
     strategy:
+      fail-fast: false
       matrix:
         python-version:
-          - "3.9"
           - "3.10"
           - "3.11"
           - "3.12"
           - "3.13"
+          - "3.14-dev"
 
     steps:
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c  # v6.0.0
         with:
           python-version: "${{ matrix.python-version }}"
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
         with:
           persist-credentials: "false"
 
       - name: Setup cache Python
-        uses: actions/cache@v4
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809  # v4.2.4
         with:
           key: "python-${{ matrix.python-version }}-${{ runner.arch }}-${{ hashFiles('./requirements*.txt') }}"
           restore-keys: "python-${{ matrix.python-version }}-${{ runner.arch }}-"
@@ -55,6 +56,7 @@ jobs:
         run: make V=1 install
 
       - name: Run tests
+        continue-on-error: ${{ matrix.python-version == '3.14-dev' }}
         run: make V=1 ci.test
 
   theme:
@@ -62,28 +64,28 @@ jobs:
     runs-on: ubuntu-24.04-arm
     steps:
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c  # v6.0.0
         with:
           python-version: "${{ env.PYTHON_VERSION }}"
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
         with:
           persist-credentials: "false"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444  # v5.0.0
         with:
           node-version-file: "./.nvmrc"
 
       - name: Setup cache Node.js
-        uses: actions/cache@v4
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809  # v4.2.4
         with:
           key: "nodejs-${{ runner.arch }}-${{ hashFiles('./.nvmrc', './package.json') }}"
           path: "./client/simple/node_modules/"
 
       - name: Setup cache Python
-        uses: actions/cache@v4
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809  # v4.2.4
         with:
           key: "python-${{ env.PYTHON_VERSION }}-${{ runner.arch }}-${{ hashFiles('./requirements*.txt') }}"
           restore-keys: "python-${{ env.PYTHON_VERSION }}-${{ runner.arch }}-"
@@ -91,6 +93,9 @@ jobs:
 
       - name: Setup venv
         run: make V=1 install
+
+      - name: Lint
+        run: make themes.lint
 
       - name: Build
         run: make themes.all

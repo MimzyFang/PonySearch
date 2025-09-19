@@ -6,7 +6,7 @@ ends.
 """
 
 from json import dumps
-from searx.utils import searx_useragent
+from searx.utils import searxng_useragent
 from searx.enginelib.traits import EngineTraits
 
 about = {
@@ -22,8 +22,6 @@ paging = True
 base_url = "https://stract.com/beta/api"
 search_url = base_url + "/search"
 
-traits: EngineTraits
-
 
 def request(query, params):
     params['url'] = search_url
@@ -31,7 +29,7 @@ def request(query, params):
     params['headers'] = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'User-Agent': searx_useragent(),
+        'User-Agent': searxng_useragent(),
     }
     region = traits.get_region(params["searxng_locale"], default=traits.all_locale)
     params['data'] = dumps(

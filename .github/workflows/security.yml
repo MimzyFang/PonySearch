@@ -24,21 +24,23 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
         with:
           persist-credentials: "false"
 
-      - name: Run Trivy scanner
-        uses: aquasecurity/trivy-action@0.32.0
+      - name: Sync GHCS from Docker Scout
+        uses: docker/scout-action@f8c776824083494ab0d56b8105ba2ca85c86e4de  # v1.18.2
         with:
-          image-ref: "ghcr.io/mimzyfang/ponysearch:latest"
-          vuln-type: "os,library"
-          severity: "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"
-          ignore-unfixed: "false"
-          format: "sarif"
-          output: "./trivy-results.sarif"
+          organization: "mimzyfang"
+          dockerhub-user: "${{ secrets.DOCKERHUB_USERNAME }}"
+          dockerhub-password: "${{ secrets.DOCKERHUB_TOKEN }}"
+          image: "registry://ghcr.io/mimzyfang/ponysearch:latest"
+          command: "cves"
+          sarif-file: "./scout.sarif"
+          exit-code: "false"
+          write-comment: "false"
 
       - name: Upload SARIFs
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@192325c86100d080feab897ff886c34abd4c83a3  # v3.30.3
         with:
-          sarif_file: "./trivy-results.sarif"
+          sarif_file: "./scout.sarif"

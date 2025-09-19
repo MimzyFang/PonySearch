@@ -103,8 +103,8 @@ Node.js environment (``make node.env``)
 
    Node.js_ version {{version.node}} or higher is required to build the themes.
    If the requirement is not met, the build chain uses nvm_ (Node Version
-   Manager) to install latest LTS of Node.js_ locally: there is no need to
-   install nvm_ or npm_ on your system.
+   Manager) to install Node.js_ locally: there is no need to install
+   nvm_ or npm_ on your system.
 
 To install NVM_ and Node.js_ in once you can use :ref:`make nvm.nodejs`.
 
@@ -150,7 +150,7 @@ setup.
 ``make nvm.nodejs``
 -------------------
 
-Install latest Node.js_ LTS locally (uses nvm_)::
+Install latest Node.js_ locally (uses nvm_)::
 
   $ make nvm.nodejs
   INFO:  install (update) NVM at /share/searxng/.nvm
@@ -188,24 +188,22 @@ sources of the theme need to be rebuild.  You can do that by running::
 
     $ LIVE_THEME=simple make run
 
-.. _make format.python:
+.. _make format:
 
-``make format.python``
+``make format``
 ======================
-
-Format Python source code using `Black code style`_.  See ``$BLACK_OPTIONS``
-and ``$BLACK_TARGETS`` in :origin:`Makefile`.
-
-.. attention::
-
-   We stuck at Black 22.12.0, please read comment in PR `Bump black from 22.12.0
-   to 23.1.0`_
-
-.. _Bump black from 22.12.0 to 23.1.0:
-   https://github.com/searxng/searxng/pull/2159#pullrequestreview-1284094735
 
 .. _Black code style:
    https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html
+.. _shfmt: https://github.com/mvdan/sh?tab=readme-ov-file#shfmt
+.. _EditorConfig: https://github.com/patrickvane/shfmt?tab=readme-ov-file#description
+
+- Format Python source code using `Black code style`_.  See ``$BLACK_OPTIONS``
+  and ``$BLACK_TARGETS`` in :origin:`Makefile`.
+
+- Format Shell scripts using shfmt_. The formatter ``shfmt`` reads the rules
+  from the EditorConfig_ files.
+
 
 .. _make clean:
 

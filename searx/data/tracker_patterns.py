@@ -1,7 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 """Simple implementation to store TrackerPatterns data in a SQL database."""
 
-from __future__ import annotations
 import typing
 
 __all__ = ["TrackerPatternsDB"]
@@ -10,9 +9,10 @@ import re
 from collections.abc import Iterator
 from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
 
-import httpx
+from httpx import HTTPError
 
 from searx.data.core import get_cache, log
+from searx.network import get as http_get
 
 RuleType = tuple[str, list[str], list[str]]
 
@@ -44,7 +44,7 @@ class TrackerPatternsDB:
             self.cache.properties.set("tracker_patterns loaded", "OK")
             self.load()
         # F I X M E:
-        #     do we need a maintenance .. rember: database is stored
+        #     do we need a maintenance .. remember: database is stored
         #     in /tmp and will be rebuild during the reboot anyway
 
     def load(self):
@@ -71,10 +71,19 @@ class TrackerPatternsDB:
     def iter_clear_list(self) -> Iterator[RuleType]:
         resp = None
         for url in self.CLEAR_LIST_URL:
-            resp = httpx.get(url, timeout=3)
-            if resp.status_code == 200:
-                break
-            log.warning(f"TRACKER_PATTERNS: ClearURL ignore HTTP {resp.status_code} {url}")
+            log.debug("TRACKER_PATTERNS: Trying to fetch %s...", url)
+            try:
+                resp = http_get(url, timeout=3)
+
+            except HTTPError as exc:
+                log.warning("TRACKER_PATTERNS: HTTPError (%s) occured while fetching %s", url, exc)
+                continue
+
+            if resp.status_code != 200:
+                log.warning(f"TRACKER_PATTERNS: ClearURL ignore HTTP {resp.status_code} {url}")
+                continue
+
+            break
 
         if resp is None:
             log.error("TRACKER_PATTERNS: failed fetching ClearURL rule lists")
