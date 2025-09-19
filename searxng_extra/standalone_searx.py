@@ -46,14 +46,16 @@ import searx
 import searx.preferences
 import searx.query
 import searx.search
+import searx.search.models
 import searx.webadapter
+from searx.search.processors import PROCESSORS
 
 EngineCategoriesVar = Optional[List[str]]
 
 
 def get_search_query(
     args: argparse.Namespace, engine_categories: EngineCategoriesVar = None
-) -> searx.search.SearchQuery:
+) -> searx.search.models.SearchQuery:
     """Get  search results for the query"""
     if engine_categories is None:
         engine_categories = list(searx.engines.categories.keys())
@@ -97,7 +99,7 @@ def json_serial(obj: Any) -> Any:
     raise TypeError("Type ({}) not serializable".format(type(obj)))
 
 
-def to_dict(search_query: searx.search.SearchQuery) -> Dict[str, Any]:
+def to_dict(search_query: searx.search.models.SearchQuery) -> Dict[str, Any]:
     """Get result from parsed arguments."""
     result_container = searx.search.Search(search_query).search()
     result_container_json = {
@@ -171,7 +173,7 @@ if __name__ == '__main__':
     searx.search.initialize_network(settings_engines, searx.settings['outgoing'])
     searx.search.check_network_configuration()
     searx.search.initialize_metrics([engine['name'] for engine in settings_engines])
-    searx.search.initialize_processors(settings_engines)
+    PROCESSORS.init(settings_engines)
     search_q = get_search_query(prog_args, engine_categories=engine_cs)
     res_dict = to_dict(search_q)
     sys.stdout.write(dumps(res_dict, sort_keys=True, indent=4, ensure_ascii=False, default=json_serial))

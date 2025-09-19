@@ -1,12 +1,8 @@
 #!/usr/bin/env python
 # SPDX-License-Identifier: AGPL-3.0-or-later
-"""WebbApp
-
-"""
+"""WebApp"""
 # pylint: disable=use-dict-literal
-from __future__ import annotations
 
-import inspect
 import json
 import os
 import sys
@@ -28,7 +24,8 @@ from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter  # pylint: disable=no-name-in-module
 
-from werkzeug.serving import is_running_from_reloader
+from whitenoise import WhiteNoise
+from whitenoise.base import Headers
 
 import flask
 
@@ -59,7 +56,7 @@ from searx import (
 
 from searx import infopage
 from searx import limiter
-from searx.botdetection import link_token
+from searx.botdetection import link_token, ProxyFix
 
 from searx.data import ENGINE_DESCRIPTIONS
 from searx.result_types import Answer
@@ -147,7 +144,7 @@ STATS_SORT_PARAMETERS = {
 }
 
 # Flask app
-app = Flask(__name__, static_folder=settings['ui']['static_path'], template_folder=templates_path)
+app = Flask(__name__, static_folder=None, template_folder=templates_path)
 
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
@@ -183,23 +180,31 @@ def _get_locale_rfc5646(locale):
 
 # code-highlighter
 @app.template_filter('code_highlighter')
-def code_highlighter(codelines, language=None):
+def code_highlighter(codelines, language=None, hl_lines=None, strip_whitespace=True, strip_new_lines=True):
     if not language:
         language = 'text'
 
     try:
-        # find lexer by programming language
-        lexer = get_lexer_by_name(language, stripall=True)
+        lexer = get_lexer_by_name(language, stripall=strip_whitespace, stripnl=strip_new_lines)
 
     except Exception as e:  # pylint: disable=broad-except
         logger.warning("pygments lexer: %s " % e)
         # if lexer is not found, using default one
-        lexer = get_lexer_by_name('text', stripall=True)
+        lexer = get_lexer_by_name('text', stripall=strip_whitespace, stripnl=strip_new_lines)
 
     html_code = ''
     tmp_code = ''
     last_line = None
     line_code_start = None
+
+    def offset_hl_lines(hl_lines, start):
+        """
+        hl_lines in pygments are expected to be relative to the input
+        """
+        if hl_lines is None:
+            return None
+
+        return [line - start + 1 for line in hl_lines]
 
     # parse lines
     for line, code in codelines:
@@ -210,7 +215,12 @@ def code_highlighter(codelines, language=None):
         if last_line is not None and last_line + 1 != line:
 
             # highlight last codepart
-            formatter = HtmlFormatter(linenos='inline', linenostart=line_code_start, cssclass="code-highlight")
+            formatter = HtmlFormatter(
+                linenos='inline',
+                linenostart=line_code_start,
+                cssclass="code-highlight",
+                hl_lines=offset_hl_lines(hl_lines, line_code_start),
+            )
             html_code = html_code + highlight(tmp_code, lexer, formatter)
 
             # reset conditions for next codepart
@@ -224,7 +234,12 @@ def code_highlighter(codelines, language=None):
         last_line = line
 
     # highlight last codepart
-    formatter = HtmlFormatter(linenos='inline', linenostart=line_code_start, cssclass="code-highlight")
+    formatter = HtmlFormatter(
+        linenos='inline',
+        linenostart=line_code_start,
+        cssclass="code-highlight",
+        hl_lines=offset_hl_lines(hl_lines, line_code_start),
+    )
     html_code = html_code + highlight(tmp_code, lexer, formatter)
 
     return html_code
@@ -245,6 +260,7 @@ def custom_url_for(endpoint: str, **values):
     if not _STATIC_FILES:
         _STATIC_FILES = webutils.get_static_file_list()
 
+    # handled by WhiteNoise
     if endpoint == "static" and values.get("filename"):
 
         # We need to verify the "filename" argument: in the jinja templates
@@ -257,9 +273,12 @@ def custom_url_for(endpoint: str, **values):
         if arg_filename not in _STATIC_FILES:
             # try file in the current theme
             theme_name = sxng_request.preferences.get_value("theme")
-            arg_filename = f"themes/{theme_name}/{arg_filename}"
-            if arg_filename in _STATIC_FILES:
-                values["filename"] = arg_filename
+            theme_filename = f"themes/{theme_name}/{arg_filename}"
+            if theme_filename in _STATIC_FILES:
+                values["filename"] = theme_filename
+
+        app_prefix = url_for("index")
+        return f"{app_prefix}static/{values['filename']}"
 
     if endpoint == "info" and "locale" not in values:
 
@@ -356,7 +375,7 @@ def get_client_settings():
         'favicon_resolver': req_pref.get_value('favicon_resolver'),
         'advanced_search': req_pref.get_value('advanced_search'),
         'query_in_title': req_pref.get_value('query_in_title'),
-        'safesearch': str(req_pref.get_value('safesearch')),
+        'safesearch': req_pref.get_value('safesearch'),
         'theme': req_pref.get_value('theme'),
         'doi_resolver': get_doi_resolver(),
     }
@@ -366,15 +385,7 @@ def render(template_name: str, **kwargs):
     # values from the preferences
     # pylint: disable=too-many-statements
     client_settings = get_client_settings()
-    kwargs['client_settings'] = str(
-        base64.b64encode(
-            bytes(
-                json.dumps(client_settings),
-                encoding='utf-8',
-            )
-        ),
-        encoding='utf-8',
-    )
+    kwargs['client_settings'] = base64.b64encode(json.dumps(client_settings).encode('utf-8')).decode('utf-8')
     kwargs['preferences'] = sxng_request.preferences
     kwargs.update(client_settings)
 
@@ -1358,38 +1369,6 @@ def run():
         app.run(port=port, host=host, threaded=True)
 
 
-def is_werkzeug_reload_active() -> bool:
-    """Returns ``True`` if server is is launched by :ref:`werkzeug.serving` and
-    the ``use_reload`` argument was set to ``True``.  If this is the case, it
-    should be avoided that the server is initialized twice (:py:obj:`init`,
-    :py:obj:`run`).
-
-    .. _werkzeug.serving:
-       https://werkzeug.palletsprojects.com/en/stable/serving/#werkzeug.serving.run_simple
-    """
-    logger.debug("sys.argv: %s", sys.argv)
-    if "uwsgi" in sys.argv[0] or "granian" in sys.argv[0]:
-        # server was launched by granian (or uWSGI)
-        return False
-
-    # https://github.com/searxng/searxng/pull/1656#issuecomment-1214198941
-    # https://github.com/searxng/searxng/pull/1616#issuecomment-1206137468
-
-    frames = inspect.stack()
-
-    if len(frames) > 1 and frames[-2].filename.endswith('flask/cli.py'):
-        # server was launched by "flask run", is argument "--reload" set?
-        if "--reload" in sys.argv or "--debug" in sys.argv:
-            return True
-
-    elif frames[0].filename.endswith('searx/webapp.py'):
-        # server was launched by "python -m searx.webapp" / see run()
-        if searx.sxng_debug:
-            return True
-
-    return False
-
-
 def init():
 
     if searx.sxng_debug or app.debug:
@@ -1402,17 +1381,6 @@ def init():
         logger.error("server.secret_key is not changed. Please use something else instead of ultrasecretkey.")
         sys.exit(1)
 
-    # When automatic reloading is activated stop Flask from initialising twice.
-    # - https://github.com/pallets/flask/issues/5307#issuecomment-1774646119
-    # - https://stackoverflow.com/a/25504196
-
-    reloader_active = is_werkzeug_reload_active()
-    werkzeug_run_main = is_running_from_reloader()
-
-    if reloader_active and not werkzeug_run_main:
-        logger.info("in reloading mode and not in main loop, cancel the initialization")
-        return
-
     locales_initialize()
     valkey_initialize()
     searx.plugins.initialize(app)
@@ -1424,8 +1392,29 @@ def init():
     favicons.init()
 
 
-application = app
+def static_headers(headers: Headers, _path: str, _url: str) -> None:
+    headers['Cache-Control'] = 'public, max-age=30, stale-while-revalidate=60'
+
+    for header, value in settings['server']['default_http_headers'].items():
+        # cast value to string, as WhiteNoise requires header values to be strings
+        headers[header] = str(value)
+
+
+app.wsgi_app = ProxyFix(app.wsgi_app)
+app.wsgi_app = WhiteNoise(
+    app.wsgi_app,
+    root=settings['ui']['static_path'],
+    prefix="static",
+    max_age=None,
+    allow_all_origins=False,
+    add_headers_function=static_headers,
+)
+
 patch_application(app)
+
+# remove when we drop support for uwsgi
+application = app
+
 init()
 
 if __name__ == "__main__":
