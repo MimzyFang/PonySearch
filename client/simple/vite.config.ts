@@ -30,9 +30,9 @@ const svg2svg_opts: Config = {
   plugins: [{ name: "preset-default" }, "sortAttrs", "convertStyleToAttrs"]
 };
 
-const svg2svg_favicon_opts: Config = {
-  plugins: [{ name: "preset-default" }, "sortAttrs"]
-};
+//const svg2svg_favicon_opts: Config = {
+//  plugins: [{ name: "preset-default" }, "sortAttrs"]
+//};
 
 export default {
   base: "/static/themes/simple/",
