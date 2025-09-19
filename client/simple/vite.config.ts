@@ -125,10 +125,10 @@ export default {
 
     // SearXNG brand (static)
      plg_svg2png([
-//       {
-//         src: `${PATH.brand}/searxng-wordmark.svg`,
-//         dest: `${PATH.dist}/img/favicon.png`
-//       },
+       {
+         src: `${PATH.brand}/searxng-wordmark.svg`,
+         dest: `${PATH.dist}/img/favicon.png`
+       },
        {
          src: `${PATH.brand}/searxng.svg`,
          dest: `${PATH.dist}/img/searxng.png`
