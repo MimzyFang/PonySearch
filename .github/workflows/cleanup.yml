@@ -30,7 +30,7 @@ jobs:
         with:
           account: "${{ github.repository_owner }}"
           token: "${{ secrets.GITHUB_TOKEN }}"
-                    # Remove only cache images https://github.com/snok/container-retention-policy/issues/97
+          # Remove only cache images https://github.com/snok/container-retention-policy/issues/97
           image-names: "cache"
           image-tags: "!ponysearch*"
           cut-off: "1d"
