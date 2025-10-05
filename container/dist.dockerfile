@@ -1,12 +1,13 @@
-FROM ghcr.io/searxng/base:searxng AS dist
-
 ARG CONTAINER_IMAGE_ORGANIZATION="searxng"
 ARG CONTAINER_IMAGE_NAME="searxng"
 
-COPY --chown=searxng:searxng --from=localhost/$CONTAINER_IMAGE_ORGANIZATION/$CONTAINER_IMAGE_NAME:builder /usr/local/searxng/.venv/ ./.venv/
-COPY --chown=searxng:searxng --from=localhost/$CONTAINER_IMAGE_ORGANIZATION/$CONTAINER_IMAGE_NAME:builder /usr/local/searxng/searx/ ./searx/
+FROM localhost/$CONTAINER_IMAGE_ORGANIZATION/$CONTAINER_IMAGE_NAME:builder AS builder
+FROM ghcr.io/searxng/base:searxng AS dist
+
+COPY --chown=searxng:searxng --from=builder /usr/local/searxng/.venv/ ./.venv/
+COPY --chown=searxng:searxng --from=builder /usr/local/searxng/searx/ ./searx/
 COPY --chown=searxng:searxng ./container/ ./
-COPY --chown=searxng:searxng --from=localhost/$CONTAINER_IMAGE_ORGANIZATION/$CONTAINER_IMAGE_NAME:builder /usr/local/searxng/version_frozen.py ./searx/
+#COPY --chown=searxng:searxng ./searx/version_frozen.py ./searx/
 
 ARG CREATED="0001-01-01T00:00:00Z"
 ARG VERSION="unknown"
@@ -30,7 +31,6 @@ ENV SEARXNG_VERSION="$VERSION" \
     GRANIAN_HOST="::" \
     GRANIAN_PORT="8080" \
     GRANIAN_WEBSOCKETS="false" \
-    GRANIAN_LOOP="uvloop" \
     GRANIAN_BLOCKING_THREADS="4" \
     GRANIAN_WORKERS_KILL_TIMEOUT="30s" \
     GRANIAN_BLOCKING_THREADS_IDLE_TIMEOUT="5m"

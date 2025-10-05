@@ -1,9 +1,10 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-"""Exception types raised by SearXNG modules.
-"""
+"""Exception types raised by SearXNG modules."""
 
 import typing as t
-from lxml.etree import XPath
+
+if t.TYPE_CHECKING:
+    from lxml.etree import XPath
 
 
 class SearxException(Exception):
@@ -41,7 +42,7 @@ class SearxEngineException(SearxException):
 class SearxXPathSyntaxException(SearxEngineException):
     """Syntax error in a XPATH"""
 
-    def __init__(self, xpath_spec: str | XPath, message: str):
+    def __init__(self, xpath_spec: "str | XPath", message: str):
         super().__init__(str(xpath_spec) + " " + message)
         self.message: str = message
         # str(xpath_spec) to deal with str and XPath instance
@@ -112,7 +113,7 @@ class SearxEngineTooManyRequestsException(SearxEngineAccessDeniedException):
 class SearxEngineXPathException(SearxEngineResponseException):
     """Error while getting the result of an XPath expression"""
 
-    def __init__(self, xpath_spec: str | XPath, message: str):
+    def __init__(self, xpath_spec: "str | XPath", message: str):
         super().__init__(str(xpath_spec) + " " + message)
         self.message: str = message
         # str(xpath_spec) to deal with str and XPath instance
