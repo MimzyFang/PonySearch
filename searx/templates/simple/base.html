@@ -76,7 +76,7 @@
         | <a href="{{ get_setting('general.privacypolicy_url') }}">{{ _('Privacy policy') }}</a>
         {% endif %}
         {% if get_setting('general.contact_url') %}
-        | <a rel="me" href="{{ get_setting('general.contact_url') }}">{{ _('Contact instance maintainer') }}</a>
+        | <a href="{{ get_setting('general.contact_url') }}">{{ _('Contact instance maintainer') }}</a>
         {% endif %}
         {% for title, link in get_setting('brand.custom.links').items() %}
         | <a href="{{ link }}">{{ _(title) }}</a>

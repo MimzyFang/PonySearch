@@ -12,7 +12,6 @@ import type { PreRenderedAsset } from "rolldown";
 import type { Config } from "svgo";
 import type { UserConfig } from "vite";
 import analyzer from "vite-bundle-analyzer";
-import { viteStaticCopy } from "vite-plugin-static-copy";
 import manifest from "./package.json" with { type: "json" };
 import { plg_svg2png, plg_svg2svg } from "./tools/plg.ts";
 
@@ -30,9 +29,9 @@ const svg2svg_opts: Config = {
   plugins: [{ name: "preset-default" }, "sortAttrs", "convertStyleToAttrs"]
 };
 
-//const svg2svg_favicon_opts: Config = {
-//  plugins: [{ name: "preset-default" }, "sortAttrs"]
-//};
+const svg2svg_favicon_opts: Config = {
+  plugins: [{ name: "preset-default" }, "sortAttrs"]
+};
 
 export default {
   base: "/static/themes/simple/",
@@ -124,16 +123,16 @@ export default {
     ),
 
     // SearXNG brand (static)
-     plg_svg2png([
-       {
-         src: `${PATH.brand}/searxng-wordmark.svg`,
-         dest: `${PATH.dist}/img/favicon.png`
-       },
-       {
-         src: `${PATH.brand}/searxng.svg`,
-         dest: `${PATH.dist}/img/searxng.png`
-       }
-     ]),
+    plg_svg2png([
+      {
+        src: `${PATH.brand}/searxng-wordmark.svg`,
+        dest: `${PATH.dist}/img/favicon.png`
+      },
+      {
+        src: `${PATH.brand}/searxng.svg`,
+        dest: `${PATH.dist}/img/searxng.png`
+      }
+    ]),
 
     // -- svg
     plg_svg2svg(
@@ -151,51 +150,26 @@ export default {
     ),
 
     // -- favicon
-//     plg_svg2svg(
-//       [
-//         {
-//           src: `${PATH.brand}/searxng-wordmark.svg`,
-//           dest: `${PATH.dist}/img/favicon.svg`
-//         }
-//       ],
-//       svg2svg_favicon_opts
-//     ),
-
-  viteStaticCopy({
-      targets: [
-        {
-          src: `${PATH.brand}/searxng.png`,
-          dest: `${PATH.dist}/img/`
-          },
-        {
-          src: `${PATH.brand}/searxng.svg`,
-          dest: `${PATH.dist}/img/`
-          },
-        {
-          src: `${PATH.brand}/favicon.svg`,
-          dest: `${PATH.dist}/img/`
-          },
+    plg_svg2svg(
+      [
         {
           src: `${PATH.brand}/searxng-wordmark.svg`,
-          dest: `${PATH.templates}/`
-          },
-        {
-          src: `${PATH.brand}/404.png`,
-          dest: `${PATH.dist}/img/`
-         }
-      ]
-    }),
+          dest: `${PATH.dist}/img/favicon.svg`
+        }
+      ],
+      svg2svg_favicon_opts
+    ),
 
     // -- simple templates
-//     plg_svg2svg(
-//       [
-//         {
-//           src: `${PATH.brand}/searxng-wordmark.svg`,
-//           dest: `${PATH.templates}/searxng-wordmark.min.svg`
-//         }
-//       ],
-//       svg2svg_opts
-//     )
+    plg_svg2svg(
+      [
+        {
+          src: `${PATH.brand}/searxng-wordmark.svg`,
+          dest: `${PATH.templates}/searxng-wordmark.min.svg`
+        }
+      ],
+      svg2svg_opts
+    )
   ], // end: plugins
 
   // FIXME: missing CCS sourcemaps!!
