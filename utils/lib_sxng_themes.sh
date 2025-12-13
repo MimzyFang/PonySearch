@@ -16,6 +16,7 @@ themes.all() {
     (
         set -e
         vite.simple.build
+        vite.marlo.build
     )
     dump_return $?
 }

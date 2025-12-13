@@ -16,6 +16,7 @@ EOF
 }
 
 VITE_SIMPLE_THEME="${REPO_ROOT}/client/simple"
+VITE_MARLO_THEME="${REPO_ROOT}/client/marlo"
 
 # ToDo: vite server is not implemented yet / will be done in a follow up PR
 #
@@ -38,6 +39,21 @@ vite.simple.build() {
         build_msg SIMPLE "run build of theme from: ${VITE_SIMPLE_THEME}"
 
         pushd "${VITE_SIMPLE_THEME}"
+        npm install
+        npm run build
+        popd &>/dev/null
+    )
+}
+
+vite.marlo.build() {
+    (
+        set -e
+        templates.simple.pygments
+
+        node.env
+        build_msg MARLO "run build of theme from: ${VITE_MARLO_THEME}"
+
+        pushd "${VITE_MARLO_THEME}"
         npm install
         npm run build
         popd &>/dev/null

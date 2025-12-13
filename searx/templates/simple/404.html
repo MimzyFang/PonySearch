@@ -2,7 +2,6 @@
 {% block content %}
 <div class="center">
     <h1>{{ _('Page not found') }}</h1>
-    <img src="{{ url_for('static', filename='img/404.png') }}" alt="404" width="35%">
     {% autoescape false %}
     <p>{{ _('Go to %(search_page)s.', search_page='<a href="{}">{}</a>'.format(url_for('index'), _('search page'))) }}</p>
     {% endautoescape %}
