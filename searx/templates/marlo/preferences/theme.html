@@ -16,12 +16,12 @@
 </fieldset>{{- '' -}}
 
 <fieldset>{{- '' -}}
-  <legend id="pref_marlo_style">{{- _('Theme style') -}}</legend>{{- '' -}}
+  <legend id="pref_simple_style">{{- _('Theme style') -}}</legend>{{- '' -}}
   <div class="value">{{- '' -}}
-    <select name="marlo_style" aria-labelledby="pref_marlo_style">
+    <select name="simple_style" aria-labelledby="pref_simple_style">
       {%- for name in ['auto', 'light', 'dark', 'black'] -%}
         <option value="{{ name }}"
-                {%- if name == preferences.get_value('marlo_style') %} selected="selected" {%- endif -%}>
+                {%- if name == preferences.get_value('simple_style') %} selected="selected" {%- endif -%}>
                 {{- _(name) | capitalize -}}
         </option>
       {%- endfor -%}
