@@ -34,7 +34,7 @@ const svg2svg_favicon_opts: Config = {
 };
 
 export default {
-  base: "/static/themes/simple/",
+  base: "./",
   publicDir: "static/",
 
   build: {
@@ -74,6 +74,9 @@ export default {
             .normalize("NFD")
             .replace(/[^a-zA-Z0-9.-]/g, "_")
             .toLowerCase();
+        },
+        comments: {
+          legal: true
         }
       }
     }
