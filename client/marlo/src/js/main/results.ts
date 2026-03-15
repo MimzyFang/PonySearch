@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import "../../../node_modules/swiped-events/src/swiped-events.js";
-import { assertElement, listen, mutable, settings } from "../core/toolkit.ts";
+import { listen, mutable, settings } from "../toolkit.ts";
+import { assertElement } from "../util/assertElement.ts";
 
 let imgTimeoutID: number;
 
@@ -134,9 +135,8 @@ listen("click", "#copy_url", async function (this: HTMLElement) {
     }
   }
 
-  const copiedText = this.dataset.copiedText;
-  if (copiedText) {
-    this.innerText = copiedText;
+  if (this.dataset.copiedText) {
+    this.innerText = this.dataset.copiedText;
   }
 });
 
