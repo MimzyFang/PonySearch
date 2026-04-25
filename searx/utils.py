@@ -82,11 +82,11 @@ def gen_useragent(os_string: str | None = None) -> str:
 
 
 def gen_gsa_useragent() -> str:
-    """Return a random GSA User Agent suitable for Google
+    """Return a random "Google Go App" User Agent suitable for Google
 
     See searx/data/gsa_useragents.txt
     """
-    return choice(gsa_useragents_loader())
+    return choice(gsa_useragents_loader()) + " NSTNWV"
 
 
 class HTMLTextExtractor(HTMLParser):
