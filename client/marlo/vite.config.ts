@@ -124,6 +124,29 @@ export default {
        }
      ]),
 
+     // SearXNG PWA Icons (static)
+     plg_svg2png(
+       [
+         {
+           src: `${PATH.brand}/searxng-wordmark.svg`,
+           dest: `${PATH.dist}/img/512.png`
+         }
+       ],
+       512,
+       512
+     ),
+     plg_svg2png(
+       [
+         {
+           src: `${PATH.brand}/searxng-wordmark.svg`,
+           dest: `${PATH.dist}/img/192.png`
+         }
+       ],
+       192,
+       192
+     ),
+
+
     // -- svg
     plg_svg2svg(
       [
@@ -154,23 +177,28 @@ export default {
       targets: [
         {
           src: `${PATH.brand}/searxng.png`,
-          dest: `${PATH.dist}/img/`
+          dest: `${PATH.dist}/img/`,
+          rename: { stripBase: true }
           },
         {
           src: `${PATH.brand}/searxng.svg`,
-          dest: `${PATH.dist}/img/`
+          dest: `${PATH.dist}/img/`,
+          rename: { stripBase: true }
           },
         {
           src: `${PATH.brand}/favicon.svg`,
-          dest: `${PATH.dist}/img/`
+          dest: `${PATH.dist}/img/`,
+          rename: { stripBase: true }
           },
         {
           src: `${PATH.brand}/searxng-wordmark.svg`,
-          dest: `${PATH.templates}/`
+          dest: `${PATH.templates}/`,
+          rename: { stripBase: true }
           },
         {
           src: `${PATH.brand}/404.png`,
-          dest: `${PATH.dist}/img/`
+          dest: `${PATH.dist}/img/`,
+          rename: { stripBase: true }
          }
       ]
     }),

@@ -27,7 +27,7 @@
     ]
   },
   "src/js/main/autocomplete.ts": {
-    "file": "chunk/R1hV2I0v.min.js",
+    "file": "chunk/CQ8vfMdp.min.js",
     "name": "autocomplete",
     "src": "src/js/main/autocomplete.ts",
     "isDynamicEntry": true,
@@ -37,7 +37,7 @@
     ]
   },
   "src/js/main/keyboard.ts": {
-    "file": "chunk/SAW3N6vv.min.js",
+    "file": "chunk/aUw47Wy0.min.js",
     "name": "keyboard",
     "src": "src/js/main/keyboard.ts",
     "isDynamicEntry": true,
@@ -77,7 +77,7 @@
     ]
   },
   "src/js/plugin/Calculator.ts": {
-    "file": "chunk/BSJ3HQQa.min.js",
+    "file": "chunk/DyePpW7L.min.js",
     "name": "Calculator",
     "src": "src/js/plugin/Calculator.ts",
     "isDynamicEntry": true,
@@ -98,7 +98,7 @@
     ]
   },
   "src/js/plugin/MapView.ts": {
-    "file": "chunk/-6zWJ5vz.min.js",
+    "file": "chunk/CNV9i1dS.min.js",
     "name": "MapView",
     "src": "src/js/plugin/MapView.ts",
     "isDynamicEntry": true,
