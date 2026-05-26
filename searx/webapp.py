@@ -43,7 +43,6 @@ from flask.json import jsonify
 from flask_babel import (
     Babel,
     gettext,
-    format_decimal,
 )
 
 import searx
@@ -564,7 +563,6 @@ def index_error(output_format: str, error_message: str):
             'opensearch_response_rss.xml',
             results=[],
             q=sxng_request.form['q'] if 'q' in sxng_request.form else '',
-            number_of_results=0,
             error_message=error_message,
         )
         return Response(response_rss, mimetype='text/xml')
@@ -724,7 +722,6 @@ def search():
             'opensearch_response_rss.xml',
             results=results,
             q=sxng_request.form['q'],
-            number_of_results=result_container.number_of_results,
         )
         return Response(response_rss, mimetype='text/xml')
 
@@ -761,7 +758,6 @@ def search():
         selected_categories = search_query.categories,
         pageno = search_query.pageno,
         time_range = search_query.time_range or '',
-        number_of_results = format_decimal(result_container.number_of_results),
         suggestions = suggestion_urls,
         answers = result_container.answers,
         corrections = correction_urls,
@@ -918,9 +914,6 @@ def preferences():
             'rate80': rate80,
             'rate95': rate95,
             'warn_timeout': e.timeout > settings['outgoing']['request_timeout'],
-            'supports_selected_language': e.traits.is_locale_supported(
-                str(sxng_request.preferences.get_value('language') or 'all')
-            ),
             'result_count': result_count,
         }
     # end of stats
@@ -956,15 +949,9 @@ def preferences():
     # supports
     supports = {}
     for _, e in filtered_engines.items():
-        supports_selected_language = e.traits.is_locale_supported(
-            str(sxng_request.preferences.get_value('language') or 'all')
-        )
-        safesearch = e.safesearch
-        time_range_support = e.time_range_support
         supports[e.name] = {
-            'supports_selected_language': supports_selected_language,
-            'safesearch': safesearch,
-            'time_range_support': time_range_support,
+            'safesearch': e.safesearch,
+            'time_range_support': e.time_range_support,
         }
 
     return render(
