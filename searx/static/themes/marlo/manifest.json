@@ -1,11 +1,11 @@
 {
   "_DK4yUVpy.min.js": {
     "file": "chunk/DK4yUVpy.min.js",
-    "name": "assertElement"
+    "name": "assertelement"
   },
   "_DcK-mo-Y.min.js": {
     "file": "chunk/DcK-mo-Y.min.js",
-    "name": "getElement",
+    "name": "getelement",
     "imports": [
       "_DK4yUVpy.min.js"
     ]
@@ -57,7 +57,7 @@
     ]
   },
   "src/js/main/results.ts": {
-    "file": "chunk/v5qjpO6e.min.js",
+    "file": "chunk/B8prKeWj.min.js",
     "name": "results",
     "src": "src/js/main/results.ts",
     "isDynamicEntry": true,
@@ -78,7 +78,7 @@
   },
   "src/js/plugin/Calculator.ts": {
     "file": "chunk/DDL5uWMz.min.js",
-    "name": "Calculator",
+    "name": "calculator",
     "src": "src/js/plugin/Calculator.ts",
     "isDynamicEntry": true,
     "imports": [
@@ -88,7 +88,7 @@
   },
   "src/js/plugin/InfiniteScroll.ts": {
     "file": "chunk/DpvWr1cn.min.js",
-    "name": "InfiniteScroll",
+    "name": "infinitescroll",
     "src": "src/js/plugin/InfiniteScroll.ts",
     "isDynamicEntry": true,
     "imports": [
@@ -98,15 +98,15 @@
     ]
   },
   "src/js/plugin/MapView.ts": {
-    "file": "chunk/DYSbasjo.min.js",
-    "name": "MapView",
+    "file": "chunk/U6YV4Y8e.min.js",
+    "name": "mapview",
     "src": "src/js/plugin/MapView.ts",
     "isDynamicEntry": true,
     "imports": [
       "src/js/index.ts"
     ],
     "css": [
-      "sxng-MapView.min.css"
+      "sxng-mapview.min.css"
     ]
   },
   "src/less/rss.less": {
