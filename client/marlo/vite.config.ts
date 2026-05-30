@@ -69,6 +69,15 @@ export default {
             default:
               return "sxng-[name][extname]";
           }
+        },
+        sanitizeFileName: (name: string): string => {
+          return name
+            .normalize("NFD")
+            .replace(/[^a-zA-Z0-9.-]/g, "_")
+            .toLowerCase();
+        },
+        comments: {
+          legal: true
         }
       }
     }
@@ -113,16 +122,16 @@ export default {
     ),
 
     // SearXNG brand (static)
-     plg_svg2png([
-       {
-         src: `${PATH.brand}/searxng-wordmark.svg`,
-         dest: `${PATH.dist}/img/favicon.png`
-       },
-       {
-         src: `${PATH.brand}/searxng.svg`,
-         dest: `${PATH.dist}/img/searxng.png`
-       }
-     ]),
+    plg_svg2png([
+      {
+        src: `${PATH.brand}/searxng-wordmark.svg`,
+        dest: `${PATH.dist}/img/favicon.png`
+      },
+      {
+        src: `${PATH.brand}/searxng.svg`,
+        dest: `${PATH.dist}/img/searxng.png`
+      }
+    ]),
 
      // SearXNG PWA Icons (static)
      plg_svg2png(
