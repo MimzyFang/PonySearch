@@ -377,7 +377,6 @@ def get_client_settings():
         'theme_static_path': custom_url_for('static', filename='themes/simple'),
         'results_on_new_tab': req_pref.get_value('results_on_new_tab'),
         'favicon_resolver': req_pref.get_value('favicon_resolver'),
-        'advanced_search': req_pref.get_value('advanced_search'),
         'query_in_title': req_pref.get_value('query_in_title'),
         'safesearch': req_pref.get_value('safesearch'),
         'theme': req_pref.get_value('theme'),
@@ -804,7 +803,7 @@ def info(pagename, locale):
     )
 
 
-@app.route('/autocompleter', methods=['GET', 'POST'])
+@app.route('/autocompleter', methods=['GET'])
 def autocompleter():
     """Return autocompleter results"""
 
@@ -846,10 +845,12 @@ def autocompleter():
         mimetype = 'application/json'
     else:
         # the suggestion request comes from browser's URL bar
-        suggestions = json.dumps([sug_prefix, results])
+        relevances = {
+            'google:suggestrelevance': [600 - i for i in range(len(results))]
+        }  # chromium only shows 3 suggestions unless we attach relevances
+        suggestions = json.dumps([sug_prefix, results, [], [], relevances])
         mimetype = 'application/x-suggestions+json'
 
-    suggestions = escape(suggestions, False)
     return Response(suggestions, mimetype=mimetype)
 
 
@@ -977,7 +978,7 @@ def preferences():
         current_doi_resolver = get_doi_resolver(),
         allowed_plugins = allowed_plugins,
         preferences_url_params = sxng_request.preferences.get_as_url_params(),
-        locked_preferences = get_setting("preferences.lock", []),
+        locked_preferences = get_setting("preferences").lock,
         doi_resolvers = get_setting("doi_resolvers", {}),
         # fmt: on
     )
@@ -1076,10 +1077,9 @@ def engine_descriptions():
         result[engine] = description
 
     # overwrite by about:description (from settings)
-    for engine_name, engine_mod in engines.items():
-        descr = getattr(engine_mod, 'about', {}).get('description', None)
-        if descr is not None:
-            result[engine_name] = [descr, "SearXNG config"]
+    for eng_name, eng_obj in engines.items():
+        if eng_obj.about.description:
+            result[eng_name] = [eng_obj.about.description, "SearXNG config"]
 
     return jsonify(result)
 
@@ -1195,7 +1195,7 @@ def opensearch():
         method = 'GET'
 
     if method not in ('POST', 'GET'):
-        method = 'POST'
+        method = 'GET'
 
     ret = render('opensearch.xml', opensearch_method=method, autocomplete=autocomplete)
     resp = Response(response=ret, status=200, mimetype="application/opensearchdescription+xml")
@@ -1349,6 +1349,8 @@ def run():
 
 def init():
 
+    # pylint: disable=import-outside-toplevel
+
     if searx.sxng_debug or app.debug:
         app.debug = True
         searx.sxng_debug = True
@@ -1359,6 +1361,18 @@ def init():
         logger.error("server.secret_key is not changed. Please use something else instead of ultrasecretkey.")
         sys.exit(1)
 
+    # init database schema first / DB schema is created with the first connect
+    from searx.data import get_cache
+    from searx.enginelib import ENGINES_CACHE
+
+    conn = get_cache().connect()
+    conn.close()
+    conn = ENGINES_CACHE.connect()
+    conn.close()
+
+    favicons.init()
+
+    # init application
     locales_initialize()
     valkey_initialize()
     searx.plugins.initialize(app)
@@ -1367,7 +1381,6 @@ def init():
     searx.search.initialize(check_network=True, enable_metrics=metrics)
 
     limiter.initialize(app, settings)
-    favicons.init()
 
 
 def static_headers(headers: Headers, _path: str, _url: str) -> None:

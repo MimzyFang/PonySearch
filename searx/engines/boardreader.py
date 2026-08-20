@@ -34,6 +34,7 @@ about = {
 categories = ["general", "social media"]
 paging = True
 time_range_support = True
+language_support = True
 
 base_url = "https://boardreader.com"
 time_range_map = {"day": "1", "week": "7", "month": "30", "year": "365"}
@@ -103,7 +104,7 @@ def response(resp: "SXNG_Response") -> EngineResults:
                 title=_remove_keyword_marker(result["Subject"]),
                 content=_remove_keyword_marker(result["Text"]),
                 url=result["Url"],
-                publishedDate=datetime.strptime(result["Published"], "%Y-%m-%d %H:%M:%S"),
+                publishedDate=datetime.fromisoformat(result["Published"]),
                 metadata=gettext.gettext("Posted by {author}").format(author=result["Author"]),
             )
         )

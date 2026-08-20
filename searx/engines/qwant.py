@@ -38,6 +38,7 @@ Implementations
 
 """
 
+import random
 import typing as t
 
 from datetime import (
@@ -50,6 +51,7 @@ from urllib.parse import urlencode
 import babel
 from flask_babel import gettext  # pyright: ignore[reportUnknownVariableType]
 
+from searx.enginelib import EngineCache
 from searx.enginelib.traits import EngineTraits
 from searx.exceptions import (
     SearxEngineAccessDeniedException,
@@ -89,6 +91,11 @@ qwant_categ: str = None  # pyright: ignore[reportAssignmentType]
 
 safesearch = True
 
+# tgp seems to be short for "test group" - its actual value doesn't matter, as
+# long as it's sent and at the correct position in the query params and doesn't
+# change too frequently
+test_group_value = random.randint(1, 3)
+
 # fmt: off
 qwant_news_locales = [
     "ca_ad", "ca_es", "ca_fr", "co_fr", "de_at", "de_ch", "de_de", "en_au",
@@ -99,8 +106,18 @@ qwant_news_locales = [
 ]
 # fmt: on
 
+base_url = "https://www.qwant.com"
 api_url = "https://api.qwant.com/v3/search/"
 """URL of Qwant's API (JSON)"""
+
+CACHE: EngineCache
+"""Cache for storing the ``datadome`` cookie."""
+
+
+def setup(engine_settings: dict[str, t.Any]) -> bool:
+    global CACHE  # pylint: disable=global-statement
+    CACHE = EngineCache(engine_settings["name"])
+    return True
 
 
 def request(query: str, params: "OnlineParams") -> None:
@@ -114,25 +131,37 @@ def request(query: str, params: "OnlineParams") -> None:
     results_per_page = 10
     if qwant_categ == "images":
         results_per_page = 50
+
     args = {
         "q": query,
         "count": results_per_page,
         "locale": q_locale,
         "offset": (params["pageno"] - 1) * results_per_page,
+        "tgp": test_group_value,
         "device": "desktop",
         "safesearch": params["safesearch"],
-        "tgp": 1,
-        "display": True,
-        "llm": True,
+        # True would be encoded to "True", instead of "true", which makes the request
+        # easier to detect and block
+        "displayed": "true",
+        "llm": "true",
     }
+
     params["raise_for_httperror"] = False
 
     params["url"] = f"{api_url}{qwant_categ}?{urlencode(args)}"
+
+    params["cookies"]["datadome"] = CACHE.get("datadome")
+    params["headers"].update({"Accept": "application/json", "Referer": f"{base_url}/", "Origin": base_url})
 
 
 def response(resp: "SXNG_Response") -> EngineResults:
     """Parse results from Qwant's API"""
     # pylint: disable=too-many-locals, too-many-branches, too-many-statements
+
+    # cache datadome cookie - changes on each request
+    datadome = resp.cookies.get("datadome")
+    if datadome:
+        CACHE.set("datadome", datadome)
 
     res = EngineResults()
 
@@ -150,8 +179,8 @@ def response(resp: "SXNG_Response") -> EngineResults:
         error_code = data.get("error_code")
         if error_code == 24:
             raise SearxEngineTooManyRequestsException()
-        if search_results.get("data", {}).get("error_data", {}).get("captchaUrl") is not None:
-            raise SearxEngineCaptchaException()
+        if search_results.get("url") is not None:
+            raise SearxEngineCaptchaException(suspended_time=0)
         if resp.status_code == 403:
             raise SearxEngineAccessDeniedException()
         msg = ",".join(data.get("message", ["unknown"]))
@@ -190,7 +219,6 @@ def response(resp: "SXNG_Response") -> EngineResults:
 
         mainline_items: list[dict[str, t.Any]] = row.get("items", [])
         for item in mainline_items:
-
             title: str = item.get("title", "")
             res_url: str = item.get("url", "")
             pub_date: datetime | None = None
@@ -290,7 +318,7 @@ def fetch_traits(engine_traits: EngineTraits):
     from searx.utils import extr
 
     resp = get(
-        about["website"],  # pyright: ignore[reportArgumentType]
+        base_url,  # pyright: ignore[reportArgumentType]
         timeout=5,
     )
     if not resp.ok:

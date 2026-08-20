@@ -15,6 +15,7 @@ import msgspec
 from typing_extensions import override
 from .brand import SettingsBrand
 from .sxng_locales import sxng_locales
+from ._settings import SettingsPref
 
 searx_dir = abspath(dirname(__file__))
 
@@ -146,6 +147,8 @@ def apply_schema(settings: dict[str, t.Any], schema: dict[str, t.Any], path_list
                 # Type Validation at runtime:
                 # https://jcristharif.com/msgspec/structs.html#type-validation
                 cfg_dict = settings.get(key)
+                if cfg_dict is None:
+                    cfg_dict = {}
                 cfg_json = msgspec.json.encode(cfg_dict)
                 settings[key] = msgspec.json.decode(cfg_json, type=value)
             except msgspec.ValidationError as e:
@@ -189,7 +192,7 @@ SCHEMA: dict[str, t.Any] = {
     'brand': SettingsBrand,
     'search': {
         'safe_search': SettingsValue((0, 1, 2), 0),
-        'autocomplete': SettingsValue(str, ''),
+        'autocomplete': SettingsValue(str, 'duckduckgo'),
         'autocomplete_min': SettingsValue(int, 4),
         'favicon_resolver': SettingsValue(str, ''),
         'default_lang': SettingsValue(tuple(SXNG_LOCALE_TAGS + ['']), ''),
@@ -216,7 +219,7 @@ SCHEMA: dict[str, t.Any] = {
         'base_url': SettingsValue((False, str), False, 'SEARXNG_BASE_URL'),
         'image_proxy': SettingsValue(bool, False, 'SEARXNG_IMAGE_PROXY'),
         'http_protocol_version': SettingsValue(('1.0', '1.1'), '1.0'),
-        'method': SettingsValue(('POST', 'GET'), 'POST', 'SEARXNG_METHOD'),
+        'method': SettingsValue(('POST', 'GET'), 'GET', 'SEARXNG_METHOD'),
         'default_http_headers': SettingsValue(dict, {}),
     },
     # redis is deprecated ..
@@ -236,16 +239,13 @@ SCHEMA: dict[str, t.Any] = {
         },
         'center_alignment': SettingsValue(bool, False),
         'results_on_new_tab': SettingsValue(bool, False),
-        'advanced_search': SettingsValue(bool, False),
         'query_in_title': SettingsValue(bool, False),
         'cache_url': SettingsValue(str, 'https://web.archive.org/web/'),
         'search_on_category_select': SettingsValue(bool, True),
         'hotkeys': SettingsValue(('default', 'vim'), 'default'),
         'url_formatting': SettingsValue(('pretty', 'full', 'host'), 'pretty'),
     },
-    'preferences': {
-        'lock': SettingsValue(list, []),
-    },
+    "preferences": SettingsPref,
     'outgoing': {
         'useragent_suffix': SettingsValue(str, ''),
         'request_timeout': SettingsValue(numbers.Real, 3.0),

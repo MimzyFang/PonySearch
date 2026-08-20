@@ -17,13 +17,15 @@
 # yoonhahwang <yoonhahwang@noreply.codeberg.org>, 2025.
 # choonarine <choonarine@noreply.codeberg.org>, 2025.
 # pywc <pywc@noreply.codeberg.org>, 2025.
+# daemul72 <daemul72@noreply.codeberg.org>, 2026.
+# lugged9922 <lugged9922@noreply.codeberg.org>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-25 10:44+0000\n"
-"PO-Revision-Date: 2026-05-19 12:07+0000\n"
-"Last-Translator: return42 <return42@noreply.codeberg.org>\n"
+"POT-Creation-Date: 2026-07-15 15:45+0000\n"
+"PO-Revision-Date: 2026-06-19 05:08+0000\n"
+"Last-Translator: lugged9922 <lugged9922@noreply.codeberg.org>\n"
 "Language: ko\n"
 "Language-Team: Korean "
 "<https://translate.codeberg.org/projects/searxng/searxng/ko/>\n"
@@ -74,7 +76,7 @@ msgid "videos"
 msgstr "비디오"
 
 #. CATEGORY_NAMES['RADIO']
-#: searx/engines/radio_browser.py:146 searx/searxng.msg
+#: searx/engines/radio_browser.py:160 searx/searxng.msg
 msgid "radio"
 msgstr "라디오"
 
@@ -548,8 +550,8 @@ msgstr "응답"
 msgid "No item found"
 msgstr "검색 결과가 없습니다"
 
-#: searx/engines/qwant.py:291
-#: searx/templates/simple/result_templates/images.html:23 searx/webapp.py:328
+#: searx/engines/qwant.py:286
+#: searx/templates/simple/result_templates/images.html:62 searx/webapp.py:328
 msgid "Source"
 msgstr "소스"
 
@@ -557,15 +559,15 @@ msgstr "소스"
 msgid "Error loading the next page"
 msgstr "다음 페이지를 로드하는 동안 오류가 발생했습니다"
 
-#: searx/webapp.py:479 searx/webapp.py:877
+#: searx/webapp.py:478 searx/webapp.py:876
 msgid "Invalid settings, please edit your preferences"
 msgstr "잘못된 설정입니다, 설정을 수정하세요"
 
-#: searx/webapp.py:495
+#: searx/webapp.py:494
 msgid "Invalid settings"
 msgstr "잘못된 설정"
 
-#: searx/webapp.py:571 searx/webapp.py:661
+#: searx/webapp.py:570 searx/webapp.py:660
 msgid "search error"
 msgstr "검색 오류"
 
@@ -644,10 +646,10 @@ msgstr "다른 난수 생성"
 msgid "Compute {func} of the arguments"
 msgstr "인수들의 {func}를 계산하세요"
 
-#: searx/engines/boardreader.py:107
+#: searx/engines/boardreader.py:108
 #, python-brace-format
 msgid "Posted by {author}"
-msgstr ""
+msgstr "작성자: {author}"
 
 #: searx/engines/openstreetmap.py:155
 msgid "Show route in map .."
@@ -662,19 +664,19 @@ msgstr "{title} (사용되지 않음)"
 msgid "This entry has been superseded by"
 msgstr "이 항목은 다음으로 대체되었습니다"
 
-#: searx/engines/qwant.py:293
+#: searx/engines/qwant.py:288
 msgid "Channel"
 msgstr "채널"
 
-#: searx/engines/radio_browser.py:148
+#: searx/engines/radio_browser.py:162
 msgid "bitrate"
 msgstr "비트 레이트"
 
-#: searx/engines/radio_browser.py:149
+#: searx/engines/radio_browser.py:163
 msgid "votes"
 msgstr "표"
 
-#: searx/engines/radio_browser.py:150
+#: searx/engines/radio_browser.py:164
 msgid "clicks"
 msgstr "클릭"
 
@@ -708,15 +710,15 @@ msgstr ""
 msgid "The image could not be downloaded."
 msgstr "다운로드할 수 없는 이미지입니다."
 
-#: searx/engines/zlibrary.py:79
+#: searx/engines/zlibrary.py:80
 msgid "Language"
 msgstr "언어"
 
-#: searx/engines/zlibrary.py:80
+#: searx/engines/zlibrary.py:81
 msgid "Book rating"
 msgstr "책 평점"
 
-#: searx/engines/zlibrary.py:81
+#: searx/engines/zlibrary.py:82
 msgid "File quality"
 msgstr "파일 품질"
 
@@ -730,11 +732,11 @@ msgstr "Onion 검색 결과중 Ahmia 블랙리스트에 포함된 페이지를 �
 
 #: searx/plugins/calculator.py:25
 msgid "Calculator"
-msgstr ""
+msgstr "계산기"
 
 #: searx/plugins/calculator.py:26
 msgid "Parses and solves mathematical expressions."
-msgstr ""
+msgstr "수식들을 분석하고 풀이합니다."
 
 #: searx/plugins/hash_plugin.py:33
 msgid "Hash plugin"
@@ -919,7 +921,7 @@ msgstr "조회수"
 
 #: searx/templates/simple/macros.html:43
 #: searx/templates/simple/result_templates/file.html:18
-#: searx/templates/simple/result_templates/images.html:19
+#: searx/templates/simple/result_templates/images.html:52
 #: searx/templates/simple/result_templates/paper.html:14
 msgid "Author"
 msgstr "저자"
@@ -969,15 +971,15 @@ msgstr "오류:"
 msgid ""
 "This is a preview of the settings used by the 'Search URL' you used to "
 "get here."
-msgstr ""
+msgstr "이는 사용자가 이 페이지에 접속하기 위해 사용한 '검색 URL'에서 사용되는 설정의 미리보기입니다."
 
 #: searx/templates/simple/preferences.html:158
 msgid "Press save to copy these preferences to your browser."
-msgstr ""
+msgstr "이 설정을 브라우저에 복사하려면 '저장'을 누르세요."
 
 #: searx/templates/simple/preferences.html:159
 msgid "Click here to view your browser preferences instead:"
-msgstr ""
+msgstr "브라우저 설정을 확인하려면 여기를 클릭하세요:"
 
 #: searx/templates/simple/preferences.html:169
 msgid "General"
@@ -996,6 +998,7 @@ msgid "Privacy"
 msgstr "개인정보 보호"
 
 #: searx/templates/simple/preferences.html:235
+#: searx/templates/simple/result_templates/images.html:63
 msgid "Engines"
 msgstr "검색엔진"
 
@@ -1592,7 +1595,7 @@ msgid "This site did not provide any description."
 msgstr "사이트에서 소개를 제공하지 않았습니다."
 
 #: searx/templates/simple/result_templates/file.html:30
-#: searx/templates/simple/result_templates/images.html:22
+#: searx/templates/simple/result_templates/images.html:61
 #: searx/templates/simple/result_templates/torrent.html:18
 msgid "Filesize"
 msgstr "파일 크기"
@@ -1610,19 +1613,19 @@ msgstr "분류"
 msgid "Download"
 msgstr "다운로드"
 
-#: searx/templates/simple/result_templates/images.html:20
+#: searx/templates/simple/result_templates/images.html:53
 msgid "Resolution"
 msgstr "해상도"
 
-#: searx/templates/simple/result_templates/images.html:21
-msgid "Format"
-msgstr "포멧"
+#: searx/templates/simple/result_templates/images.html:55
+msgid "Image formats"
+msgstr "이미지 형식"
 
-#: searx/templates/simple/result_templates/images.html:24
-msgid "Engine"
-msgstr "검색엔진"
+#: searx/templates/simple/result_templates/images.html:56
+msgid "original format"
+msgstr "원본 형식"
 
-#: searx/templates/simple/result_templates/images.html:25
+#: searx/templates/simple/result_templates/images.html:64
 msgid "View source"
 msgstr "소스 보기"
 
@@ -2192,4 +2195,10 @@ msgstr "비디오 숨기기"
 
 #~ msgid "Number of results"
 #~ msgstr "결과 수"
+
+#~ msgid "Format"
+#~ msgstr "포멧"
+
+#~ msgid "Engine"
+#~ msgstr "검색엔진"
 

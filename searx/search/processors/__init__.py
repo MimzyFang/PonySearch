@@ -11,10 +11,12 @@ __all__ = [
     "PROCESSORS",
     "ParamTypes",
     "RequestParams",
+    "ProcessorType",
 ]
 
 import typing as t
 
+import os
 from searx import logger
 from searx import engines
 
@@ -26,6 +28,14 @@ from .online_currency import OnlineCurrencyProcessor, OnlineCurrenciesParams
 from .online_url_search import OnlineUrlSearchProcessor, OnlineUrlSearchParams
 
 logger = logger.getChild("search.processors")
+
+ProcessorType = t.Literal[
+    "offline",
+    "online",
+    "online_currency",
+    "online_dictionary",
+    "online_url_search",
+]
 
 OnlineParamTypes: t.TypeAlias = OnlineParams | OnlineDictParams | OnlineCurrenciesParams | OnlineUrlSearchParams
 OfflineParamTypes: t.TypeAlias = RequestParams
@@ -83,7 +93,9 @@ class ProcessorMap(dict[str, EngineProcessor]):
             self[eng_proc.engine.name] = eng_proc
             # logger.debug("registered engine processor: %s", eng_proc.engine.name)
         else:
-            logger.error("can't register engine processor: %s (init failed)", eng_proc.engine.name)
+            logger.error(
+                f"(PID {os.getpid()}) {eng_proc.engine.name}: can't register engines processor (init engine failed)"
+            )
 
         return eng_proc_ok
 

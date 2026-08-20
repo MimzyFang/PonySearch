@@ -4,7 +4,6 @@
 .. _Odysee: https://github.com/OdyseeTeam/odysee-frontend
 """
 
-import time
 from datetime import datetime
 from urllib.parse import urlencode
 
@@ -12,6 +11,7 @@ import babel
 
 from searx.enginelib.traits import EngineTraits
 from searx.locales import language_tag
+from searx.utils import format_duration
 
 # Engine metadata
 about = {
@@ -26,6 +26,7 @@ about = {
 # Engine configuration
 paging = True
 time_range_support = True
+language_support = True
 results_per_page = 20
 categories = ["videos"]
 
@@ -61,15 +62,6 @@ def request(query, params):
     return params
 
 
-# Format the video duration
-def format_duration(duration):
-    seconds = int(duration)
-    length = time.gmtime(seconds)
-    if length.tm_hour:
-        return time.strftime("%H:%M:%S", length)
-    return time.strftime("%M:%S", length)
-
-
 def response(resp):
     data = resp.json()
     results = []
@@ -84,7 +76,7 @@ def response(resp):
         release_time = item["release_time"]
         duration = item["duration"]
 
-        release_date = datetime.strptime(release_time.split("T")[0], "%Y-%m-%d")
+        release_date = datetime.fromisoformat(release_time.split("T")[0])
         formatted_date = datetime.fromtimestamp(release_date.timestamp())
 
         url = f"https://odysee.com/{name}:{claim_id}"

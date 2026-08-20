@@ -21,6 +21,8 @@ from searx.engines import (
 from searx.network import get as http_get, post as http_post
 from searx.exceptions import SearxEngineResponseException
 from searx.utils import extr, gen_useragent
+from searx.data import ENGINE_TRAITS
+from searx.enginelib.traits import EngineTraits
 
 if t.TYPE_CHECKING:
     from searx.extended_types import SXNG_Response
@@ -60,7 +62,7 @@ def bing(query: str, _sxng_locale: str) -> list[str]:
     # bing search autocompleter
     base_url = "https://www.bing.com/AS/Suggestions?"
     # cvid has to be a 32 character long string consisting of numbers and uppsercase characters
-    cvid = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(32))
+    cvid = ''.join(random.choices(string.ascii_uppercase + string.digits, k=32))
     response = get(base_url + urlencode({'qry': query, 'csr': 1, 'cvid': cvid}))
     results: list[str] = []
 
@@ -133,7 +135,9 @@ def google_complete(query: str, sxng_locale: str) -> list[str]:
 
     """
 
-    google_info: dict[str, t.Any] = google.get_google_info({'searxng_locale': sxng_locale}, engines['google'].traits)
+    data = ENGINE_TRAITS.get("google") or {}
+    traits = EngineTraits(**data)
+    google_info: dict[str, t.Any] = google.get_google_info({'searxng_locale': sxng_locale}, traits)
     url = 'https://{subdomain}/complete/search?{args}'
     args = urlencode(
         {
@@ -150,6 +154,24 @@ def google_complete(query: str, sxng_locale: str) -> list[str]:
         data = json.loads(json_txt)
         for item in data[0]:
             results.append(lxml.html.fromstring(item[0]).text_content())
+    return results
+
+
+def kagi(query: str, sxng_locale: str) -> list[str]:
+    """Autocomplete from Kagi."""
+
+    args: dict[str, str] = {'q': query}
+
+    if '-' in sxng_locale:
+        args['r'] = sxng_locale.split('-')[1].lower()
+
+    resp = get("https://kagisuggest.com/api/autosuggest?" + urlencode(args))
+    results: list[str] = []
+
+    if resp.ok:
+        data = resp.json()
+        if len(data) > 1:
+            results = data[1]
     return results
 
 
@@ -177,6 +199,23 @@ def naver(query: str, _sxng_locale: str) -> list[str]:
             for item in data['items'][0]:
                 results.append(item[0])
     return results
+
+
+def privacywall(query: str, sxng_locale: str) -> list[str]:
+    # Privacywall search autocompleter
+    country = None
+    if "-" in sxng_locale:
+        country = sxng_locale.split("-")[1]
+    args = {'q': query, 'cc': country}
+
+    url = f"https://www.privacywall.org/search/secure/suggestions.php?{urlencode(args)}"
+    response = get(url)
+
+    if not response.ok:
+        return []
+
+    data: list[list[str]] = response.json()
+    return data[1]
 
 
 def qihu360search(query: str, _sxng_locale: str) -> list[str]:
@@ -359,8 +398,10 @@ backends: dict[str, t.Callable[[str, str], list[str]]] = {
     'dbpedia': dbpedia,
     'duckduckgo': duckduckgo,
     'google': google_complete,
+    'kagi': kagi,
     'mwmbl': mwmbl,
     'naver': naver,
+    'privacywall': privacywall,
     'quark': quark,
     'qwant': qwant,
     'seznam': seznam,
