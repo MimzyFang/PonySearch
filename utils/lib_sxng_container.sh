@@ -230,6 +230,8 @@ container.push() {
         set -e
 
         podman image list
+        local raw_owner="${GITHUB_REPOSITORY_OWNER:-"searxng"}"
+        local lower_owner="${raw_owner,,}"
 
         for registry in "${release_registries[@]}"; do
             for tag in "${release_tags[@]}"; do
@@ -237,7 +239,7 @@ container.push() {
 
                 podman manifest push --all \
                     "localhost/searxng/searxng:$tag" \
-                    "docker://$registry/${GITHUB_REPOSITORY_OWNER:-"searxng"}/searxng:$tag"
+                    "docker://$registry/$lower_owner/ponysearch:$tag"
             done
         done
     )
