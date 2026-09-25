@@ -3,6 +3,7 @@
 """
 Derpibooru (Images)
 """
+
 from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 from json import loads
 
