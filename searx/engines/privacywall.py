@@ -10,14 +10,12 @@ user information with Microsoft and Amazon.
 import typing as t
 from urllib.parse import urlencode, unquote_plus
 
-from lxml import html
 import babel
 
 from searx.enginelib.traits import EngineTraits
-from searx.utils import eval_xpath_list, eval_xpath, extract_text, get_embeded_stream_url, extr
+from searx.utils import eval_xpath_list, eval_xpath, extract_text, extr
 from searx.locales import region_tag
 from searx.result_types import EngineResults
-
 
 if t.TYPE_CHECKING:
     from lxml.etree import ElementBase
@@ -61,7 +59,7 @@ video_page_map = {
 }
 
 
-def init(_):
+def setup(_: dict[str, t.Any]) -> bool | None:
     if privacywall_category not in ("general", "images", "videos"):
         raise ValueError("invalid category: %s" % privacywall_category)
 
@@ -148,13 +146,11 @@ def _video_results(doc: "ElementBase") -> EngineResults:
             thumbnail = _extract_thumbnail_url(extr(thumbnail_style, ":url(", ")"))
 
         res.add(
-            res.types.LegacyResult(
-                template="videos.html",
+            res.types.Video(
                 url=url,
                 title=extract_text(eval_xpath(result, ".//h2[contains(@class, 'video-card-title')]")) or "",
                 content=extract_text(eval_xpath(result, ".//p")) or "",
                 thumbnail=thumbnail or "",
-                iframe_src=get_embeded_stream_url(url) or "",
             )
         )
 
@@ -162,7 +158,7 @@ def _video_results(doc: "ElementBase") -> EngineResults:
 
 
 def response(resp: "SXNG_Response") -> EngineResults:
-    doc = html.fromstring(resp.text)
+    doc = resp.html()
     match privacywall_category:
         case "general":
             return _general_results(doc)
@@ -189,7 +185,7 @@ def fetch_traits(engine_traits: EngineTraits) -> None:
     if not resp.ok:
         raise RuntimeError("Response from Privacywall is not OK.")
 
-    dom = html.fromstring(resp.text)
+    dom = resp.html()
 
     # <div class="dropdown-option" onclick="changeMenuLanguage(&quot;CZ&quot;)"></div>
     for onclick_listener in eval_xpath(

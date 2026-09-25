@@ -2,6 +2,8 @@
 # pylint: disable=line-too-long
 """Naver for SearXNG"""
 
+import typing as t
+
 from urllib.parse import urlencode
 from lxml import html
 
@@ -16,7 +18,6 @@ from searx.utils import (
     html_to_text,
     parse_duration_string,
     js_obj_str_to_python,
-    get_embeded_stream_url,
 )
 
 # engine metadata
@@ -67,7 +68,7 @@ naver_category_dict = {
 }
 
 
-def init(_):
+def setup(_: dict[str, t.Any]) -> bool | None:
     if naver_category not in ('general', 'images', 'news', 'videos'):
         raise SearxEngineAPIException(f"Unsupported category: {naver_category}")
 
@@ -135,9 +136,9 @@ def parse_general(data):
 def parse_images(data):
     results = []
 
-    match = extr(data, '<script>var imageSearchTabData=', '</script>')
+    match = extr(data, 'var imageSearchTabData =', '</script>')
     if match:
-        json = js_obj_str_to_python(match.strip())
+        json = js_obj_str_to_python(match.strip().rstrip(';'))
         items = json.get('content', {}).get('items', [])
 
         for item in items:
@@ -193,14 +194,14 @@ def parse_news(data):
 
 
 def parse_videos(data):
-    results = []
+    res = EngineResults()
 
     dom = html.fromstring(data)
 
     for item in eval_xpath_list(dom, "//li[contains(@class, 'video_item')]"):
         url = eval_xpath_getindex(item, ".//a[contains(@class, 'info_title')]/@href", 0)
 
-        thumbnail = None
+        thumbnail = ""
         try:
             thumbnail = eval_xpath_getindex(item, ".//img[contains(@class, 'thumb')]/@src", 0)
         except (ValueError, TypeError, SearxEngineXPathException):
@@ -212,15 +213,13 @@ def parse_videos(data):
         except (ValueError, TypeError):
             pass
 
-        results.append(
-            {
-                "template": "videos.html",
-                "title": extract_text(eval_xpath(item, ".//a[contains(@class, 'info_title')]")),
-                "url": url,
-                "thumbnail": thumbnail,
-                "length": length,
-                "iframe_src": get_embeded_stream_url(url),
-            }
+        res.add(
+            res.types.Video(
+                title=extract_text(eval_xpath(item, ".//a[contains(@class, 'info_title')]")) or "",
+                url=url,
+                thumbnail=thumbnail,
+                length=length,
+            )
         )
 
-    return results
+    return res

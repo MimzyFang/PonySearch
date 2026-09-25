@@ -4,12 +4,9 @@
 import json
 from urllib.parse import urlencode
 
-from lxml import html
-
 from searx.engines.bing import (  # pylint: disable=unused-import
     fetch_traits,
     get_locale_params,
-    override_accept_language,
 )
 from searx.engines.bing_images import time_map
 from searx.utils import eval_xpath, eval_xpath_getindex
@@ -26,6 +23,7 @@ about = {
 # engine dependent config
 categories = ["videos", "web"]
 paging = True
+enable_http3 = True
 safesearch = True
 time_range_support = True
 
@@ -37,8 +35,6 @@ def request(query, params):
     """Assemble a Bing-Video request."""
 
     engine_region = traits.get_region(params["searxng_locale"], traits.all_locale)
-
-    override_accept_language(params, engine_region)
 
     # build URL query
     # - example: https://www.bing.com/videos/asyncv2?q=foo&async=content&first=1&count=35
@@ -70,7 +66,7 @@ def response(resp):
 
     results = []
 
-    dom = html.fromstring(resp.text)
+    dom = resp.html()
 
     for result in dom.xpath('//div[contains(@id, "mc_vtvc_video")]'):
         metadata = json.loads(eval_xpath_getindex(result, './/div[@class="vrhdata"]/@vrhm', index=0))

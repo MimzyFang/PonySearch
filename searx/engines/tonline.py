@@ -12,9 +12,7 @@ results from YouTube.
 import typing as t
 from urllib.parse import urlencode
 
-from lxml import html
-
-from searx.utils import eval_xpath_list, eval_xpath, extract_text, get_embeded_stream_url, ElementType
+from searx.utils import eval_xpath_list, eval_xpath, extract_text, ElementType
 from searx.result_types import EngineResults
 from searx.enginelib import EngineAbout
 
@@ -44,7 +42,7 @@ tonline_channel_map = {"images": "flickr", "videos": "yt"}
 language = "de"
 
 
-def init(_):
+def setup(_: dict[str, t.Any]) -> bool | None:
     if tonline_categ not in ("web", "images", "videos", "news"):
         raise ValueError("invalid category: %s" % tonline_categ)
 
@@ -121,18 +119,16 @@ def _video_results(doc: ElementType, res: EngineResults):
             continue
         title_parts: list[ElementType] = eval_xpath(result, ".//a[starts-with(@class, 'tMMReshl')]")
         res.add(
-            res.types.LegacyResult(
-                template="videos.html",
+            res.types.Video(
                 url=url,
                 title=" - ".join(extract_text(part) or "" for part in title_parts),
                 thumbnail=extract_text(eval_xpath(result, ".//img/@src") or "") or "",
-                iframe_src=get_embeded_stream_url(url) or "",
             )
         )
 
 
 def response(resp: "SXNG_Response") -> EngineResults:
-    doc = html.fromstring(resp.text)
+    doc = resp.html()
     res = EngineResults()
     match tonline_categ:
         case "web":

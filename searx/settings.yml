@@ -183,20 +183,13 @@ outgoing:
   useragent_suffix: ""
   # The maximum number of concurrent connections that may be established.
   pool_connections: 100
-  # Allow the connection pool to maintain keep-alive connections below this
-  # point.
-  pool_maxsize: 20
-  # See https://www.python-httpx.org/http2/
+  # Enables the use of HTTP2
   enable_http2: true
   # uncomment below section if you want to use a custom server certificate
-  # see https://www.python-httpx.org/advanced/#changing-the-verification-defaults
-  # and https://www.python-httpx.org/compatibility/#ssl-configuration
+  # see https://curl-cffi.readthedocs.io/en/latest/quick_start.html
   #  verify: ~/.mitmproxy/mitmproxy-ca-cert.cer
   #
-  # uncomment below section if you want to use a proxyq see: SOCKS proxies
-  #   https://2.python-requests.org/en/latest/user/advanced/#proxies
-  # are also supported: see
-  #   https://2.python-requests.org/en/latest/user/advanced/#socks
+  # uncomment below section if you want to use a proxy
   #
   #  proxies:
   #    all://:
@@ -287,6 +280,7 @@ plugins:
 categories_as_tabs:
   general:
   images:
+  # stock images:
   videos:
   news:
   map:
@@ -311,7 +305,6 @@ engines:
   - name: 500px
     engine: 500px
     shortcut: "500"
-    disabled: true
     timeout: 5
 
   - name: 9gag
@@ -340,36 +333,6 @@ engines:
   - name: acfun
     engine: acfun
     shortcut: acf
-    disabled: true
-
-  - name: adobe stock
-    engine: adobe_stock
-    shortcut: asi
-    categories: ["images"]
-    # https://docs.searxng.org/dev/engines/online/adobe_stock.html
-    adobe_order: relevance
-    adobe_content_types: ["photo", "illustration", "zip_vector", "template", "3d", "image"]
-    timeout: 6
-    disabled: true
-
-  - name: adobe stock video
-    engine: adobe_stock
-    shortcut: asv
-    network: adobe stock
-    categories: ["videos"]
-    adobe_order: relevance
-    adobe_content_types: ["video"]
-    timeout: 6
-    disabled: true
-
-  - name: adobe stock audio
-    engine: adobe_stock
-    shortcut: asa
-    network: adobe stock
-    categories: ["music"]
-    adobe_order: relevance
-    adobe_content_types: ["audio"]
-    timeout: 6
     disabled: true
 
   - name: astrophysics data system
@@ -465,6 +428,7 @@ engines:
     engine: artic
     shortcut: arc
     timeout: 4.0
+    disabled: true
 
   - name: artstation
     engine: artstation
@@ -627,6 +591,7 @@ engines:
     engine: openverse
     categories: images
     shortcut: opv
+    disabled: true
 
   - name: media.ccc.de
     engine: ccc_media
@@ -639,11 +604,6 @@ engines:
   - name: cachy os packages
     engine: cachy_os
     shortcut: cos
-    disabled: true
-
-  - name: cara
-    engine: cara
-    shortcut: ca
     disabled: true
 
   # - name: chatnoir
@@ -767,6 +727,7 @@ engines:
     engine: devicons
     shortcut: di
     timeout: 3.0
+    disabled: true
 
   - name: ddg definitions
     engine: duckduckgo_definitions
@@ -803,6 +764,10 @@ engines:
       use_official_api: true
       require_api_key: false
       results: JSON
+
+  - name: europepmc
+    engine: europepmc
+    shortcut: epmc
 
   - name: erowid
     engine: xpath
@@ -957,7 +922,6 @@ engines:
     engine: www1x
     shortcut: 1x
     timeout: 3.0
-    disabled: true
 
   - name: fastbot
     engine: xpath
@@ -981,6 +945,35 @@ engines:
     engine: fdroid
     shortcut: fd
     disabled: true
+
+  - name: findborg
+    engine: findborg
+    shortcut: fi
+    findborg_categ: search
+    categories: general
+    inactive: true
+
+  - name: findborg images
+    engine: findborg
+    shortcut: fii
+    paging: false
+    findborg_categ: images
+    categories: images
+    inactive: true
+
+  - name: findborg videos
+    engine: findborg
+    shortcut: fiv
+    findborg_categ: videos
+    categories: videos
+    inactive: true
+
+  - name: findborg news
+    engine: findborg
+    shortcut: fin
+    findborg_categ: news
+    categories: news
+    inactive: true
 
   - name: findfiles
     engine: findfiles
@@ -1042,9 +1035,9 @@ engines:
     disabled: true
 
   - name: flickr
-    categories: images
     shortcut: fl
     engine: flickr_noapi
+    disabled: true
 
   - name: flickr_api
     # You can use the engine using the official stable API, but you need an API
@@ -1248,7 +1241,7 @@ engines:
 
   - name: google play apps
     engine: google_play
-    categories: [files, apps]
+    categories: [it, apps]
     shortcut: gpa
     play_categ: apps
     disabled: true
@@ -1296,22 +1289,6 @@ engines:
     shortcut: hn
     disabled: true
 
-  - name: heexy
-    engine: heexy
-    categories: general
-    heexy_categ: web
-    shortcut: he
-    disabled: true
-    inactive: true
-
-  - name: heexy images
-    engine: heexy
-    categories: images
-    heexy_categ: image
-    shortcut: hei
-    disabled: true
-    inactive: true
-
   - name: hex
     engine: hex
     shortcut: hex
@@ -1343,6 +1320,11 @@ engines:
       use_official_api: false
       require_api_key: false
       results: JSON
+
+  - name: iconify
+    engine: iconify
+    shortcut: ico
+    disabled: true
 
   - name: iseek
     engine: iseek
@@ -1570,12 +1552,6 @@ engines:
     # https://github.com/searxng/searxng/issues/3610
     inactive: true
 
-  - name: library of congress
-    engine: loc
-    shortcut: loc
-    categories: images
-    disabled: true
-
   - name: libretranslate
     engine: libretranslate
     # https://github.com/LibreTranslate/LibreTranslate?tab=readme-ov-file#mirrors
@@ -1584,6 +1560,25 @@ engines:
     # api_key: ''
     shortcut: lt
     inactive: true
+
+  - name: littlelayer
+    engine: json_engine
+    shortcut: ll
+    categories: [general, blogs]
+    paging: false
+    search_url: https://litterlayer.com/load_results/?q={query}&page={pageno}
+    headers:
+      X-Requested-With: XMLHttpRequest
+    results_query: results
+    url_query: url
+    title_query: title
+    content_query: description
+    disabled: true
+    inactive: true
+    about:
+      website: https://littlelayer.com
+      description: Indie search and bookmarking community
+      results: JSON
 
   - name: lingva
     engine: lingva
@@ -1615,6 +1610,7 @@ engines:
     engine: lucide
     shortcut: luc
     timeout: 3.0
+    disabled: true
 
   - name: luxxle
     engine: luxxle
@@ -1934,7 +1930,6 @@ engines:
   - name: picjumbo
     engine: picjumbo
     shortcut: pj
-    disabled: true
 
   - name: pinterest
     engine: pinterest
@@ -1975,7 +1970,7 @@ engines:
   - name: pixabay images
     engine: pixabay
     pixabay_type: images
-    categories: images
+    categories: stock images
     shortcut: pixi
     disabled: true
 
@@ -2194,6 +2189,32 @@ engines:
     about:
       website: https://searchmysite.net
 
+  - name: searchrockit
+    engine: searchrockit
+    categories: general
+    searchrockit_categ: web
+    shortcut: sr
+    disabled: true
+    inactive: true
+
+  - name: searchrockit images
+    engine: searchrockit
+    categories: images
+    searchrockit_categ: images
+    shortcut: sri
+    # took up to 60s when testing
+    timeout: 10
+    disabled: true
+    inactive: true
+
+  - name: searchrockit news
+    engine: searchrockit
+    categories: news
+    searchrockit_categ: news
+    shortcut: srn
+    disabled: true
+    inactive: true
+
   - name: selfhst icons
     engine: selfhst
     shortcut: si
@@ -2206,7 +2227,6 @@ engines:
   - name: shopify stock
     engine: shopify_stock
     shortcut: shs
-    disabled: true
 
   - name: sogou
     engine: sogou
@@ -2241,7 +2261,6 @@ engines:
   - name: stocksnap
     engine: stocksnap
     shortcut: sto
-    disabled: true
 
   - name: askubuntu
     engine: stackexchange
@@ -2298,14 +2317,6 @@ engines:
     shortcut: pwv
     disabled: true
 
-  # - name: searx
-  #   engine: searx_engine
-  #   shortcut: se
-  #   instance_urls :
-  #       - http://127.0.0.1:8888/
-  #       - ...
-  #   disabled: true
-
   - name: seekninja
     engine: seekninja
     shortcut: sen
@@ -2349,18 +2360,21 @@ engines:
     shortcut: sp
     startpage_categ: web
     categories: [general, web]
+    inactive: true  # uses a Proof Of Work captcha https://github.com/searxng/searxng/pull/6669
 
   - name: startpage news
     engine: startpage
     startpage_categ: news
     categories: [news, web]
     shortcut: spn
+    inactive: true  # uses a Proof Of Work captcha https://github.com/searxng/searxng/pull/6669
 
   - name: startpage images
     engine: startpage
     startpage_categ: images
     categories: [images, web]
     shortcut: spi
+    inactive: true  # uses a Proof Of Work captcha https://github.com/searxng/searxng/pull/6669
 
   - name: steam
     engine: steam
@@ -2841,23 +2855,28 @@ engines:
     shortcut: mjk
     engine: mojeek
     categories: [general, web]
-    disabled: true
+    # uses a Proof of Work CAPTCHA that requires much computer power to solve
+    inactive: true
 
   - name: mojeek images
     shortcut: mjkimg
     engine: mojeek
+    network: mojeek
     categories: [images, web]
     search_type: images
     paging: false
-    disabled: true
+    # uses a Proof of Work CAPTCHA that requires much computer power to solve
+    inactive: true
 
   - name: mojeek news
     shortcut: mjknews
     engine: mojeek
+    network: mojeek
     categories: [news, web]
     search_type: news
     paging: false
-    disabled: true
+    # uses a Proof of Work CAPTCHA that requires much computer power to solve
+    inactive: true
 
   - name: moviepilot
     engine: moviepilot
@@ -3216,6 +3235,28 @@ engines:
       description: "Canadian search engine with its own index"
       results: HTML
 
+  - name: xprivo
+    engine: xprivo
+    shortcut: xpr
+    disabled: true
+    inactive: true
+
+  - name: xprivo news
+    engine: xprivo
+    categories: news
+    xprivo_search_type: news
+    shortcut: xprn
+    disabled: true
+    inactive: true
+
+  - name: xprivo videos
+    engine: xprivo
+    categories: videos
+    xprivo_search_type: videos
+    shortcut: xprv
+    disabled: true
+    inactive: true
+
   - name: zapmeta
     engine: xpath
     shortcut: zpm
@@ -3327,13 +3368,6 @@ engines:
       website: https://minecraft.wiki/
       wikidata_id: Q105533483
 
-  # s1search google engines / mirrors
-  - name: searchtoday
-    engine: s1search
-    shortcut: std
-    base_url: https://info.searchtoday.site
-    disabled: true
-
   - name: sina
     engine: json_engine
     shortcut: sina
@@ -3364,30 +3398,27 @@ engines:
       require_api_key: false
       results: JSON
 
-  # - name: webcrawler
-  #   engine: s1search
-  #   shortcut: wc
-  #   base_url: https://www.webcrawler.com
-  #   disabled: true
-
-  # s1search yahoo engines / mirrors
-  # - name: excite
-  #   engine: s1search
-  #   shortcut: exc
-  #   base_url: https://results.excite.com.s1search.co
-  #   disabled: true
-
-  # - name: metacrawler
-  #   engine: s1search
-  #   shortcut: mec
-  #   base_url: https://search.metacrawler.com
-  #   disabled: true
-
-  - name: infospace
+  # s1search engines / mirrors
+  - name: metacrawler
     engine: s1search
-    shortcut: ifs
-    base_url: https://search.infospace.com
+    shortcut: mec
+    base_url: https://search.metacrawler.com
     disabled: true
+    inactive: true
+
+  - name: zoo search
+    engine: s1search
+    shortcut: zoo
+    base_url: https://search.zoo.com
+    disabled: true
+    inactive: true
+
+  # s1search engines / mirrors with rampjs page layout
+  - name: s1search
+    engine: s1search_rampjs
+    shortcut: s1
+    disabled: true
+    inactive: true
 
 # Doku engine lets you access to any Doku wiki instance:
 # A public one or a privete/corporate one.

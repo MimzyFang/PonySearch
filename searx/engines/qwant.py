@@ -60,9 +60,6 @@ from searx.exceptions import (
     SearxEngineTooManyRequestsException,
 )
 from searx.network import raise_for_httperror
-from searx.utils import (
-    get_embeded_stream_url,
-)
 from searx.result_types import EngineResults
 
 if t.TYPE_CHECKING:
@@ -295,11 +292,10 @@ def response(resp: "SXNG_Response") -> EngineResults:
                 thumbnail = thumbnail.replace("https://s2.qwant.com", "https://s1.qwant.com", 1)
 
                 res.add(
-                    res.types.LegacyResult(
+                    res.types.Video(
                         title=title,
                         url=res_url,
                         content=content,
-                        iframe_src=get_embeded_stream_url(res_url),
                         publishedDate=pub_date,
                         thumbnail=thumbnail,
                         template="videos.html",

@@ -11,8 +11,6 @@ Some of the engines get their results from Google, others get them from Yahoo.
 import typing as t
 from urllib.parse import urlencode, urlparse, parse_qs
 
-from lxml import html
-
 from searx.result_types import EngineResults
 from searx.enginelib import EngineCache
 from searx.utils import eval_xpath_list, eval_xpath, extract_text
@@ -38,12 +36,10 @@ CACHE: EngineCache
 """Cache to store verification tokens for pagination."""
 
 
-def init(_):
+def setup(engine_settings: dict[str, t.Any]) -> bool:
     if not base_url:
         raise ValueError("base_url must be set")
 
-
-def setup(engine_settings: dict[str, t.Any]) -> bool:
     global CACHE  # pylint: disable=global-statement
     CACHE = EngineCache(engine_settings["name"])
     return True
@@ -70,7 +66,7 @@ def request(query: str, params: "OnlineParams"):
 def response(resp: "SXNG_Response") -> EngineResults:
     res = EngineResults()
 
-    doc = html.fromstring(resp.text)
+    doc = resp.html()
 
     for suggestion in eval_xpath_list(doc, "//div[@class='aylf-yahoo-bottom' or @class='aylf-yahoo-sidebar']/div"):
         res.add(res.types.LegacyResult({"suggestion": extract_text(suggestion)}))
@@ -82,7 +78,7 @@ def response(resp: "SXNG_Response") -> EngineResults:
             res.types.MainResult(
                 url=extract_text(eval_xpath(result, ".//a[contains(@class, 'title')]/@href")),
                 title=extract_text(eval_xpath(result, ".//a[contains(@class, 'title')]")),
-                content=extract_text(eval_xpath(result, ".//span[contains(@class, 'description') or @class='']")),
+                content=extract_text(eval_xpath(result, ".//span[contains(@class, 'description') or not(@class)]")),
             )
         )
 

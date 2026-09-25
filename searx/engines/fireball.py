@@ -47,7 +47,7 @@ CACHE_VALID_DURATION = 30 * 24 * 3600  # one month, same as website
 """Duration how long settings cookies are valid."""
 
 
-def init(engine_settings: dict[str, t.Any]):
+def setup(engine_settings: dict[str, t.Any]) -> bool | None:
     global CACHE  # pylint: disable=global-statement
     CACHE = EngineCache(engine_settings["name"])
 
@@ -153,16 +153,13 @@ def response(resp: "SXNG_Response") -> EngineResults:
                 length = result["video"].get("duration")
 
             res.add(
-                res.types.LegacyResult(
-                    {
-                        "template": "videos.html",
-                        "url": result["url"],
-                        "title": html_to_text(result["title"]),
-                        "content": html_to_text(result["description"]),
-                        "thumbnail": result.get("thumbnail", {}).get("original"),
-                        "length": length,
-                        "publishedDate": published_date,
-                    }
+                res.types.Video(
+                    url=result["url"],
+                    title=html_to_text(result["title"]),
+                    content=html_to_text(result["description"]),
+                    thumbnail=result.get("thumbnail", {}).get("original"),
+                    length=length,
+                    publishedDate=published_date,
                 )
             )
 

@@ -7,11 +7,8 @@
 import typing as t
 from urllib.parse import urlencode
 
-from lxml import html
-
 from searx.result_types import EngineResults
 from searx.utils import eval_xpath_list, eval_xpath, extract_text
-
 
 if t.TYPE_CHECKING:
     from lxml.etree import ElementBase
@@ -38,7 +35,7 @@ vuhuv_category = "general"
 category_map = {"general": 1, "images": 2, "videos": 3}
 
 
-def init(_):
+def setup(_: dict[str, t.Any]) -> bool | None:
     if vuhuv_category not in category_map:
         raise ValueError("invalid category: %s" % vuhuv_category)
 
@@ -88,8 +85,7 @@ def _video_results(doc: "ElementBase") -> EngineResults:
     for result in eval_xpath_list(doc, "//div[contains(@class, 'item video')]"):
         (
             res.add(
-                res.types.MainResult(
-                    template="videos.html",
+                res.types.Video(
                     url=extract_text(eval_xpath(result, "./a/@href")) or "",
                     title=extract_text(eval_xpath(result, "./a/@title")) or "",
                     content=extract_text(eval_xpath(result, ".//div[contains(@class, 'abaslik')]")) or "",
@@ -102,7 +98,7 @@ def _video_results(doc: "ElementBase") -> EngineResults:
 
 
 def response(resp: "SXNG_Response") -> EngineResults:
-    doc = html.fromstring(resp.text)
+    doc = resp.html()
     match vuhuv_category:
         case "general":
             return _general_results(doc)
