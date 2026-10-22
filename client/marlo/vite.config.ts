@@ -35,7 +35,7 @@ const svg2svg_opts: Config = {
 //};
 
 export default {
-  base: "/static/themes/marlo/",
+  base: "./",
   publicDir: "static/",
 
   build: {
