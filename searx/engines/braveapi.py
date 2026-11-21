@@ -28,7 +28,7 @@ import typing as t
 
 from urllib.parse import urlencode
 
-from searx.engines.brave import parse_video_result
+from searx.engines.brave import parse_search_result
 from searx.exceptions import SearxEngineAPIException
 from searx.result_types import EngineResults
 
@@ -91,6 +91,7 @@ def request(query: str, params: "OnlineParams") -> None:
     params["url"] = f"{base_url}?{urlencode(search_args)}"
     params["headers"]["X-Subscription-Token"] = api_key
     params["headers"]["Accept"] = "application/json"
+    params["headers"]["Cache-Control"] = "no-cache"
 
 
 def response(resp: "SXNG_Response") -> EngineResults:
@@ -100,6 +101,6 @@ def response(resp: "SXNG_Response") -> EngineResults:
     res = EngineResults()
     results_json = (data.get("web") or {}).get("results", [])
     for result in results_json:
-        res.add(parse_video_result(result))
+        res.add(parse_search_result(result))
 
     return res
